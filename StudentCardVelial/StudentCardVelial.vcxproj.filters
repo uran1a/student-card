@@ -96,4 +96,15 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Image\el_primo1.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="Image\el_primo2.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="Image\el_primo3.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

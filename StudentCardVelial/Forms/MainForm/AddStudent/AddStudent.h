@@ -14,12 +14,12 @@ namespace StudentCardVelial {
 	public ref class AddStudent : public System::Windows::Forms::Form
 	{
 	public:
-		AddStudent(String^ PathGroup_) : PathGroup(PathGroup_)
+		AddStudent(Group^ PathGroup_) : ItemGroup(PathGroup_)
 		{
 			InitializeComponent();
 			bd = gcnew BaseData();
-			list_student = bd->FillCheckedListBoxStudent();
-			bd->Reload(list_student, CheckedListBoxStudent);
+			list_students = bd->FillCheckedListBoxStudent();
+			bd->Reload(list_students, CheckedListBoxStudent);
 		}
 
 	protected:
@@ -90,8 +90,8 @@ namespace StudentCardVelial {
 
 		}
 	private: 
-		List<Student^>^ list_student;
-		String^ PathGroup;
+		List<Student^>^ list_students;
+		Group^ ItemGroup;
 		BaseData^ bd;
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -100,10 +100,14 @@ namespace StudentCardVelial {
 		for (size_t i = 0; i < CheckedListBoxStudent->CheckedItems->Count; i++)
 		{
 			Console::WriteLine("{0} ", CheckedListBoxStudent->CheckedItems[i]);
-			for (size_t j = 0; j < list_student->Count; j++)
+			for (size_t j = 0; j < list_students->Count; j++)
 			{
-				if (list_student[j]->Surname == CheckedListBoxStudent->CheckedItems[i]->ToString()) {
-					bd->Update(list_student[j]->ID, 0, PathGroup);
+				if (list_students[j]->Surname == CheckedListBoxStudent->CheckedItems[i]->ToString()) {
+					list_students[j]->Entrant = 0;
+					list_students[j]->Title_Group = ItemGroup->TitleGroup;
+					list_students[j]->Specialization = ItemGroup->Specialization;
+					list_students[j]->Number_Kurc = ItemGroup->NumberKurc;
+					bd->Update(list_students[j]);
 				}
 			}
 		}
@@ -112,11 +116,11 @@ namespace StudentCardVelial {
 		for (size_t i = 0; i < CheckedListBoxStudent->CheckedItems->Count; i++)
 		{
 			Console::WriteLine("{0} ", CheckedListBoxStudent->CheckedItems[i]);
-			for (size_t j = 0; j < list_student->Count; j++)
+			for (size_t j = 0; j < list_students->Count; j++)
 			{
-				if (list_student[j]->Surname == CheckedListBoxStudent->CheckedItems[i]->ToString()) {
+				if (list_students[j]->Surname == CheckedListBoxStudent->CheckedItems[i]->ToString()) {
 					//bd->Update(list_student[j]->ID, 0, PathGroup);
-					bd->Delete(list_student[j]->ID);
+					bd->Delete(list_students[j]->ID);
 				}
 			}
 		}

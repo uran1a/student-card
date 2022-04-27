@@ -18,6 +18,13 @@ private:
 	int PointEGE_;
 	int Stipendiya_;
 	String^ YearEnrollment_;
+	String^ Photo_Student_;
+	String^ Specialization_;
+	String^ Educational_Form_;
+	int Number_Kurc_;
+	String^ Phone_Number_;
+	String^ Mail_;
+	int Otcenka_;
 
 public:
 	Student()
@@ -100,6 +107,62 @@ public:
 		}
 		void set(String^ value) {
 			YearEnrollment_ = value;
+		}
+	}
+	property String^ Photo_Student {
+		String^ get() {
+			return Photo_Student_;
+		}
+		void set(String^ value) {
+			Photo_Student_ = value;
+		}
+	}
+	property String^ Specialization {
+		String^ get() {
+			return Specialization_;
+		}
+		void set(String^ value) {
+			Specialization_ = value;
+		}
+	}
+	property String^ Educational_Form {
+		String^ get() {
+			return Educational_Form_;
+		}
+		void set(String^ value) {
+			Educational_Form_ = value;
+		}
+	}
+	property int Number_Kurc {
+		int get() {
+			return Number_Kurc_;
+		}
+		void set(int value) {
+			Number_Kurc_ = value;
+		}
+	}
+	property String^ Phone_Number {
+		String^ get() {
+			return Phone_Number_;
+		}
+		void set(String^ value) {
+			Phone_Number_ = value;
+		}
+	}
+	property String^ Mail {
+		String^ get() {
+			return Mail_;
+		}
+		void set(String^ value) {
+			Mail_ = value;
+		}
+	}
+	property int Otcenka {
+		int get() {
+			return Otcenka_;
+		}
+		void set(int value) {
+			Otcenka_ = value;
 		}
 	}
 };

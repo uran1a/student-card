@@ -99,6 +99,11 @@
       <DependentUpon>Forms\StudentCard\ViewStudentCard\ViewStudentCard.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Image\el_primo1.png" />
+    <Image Include="Image\el_primo2.png" />
+    <Image Include="Image\el_primo3.png" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <ProjectGuid>{448C0A55-F65C-4AD3-A390-F2E1B1BD71FD}</ProjectGuid>

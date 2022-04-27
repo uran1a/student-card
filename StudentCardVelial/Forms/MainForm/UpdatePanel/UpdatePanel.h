@@ -168,13 +168,17 @@ namespace StudentCardVelial {
 			g->TitleGroup = TextBoxTitleGroupUpdatePanel->Text;
 			g->TitleFaculty = list[ComboBoxTitleFacultyUpdatePanel->SelectedIndex]->TitleFaculty;
 			g->NameKurator = TextBoxNameKuratorUpdatePanel->Text;
-			Console::WriteLine("{0} ", list[ComboBoxTitleFacultyUpdatePanel->SelectedIndex]->TitleFaculty);
+			//Console::WriteLine("{0} ", list[ComboBoxTitleFacultyUpdatePanel->SelectedIndex]->TitleFaculty);
 			g->Specialization = TextboxSpecializationUpdatePanel->Text;
-			Console::WriteLine("{0} ", g->Specialization);
+			//Console::WriteLine("{0} ", g->Specialization);
 			g->NameMonitor = TextBoxNameMonitorUpdatePanel->Text;
 			g->NumberKurc = Convert::ToInt32(TextBoxNumberKurcUpdatePanel->Text);
 		
 			bd->Update(g, ItemGroup->ID);
+
+			//передать новые данные о студенте: группа факультет курс направление
+			
+			//bd->Update(g);
 			//bd->Reload()
 		}
 	}

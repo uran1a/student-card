@@ -7,6 +7,7 @@
 #include "../CreateStudent/CreateStudent.h"
 #include "../AddStudent/AddStudent.h"
 #include "../UpdatePanel/UpdatePanel.h"
+#include "../../StudentCard/ViewStudentCard/ViewStudentCard.h"
 
 
 namespace StudentCardVelial {
@@ -281,6 +282,7 @@ namespace StudentCardVelial {
 		this->ListViewPanel->TabIndex = 4;
 		this->ListViewPanel->UseCompatibleStateImageBehavior = false;
 		this->ListViewPanel->View = System::Windows::Forms::View::Details;
+		this->ListViewPanel->MouseDoubleClick += gcnew System::Windows::Forms::MouseEventHandler(this, &FacultyForm::ListViewPanel_MouseDoubleClick);
 		// 
 		// ButtonUpdateListViewPanel
 		// 
@@ -443,8 +445,15 @@ namespace StudentCardVelial {
 			break;
 		}
 		case 1: {
-			AddStudent^ Add = gcnew AddStudent(PathGroup[1]);
-			Add->Show();
+			list_groups = bd->FillListView(PathGroup[0]);
+			//PathGroup[1] ·»—“-214
+			for (size_t i = 0; i < list_groups->Count; i++)
+			{
+				if (list_groups[i]->TitleGroup == PathGroup[1]) {
+					AddStudent^ Add = gcnew AddStudent(list_groups[i]);
+					Add->Show();
+				}
+			}
 			break;
 		}
 		default:
@@ -509,7 +518,10 @@ namespace StudentCardVelial {
 		case 1: {
 			//list_students = bd->FillListViewStudent(PathGroup[0]);
 			Console::WriteLine(list_students[ListViewPanel->FocusedItem->Index]->ID);
-			bd->Update(list_students[ListViewPanel->FocusedItem->Index]->ID, 1, PathGroup[1]);
+			list_students[ListViewPanel->FocusedItem->Index]->Entrant = 1;
+			list_students[ListViewPanel->FocusedItem->Index]->Title_Group = PathGroup[1];
+			//list_students[ListViewPanel->FocusedItem->Index]->Specialization = "";
+			bd->Update(list_students[ListViewPanel->FocusedItem->Index]);
 			bd->Reload(list_students, ListViewPanel, PathGroup[1]);
 			break;
 		}
@@ -597,6 +609,11 @@ namespace StudentCardVelial {
 	private: System::Void ButtonCreateStudentBD_Click(System::Object^ sender, System::EventArgs^ e) {
 		CreateStudent^ Create = gcnew CreateStudent();
 		Create->Show();
+	}
+	private: System::Void ListViewPanel_MouseDoubleClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+		Console::WriteLine("{0}", ListViewPanel->FocusedItem->Index);
+		ViewStudentCard^ Student = gcnew ViewStudentCard(ListViewPanel->FocusedItem->Index, PathGroup);
+		Student->Show();
 	}
 };
 }
