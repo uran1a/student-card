@@ -12,9 +12,6 @@ namespace StudentCardVelial {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-	/// <summary>
-	/// Сводка для UpdatePanel
-	/// </summary>
 	public ref class UpdatePanel : public System::Windows::Forms::Form
 	{
 	public:
@@ -31,17 +28,13 @@ namespace StudentCardVelial {
 					ComboBoxTitleFacultyUpdatePanel->SelectedIndex = i;
 				}
 			}
-			
-			//ComboBoxTitleFacultyUpdatePanel->Text = ItemGroup->TitleFaculty;
 			TextboxSpecializationUpdatePanel->Text = ItemGroup->Specialization;
 			TextBoxNameKuratorUpdatePanel->Text = ItemGroup->NameKurator;
 			TextBoxNameMonitorUpdatePanel->Text = ItemGroup->NameMonitor;
 			TextBoxNumberKurcUpdatePanel->Text = Convert::ToString(ItemGroup->NumberKurc);
 		}
 	protected:
-		/// <summary>
-		/// Освободить все используемые ресурсы.
-		/// </summary>
+
 		~UpdatePanel()
 		{
 			if (components)
@@ -165,6 +158,8 @@ namespace StudentCardVelial {
 			Group^ g = gcnew Group();
 			BaseData^ bd = gcnew BaseData();
 			List<Faculty^>^ list = bd->FillBaseData();
+			List<Student^>^ list_students = bd->FillListViewStudent(ItemGroup->TitleGroup);
+
 			g->TitleGroup = TextBoxTitleGroupUpdatePanel->Text;
 			g->TitleFaculty = list[ComboBoxTitleFacultyUpdatePanel->SelectedIndex]->TitleFaculty;
 			g->NameKurator = TextBoxNameKuratorUpdatePanel->Text;
@@ -174,11 +169,16 @@ namespace StudentCardVelial {
 			g->NameMonitor = TextBoxNameMonitorUpdatePanel->Text;
 			g->NumberKurc = Convert::ToInt32(TextBoxNumberKurcUpdatePanel->Text);
 		
-			bd->Update(g, ItemGroup->ID);
-
 			//передать новые данные о студенте: группа факультет курс направление
-			
-			//bd->Update(g);
+
+			for (size_t i = 0; i < list_students->Count; i++)
+			{
+				list_students[i]->Title_Group = g->TitleGroup;
+				list_students[i]->Specialization = g->Specialization;
+				list_students[i]->Number_Kurc = g->NumberKurc;
+				bd->Update(list_students[i]);
+			}
+			bd->Update(g, ItemGroup->ID);
 			//bd->Reload()
 		}
 	}

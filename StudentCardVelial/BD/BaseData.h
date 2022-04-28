@@ -218,6 +218,7 @@ public:
 				Group^ group = gcnew Group();
 				group->ID = Convert::ToInt32(reader["ID"]->ToString());
 				group->TitleGroup = (reader["Title_Group"]->ToString());
+				group->TitleFaculty = (reader["Title_Faculty"]->ToString());
 				group->NameKurator = (reader["Name_Kurator"]->ToString());
 				group->NameMonitor = (reader["Name_Monitor"]->ToString());
 				group->Specialization = (reader["Specialization"]->ToString());

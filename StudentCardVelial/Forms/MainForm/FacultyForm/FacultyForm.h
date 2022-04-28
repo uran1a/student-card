@@ -467,6 +467,7 @@ namespace StudentCardVelial {
 		switch (LevelTreeView)
 		{
 		case 0: {
+			list_groups = bd->FillListView(PathGroup[0]);
 			for (size_t i = 0; i < list_groups->Count; i++)
 			{
 				if (list_groups[i]->TitleGroup == ListViewPanel->FocusedItem->SubItems[1]->Text) {
@@ -540,6 +541,11 @@ namespace StudentCardVelial {
 		LabelPathPanel->Text = e->Node->FullPath;
 		LevelTreeView = e->Node->Level;
 
+		PathGroup = gcnew array<String^>(e->Node->Level + 1);
+		PathGroup = e->Node->FullPath->Split('\\');
+		for (size_t i = 0; i < e->Node->Level + 1; i++)
+			Console::WriteLine("{0} ", PathGroup[i]);
+
 		switch (e->Node->Level)
 		{
 		case 0: {
@@ -563,10 +569,7 @@ namespace StudentCardVelial {
 		}
 		case 1: {
 			PanelStudenet->Visible = true;
-			PathGroup = gcnew array<String^>(e->Node->Level + 1);
-			PathGroup = e->Node->FullPath->Split('\\');
-			for (size_t i = 0; i < e->Node->Level + 1; i++)
-				Console::WriteLine("{0} ", PathGroup[i]);
+			
 
 			//заменить цифры на enum
 			//int IndexGroup;
