@@ -58,6 +58,8 @@ namespace StudentCardVelial {
 	private: System::Windows::Forms::TextBox^ TextBoxMailStudent;
 
 	private: System::Windows::Forms::Label^ label6;
+	private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
+	private: System::Windows::Forms::SaveFileDialog^ saveFileDialog1;
 	private: System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
@@ -82,6 +84,8 @@ namespace StudentCardVelial {
 			this->label10 = (gcnew System::Windows::Forms::Label());
 			this->TextBoxMailStudent = (gcnew System::Windows::Forms::TextBox());
 			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
+			this->saveFileDialog1 = (gcnew System::Windows::Forms::SaveFileDialog());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -246,6 +250,10 @@ namespace StudentCardVelial {
 			this->label6->Size = System::Drawing::Size(66, 22);
 			this->label6->TabIndex = 17;
 			this->label6->Text = L"Почта:";
+			// 
+			// openFileDialog1
+			// 
+			this->openFileDialog1->FileName = L"openFileDialog1";
 			// 
 			// CreateStudent
 			// 

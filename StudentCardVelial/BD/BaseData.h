@@ -497,5 +497,56 @@ public:
 		}
 	}
 	//----------------------------------------
+	//AUTORIZATION
+	//----------------------------------------
+	//bool SignOn(String^ Login, String^ Password) {
+	//	try {
+	//		//Подключение в БД
+	//		ConnectToBD();
+
+	//		//List<Faculty^>^ list = gcnew List<Faculty^>();
+
+	//		/*String^ cmdText = "SELECT * FROM dbo.TABLE_FACULTIES";
+	//		SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
+	//		conn->Open();
+
+	//		SqlDataReader^ reader = cmd->ExecuteReader();
+	//		while (reader->Read()) {
+	//			Faculty^ facl = gcnew Faculty();
+	//			facl->ID = Convert::ToInt32(reader["ID"]->ToString());
+	//			facl->TitleFaculty = (reader["Title_Faculty"]->ToString());
+	//			facl->NameDekan = (reader["Name_Dekan"]->ToString());
+	//			list->Add(facl);
+	//		}
+	//		return list;*/
+	//	}
+	//	finally {
+	//		if (conn != nullptr)
+	//			conn->Close();
+	//		else MessageBox::Show("Ошибка: При чтении элементов из БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+	//	}
+	//}
+	void SignIn(String^ Login, String^ Password) {
+		try {
+			//Подключение в БД
+			ConnectToBD();
+
+			String^ cmdText = "INSERT INTO dbo.TABLE_USERS(Login, Password) VALUES(@Login, @Password)";
+			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
+
+			cmd->Parameters->AddWithValue("@Login", Login);
+			cmd->Parameters->AddWithValue("@Password", Password);
+			conn->Open();
+			cmd->ExecuteNonQuery();
+		}
+		finally {
+			if (conn != nullptr)
+				conn->Close();
+			else MessageBox::Show("Ошибка: При добавлении элемента в БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+			MessageBox::Show("Вы успешно зарегистрировались!");
+		}
+		//try
+	}
+	//----------------------------------------
 };
 

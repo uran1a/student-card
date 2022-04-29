@@ -28,6 +28,7 @@
   <ItemGroup>
     <ClCompile Include="BD\BaseData.cpp" />
     <ClCompile Include="Classes\Faculty\Faculty.cpp" />
+    <ClCompile Include="Forms\Autorization\Autorization.cpp" />
     <ClCompile Include="Forms\MainForm\AddStudent\AddStudent.cpp" />
     <ClCompile Include="Forms\MainForm\CreateFaculty\CreateFaculty.cpp" />
     <ClCompile Include="Forms\MainForm\CreatePanel\CreatePanel.cpp" />
@@ -43,6 +44,9 @@
   <ItemGroup>
     <ClInclude Include="BD\BaseData.h" />
     <ClInclude Include="Classes\Faculty\Faculty.h" />
+    <ClInclude Include="Forms\Autorization\Autorization.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Forms\MainForm\AddStudent\AddStudent.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -74,6 +78,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\Autorization\Autorization.resx">
+      <DependentUpon>Forms\Autorization\Autorization.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm\AddStudent\AddStudent.resx">
       <DependentUpon>Forms\MainForm\AddStudent\AddStudent.h</DependentUpon>
     </EmbeddedResource>
