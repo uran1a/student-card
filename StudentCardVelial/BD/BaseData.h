@@ -3,6 +3,7 @@
 #include "../Classes/Faculty/Faculty.h"
 #include "../Classes/Group/Group.h"
 #include "../Classes/Student/Student.h"
+#include "../Classes/User/User.h"
 
 using namespace System;
 using namespace System::ComponentModel;
@@ -22,6 +23,7 @@ private:
 	//Подключение в базе данных MC Sql Server
 	void ConnectToBD() {
 		//Data Source=LAPTOP-N0SDJAIT\SQLEXPRESS;Initial Catalog=StudentCard;Integrated Security=True
+		
 		connStringBuilder = gcnew SqlConnectionStringBuilder();
 		connStringBuilder->DataSource = "LAPTOP-N0SDJAIT\\SQLEXPRESS";
 		connStringBuilder->InitialCatalog = "StudentCard";
@@ -499,43 +501,51 @@ public:
 	//----------------------------------------
 	//AUTORIZATION
 	//----------------------------------------
-	//bool SignOn(String^ Login, String^ Password) {
-	//	try {
-	//		//Подключение в БД
-	//		ConnectToBD();
+	int SignOn(String^ Login, String^ Password) {
+		try {
+			//Подключение в БД
+			ConnectToBD();
 
-	//		//List<Faculty^>^ list = gcnew List<Faculty^>();
+		//List<Faculty^>^ list = gcnew List<Faculty^>();
+			//enum
+			int isAdmin = 0;
 
-	//		/*String^ cmdText = "SELECT * FROM dbo.TABLE_FACULTIES";
-	//		SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
-	//		conn->Open();
+			String^ cmdText = "SELECT * FROM dbo.TABLE_USERS";
+			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
+			conn->Open();
 
-	//		SqlDataReader^ reader = cmd->ExecuteReader();
-	//		while (reader->Read()) {
-	//			Faculty^ facl = gcnew Faculty();
-	//			facl->ID = Convert::ToInt32(reader["ID"]->ToString());
-	//			facl->TitleFaculty = (reader["Title_Faculty"]->ToString());
-	//			facl->NameDekan = (reader["Name_Dekan"]->ToString());
-	//			list->Add(facl);
-	//		}
-	//		return list;*/
-	//	}
-	//	finally {
-	//		if (conn != nullptr)
-	//			conn->Close();
-	//		else MessageBox::Show("Ошибка: При чтении элементов из БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
-	//	}
-	//}
+			SqlDataReader^ reader = cmd->ExecuteReader();
+			while (reader->Read()) {
+				if (Login == reader["Login"]->ToString() && Password == reader["Password"]->ToString() && "User      " == reader["Type"]->ToString()) {
+					MessageBox::Show("Верный логин и пароль!");
+					return isAdmin = 1;
+				}
+				if (Login == "admin" && Password == "lox" && "Admin     " == reader["Type"]->ToString()) {
+					MessageBox::Show("Ты админ!");
+					return isAdmin = 2;
+				}
+			}
+			if (!isAdmin)
+				MessageBox::Show("Неверный логин или пароль!");
+		}
+		finally {
+			if (conn != nullptr)
+				conn->Close();
+			
+			else MessageBox::Show("Ошибка: При чтении элементов из БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+		}
+	}
 	void SignIn(String^ Login, String^ Password) {
 		try {
 			//Подключение в БД
 			ConnectToBD();
 
-			String^ cmdText = "INSERT INTO dbo.TABLE_USERS(Login, Password) VALUES(@Login, @Password)";
+			String^ cmdText = "INSERT INTO dbo.TABLE_USERS(Login, Password, Type) VALUES(@Login, @Password, @Type)";
 			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
 
 			cmd->Parameters->AddWithValue("@Login", Login);
 			cmd->Parameters->AddWithValue("@Password", Password);
+			cmd->Parameters->AddWithValue("@Type", "User");
 			conn->Open();
 			cmd->ExecuteNonQuery();
 		}
@@ -546,6 +556,67 @@ public:
 			MessageBox::Show("Вы успешно зарегистрировались!");
 		}
 		//try
+	}
+	List<User^>^ FillListViewUsers() {
+		try {
+			//Подключение в БД
+			ConnectToBD();
+
+			List<User^>^ list = gcnew List<User^>();
+
+			String^ cmdText = "SELECT * FROM dbo.TABLE_USERS WHERE Type = @Type";
+			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
+			cmd->Parameters->AddWithValue("@Type", "User      ");
+			conn->Open();
+
+			SqlDataReader^ reader = cmd->ExecuteReader();
+			while (reader->Read()) {
+			
+				User^ user = gcnew User();
+				user->ID = Convert::ToInt32(reader["ID"]->ToString());
+				user->Login = (reader["Login"]->ToString());
+				user->Password = (reader["Password"]->ToString());
+
+				list->Add(user);
+			}
+			return list;
+		}
+		finally {
+			if (conn != nullptr)
+				conn->Close();
+			else MessageBox::Show("Ошибка: При чтении элементов из БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+		}
+	}
+	void Reload(List<User^>^% list_user, ListView^ ListViewPanel) {
+		list_user = FillListViewUsers();
+		ListViewPanel->FullRowSelect = true;
+		ListViewPanel->Items->Clear();
+		for (int i = 0; i < list_user->Count; i++) {
+			ListViewItem^ newItem = gcnew ListViewItem(Convert::ToString(i + 1));
+			ListViewItem::ListViewSubItem^ Login = gcnew ListViewItem::ListViewSubItem(newItem, list_user[i]->Login);
+			ListViewItem::ListViewSubItem^ Password = gcnew ListViewItem::ListViewSubItem(newItem, list_user[i]->Password);
+			newItem->SubItems->Add(Login);
+			newItem->SubItems->Add(Password);
+			ListViewPanel->Items->AddRange(gcnew cli::array< System::Windows::Forms::ListViewItem^  >(1) { newItem });
+		}
+	}
+	void Delete(int ID, ListView^ ListViewPanel) {
+		try {
+			//Подключение в БД
+			ConnectToBD();
+
+			String^ cmdText = "DELETE FROM dbo.TABLE_USERS WHERE ID = @ID";
+			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
+
+			cmd->Parameters->AddWithValue("@ID", ID);
+			conn->Open();
+			cmd->ExecuteNonQuery();
+		}
+		finally {
+			if (conn != nullptr)
+				conn->Close();
+			else MessageBox::Show("Ошибка: При удалении элемента в БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+		}
 	}
 	//----------------------------------------
 };

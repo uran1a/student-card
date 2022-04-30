@@ -54,7 +54,13 @@
     <ClCompile Include="Forms\StudentCard\UpdateStudentCard\UpdateStudentCard.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Forms\Autorization\Autorization.cpp">
+    <ClCompile Include="Forms\Authorization\Authorization.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Forms\Authorization\ListUsers\ListUsers.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\User\User.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -98,7 +104,13 @@
     <ClInclude Include="Forms\StudentCard\UpdateStudentCard\UpdateStudentCard.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Forms\Autorization\Autorization.h">
+    <ClInclude Include="Forms\Authorization\Authorization.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Forms\Authorization\ListUsers\ListUsers.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\User\User.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

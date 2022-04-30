@@ -28,7 +28,8 @@
   <ItemGroup>
     <ClCompile Include="BD\BaseData.cpp" />
     <ClCompile Include="Classes\Faculty\Faculty.cpp" />
-    <ClCompile Include="Forms\Autorization\Autorization.cpp" />
+    <ClCompile Include="Forms\Authorization\Authorization.cpp" />
+    <ClCompile Include="Forms\Authorization\ListUsers\ListUsers.cpp" />
     <ClCompile Include="Forms\MainForm\AddStudent\AddStudent.cpp" />
     <ClCompile Include="Forms\MainForm\CreateFaculty\CreateFaculty.cpp" />
     <ClCompile Include="Forms\MainForm\CreatePanel\CreatePanel.cpp" />
@@ -40,11 +41,15 @@
     <ClCompile Include="Forms\MainForm\UpdatePanel\UpdatePanel.cpp" />
     <ClCompile Include="Forms\StudentCard\UpdateStudentCard\UpdateStudentCard.cpp" />
     <ClCompile Include="Forms\StudentCard\ViewStudentCard\ViewStudentCard.cpp" />
+    <ClCompile Include="Classes\User\User.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BD\BaseData.h" />
     <ClInclude Include="Classes\Faculty\Faculty.h" />
-    <ClInclude Include="Forms\Autorization\Autorization.h">
+    <ClInclude Include="Forms\Authorization\Authorization.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Forms\Authorization\ListUsers\ListUsers.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Forms\MainForm\AddStudent\AddStudent.h">
@@ -76,10 +81,14 @@
     <ClInclude Include="Forms\StudentCard\ViewStudentCard\ViewStudentCard.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Classes\User\User.h" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Forms\Autorization\Autorization.resx">
-      <DependentUpon>Forms\Autorization\Autorization.h</DependentUpon>
+    <EmbeddedResource Include="Forms\Authorization\Authorization.resx">
+      <DependentUpon>Forms\Authorization\Authorization.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Authorization\ListUsers\ListUsers.resx">
+      <DependentUpon>Forms\Authorization\ListUsers\ListUsers.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm\AddStudent\AddStudent.resx">
       <DependentUpon>Forms\MainForm\AddStudent\AddStudent.h</DependentUpon>

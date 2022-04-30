@@ -60,6 +60,8 @@ namespace StudentCardVelial {
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 	private: System::Windows::Forms::SaveFileDialog^ saveFileDialog1;
+	private: System::Windows::Forms::Button^ ButtonGetImage;
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
 	private: System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
@@ -86,6 +88,9 @@ namespace StudentCardVelial {
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->saveFileDialog1 = (gcnew System::Windows::Forms::SaveFileDialog());
+			this->ButtonGetImage = (gcnew System::Windows::Forms::Button());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label1
@@ -100,7 +105,7 @@ namespace StudentCardVelial {
 			// 
 			// ButtonCreateStudent
 			// 
-			this->ButtonCreateStudent->Location = System::Drawing::Point(223, 190);
+			this->ButtonCreateStudent->Location = System::Drawing::Point(27, 183);
 			this->ButtonCreateStudent->Name = L"ButtonCreateStudent";
 			this->ButtonCreateStudent->Size = System::Drawing::Size(170, 43);
 			this->ButtonCreateStudent->TabIndex = 1;
@@ -255,12 +260,33 @@ namespace StudentCardVelial {
 			// 
 			this->openFileDialog1->FileName = L"openFileDialog1";
 			// 
+			// ButtonGetImage
+			// 
+			this->ButtonGetImage->Location = System::Drawing::Point(225, 169);
+			this->ButtonGetImage->Name = L"ButtonGetImage";
+			this->ButtonGetImage->Size = System::Drawing::Size(75, 23);
+			this->ButtonGetImage->TabIndex = 19;
+			this->ButtonGetImage->Text = L"Выбрать";
+			this->ButtonGetImage->UseVisualStyleBackColor = true;
+			this->ButtonGetImage->Click += gcnew System::EventHandler(this, &CreateStudent::ButtonGetImage_Click);
+			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->Location = System::Drawing::Point(330, 209);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(226, 142);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox1->TabIndex = 20;
+			this->pictureBox1->TabStop = false;
+			// 
 			// CreateStudent
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->ClientSize = System::Drawing::Size(629, 251);
+			this->ClientSize = System::Drawing::Size(629, 402);
+			this->Controls->Add(this->pictureBox1);
+			this->Controls->Add(this->ButtonGetImage);
 			this->Controls->Add(this->TextBoxMailStudent);
 			this->Controls->Add(this->label6);
 			this->Controls->Add(this->TextBoxPhoneNumberStudent);
@@ -282,6 +308,7 @@ namespace StudentCardVelial {
 			this->Controls->Add(this->label1);
 			this->Name = L"CreateStudent";
 			this->Text = L"CreateStudent";
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -311,7 +338,24 @@ namespace StudentCardVelial {
 		TextBoxEducationalFormStudent->Clear();
 		TextBoxPhotoStudent->Clear();
 		TextBoxMailStudent->Clear();
+		//this->pictureBox1->Image->Dispose();
+		this->pictureBox1->Image = nullptr;
 		TextBoxNameStudent->Focus();
+		
+
+	}
+	private: System::Void ButtonGetImage_Click(System::Object^ sender, System::EventArgs^ e) {
+		OpenFileDialog^ open = gcnew OpenFileDialog();
+		open->Filter = "Image Files(*.jpg; *.png; *.jpeg; *.gif; *.bmp)|*.jpg; *.png; *.jpeg; *.gif; *.bmp";
+		if (open->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+			// display image in picture box  
+			pictureBox1->Image = gcnew Bitmap(open->FileName);
+			// image file path  
+			String^ url = open->FileName->Replace('\\', '/');
+			TextBoxPhotoStudent->Text = url;
+			this->pictureBox1->Load(url);
+
+		}
 	}
 };
 }

@@ -22,13 +22,10 @@ namespace StudentCardVelial {
 			InitializeComponent();
 			BaseData^ bd = gcnew BaseData();
 			List<Student^>^ list_students = bd->FillListViewStudent(PathGroup[1]);
-	
-			String^ url = "Image/el_primo1.png";
-			this->PictureBoxPhotoStudent->Load(url);
 
 			LabelNameStudent->Text = Convert::ToString(list_students[Index]->Name + " " + list_students[Index]->Surname + " " + list_students[Index]->Middlename);
 			//ButtonStatus
-			//Otcekna Photo_Student
+			//Otcekna
 			LabelBirthdayStudent->Text = list_students[Index]->Birthday;
 			LabelTitleFacultyStudent->Text = PathGroup[0];
 			LabelTitleGroupStudent->Text = PathGroup[1];
@@ -36,6 +33,7 @@ namespace StudentCardVelial {
 			LabelNumberKurcStudent->Text = Convert::ToString(list_students[Index]->Number_Kurc);
 			LabelEducationalFormStudent->Text = list_students[Index]->Educational_Form;
 			LabelYearEnrollmentStudent->Text = list_students[Index]->Year_Enrollment;
+			this->PictureBoxPhotoStudent->Load(list_students[Index]->Photo_Student);
 			LabelPointEGEStudent->Text = Convert::ToString(list_students[Index]->Point_EGE);
 			LabelStipendiyaStudent->Text = Convert::ToString(list_students[Index]->Stipendiya);
 			LabelPhoneNumberStudent->Text = list_students[Index]->Phone_Number;

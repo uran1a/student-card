@@ -24,9 +24,34 @@ namespace StudentCardVelial {
 	public ref class FacultyForm : public System::Windows::Forms::Form
 	{
 	public:
-		FacultyForm(void)
+		FacultyForm(bool Status) : isAdmin(Status)
 		{
 			InitializeComponent();
+
+			if (isAdmin) {
+
+			}
+			else {
+				this->PanelButton->Visible = false;
+				this->PanelFacultyButton->Visible = false;
+				this->ButtonUpdateForm->Visible = false;
+				this->ButtonCreateStudentBD->Visible = false;
+
+				this->LabelTitleUniversity->AutoSize = true;
+				this->LabelTitleUniversity->BackColor = System::Drawing::SystemColors::ActiveBorder;
+				this->LabelTitleUniversity->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
+				this->LabelTitleUniversity->Location = System::Drawing::Point(12, 9);
+				//this->LabelTitleUniversity->Name = L"LabelTitleUniversity";
+				this->LabelTitleUniversity->Size = System::Drawing::Size(171, 22);
+				this->LabelTitleUniversity->TabIndex = 0;
+				this->LabelTitleUniversity->Text = L"Архитектура VGTU";
+
+				this->TreeViewFaculty->Location = System::Drawing::Point(12, 32);
+				this->TreeViewFaculty->Size = System::Drawing::Size(230, 350);
+				//this->TreeViewFaculty->Size = System::Drawing::Size(297, 272);
+
+			}
+
 			bd = gcnew BaseData();
 			list = bd->FillBaseData();
 			bd->Reload(list, list_groups, TreeViewFaculty);
@@ -39,7 +64,8 @@ namespace StudentCardVelial {
 		}
 	private: System::Windows::Forms::TreeView^ TreeViewFaculty;
 	private: System::Windows::Forms::Label^ LabelFacultyForm;
-	private: System::Windows::Forms::Panel^ panel1;
+	private: System::Windows::Forms::Panel^ PanelFacultyButton;
+
 	private: System::Windows::Forms::Button^ ButtonDeleteFaculty;
 	private: System::Windows::Forms::Button^ ButtonCreateFacultyForm;
 	private: System::Windows::Forms::Button^ ButtonUpdateFacultyForm;
@@ -65,6 +91,10 @@ namespace StudentCardVelial {
 
 
 	private: System::Windows::Forms::Label^ LabelNameMonitor;
+	private: System::Windows::Forms::Panel^ PanelButton;
+	private: System::Windows::Forms::Label^ LabelTitleUniversity;
+
+
 
 
 	private: System::ComponentModel::Container^ components;
@@ -75,12 +105,17 @@ namespace StudentCardVelial {
 		   {
 		this->TreeViewFaculty = (gcnew System::Windows::Forms::TreeView());
 		this->LabelFacultyForm = (gcnew System::Windows::Forms::Label());
-		this->panel1 = (gcnew System::Windows::Forms::Panel());
+		this->PanelFacultyButton = (gcnew System::Windows::Forms::Panel());
 		this->ButtonDeleteFaculty = (gcnew System::Windows::Forms::Button());
 		this->ButtonCreateFacultyForm = (gcnew System::Windows::Forms::Button());
 		this->ButtonUpdateFacultyForm = (gcnew System::Windows::Forms::Button());
 		this->ButtonUpdateForm = (gcnew System::Windows::Forms::Button());
 		this->PanelMainForm = (gcnew System::Windows::Forms::Panel());
+		this->PanelButton = (gcnew System::Windows::Forms::Panel());
+		this->ButtonCreatePanel = (gcnew System::Windows::Forms::Button());
+		this->ButtonUpdatePanel = (gcnew System::Windows::Forms::Button());
+		this->ButtonDeletePanel = (gcnew System::Windows::Forms::Button());
+		this->ButtonUpdateListViewPanel = (gcnew System::Windows::Forms::Button());
 		this->PanelStudenet = (gcnew System::Windows::Forms::Panel());
 		this->TextBoxNumberKurc = (gcnew System::Windows::Forms::TextBox());
 		this->TextBoxNameMonitor = (gcnew System::Windows::Forms::TextBox());
@@ -89,17 +124,15 @@ namespace StudentCardVelial {
 		this->LabelPathPanel = (gcnew System::Windows::Forms::Label());
 		this->LabelTextPathPanel = (gcnew System::Windows::Forms::Label());
 		this->ListViewPanel = (gcnew System::Windows::Forms::ListView());
-		this->ButtonUpdateListViewPanel = (gcnew System::Windows::Forms::Button());
-		this->ButtonDeletePanel = (gcnew System::Windows::Forms::Button());
-		this->ButtonUpdatePanel = (gcnew System::Windows::Forms::Button());
-		this->ButtonCreatePanel = (gcnew System::Windows::Forms::Button());
 		this->TextBoxNamePanel = (gcnew System::Windows::Forms::TextBox());
 		this->LabelNamePanel = (gcnew System::Windows::Forms::Label());
 		this->TextBoxTitlePanel = (gcnew System::Windows::Forms::TextBox());
 		this->LabelTitlePanel = (gcnew System::Windows::Forms::Label());
 		this->ButtonCreateStudentBD = (gcnew System::Windows::Forms::Button());
-		this->panel1->SuspendLayout();
+		this->LabelTitleUniversity = (gcnew System::Windows::Forms::Label());
+		this->PanelFacultyButton->SuspendLayout();
 		this->PanelMainForm->SuspendLayout();
+		this->PanelButton->SuspendLayout();
 		this->PanelStudenet->SuspendLayout();
 		this->SuspendLayout();
 		// 
@@ -121,18 +154,18 @@ namespace StudentCardVelial {
 		this->LabelFacultyForm->TabIndex = 0;
 		this->LabelFacultyForm->Text = L"Факультет";
 		// 
-		// panel1
+		// PanelFacultyButton
 		// 
-		this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(198)), static_cast<System::Int32>(static_cast<System::Byte>(179)),
-			static_cast<System::Int32>(static_cast<System::Byte>(112)));
-		this->panel1->Controls->Add(this->ButtonDeleteFaculty);
-		this->panel1->Controls->Add(this->LabelFacultyForm);
-		this->panel1->Controls->Add(this->ButtonCreateFacultyForm);
-		this->panel1->Controls->Add(this->ButtonUpdateFacultyForm);
-		this->panel1->Location = System::Drawing::Point(12, 12);
-		this->panel1->Name = L"panel1";
-		this->panel1->Size = System::Drawing::Size(298, 73);
-		this->panel1->TabIndex = 2;
+		this->PanelFacultyButton->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(198)),
+			static_cast<System::Int32>(static_cast<System::Byte>(179)), static_cast<System::Int32>(static_cast<System::Byte>(112)));
+		this->PanelFacultyButton->Controls->Add(this->ButtonDeleteFaculty);
+		this->PanelFacultyButton->Controls->Add(this->LabelFacultyForm);
+		this->PanelFacultyButton->Controls->Add(this->ButtonCreateFacultyForm);
+		this->PanelFacultyButton->Controls->Add(this->ButtonUpdateFacultyForm);
+		this->PanelFacultyButton->Location = System::Drawing::Point(12, 12);
+		this->PanelFacultyButton->Name = L"PanelFacultyButton";
+		this->PanelFacultyButton->Size = System::Drawing::Size(298, 73);
+		this->PanelFacultyButton->TabIndex = 2;
 		// 
 		// ButtonDeleteFaculty
 		// 
@@ -191,14 +224,11 @@ namespace StudentCardVelial {
 		// 
 		this->PanelMainForm->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(198)), static_cast<System::Int32>(static_cast<System::Byte>(179)),
 			static_cast<System::Int32>(static_cast<System::Byte>(112)));
+		this->PanelMainForm->Controls->Add(this->PanelButton);
 		this->PanelMainForm->Controls->Add(this->PanelStudenet);
 		this->PanelMainForm->Controls->Add(this->LabelPathPanel);
 		this->PanelMainForm->Controls->Add(this->LabelTextPathPanel);
 		this->PanelMainForm->Controls->Add(this->ListViewPanel);
-		this->PanelMainForm->Controls->Add(this->ButtonUpdateListViewPanel);
-		this->PanelMainForm->Controls->Add(this->ButtonDeletePanel);
-		this->PanelMainForm->Controls->Add(this->ButtonUpdatePanel);
-		this->PanelMainForm->Controls->Add(this->ButtonCreatePanel);
 		this->PanelMainForm->Controls->Add(this->TextBoxNamePanel);
 		this->PanelMainForm->Controls->Add(this->LabelNamePanel);
 		this->PanelMainForm->Controls->Add(this->TextBoxTitlePanel);
@@ -208,6 +238,59 @@ namespace StudentCardVelial {
 		this->PanelMainForm->Size = System::Drawing::Size(589, 477);
 		this->PanelMainForm->TabIndex = 5;
 		this->PanelMainForm->Visible = false;
+		// 
+		// PanelButton
+		// 
+		this->PanelButton->Controls->Add(this->ButtonCreatePanel);
+		this->PanelButton->Controls->Add(this->ButtonUpdatePanel);
+		this->PanelButton->Controls->Add(this->ButtonDeletePanel);
+		this->PanelButton->Controls->Add(this->ButtonUpdateListViewPanel);
+		this->PanelButton->Location = System::Drawing::Point(33, 414);
+		this->PanelButton->Name = L"PanelButton";
+		this->PanelButton->Size = System::Drawing::Size(411, 40);
+		this->PanelButton->TabIndex = 12;
+		// 
+		// ButtonCreatePanel
+		// 
+		this->ButtonCreatePanel->Location = System::Drawing::Point(4, 5);
+		this->ButtonCreatePanel->Name = L"ButtonCreatePanel";
+		this->ButtonCreatePanel->Size = System::Drawing::Size(87, 30);
+		this->ButtonCreatePanel->TabIndex = 5;
+		this->ButtonCreatePanel->Text = L"Добавить";
+		this->ButtonCreatePanel->UseVisualStyleBackColor = true;
+		this->ButtonCreatePanel->Click += gcnew System::EventHandler(this, &FacultyForm::ButtonCreatePanel_Click);
+		// 
+		// ButtonUpdatePanel
+		// 
+		this->ButtonUpdatePanel->Location = System::Drawing::Point(97, 5);
+		this->ButtonUpdatePanel->Name = L"ButtonUpdatePanel";
+		this->ButtonUpdatePanel->Size = System::Drawing::Size(87, 31);
+		this->ButtonUpdatePanel->TabIndex = 6;
+		this->ButtonUpdatePanel->Text = L"Изменить";
+		this->ButtonUpdatePanel->UseVisualStyleBackColor = true;
+		this->ButtonUpdatePanel->Click += gcnew System::EventHandler(this, &FacultyForm::ButtonUpdatePanel_Click);
+		// 
+		// ButtonDeletePanel
+		// 
+		this->ButtonDeletePanel->Location = System::Drawing::Point(190, 5);
+		this->ButtonDeletePanel->Name = L"ButtonDeletePanel";
+		this->ButtonDeletePanel->Size = System::Drawing::Size(87, 31);
+		this->ButtonDeletePanel->TabIndex = 7;
+		this->ButtonDeletePanel->Text = L"Удалить";
+		this->ButtonDeletePanel->UseVisualStyleBackColor = true;
+		this->ButtonDeletePanel->Click += gcnew System::EventHandler(this, &FacultyForm::ButtonDeletePanel_Click);
+		// 
+		// ButtonUpdateListViewPanel
+		// 
+		this->ButtonUpdateListViewPanel->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)),
+			static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)));
+		this->ButtonUpdateListViewPanel->Location = System::Drawing::Point(309, 5);
+		this->ButtonUpdateListViewPanel->Name = L"ButtonUpdateListViewPanel";
+		this->ButtonUpdateListViewPanel->Size = System::Drawing::Size(88, 32);
+		this->ButtonUpdateListViewPanel->TabIndex = 8;
+		this->ButtonUpdateListViewPanel->Text = L"Reboot";
+		this->ButtonUpdateListViewPanel->UseVisualStyleBackColor = false;
+		this->ButtonUpdateListViewPanel->Click += gcnew System::EventHandler(this, &FacultyForm::ButtonUpdateListViewPanel_Click);
 		// 
 		// PanelStudenet
 		// 
@@ -269,7 +352,7 @@ namespace StudentCardVelial {
 		this->LabelTextPathPanel->Name = L"LabelTextPathPanel";
 		this->LabelTextPathPanel->Size = System::Drawing::Size(42, 16);
 		this->LabelTextPathPanel->TabIndex = 9;
-		this->LabelTextPathPanel->Text = L"Путь:";
+		this->LabelTextPathPanel->Text = L"Путь: ";
 		// 
 		// ListViewPanel
 		// 
@@ -283,48 +366,6 @@ namespace StudentCardVelial {
 		this->ListViewPanel->UseCompatibleStateImageBehavior = false;
 		this->ListViewPanel->View = System::Windows::Forms::View::Details;
 		this->ListViewPanel->MouseDoubleClick += gcnew System::Windows::Forms::MouseEventHandler(this, &FacultyForm::ListViewPanel_MouseDoubleClick);
-		// 
-		// ButtonUpdateListViewPanel
-		// 
-		this->ButtonUpdateListViewPanel->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)),
-			static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)));
-		this->ButtonUpdateListViewPanel->Location = System::Drawing::Point(333, 424);
-		this->ButtonUpdateListViewPanel->Name = L"ButtonUpdateListViewPanel";
-		this->ButtonUpdateListViewPanel->Size = System::Drawing::Size(88, 32);
-		this->ButtonUpdateListViewPanel->TabIndex = 8;
-		this->ButtonUpdateListViewPanel->Text = L"Reboot";
-		this->ButtonUpdateListViewPanel->UseVisualStyleBackColor = false;
-		this->ButtonUpdateListViewPanel->Click += gcnew System::EventHandler(this, &FacultyForm::ButtonUpdateListViewPanel_Click);
-		// 
-		// ButtonDeletePanel
-		// 
-		this->ButtonDeletePanel->Location = System::Drawing::Point(229, 425);
-		this->ButtonDeletePanel->Name = L"ButtonDeletePanel";
-		this->ButtonDeletePanel->Size = System::Drawing::Size(87, 31);
-		this->ButtonDeletePanel->TabIndex = 7;
-		this->ButtonDeletePanel->Text = L"Удалить";
-		this->ButtonDeletePanel->UseVisualStyleBackColor = true;
-		this->ButtonDeletePanel->Click += gcnew System::EventHandler(this, &FacultyForm::ButtonDeletePanel_Click);
-		// 
-		// ButtonUpdatePanel
-		// 
-		this->ButtonUpdatePanel->Location = System::Drawing::Point(136, 424);
-		this->ButtonUpdatePanel->Name = L"ButtonUpdatePanel";
-		this->ButtonUpdatePanel->Size = System::Drawing::Size(87, 31);
-		this->ButtonUpdatePanel->TabIndex = 6;
-		this->ButtonUpdatePanel->Text = L"Изменить";
-		this->ButtonUpdatePanel->UseVisualStyleBackColor = true;
-		this->ButtonUpdatePanel->Click += gcnew System::EventHandler(this, &FacultyForm::ButtonUpdatePanel_Click);
-		// 
-		// ButtonCreatePanel
-		// 
-		this->ButtonCreatePanel->Location = System::Drawing::Point(43, 424);
-		this->ButtonCreatePanel->Name = L"ButtonCreatePanel";
-		this->ButtonCreatePanel->Size = System::Drawing::Size(87, 30);
-		this->ButtonCreatePanel->TabIndex = 5;
-		this->ButtonCreatePanel->Text = L"Добавить";
-		this->ButtonCreatePanel->UseVisualStyleBackColor = true;
-		this->ButtonCreatePanel->Click += gcnew System::EventHandler(this, &FacultyForm::ButtonCreatePanel_Click);
 		// 
 		// TextBoxNamePanel
 		// 
@@ -370,6 +411,14 @@ namespace StudentCardVelial {
 		this->ButtonCreateStudentBD->UseVisualStyleBackColor = false;
 		this->ButtonCreateStudentBD->Click += gcnew System::EventHandler(this, &FacultyForm::ButtonCreateStudentBD_Click);
 		// 
+		// LabelTitleUniversity
+		// 
+		this->LabelTitleUniversity->BackColor = System::Drawing::Color::Transparent;
+		this->LabelTitleUniversity->Location = System::Drawing::Point(226, 487);
+		this->LabelTitleUniversity->Name = L"LabelTitleUniversity";
+		this->LabelTitleUniversity->Size = System::Drawing::Size(100, 23);
+		this->LabelTitleUniversity->TabIndex = 0;
+		// 
 		// FacultyForm
 		// 
 		this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -377,17 +426,19 @@ namespace StudentCardVelial {
 		this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(43)), static_cast<System::Int32>(static_cast<System::Byte>(47)),
 			static_cast<System::Int32>(static_cast<System::Byte>(68)));
 		this->ClientSize = System::Drawing::Size(934, 506);
+		this->Controls->Add(this->LabelTitleUniversity);
 		this->Controls->Add(this->PanelMainForm);
 		this->Controls->Add(this->ButtonCreateStudentBD);
 		this->Controls->Add(this->ButtonUpdateForm);
-		this->Controls->Add(this->panel1);
+		this->Controls->Add(this->PanelFacultyButton);
 		this->Controls->Add(this->TreeViewFaculty);
 		this->Name = L"FacultyForm";
 		this->Text = L"FacultyForm";
-		this->panel1->ResumeLayout(false);
-		this->panel1->PerformLayout();
+		this->PanelFacultyButton->ResumeLayout(false);
+		this->PanelFacultyButton->PerformLayout();
 		this->PanelMainForm->ResumeLayout(false);
 		this->PanelMainForm->PerformLayout();
+		this->PanelButton->ResumeLayout(false);
 		this->PanelStudenet->ResumeLayout(false);
 		this->PanelStudenet->PerformLayout();
 		this->ResumeLayout(false);
@@ -402,6 +453,7 @@ namespace StudentCardVelial {
 		int ListViewPanel_SelectedIndex;
 		int LevelTreeView;
 		array<String^>^ PathGroup;
+		bool isAdmin;
 #pragma endregion
 
 	//Добавление нового факультета
