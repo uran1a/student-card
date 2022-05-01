@@ -439,6 +439,7 @@ namespace StudentCardVelial {
 		}
 	}
 	private: System::Void buttonUpdateStudentCard_Click(System::Object^ sender, System::EventArgs^ e) {
+		//проверка empty
 		bd = gcnew BaseData();
 		Student^ UpdatedStudent = gcnew Student();
 		array<String^>^ FIO = TextBoxName->Text->Split(' ');
@@ -461,6 +462,8 @@ namespace StudentCardVelial {
 		UpdatedStudent->Mail = TextBoxMail->Text;
 
 		bd->Update(UpdatedStudent, SelectedStudent->ID);
+		//bd->Reload(list_students, ListViewPanel, PathGroup[1]);
+		this->Close();
 	}
 };
 }

@@ -22,6 +22,8 @@ namespace StudentCardVelial {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
+	enum Level { GroupLevel = 0, StudentLevel = 1 };
+
 	public ref class FacultyForm : public System::Windows::Forms::Form
 	{
 	public:
@@ -55,7 +57,9 @@ namespace StudentCardVelial {
 
 			bd = gcnew BaseData();
 			list = bd->FillBaseData();
-			bd->Reload(list, list_groups, TreeViewFaculty);
+			bd->Reload(list, TreeViewFaculty);
+
+			
 		}
 
 	protected:
@@ -344,7 +348,7 @@ namespace StudentCardVelial {
 		this->LabelTextPathPanel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F));
 		this->LabelTextPathPanel->Location = System::Drawing::Point(3, 6);
 		this->LabelTextPathPanel->Name = L"LabelTextPathPanel";
-		this->LabelTextPathPanel->Size = System::Drawing::Size(42, 16);
+		this->LabelTextPathPanel->Size = System::Drawing::Size(45, 16);
 		this->LabelTextPathPanel->TabIndex = 9;
 		this->LabelTextPathPanel->Text = L"Путь: ";
 		// 
@@ -428,6 +432,7 @@ namespace StudentCardVelial {
 		this->Controls->Add(this->TreeViewFaculty);
 		this->Name = L"FacultyForm";
 		this->Text = L"FacultyForm";
+		this->Activated += gcnew System::EventHandler(this, &FacultyForm::FacultyForm_Activated);
 		this->PanelFacultyButton->ResumeLayout(false);
 		this->PanelFacultyButton->PerformLayout();
 		this->PanelMainForm->ResumeLayout(false);
@@ -439,6 +444,7 @@ namespace StudentCardVelial {
 
 	}
 	private:
+		
 		//Переменные (Поля класса)
 		BaseData^ bd;
 		List<Faculty^>^ list;
@@ -473,13 +479,13 @@ namespace StudentCardVelial {
 				bd->Delete(list_groups[i]->TitleGroup);
 			}
 			bd->Delete(list[this->TreeViewFaculty->SelectedNode->Index]);
-			bd->Reload(list, list_groups, TreeViewFaculty);
+			bd->Reload(list, TreeViewFaculty);
 		}
 	}
 	//Обновление TreeView
 	private: System::Void ButtonUpdateForm_Click(System::Object^ sender, System::EventArgs^ e) {
 		bd = gcnew BaseData();
-		bd->Reload(list, list_groups, TreeViewFaculty);
+		bd->Reload(list, TreeViewFaculty);
 	}
 	//Добавление Группы/Студента
 	private: System::Void ButtonCreatePanel_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -510,126 +516,125 @@ namespace StudentCardVelial {
 	}
 	//Изменение Группы/Студента
 	private: System::Void ButtonUpdatePanel_Click(System::Object^ sender, System::EventArgs^ e) {
-		switch (LevelTreeView)
-		{
-		case 0: {
-			list_groups = bd->FillListView(PathGroup[0]);
-			for (size_t i = 0; i < list_groups->Count; i++)
-			{
-				if (list_groups[i]->TitleGroup == ListViewPanel->FocusedItem->SubItems[1]->Text) {
-					UpdatePanel^ UpdatePanel = gcnew StudentCardVelial::UpdatePanel(list_groups[i]);
-					UpdatePanel->Show();
+		try {
+			//Проверка!
+			if (ListViewPanel->FocusedItem == nullptr) {
+				if (LevelTreeView == GroupLevel)
+					throw gcnew Exception("Выберите группу для изменения!");
+				else if (LevelTreeView == StudentLevel)
+					throw gcnew Exception("Выберите студента для изменения!");
+			}
+
+			//Реализация!
+			if (LevelTreeView == GroupLevel) {
+				list_groups = bd->FillListView(PathGroup[GroupLevel]);
+				for (size_t i = 0; i < list_groups->Count; i++) {
+					if (list_groups[i]->TitleGroup == ListViewPanel->FocusedItem->SubItems[1]->Text) {
+						UpdatePanel^ UpdateGroup = gcnew StudentCardVelial::UpdatePanel(list_groups[i]);
+						UpdateGroup->Show();
+					}
 				}
 			}
-			break;
+			else if (LevelTreeView == StudentLevel) {
+				UpdateStudentCard^ UpdateStudent = gcnew UpdateStudentCard(list_students[ListViewPanel->FocusedItem->Index], PathGroup);
+				UpdateStudent->Show();
+				Console::WriteLine("lol");
+				
+			}
+			else {
+				throw gcnew Exception("Выберите элемент TreeView!");
+			}
 		}
-		case 1: {
-			UpdateStudentCard^ update = gcnew UpdateStudentCard(list_students[ListViewPanel->FocusedItem->Index], PathGroup);
-			update->Show();
-			break;
-		}
-		default:
-
-			break;
+		catch (Exception^ e) {
+			//Ошибка
+			MessageBox::Show("Решение: " + Convert::ToString(e->Message), "Ошибка", MessageBoxButtons::OK);
 		}
 	}
 	//Обновление ListView
 	private: System::Void ButtonUpdateListViewPanel_Click(System::Object^ sender, System::EventArgs^ e) {
-		switch (LevelTreeView)
-		{
-		case 0: {
+		if(LevelTreeView == GroupLevel)
 			bd->Reload(list_groups, ListViewPanel, list[this->TreeViewFaculty->SelectedNode->Index]->TitleFaculty);
-			break;
-		}
-		case 1: {
+		else if(LevelTreeView == StudentLevel)
 			bd->Reload(list_students, ListViewPanel, PathGroup[1]);
-			break;
-		}
-		default:
-
-			break;
-		}
+		else MessageBox::Show("Решение: Выберите ветвь TreeView", "Ошибка", MessageBoxButtons::OK);
 	}
 	//Удалание Группы/Студента
 	private: System::Void ButtonDeletePanel_Click(System::Object^ sender, System::EventArgs^ e) {
 		try {
-			switch (LevelTreeView)
-			{
-			case 0: {
+			//Проверка!
+			if (ListViewPanel->FocusedItem == nullptr) {
+				if (LevelTreeView == GroupLevel)
+					throw gcnew Exception("Выберите группу для удаления!");
+				else if (LevelTreeView == StudentLevel)
+					throw gcnew Exception("Выберите студента для исключения из группы!");
+			}
+			
+			//Реализация!
+			if (LevelTreeView == GroupLevel) {
 				String^ TitleGroupSelectedItem = ListViewPanel->FocusedItem->SubItems[1]->Text;
-
 				bd->Update(1, TitleGroupSelectedItem);
 				bd->Delete(TitleGroupSelectedItem);
 				bd->Reload(list_groups, ListViewPanel, list[this->TreeViewFaculty->SelectedNode->Index]->TitleFaculty);
-				break;
 			}
-			case 1: {
-				//list_students = bd->FillListViewStudent(PathGroup[0]);
-				Console::WriteLine(list_students[ListViewPanel->FocusedItem->Index]->ID);
+			else if (LevelTreeView == StudentLevel) {
+				//Console::WriteLine(list_students[ListViewPanel->FocusedItem->Index]->ID);
 				list_students[ListViewPanel->FocusedItem->Index]->Entrant = 1;
-				list_students[ListViewPanel->FocusedItem->Index]->Title_Group = PathGroup[1];
-				//list_students[ListViewPanel->FocusedItem->Index]->Specialization = "";
+				list_students[ListViewPanel->FocusedItem->Index]->Title_Group = PathGroup[GroupLevel];
 				bd->Update(list_students[ListViewPanel->FocusedItem->Index]);
 				bd->Reload(list_students, ListViewPanel, PathGroup[1]);
-				break;
 			}
-			default:
-
-				break;
+			else {
+				throw gcnew Exception("Выберите элемент TreeView!");
 			}
-		}
-		catch (System::Exception^) {
-			//MessageBox::Show("Ошибка: При чтении элементов из БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
-		}
-		finally {
 
 		}
-		
-		
+		catch (Exception^ e) {
+			//Ошибка
+			MessageBox::Show("Решение: " + Convert::ToString(e->Message), "Ошибка", MessageBoxButtons::OK);
+		}
 	}
 	//Определние элемента для открытия Panel
 	private: System::Void TreeViewFaculty_AfterSelect(System::Object^ sender, System::Windows::Forms::TreeViewEventArgs^ e) {
-		Console::WriteLine("{0}", e->Node->FullPath);
-		Console::WriteLine("{0}", e->Node->Index);
-		Console::WriteLine("{0}", e->Node->Level);
-		
+		//Console::WriteLine("{0}", e->Node->FullPath);
+		//Console::WriteLine("{0}", e->Node->Index);
+		//Console::WriteLine("{0}", e->Node->Level);
+
+		//Включение Панели факультета
 		PanelMainForm->Visible = true;
+		//Определение пути/уровня
 		LabelPathPanel->Text = e->Node->FullPath;
 		LevelTreeView = e->Node->Level;
 
+		//Разбиение на уровни
 		PathGroup = gcnew array<String^>(e->Node->Level + 1);
 		PathGroup = e->Node->FullPath->Split('\\');
 		for (size_t i = 0; i < e->Node->Level + 1; i++)
 			Console::WriteLine("{0} ", PathGroup[i]);
 
-		switch (e->Node->Level)
-		{
-		case 0: {
+		//Реализация!
+		if (e->Node->Level == GroupLevel) {
 			PanelStudenet->Visible = false;
+			//Добавление полей
 			LabelTitlePanel->Text = "Название факультета:";
-			//TextBoxTitlePanel->Text = list[this->TreeViewFaculty->SelectedNode->Index]->Name;
 			TextBoxTitlePanel->Text = list[e->Node->Index]->TitleFaculty;
 			LabelNamePanel->Text = "Декан:";
 			TextBoxNamePanel->Text = list[e->Node->Index]->NameDekan;
 
+			//Добавление столбцев
 			ListViewPanel->Columns->Clear();
-			ListViewPanel->Columns->Add("ID", 40, HorizontalAlignment::Center);
-			ListViewPanel->Columns->Add("Название группы", 140, HorizontalAlignment::Center);
-			ListViewPanel->Columns->Add("Имя куратора", 140, HorizontalAlignment::Center);
-			
+			ListViewPanel->Columns->Add("#", 21, HorizontalAlignment::Center);
+			ListViewPanel->Columns->Add("Название группы", 180, HorizontalAlignment::Center);
+			ListViewPanel->Columns->Add("Имя куратора", 175, HorizontalAlignment::Center);
+
 			list_groups = gcnew List<Group^>();
 			list_groups = bd->FillListView(list[e->Node->Index]->TitleFaculty);
 			bd->Reload(list_groups, ListViewPanel, list[e->Node->Index]->TitleFaculty);
-			
-			break;
 		}
-		case 1: {
+		else if (e->Node->Level == StudentLevel) {
 			PanelStudenet->Visible = true;
+			list_groups = bd->FillListView(PathGroup[GroupLevel]);
 			
-
-			//заменить цифры на enum
-			//int IndexGroup;
-			list_groups = bd->FillListView(PathGroup[0]);
+			//Добавление полей
 			LabelTitlePanel->Text = "Название группы:";
 			TextBoxTitlePanel->Text = list_groups[e->Node->Index]->TitleGroup;
 			LabelNamePanel->Text = "Куратор:";
@@ -639,40 +644,40 @@ namespace StudentCardVelial {
 			LabelNumberKurc->Text = "Курс:";
 			TextBoxNumberKurc->Text = Convert::ToString(list_groups[e->Node->Index]->NumberKurc);
 
+			//Добавление столбцев
 			ListViewPanel->Columns->Clear();
-			ListViewPanel->Columns->Add("ID", 40, HorizontalAlignment::Center);
-			ListViewPanel->Columns->Add("Имя", 140, HorizontalAlignment::Center);
-			ListViewPanel->Columns->Add("Фамилия", 140, HorizontalAlignment::Center);
-			ListViewPanel->Columns->Add("Отчество", 140, HorizontalAlignment::Center);
-			//ListViewPanel->Columns->Add("", 140, HorizontalAlignment::Center);
+			ListViewPanel->Columns->Add("#", 21, HorizontalAlignment::Center);
+			ListViewPanel->Columns->Add("Имя", 115, HorizontalAlignment::Center);
+			ListViewPanel->Columns->Add("Фамилия", 120, HorizontalAlignment::Center);
+			ListViewPanel->Columns->Add("Отчество", 120, HorizontalAlignment::Center);
 
 			list_students = gcnew List<Student^>();
 			list_students = bd->FillListViewStudent(PathGroup[1]);
 			bd->Reload(list_students, ListViewPanel, PathGroup[1]);
-			
-			break;
 		}
-		case 2: {
-			LabelTitlePanel->Text = "ФИО:";
-			LabelNamePanel->Text = "Курс:";
-			break;
+		else {
+			MessageBox::Show("Решение: Выберите ветвь TreeView", "Ошибка", MessageBoxButtons::OK);
 		}
-		default:
-			Console::WriteLine("ошибка ветки!");
-			break;
-		}
-		//bd->Reload(list, list_groups, TreeViewFaculty);
-		//int index = list[this->TreeViewFaculty->SelectedNode->Index]->ID;
 	}
 	//Добавления абитуриента
 	private: System::Void ButtonCreateStudentBD_Click(System::Object^ sender, System::EventArgs^ e) {
 		CreateStudent^ Create = gcnew CreateStudent();
 		Create->Show();
 	}
+	//Просмотр профиля студента
 	private: System::Void ListViewPanel_MouseDoubleClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
-		Console::WriteLine("{0}", ListViewPanel->FocusedItem->Index);
+		//Console::WriteLine("{0}", ListViewPanel->FocusedItem->Index);
 		ViewStudentCard^ Student = gcnew ViewStudentCard(ListViewPanel->FocusedItem->Index, PathGroup);
 		Student->Show();
+	}
+	//Обновление TreeView при активации
+	private: System::Void FacultyForm_Activated(System::Object^ sender, System::EventArgs^ e) {
+		bd = gcnew BaseData();
+		list = bd->FillBaseData();
+		TreeViewFaculty->Focus();
+		TreeViewFaculty->Select();
+		//??
+		bd->Reload(list, TreeViewFaculty);
 	}
 };
 }

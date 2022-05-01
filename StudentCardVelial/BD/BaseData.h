@@ -112,7 +112,7 @@ public:
 			else MessageBox::Show("Ошибка: При чтении элементов из БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		}
 	}
-	void Reload(List<Faculty^>^% list, List<Group^>^ list_groups, TreeView^ TreeViewFaculty) {
+	void Reload(List<Faculty^>^% list, TreeView^ TreeViewFaculty) {
 		//bd->Reload(list, bd, treeViewFaculty);
 		//BaseData^ bd = gcnew BaseData();
 		list = FillBaseData();
@@ -120,7 +120,7 @@ public:
 
 		TreeViewFaculty->Nodes->Clear();
 		for (int i = 0; i < list->Count; i++) {
-			list_groups = FillListView(list[i]->TitleFaculty);
+			List<Group^>^ list_groups = FillListView(list[i]->TitleFaculty);
 			Console::WriteLine("{0} {1}", list[i]->ID, list[i]->TitleFaculty);
 			System::Windows::Forms::TreeNode^ newTreeNode = (gcnew System::Windows::Forms::TreeNode(list[i]->TitleFaculty));
 			newTreeNode->Name = list[i]->TitleFaculty;

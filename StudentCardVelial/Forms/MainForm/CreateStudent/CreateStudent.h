@@ -18,18 +18,12 @@ namespace StudentCardVelial {
 		{
 			InitializeComponent();
 			TextBoxNameStudent->Focus();
-			//
-			//TODO: добавьте код конструктора
-			//
 		}
 
 	protected:
 		~CreateStudent()
 		{
-			if (components)
-			{
-				delete components;
-			}
+			if (components) delete components;
 		}
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Button^ ButtonCreateStudent;
@@ -43,20 +37,12 @@ namespace StudentCardVelial {
 	private: System::Windows::Forms::TextBox^ TextBoxPointEGEStudent;
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::TextBox^ TextBoxPhoneNumberStudent;
-
-
 	private: System::Windows::Forms::Label^ label8;
 	private: System::Windows::Forms::TextBox^ TextBoxEducationalFormStudent;
-
-
-
-
 	private: System::Windows::Forms::Label^ label9;
 	private: System::Windows::Forms::TextBox^ TextBoxPhotoStudent;
-
 	private: System::Windows::Forms::Label^ label10;
 	private: System::Windows::Forms::TextBox^ TextBoxMailStudent;
-
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 	private: System::Windows::Forms::SaveFileDialog^ saveFileDialog1;
@@ -105,9 +91,9 @@ namespace StudentCardVelial {
 			// 
 			// ButtonCreateStudent
 			// 
-			this->ButtonCreateStudent->Location = System::Drawing::Point(27, 183);
+			this->ButtonCreateStudent->Location = System::Drawing::Point(397, 328);
 			this->ButtonCreateStudent->Name = L"ButtonCreateStudent";
-			this->ButtonCreateStudent->Size = System::Drawing::Size(170, 43);
+			this->ButtonCreateStudent->Size = System::Drawing::Size(185, 53);
 			this->ButtonCreateStudent->TabIndex = 1;
 			this->ButtonCreateStudent->Text = L"Добавить студента в конкурс университета";
 			this->ButtonCreateStudent->UseVisualStyleBackColor = true;
@@ -190,7 +176,7 @@ namespace StudentCardVelial {
 			// 
 			// TextBoxPhoneNumberStudent
 			// 
-			this->TextBoxPhoneNumberStudent->Location = System::Drawing::Point(415, 88);
+			this->TextBoxPhoneNumberStudent->Location = System::Drawing::Point(413, 30);
 			this->TextBoxPhoneNumberStudent->Name = L"TextBoxPhoneNumberStudent";
 			this->TextBoxPhoneNumberStudent->Size = System::Drawing::Size(170, 22);
 			this->TextBoxPhoneNumberStudent->TabIndex = 16;
@@ -199,7 +185,7 @@ namespace StudentCardVelial {
 			// 
 			this->label8->AutoSize = true;
 			this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->label8->Location = System::Drawing::Point(412, 67);
+			this->label8->Location = System::Drawing::Point(410, 9);
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(91, 22);
 			this->label8->TabIndex = 15;
@@ -207,7 +193,7 @@ namespace StudentCardVelial {
 			// 
 			// TextBoxEducationalFormStudent
 			// 
-			this->TextBoxEducationalFormStudent->Location = System::Drawing::Point(416, 34);
+			this->TextBoxEducationalFormStudent->Location = System::Drawing::Point(224, 145);
 			this->TextBoxEducationalFormStudent->Name = L"TextBoxEducationalFormStudent";
 			this->TextBoxEducationalFormStudent->Size = System::Drawing::Size(170, 22);
 			this->TextBoxEducationalFormStudent->TabIndex = 14;
@@ -216,7 +202,7 @@ namespace StudentCardVelial {
 			// 
 			this->label9->AutoSize = true;
 			this->label9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->label9->Location = System::Drawing::Point(413, 9);
+			this->label9->Location = System::Drawing::Point(221, 120);
 			this->label9->Name = L"label9";
 			this->label9->Size = System::Drawing::Size(157, 22);
 			this->label9->TabIndex = 13;
@@ -224,16 +210,16 @@ namespace StudentCardVelial {
 			// 
 			// TextBoxPhotoStudent
 			// 
-			this->TextBoxPhotoStudent->Location = System::Drawing::Point(224, 141);
+			this->TextBoxPhotoStudent->Location = System::Drawing::Point(27, 359);
 			this->TextBoxPhotoStudent->Name = L"TextBoxPhotoStudent";
-			this->TextBoxPhotoStudent->Size = System::Drawing::Size(170, 22);
+			this->TextBoxPhotoStudent->Size = System::Drawing::Size(226, 22);
 			this->TextBoxPhotoStudent->TabIndex = 12;
 			// 
 			// label10
 			// 
 			this->label10->AutoSize = true;
 			this->label10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->label10->Location = System::Drawing::Point(221, 117);
+			this->label10->Location = System::Drawing::Point(23, 176);
 			this->label10->Name = L"label10";
 			this->label10->Size = System::Drawing::Size(145, 22);
 			this->label10->TabIndex = 11;
@@ -241,7 +227,7 @@ namespace StudentCardVelial {
 			// 
 			// TextBoxMailStudent
 			// 
-			this->TextBoxMailStudent->Location = System::Drawing::Point(414, 140);
+			this->TextBoxMailStudent->Location = System::Drawing::Point(412, 82);
 			this->TextBoxMailStudent->Name = L"TextBoxMailStudent";
 			this->TextBoxMailStudent->Size = System::Drawing::Size(170, 22);
 			this->TextBoxMailStudent->TabIndex = 18;
@@ -250,7 +236,7 @@ namespace StudentCardVelial {
 			// 
 			this->label6->AutoSize = true;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->label6->Location = System::Drawing::Point(413, 119);
+			this->label6->Location = System::Drawing::Point(411, 61);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(66, 22);
 			this->label6->TabIndex = 17;
@@ -262,9 +248,9 @@ namespace StudentCardVelial {
 			// 
 			// ButtonGetImage
 			// 
-			this->ButtonGetImage->Location = System::Drawing::Point(225, 169);
+			this->ButtonGetImage->Location = System::Drawing::Point(174, 174);
 			this->ButtonGetImage->Name = L"ButtonGetImage";
-			this->ButtonGetImage->Size = System::Drawing::Size(75, 23);
+			this->ButtonGetImage->Size = System::Drawing::Size(79, 31);
 			this->ButtonGetImage->TabIndex = 19;
 			this->ButtonGetImage->Text = L"Выбрать";
 			this->ButtonGetImage->UseVisualStyleBackColor = true;
@@ -272,7 +258,8 @@ namespace StudentCardVelial {
 			// 
 			// pictureBox1
 			// 
-			this->pictureBox1->Location = System::Drawing::Point(330, 209);
+			this->pictureBox1->BackColor = System::Drawing::SystemColors::Control;
+			this->pictureBox1->Location = System::Drawing::Point(26, 211);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(226, 142);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -284,7 +271,7 @@ namespace StudentCardVelial {
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->ClientSize = System::Drawing::Size(629, 402);
+			this->ClientSize = System::Drawing::Size(612, 406);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->ButtonGetImage);
 			this->Controls->Add(this->TextBoxMailStudent);
@@ -329,6 +316,7 @@ namespace StudentCardVelial {
 		newStudent->Mail = TextBoxMailStudent->Text;
 
 		bd->Insert(newStudent);
+
 		TextBoxNameStudent->Clear();
 		TextBoxSurnameStudent->Clear();
 		TextBoxMiddlenameStudent->Clear();
@@ -338,11 +326,10 @@ namespace StudentCardVelial {
 		TextBoxEducationalFormStudent->Clear();
 		TextBoxPhotoStudent->Clear();
 		TextBoxMailStudent->Clear();
-		//this->pictureBox1->Image->Dispose();
 		this->pictureBox1->Image = nullptr;
 		TextBoxNameStudent->Focus();
 		
-
+		this->Close();
 	}
 	private: System::Void ButtonGetImage_Click(System::Object^ sender, System::EventArgs^ e) {
 		OpenFileDialog^ open = gcnew OpenFileDialog();

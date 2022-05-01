@@ -179,7 +179,7 @@ namespace StudentCardVelial {
 				bd->Update(list_students[i]);
 			}
 			bd->Update(g, ItemGroup->ID);
-			//bd->Reload()
+			this->Close();
 		}
 	}
 };
