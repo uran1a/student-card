@@ -348,9 +348,7 @@ namespace StudentCardVelial {
 		OpenFileDialog^ open = gcnew OpenFileDialog();
 		open->Filter = "Image Files(*.jpg; *.png; *.jpeg; *.gif; *.bmp)|*.jpg; *.png; *.jpeg; *.gif; *.bmp";
 		if (open->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
-			// display image in picture box  
 			pictureBox1->Image = gcnew Bitmap(open->FileName);
-			// image file path  
 			String^ url = open->FileName->Replace('\\', '/');
 			TextBoxPhotoStudent->Text = url;
 			this->pictureBox1->Load(url);

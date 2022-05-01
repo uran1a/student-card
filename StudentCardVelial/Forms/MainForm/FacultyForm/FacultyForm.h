@@ -552,30 +552,40 @@ namespace StudentCardVelial {
 	}
 	//Удалание Группы/Студента
 	private: System::Void ButtonDeletePanel_Click(System::Object^ sender, System::EventArgs^ e) {
-		switch (LevelTreeView)
-		{
-		case 0: {
-			String^ TitleGroupSelectedItem = ListViewPanel->FocusedItem->SubItems[1]->Text;
-			Console::WriteLine("Название группы: {0}", TitleGroupSelectedItem);
-			bd->Update(1, TitleGroupSelectedItem);
-			bd->Delete(TitleGroupSelectedItem);
-			bd->Reload(list_groups, ListViewPanel, list[this->TreeViewFaculty->SelectedNode->Index]->TitleFaculty);
-			break;
-		}
-		case 1: {
-			//list_students = bd->FillListViewStudent(PathGroup[0]);
-			Console::WriteLine(list_students[ListViewPanel->FocusedItem->Index]->ID);
-			list_students[ListViewPanel->FocusedItem->Index]->Entrant = 1;
-			list_students[ListViewPanel->FocusedItem->Index]->Title_Group = PathGroup[1];
-			//list_students[ListViewPanel->FocusedItem->Index]->Specialization = "";
-			bd->Update(list_students[ListViewPanel->FocusedItem->Index]);
-			bd->Reload(list_students, ListViewPanel, PathGroup[1]);
-			break;
-		}
-		default:
+		try {
+			switch (LevelTreeView)
+			{
+			case 0: {
+				String^ TitleGroupSelectedItem = ListViewPanel->FocusedItem->SubItems[1]->Text;
 
-			break;
+				bd->Update(1, TitleGroupSelectedItem);
+				bd->Delete(TitleGroupSelectedItem);
+				bd->Reload(list_groups, ListViewPanel, list[this->TreeViewFaculty->SelectedNode->Index]->TitleFaculty);
+				break;
+			}
+			case 1: {
+				//list_students = bd->FillListViewStudent(PathGroup[0]);
+				Console::WriteLine(list_students[ListViewPanel->FocusedItem->Index]->ID);
+				list_students[ListViewPanel->FocusedItem->Index]->Entrant = 1;
+				list_students[ListViewPanel->FocusedItem->Index]->Title_Group = PathGroup[1];
+				//list_students[ListViewPanel->FocusedItem->Index]->Specialization = "";
+				bd->Update(list_students[ListViewPanel->FocusedItem->Index]);
+				bd->Reload(list_students, ListViewPanel, PathGroup[1]);
+				break;
+			}
+			default:
+
+				break;
+			}
 		}
+		catch (System::Exception^) {
+			//MessageBox::Show("Ошибка: При чтении элементов из БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+		}
+		finally {
+
+		}
+		
+		
 	}
 	//Определние элемента для открытия Panel
 	private: System::Void TreeViewFaculty_AfterSelect(System::Object^ sender, System::Windows::Forms::TreeViewEventArgs^ e) {

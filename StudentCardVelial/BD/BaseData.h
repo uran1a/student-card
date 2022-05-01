@@ -477,6 +477,40 @@ public:
 			else MessageBox::Show("Ошибка: При обновлении элемента в БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		}
 	}
+	void Update(Student^ s, int ID) {
+		try {
+			//Подключение в БД
+			ConnectToBD();
+
+			String^ cmdText = "UPDATE dbo.TABLE_STUDENTS SET Name = @Name, Surname = @Surname, Middlename = @Middlename, Title_Group = @Title_Group, Birthday = @Birthday, Point_EGE = @Point_EGE, Stipendiya = @Stipendiya, Year_Enrollment = @Year_Enrollment, Photo_Student = @Photo_Student, Specialization = @Specialization, Educational_Form = @Educational_Form, Number_Kurc = @Number_Kurc, Phone_Number = @Phone_Number, Mail = @Mail WHERE ID = @ID";
+			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
+
+			cmd->Parameters->AddWithValue("@ID", ID);
+			//cmd->Parameters->AddWithValue("@Entrant", s->Entrant);
+			cmd->Parameters->AddWithValue("@Name", s->Name);
+			cmd->Parameters->AddWithValue("@Surname", s->Surname);
+			cmd->Parameters->AddWithValue("@Middlename", s->Middlename);
+			cmd->Parameters->AddWithValue("@Title_Group", s->Title_Group);
+			cmd->Parameters->AddWithValue("@Birthday", s->Birthday);
+			cmd->Parameters->AddWithValue("@Point_EGE", s->Point_EGE);
+			cmd->Parameters->AddWithValue("@Stipendiya", s->Stipendiya);
+			cmd->Parameters->AddWithValue("@Year_Enrollment", s->Year_Enrollment);
+			cmd->Parameters->AddWithValue("@Photo_Student", s->Photo_Student);
+			cmd->Parameters->AddWithValue("@Specialization", s->Specialization);
+			cmd->Parameters->AddWithValue("@Educational_Form", s->Educational_Form);
+			cmd->Parameters->AddWithValue("@Number_Kurc", s->Number_Kurc);
+			cmd->Parameters->AddWithValue("@Phone_Number", s->Phone_Number);
+			cmd->Parameters->AddWithValue("@Mail", s->Mail);
+
+			conn->Open();
+			cmd->ExecuteNonQuery();
+		}
+		finally {
+			if (conn != nullptr)
+				conn->Close();
+			else MessageBox::Show("Ошибка: При обновлении элемента в БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+		}
+	}
 	void Update(int Entrant, String^ PathGroup) {
 		try {
 			//Подключение в БД

@@ -22,9 +22,10 @@ namespace StudentCardVelial {
 			TextBoxName->Text = Convert::ToString(SelectedStudent->Name + " " + SelectedStudent->Surname + " " + SelectedStudent->Middlename);
 			//ButtonStatus
 			//Otcekna
+			TextBoxOtcenka->Text = Convert::ToString(SelectedStudent->Otcenka);
 			TextBoxBirthday->Text = SelectedStudent->Birthday;
-			TextBoxFaculty->Text = PathGroup[0];
-			TextBoxGroup->Text = PathGroup[1];
+			//TextBoxFaculty->Text = PathGroup[0];
+			TextBoxGroup->Text = SelectedStudent->Title_Group;
 			TextBoxSpecialization->Text = SelectedStudent->Specialization;
 			TextBoxNumberKurc->Text = Convert::ToString(SelectedStudent->Number_Kurc);
 			TextBoxEducationalForm->Text = SelectedStudent->Educational_Form;
@@ -32,7 +33,7 @@ namespace StudentCardVelial {
 			this->PictureBoxPhotoStudent->Load(SelectedStudent->Photo_Student);
 			TextBoxPhotoStudent->Text = SelectedStudent->Photo_Student;
 			TextBoxPointEGE->Text = Convert::ToString(SelectedStudent->Point_EGE);
-			textBoxStipendiya->Text = Convert::ToString(SelectedStudent->Stipendiya);
+			TextBoxStipendiya->Text = Convert::ToString(SelectedStudent->Stipendiya);
 			TextBoxPhoneNumber->Text = SelectedStudent->Phone_Number;
 			TextBoxMail->Text = SelectedStudent->Mail;
 		}
@@ -54,21 +55,19 @@ namespace StudentCardVelial {
 	private: System::Windows::Forms::Label^ label12;
 	private: System::Windows::Forms::Label^ label10;
 	private: System::Windows::Forms::Label^ label8;
-	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::Label^ LabelBirthdayStudent;
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ LabelNameStudent;
 	private: System::Windows::Forms::PictureBox^ PictureBoxPhotoStudent;
 	private: System::Windows::Forms::TextBox^ TextBoxName;
-	private: System::Windows::Forms::TextBox^ TextBoxFaculty;
 	private: System::Windows::Forms::TextBox^ TextBoxGroup;
 	private: System::Windows::Forms::TextBox^ TextBoxSpecialization;
 	private: System::Windows::Forms::TextBox^ TextBoxOtcenka;
 	private: System::Windows::Forms::TextBox^ TextBoxBirthday;
 	private: System::Windows::Forms::TextBox^ TextBoxNumberKurc;
 	private: System::Windows::Forms::TextBox^ TextBoxPhoneNumber;
-	private: System::Windows::Forms::TextBox^ textBoxStipendiya;
+	private: System::Windows::Forms::TextBox^ TextBoxStipendiya;
 	private: System::Windows::Forms::TextBox^ TextBoxMail;
 	private: System::Windows::Forms::TextBox^ TextBoxPointEGE;
 	private: System::Windows::Forms::TextBox^ TextBoxEducationalForm;
@@ -76,7 +75,6 @@ namespace StudentCardVelial {
 	private: System::Windows::Forms::Button^ buttonUpdateStudentCard;
 	private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 	private: System::Windows::Forms::TextBox^ TextBoxPhotoStudent;
-
 	private: System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
@@ -91,21 +89,19 @@ namespace StudentCardVelial {
 			this->label12 = (gcnew System::Windows::Forms::Label());
 			this->label10 = (gcnew System::Windows::Forms::Label());
 			this->label8 = (gcnew System::Windows::Forms::Label());
-			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->LabelBirthdayStudent = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->LabelNameStudent = (gcnew System::Windows::Forms::Label());
 			this->PictureBoxPhotoStudent = (gcnew System::Windows::Forms::PictureBox());
 			this->TextBoxName = (gcnew System::Windows::Forms::TextBox());
-			this->TextBoxFaculty = (gcnew System::Windows::Forms::TextBox());
 			this->TextBoxGroup = (gcnew System::Windows::Forms::TextBox());
 			this->TextBoxSpecialization = (gcnew System::Windows::Forms::TextBox());
 			this->TextBoxOtcenka = (gcnew System::Windows::Forms::TextBox());
 			this->TextBoxBirthday = (gcnew System::Windows::Forms::TextBox());
 			this->TextBoxNumberKurc = (gcnew System::Windows::Forms::TextBox());
 			this->TextBoxPhoneNumber = (gcnew System::Windows::Forms::TextBox());
-			this->textBoxStipendiya = (gcnew System::Windows::Forms::TextBox());
+			this->TextBoxStipendiya = (gcnew System::Windows::Forms::TextBox());
 			this->TextBoxMail = (gcnew System::Windows::Forms::TextBox());
 			this->TextBoxPointEGE = (gcnew System::Windows::Forms::TextBox());
 			this->TextBoxEducationalForm = (gcnew System::Windows::Forms::TextBox());
@@ -215,17 +211,6 @@ namespace StudentCardVelial {
 			this->label8->TabIndex = 34;
 			this->label8->Text = L"Курс:";
 			// 
-			// label6
-			// 
-			this->label6->AutoSize = true;
-			this->label6->BackColor = System::Drawing::SystemColors::Control;
-			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->label6->Location = System::Drawing::Point(218, 79);
-			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(103, 22);
-			this->label6->TabIndex = 32;
-			this->label6->Text = L"Факультет:";
-			// 
 			// LabelBirthdayStudent
 			// 
 			this->LabelBirthdayStudent->AutoSize = true;
@@ -287,14 +272,6 @@ namespace StudentCardVelial {
 			this->TextBoxName->Size = System::Drawing::Size(324, 28);
 			this->TextBoxName->TabIndex = 52;
 			// 
-			// TextBoxFaculty
-			// 
-			this->TextBoxFaculty->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.8F));
-			this->TextBoxFaculty->Location = System::Drawing::Point(375, 79);
-			this->TextBoxFaculty->Name = L"TextBoxFaculty";
-			this->TextBoxFaculty->Size = System::Drawing::Size(143, 24);
-			this->TextBoxFaculty->TabIndex = 53;
-			// 
 			// TextBoxGroup
 			// 
 			this->TextBoxGroup->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.8F));
@@ -344,13 +321,13 @@ namespace StudentCardVelial {
 			this->TextBoxPhoneNumber->Size = System::Drawing::Size(150, 24);
 			this->TextBoxPhoneNumber->TabIndex = 59;
 			// 
-			// textBoxStipendiya
+			// TextBoxStipendiya
 			// 
-			this->textBoxStipendiya->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.8F));
-			this->textBoxStipendiya->Location = System::Drawing::Point(541, 250);
-			this->textBoxStipendiya->Name = L"textBoxStipendiya";
-			this->textBoxStipendiya->Size = System::Drawing::Size(150, 24);
-			this->textBoxStipendiya->TabIndex = 60;
+			this->TextBoxStipendiya->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.8F));
+			this->TextBoxStipendiya->Location = System::Drawing::Point(541, 250);
+			this->TextBoxStipendiya->Name = L"TextBoxStipendiya";
+			this->TextBoxStipendiya->Size = System::Drawing::Size(150, 24);
+			this->TextBoxStipendiya->TabIndex = 60;
 			// 
 			// TextBoxMail
 			// 
@@ -418,14 +395,13 @@ namespace StudentCardVelial {
 			this->Controls->Add(this->TextBoxEducationalForm);
 			this->Controls->Add(this->TextBoxYearEnrollment);
 			this->Controls->Add(this->TextBoxMail);
-			this->Controls->Add(this->textBoxStipendiya);
+			this->Controls->Add(this->TextBoxStipendiya);
 			this->Controls->Add(this->TextBoxPhoneNumber);
 			this->Controls->Add(this->TextBoxNumberKurc);
 			this->Controls->Add(this->TextBoxBirthday);
 			this->Controls->Add(this->TextBoxOtcenka);
 			this->Controls->Add(this->TextBoxSpecialization);
 			this->Controls->Add(this->TextBoxGroup);
-			this->Controls->Add(this->TextBoxFaculty);
 			this->Controls->Add(this->TextBoxName);
 			this->Controls->Add(this->label20);
 			this->Controls->Add(this->label22);
@@ -436,7 +412,6 @@ namespace StudentCardVelial {
 			this->Controls->Add(this->label12);
 			this->Controls->Add(this->label10);
 			this->Controls->Add(this->label8);
-			this->Controls->Add(this->label6);
 			this->Controls->Add(this->LabelBirthdayStudent);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
@@ -464,10 +439,28 @@ namespace StudentCardVelial {
 		}
 	}
 	private: System::Void buttonUpdateStudentCard_Click(System::Object^ sender, System::EventArgs^ e) {
-		/*bd = gcnew BasaDate();
-		Student^ UpdatedStudent;
-		UpdatedStudent
-		bd->Update();*/
+		bd = gcnew BaseData();
+		Student^ UpdatedStudent = gcnew Student();
+		array<String^>^ FIO = TextBoxName->Text->Split(' ');
+		//Console::WriteLine("ФИО: {0} {1} {2}", FIO[0], FIO[1], FIO[2]);
+		UpdatedStudent->Name = FIO[0];
+		UpdatedStudent->Surname = FIO[1];
+		UpdatedStudent->Middlename = FIO[2];
+		UpdatedStudent->Otcenka = Convert::ToDouble(TextBoxOtcenka->Text);
+		UpdatedStudent->Birthday = TextBoxBirthday->Text;
+		UpdatedStudent->Photo_Student = TextBoxPhotoStudent->Text;
+		//Нельзя поменять факультет
+		UpdatedStudent->Title_Group = TextBoxGroup->Text;
+		UpdatedStudent->Specialization = TextBoxSpecialization->Text;
+		UpdatedStudent->Number_Kurc = Convert::ToInt32(TextBoxNumberKurc->Text);
+		UpdatedStudent->Educational_Form =TextBoxEducationalForm->Text;
+		UpdatedStudent->Year_Enrollment =TextBoxYearEnrollment->Text;
+		UpdatedStudent->Point_EGE = Convert::ToInt32(TextBoxPointEGE->Text);
+		UpdatedStudent->Stipendiya = Convert::ToInt32(TextBoxStipendiya->Text);
+		UpdatedStudent->Phone_Number = TextBoxPhoneNumber->Text;
+		UpdatedStudent->Mail = TextBoxMail->Text;
+
+		bd->Update(UpdatedStudent, SelectedStudent->ID);
 	}
 };
 }
