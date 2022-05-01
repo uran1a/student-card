@@ -8,6 +8,7 @@
 #include "../AddStudent/AddStudent.h"
 #include "../UpdatePanel/UpdatePanel.h"
 #include "../../StudentCard/ViewStudentCard/ViewStudentCard.h"
+#include "../../StudentCard/UpdateStudentCard/UpdateStudentCard.h"
 
 
 namespace StudentCardVelial {
@@ -85,18 +86,11 @@ namespace StudentCardVelial {
 	private: System::Windows::Forms::Label^ LabelPathPanel;
 	private: System::Windows::Forms::Panel^ PanelStudenet;
 	private: System::Windows::Forms::TextBox^ TextBoxNumberKurc;
-
 	private: System::Windows::Forms::TextBox^ TextBoxNameMonitor;
 	private: System::Windows::Forms::Label^ LabelNumberKurc;
-
-
 	private: System::Windows::Forms::Label^ LabelNameMonitor;
 	private: System::Windows::Forms::Panel^ PanelButton;
 	private: System::Windows::Forms::Label^ LabelTitleUniversity;
-
-
-
-
 	private: System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
@@ -530,8 +524,8 @@ namespace StudentCardVelial {
 			break;
 		}
 		case 1: {
-			
-			
+			UpdateStudentCard^ update = gcnew UpdateStudentCard(list_students[ListViewPanel->FocusedItem->Index], PathGroup);
+			update->Show();
 			break;
 		}
 		default:

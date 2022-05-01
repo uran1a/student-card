@@ -126,7 +126,7 @@ namespace StudentCardVelial {
 			this->LabelNameStudent->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.8F));
 			this->LabelNameStudent->Location = System::Drawing::Point(219, 9);
 			this->LabelNameStudent->Name = L"LabelNameStudent";
-			this->LabelNameStudent->Size = System::Drawing::Size(316, 26);
+			this->LabelNameStudent->Size = System::Drawing::Size(0, 26);
 			this->LabelNameStudent->TabIndex = 1;
 			// 
 			// ButtonStatus
@@ -167,7 +167,7 @@ namespace StudentCardVelial {
 			this->LabelBirthdayStudent->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
 			this->LabelBirthdayStudent->Location = System::Drawing::Point(494, 44);
 			this->LabelBirthdayStudent->Name = L"LabelBirthdayStudent";
-			this->LabelBirthdayStudent->Size = System::Drawing::Size(100, 22);
+			this->LabelBirthdayStudent->Size = System::Drawing::Size(0, 22);
 			this->LabelBirthdayStudent->TabIndex = 5;
 			// 
 			// LabelTitleFacultyStudent
@@ -364,9 +364,9 @@ namespace StudentCardVelial {
 			this->label22->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
 			this->label22->Location = System::Drawing::Point(294, 273);
 			this->label22->Name = L"label22";
-			this->label22->Size = System::Drawing::Size(199, 22);
+			this->label22->Size = System::Drawing::Size(188, 22);
 			this->label22->TabIndex = 22;
-			this->label22->Text = L"Мобилийный телефон:";
+			this->label22->Text = L"Мобильный телефон:";
 			// 
 			// LabelStipendiyaStudent
 			// 

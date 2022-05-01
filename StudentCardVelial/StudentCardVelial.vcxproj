@@ -111,6 +111,9 @@
     <EmbeddedResource Include="Forms\MainForm\UpdatePanel\UpdatePanel.resx">
       <DependentUpon>Forms\MainForm\UpdatePanel\UpdatePanel.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StudentCard\UpdateStudentCard\UpdateStudentCard.resx">
+      <DependentUpon>Forms\StudentCard\UpdateStudentCard\UpdateStudentCard.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\StudentCard\ViewStudentCard\ViewStudentCard.resx">
       <DependentUpon>Forms\StudentCard\ViewStudentCard\ViewStudentCard.h</DependentUpon>
     </EmbeddedResource>
