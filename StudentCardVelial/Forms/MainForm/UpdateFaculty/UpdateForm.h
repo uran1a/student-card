@@ -86,7 +86,7 @@ namespace StudentCardVelial {
 			this->ButtonUpdateFaculty->Location = System::Drawing::Point(109, 101);
 			this->ButtonUpdateFaculty->Name = L"ButtonUpdateFaculty";
 			this->ButtonUpdateFaculty->Size = System::Drawing::Size(111, 34);
-			this->ButtonUpdateFaculty->TabIndex = 2;
+			this->ButtonUpdateFaculty->TabIndex = 3;
 			this->ButtonUpdateFaculty->Text = L"Изменить";
 			this->ButtonUpdateFaculty->UseVisualStyleBackColor = true;
 			this->ButtonUpdateFaculty->Click += gcnew System::EventHandler(this, &UpdateForm::ButtonUpdateFaculty_Click);
@@ -96,7 +96,7 @@ namespace StudentCardVelial {
 			this->TextBoxUpdateNameDekan->Location = System::Drawing::Point(58, 73);
 			this->TextBoxUpdateNameDekan->Name = L"TextBoxUpdateNameDekan";
 			this->TextBoxUpdateNameDekan->Size = System::Drawing::Size(213, 22);
-			this->TextBoxUpdateNameDekan->TabIndex = 3;
+			this->TextBoxUpdateNameDekan->TabIndex = 2;
 			// 
 			// UpdateForm
 			// 
@@ -118,17 +118,25 @@ namespace StudentCardVelial {
 		Faculty^ ItemFaculty = gcnew Faculty();
 #pragma endregion
 	private: System::Void ButtonUpdateFaculty_Click(System::Object^ sender, System::EventArgs^ e) {
-		BaseData^ bd = gcnew BaseData();
-		//заменить на empty
-		if (TextBoxUpdateTitleFaculty->Text == " " && TextBoxUpdateNameDekan->Text == " ")
-			MessageBox::Show("Поле для ввода нового имени не может быть пустым!");
-		else {
+		try {
+			//Проверка!
+			if (TextBoxUpdateTitleFaculty->Text == "") {
+				throw gcnew Exception("Заполните поле Факультет!");
+			}
+			else if (TextBoxUpdateNameDekan->Text == "") {
+				throw gcnew Exception("Заполните поле Декан!");
+			}
+			//Реализация!
+			BaseData^ bd = gcnew BaseData();
 			Faculty^ f = gcnew Faculty();
-			
 			f->TitleFaculty = TextBoxUpdateTitleFaculty->Text;
 			f->NameDekan = TextBoxUpdateNameDekan->Text;
 			bd->Update(f, ItemFaculty->ID);
-			//bd->Reload()
+			this->Close();
+		}
+		catch (Exception^ e) {
+			//Ошибка
+			MessageBox::Show("Решение: " + Convert::ToString(e->Message), "Ошибка", MessageBoxButtons::OK);
 		}
 	}
 	};

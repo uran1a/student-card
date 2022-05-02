@@ -55,6 +55,7 @@ namespace StudentCardVelial {
 
 			}
 
+			
 			bd = gcnew BaseData();
 			list = bd->FillBaseData();
 			bd->Reload(list, TreeViewFaculty);
@@ -220,8 +221,8 @@ namespace StudentCardVelial {
 		// 
 		// PanelMainForm
 		// 
-		this->PanelMainForm->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(198)), static_cast<System::Int32>(static_cast<System::Byte>(179)),
-			static_cast<System::Int32>(static_cast<System::Byte>(112)));
+		this->PanelMainForm->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(85)), static_cast<System::Int32>(static_cast<System::Byte>(85)),
+			static_cast<System::Int32>(static_cast<System::Byte>(86)));
 		this->PanelMainForm->Controls->Add(this->PanelButton);
 		this->PanelMainForm->Controls->Add(this->PanelStudenet);
 		this->PanelMainForm->Controls->Add(this->LabelPathPanel);
@@ -245,7 +246,7 @@ namespace StudentCardVelial {
 		this->PanelButton->Controls->Add(this->ButtonUpdateListViewPanel);
 		this->PanelButton->Location = System::Drawing::Point(33, 414);
 		this->PanelButton->Name = L"PanelButton";
-		this->PanelButton->Size = System::Drawing::Size(411, 40);
+		this->PanelButton->Size = System::Drawing::Size(507, 40);
 		this->PanelButton->TabIndex = 12;
 		// 
 		// ButtonCreatePanel
@@ -260,7 +261,7 @@ namespace StudentCardVelial {
 		// 
 		// ButtonUpdatePanel
 		// 
-		this->ButtonUpdatePanel->Location = System::Drawing::Point(97, 5);
+		this->ButtonUpdatePanel->Location = System::Drawing::Point(118, 6);
 		this->ButtonUpdatePanel->Name = L"ButtonUpdatePanel";
 		this->ButtonUpdatePanel->Size = System::Drawing::Size(87, 31);
 		this->ButtonUpdatePanel->TabIndex = 6;
@@ -270,7 +271,7 @@ namespace StudentCardVelial {
 		// 
 		// ButtonDeletePanel
 		// 
-		this->ButtonDeletePanel->Location = System::Drawing::Point(190, 5);
+		this->ButtonDeletePanel->Location = System::Drawing::Point(230, 6);
 		this->ButtonDeletePanel->Name = L"ButtonDeletePanel";
 		this->ButtonDeletePanel->Size = System::Drawing::Size(87, 31);
 		this->ButtonDeletePanel->TabIndex = 7;
@@ -282,7 +283,7 @@ namespace StudentCardVelial {
 		// 
 		this->ButtonUpdateListViewPanel->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)),
 			static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)));
-		this->ButtonUpdateListViewPanel->Location = System::Drawing::Point(309, 5);
+		this->ButtonUpdateListViewPanel->Location = System::Drawing::Point(406, 4);
 		this->ButtonUpdateListViewPanel->Name = L"ButtonUpdateListViewPanel";
 		this->ButtonUpdateListViewPanel->Size = System::Drawing::Size(88, 32);
 		this->ButtonUpdateListViewPanel->TabIndex = 8;
@@ -319,6 +320,7 @@ namespace StudentCardVelial {
 		// LabelNumberKurc
 		// 
 		this->LabelNumberKurc->AutoSize = true;
+		this->LabelNumberKurc->ForeColor = System::Drawing::SystemColors::Control;
 		this->LabelNumberKurc->Location = System::Drawing::Point(7, 72);
 		this->LabelNumberKurc->Name = L"LabelNumberKurc";
 		this->LabelNumberKurc->Size = System::Drawing::Size(44, 16);
@@ -328,6 +330,7 @@ namespace StudentCardVelial {
 		// LabelNameMonitor
 		// 
 		this->LabelNameMonitor->AutoSize = true;
+		this->LabelNameMonitor->ForeColor = System::Drawing::SystemColors::Control;
 		this->LabelNameMonitor->Location = System::Drawing::Point(7, 12);
 		this->LabelNameMonitor->Name = L"LabelNameMonitor";
 		this->LabelNameMonitor->Size = System::Drawing::Size(44, 16);
@@ -346,6 +349,7 @@ namespace StudentCardVelial {
 		// 
 		this->LabelTextPathPanel->AutoSize = true;
 		this->LabelTextPathPanel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F));
+		this->LabelTextPathPanel->ForeColor = System::Drawing::SystemColors::Control;
 		this->LabelTextPathPanel->Location = System::Drawing::Point(3, 6);
 		this->LabelTextPathPanel->Name = L"LabelTextPathPanel";
 		this->LabelTextPathPanel->Size = System::Drawing::Size(45, 16);
@@ -375,6 +379,7 @@ namespace StudentCardVelial {
 		// LabelNamePanel
 		// 
 		this->LabelNamePanel->AutoSize = true;
+		this->LabelNamePanel->ForeColor = System::Drawing::SystemColors::Control;
 		this->LabelNamePanel->Location = System::Drawing::Point(34, 96);
 		this->LabelNamePanel->Name = L"LabelNamePanel";
 		this->LabelNamePanel->Size = System::Drawing::Size(44, 16);
@@ -391,6 +396,7 @@ namespace StudentCardVelial {
 		// LabelTitlePanel
 		// 
 		this->LabelTitlePanel->AutoSize = true;
+		this->LabelTitlePanel->ForeColor = System::Drawing::SystemColors::Control;
 		this->LabelTitlePanel->Location = System::Drawing::Point(33, 37);
 		this->LabelTitlePanel->Name = L"LabelTitlePanel";
 		this->LabelTitlePanel->Size = System::Drawing::Size(44, 16);
@@ -421,8 +427,8 @@ namespace StudentCardVelial {
 		// 
 		this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 		this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-		this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(43)), static_cast<System::Int32>(static_cast<System::Byte>(47)),
-			static_cast<System::Int32>(static_cast<System::Byte>(68)));
+		this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(51)), static_cast<System::Int32>(static_cast<System::Byte>(51)),
+			static_cast<System::Int32>(static_cast<System::Byte>(54)));
 		this->ClientSize = System::Drawing::Size(934, 506);
 		this->Controls->Add(this->LabelTitleUniversity);
 		this->Controls->Add(this->PanelMainForm);
@@ -458,20 +464,44 @@ namespace StudentCardVelial {
 
 	//Добавление нового факультета
 	private: System::Void ButtonCreateFacultyForm_Click(System::Object^ sender, System::EventArgs^ e) {
-		CreateFaculty^ Create = gcnew CreateFaculty();
-		Create->Show();
+		try {
+			//Проверка!
+
+			//Реализация!
+			CreateFaculty^ Create = gcnew CreateFaculty();
+			Create->Show();
+		}
+		catch (Exception^ e) {
+			//Ошибка
+			MessageBox::Show("Решение: " + Convert::ToString(e->Message), "Ошибка", MessageBoxButtons::OK);
+		}
+		
 	}
 	//Изменение данных факультета
 	private: System::Void ButtonUpdateFacultyForm_Click(System::Object^ sender, System::EventArgs^ e) {
-		UpdateForm^ UpdateFacultyForm = gcnew UpdateForm(list[this->TreeViewFaculty->SelectedNode->Index]);
-		UpdateFacultyForm->Show();
+		try {
+			//Проверка!
+			if (this->TreeViewFaculty->SelectedNode == nullptr) {
+				throw gcnew Exception("Выберите факультет для изменения!");
+			}
+			//Реализация!
+			UpdateForm^ UpdateFacultyForm = gcnew UpdateForm(list[this->TreeViewFaculty->SelectedNode->Index]);
+			UpdateFacultyForm->Show();
+		}
+		catch (Exception^ e) {
+			//Ошибка
+			MessageBox::Show("Решение: " + Convert::ToString(e->Message), "Ошибка", MessageBoxButtons::OK);
+		}
+		
 	}
 	//Удаление факультета
 	private: System::Void ButtonDeleteFaculty_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (list[this->TreeViewFaculty->SelectedNode->Index] == nullptr)
-			MessageBox::Show("Ошибка: Выберите экземпляр объекта!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
-		else {
-			Console::WriteLine("{0}", list[this->TreeViewFaculty->SelectedNode->Index]->ID);
+		try {
+			//Проверка!
+			if (this->TreeViewFaculty->SelectedNode == nullptr) {
+				throw gcnew Exception("Выберите факультет для удаление!");
+			}
+			//Реализация!
 			list_groups = bd->FillListView(list[this->TreeViewFaculty->SelectedNode->Index]->TitleFaculty);
 			for (size_t i = 0; i < list_groups->Count; i++)
 			{
@@ -481,6 +511,10 @@ namespace StudentCardVelial {
 			bd->Delete(list[this->TreeViewFaculty->SelectedNode->Index]);
 			bd->Reload(list, TreeViewFaculty);
 		}
+		catch (Exception^ e) {
+			//Ошибка
+			MessageBox::Show("Решение: " + Convert::ToString(e->Message), "Ошибка", MessageBoxButtons::OK);
+		}
 	}
 	//Обновление TreeView
 	private: System::Void ButtonUpdateForm_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -489,30 +523,30 @@ namespace StudentCardVelial {
 	}
 	//Добавление Группы/Студента
 	private: System::Void ButtonCreatePanel_Click(System::Object^ sender, System::EventArgs^ e) {
-		switch (LevelTreeView)
-		{
-		case 0: {
-			CreatePanel^ Create = gcnew CreatePanel(this->TreeViewFaculty->SelectedNode->Index);
-			Create->Show();
-			break;
-		}
-		case 1: {
-			list_groups = bd->FillListView(PathGroup[0]);
-			//PathGroup[1] бИСТ-214
-			for (size_t i = 0; i < list_groups->Count; i++)
-			{
-				if (list_groups[i]->TitleGroup == PathGroup[1]) {
-					AddStudent^ Add = gcnew AddStudent(list_groups[i]);
-					Add->Show();
+		try {
+			//Проверка!
+
+			//Реализация!
+			if (LevelTreeView == GroupLevel) {
+				CreatePanel^ Create = gcnew CreatePanel(this->TreeViewFaculty->SelectedNode->Index);
+				Create->Show();
+			}
+			else if (LevelTreeView == StudentLevel) {
+				//Находим студентов с этим названием группы
+				list_groups = bd->FillListView(PathGroup[GroupLevel]);
+				for (size_t i = 0; i < list_groups->Count; i++)
+				{
+					if (list_groups[i]->TitleGroup == PathGroup[StudentLevel]) {
+						AddStudent^ Add = gcnew AddStudent(list_groups[i]);
+						Add->Show();
+					}
 				}
 			}
-			break;
 		}
-		default:
-
-			break;
+		catch (Exception^ e) {
+			//Ошибка
+			MessageBox::Show("Решение: Выберите элемент TreeView!", "Ошибка", MessageBoxButtons::OK);
 		}
-
 	}
 	//Изменение Группы/Студента
 	private: System::Void ButtonUpdatePanel_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -575,6 +609,10 @@ namespace StudentCardVelial {
 				bd->Update(1, TitleGroupSelectedItem);
 				bd->Delete(TitleGroupSelectedItem);
 				bd->Reload(list_groups, ListViewPanel, list[this->TreeViewFaculty->SelectedNode->Index]->TitleFaculty);
+				bd->Reload(list, TreeViewFaculty);
+				for (int i = 0; i < list->Count; i++) {
+					if (list[i]->TitleFaculty == PathGroup[0]) TreeViewFaculty->SelectedNode = TreeViewFaculty->Nodes[i];
+				}
 			}
 			else if (LevelTreeView == StudentLevel) {
 				//Console::WriteLine(list_students[ListViewPanel->FocusedItem->Index]->ID);
@@ -672,12 +710,34 @@ namespace StudentCardVelial {
 	}
 	//Обновление TreeView при активации
 	private: System::Void FacultyForm_Activated(System::Object^ sender, System::EventArgs^ e) {
+		//Реализация!
 		bd = gcnew BaseData();
 		list = bd->FillBaseData();
-		TreeViewFaculty->Focus();
-		TreeViewFaculty->Select();
-		//??
-		bd->Reload(list, TreeViewFaculty);
+		//Проверка!
+		if (list->Count != 0) {
+			bd->Reload(list, TreeViewFaculty);
+			for (int i = 0; i < list->Count; i++) {
+				if (PathGroup != nullptr) {
+					if (list[i]->TitleFaculty == PathGroup[GroupLevel]) {
+						Console::WriteLine("Путь: " + LevelTreeView);
+						Console::WriteLine("Размер: " + PathGroup->Length);
+						if (LevelTreeView == GroupLevel)
+							TreeViewFaculty->SelectedNode = TreeViewFaculty->Nodes[i];
+						else if (LevelTreeView == StudentLevel) {
+							list_groups = bd->FillListView(list[i]->TitleFaculty);
+							for (int j = 0; j < list_groups->Count; j++)
+							{
+								if (list[i]->TitleFaculty == PathGroup[GroupLevel]) {
+									TreeViewFaculty->SelectedNode = TreeViewFaculty->Nodes[i]->Nodes[j];
+									break;
+								}
+							}
+						}
+						break;
+					}
+				}
+			}
+		}
 	}
 };
 }

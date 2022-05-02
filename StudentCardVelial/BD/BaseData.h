@@ -121,7 +121,7 @@ public:
 		TreeViewFaculty->Nodes->Clear();
 		for (int i = 0; i < list->Count; i++) {
 			List<Group^>^ list_groups = FillListView(list[i]->TitleFaculty);
-			Console::WriteLine("{0} {1}", list[i]->ID, list[i]->TitleFaculty);
+			//Console::WriteLine("{0} {1}", list[i]->ID, list[i]->TitleFaculty);
 			System::Windows::Forms::TreeNode^ newTreeNode = (gcnew System::Windows::Forms::TreeNode(list[i]->TitleFaculty));
 			newTreeNode->Name = list[i]->TitleFaculty;
 			newTreeNode->Text = list[i]->TitleFaculty;
@@ -241,7 +241,7 @@ public:
 		list_groups = FillListView(NameFaculty);
 		ListViewPanel->Items->Clear();
 		for (int i = 0; i < list_groups->Count; i++) {
-			Console::WriteLine("{0} {1} {2}", list_groups[i]->ID, list_groups[i]->TitleGroup, list_groups[i]->TitleFaculty);
+			//Console::WriteLine("{0} {1} {2}", list_groups[i]->ID, list_groups[i]->TitleGroup, list_groups[i]->TitleFaculty);
 			ListViewItem^ newItem = gcnew ListViewItem(Convert::ToString(i + 1));
 			ListViewItem::ListViewSubItem^ TitleGroup = gcnew ListViewItem::ListViewSubItem(newItem, list_groups[i]->TitleGroup);
 			ListViewItem::ListViewSubItem^ NameKurator = gcnew ListViewItem::ListViewSubItem(newItem, list_groups[i]->NameKurator);
@@ -482,7 +482,7 @@ public:
 			//Подключение в БД
 			ConnectToBD();
 
-			String^ cmdText = "UPDATE dbo.TABLE_STUDENTS SET Name = @Name, Surname = @Surname, Middlename = @Middlename, Title_Group = @Title_Group, Birthday = @Birthday, Point_EGE = @Point_EGE, Stipendiya = @Stipendiya, Year_Enrollment = @Year_Enrollment, Photo_Student = @Photo_Student, Specialization = @Specialization, Educational_Form = @Educational_Form, Number_Kurc = @Number_Kurc, Phone_Number = @Phone_Number, Mail = @Mail WHERE ID = @ID";
+			String^ cmdText = "UPDATE dbo.TABLE_STUDENTS SET Name = @Name, Surname = @Surname, Middlename = @Middlename, Title_Group = @Title_Group, Birthday = @Birthday, Point_EGE = @Point_EGE, Stipendiya = @Stipendiya, Year_Enrollment = @Year_Enrollment, Photo_Student = @Photo_Student,  Educational_Form = @Educational_Form, Phone_Number = @Phone_Number, Mail = @Mail WHERE ID = @ID";
 			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
 
 			cmd->Parameters->AddWithValue("@ID", ID);
@@ -496,9 +496,9 @@ public:
 			cmd->Parameters->AddWithValue("@Stipendiya", s->Stipendiya);
 			cmd->Parameters->AddWithValue("@Year_Enrollment", s->Year_Enrollment);
 			cmd->Parameters->AddWithValue("@Photo_Student", s->Photo_Student);
-			cmd->Parameters->AddWithValue("@Specialization", s->Specialization);
+			//cmd->Parameters->AddWithValue("@Specialization", s->Specialization);
 			cmd->Parameters->AddWithValue("@Educational_Form", s->Educational_Form);
-			cmd->Parameters->AddWithValue("@Number_Kurc", s->Number_Kurc);
+			//cmd->Parameters->AddWithValue("@Number_Kurc", s->Number_Kurc);
 			cmd->Parameters->AddWithValue("@Phone_Number", s->Phone_Number);
 			cmd->Parameters->AddWithValue("@Mail", s->Mail);
 

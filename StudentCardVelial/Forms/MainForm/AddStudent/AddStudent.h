@@ -30,12 +30,6 @@ namespace StudentCardVelial {
 	private: System::Windows::Forms::CheckedListBox^ CheckedListBoxStudent;
 	private: System::Windows::Forms::Button^ ButtonAddStudent;
 	private: System::Windows::Forms::Button^ ButtonDeleteStudent;
-
-	protected:
-
-
-	protected:
-
 	private: System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
@@ -52,14 +46,14 @@ namespace StudentCardVelial {
 			this->CheckedListBoxStudent->FormattingEnabled = true;
 			this->CheckedListBoxStudent->Location = System::Drawing::Point(13, 13);
 			this->CheckedListBoxStudent->Name = L"CheckedListBoxStudent";
-			this->CheckedListBoxStudent->Size = System::Drawing::Size(158, 208);
+			this->CheckedListBoxStudent->Size = System::Drawing::Size(196, 208);
 			this->CheckedListBoxStudent->TabIndex = 0;
 			// 
 			// ButtonAddStudent
 			// 
 			this->ButtonAddStudent->Location = System::Drawing::Point(13, 228);
 			this->ButtonAddStudent->Name = L"ButtonAddStudent";
-			this->ButtonAddStudent->Size = System::Drawing::Size(158, 23);
+			this->ButtonAddStudent->Size = System::Drawing::Size(196, 23);
 			this->ButtonAddStudent->TabIndex = 1;
 			this->ButtonAddStudent->Text = L"Добавить";
 			this->ButtonAddStudent->UseVisualStyleBackColor = true;
@@ -69,7 +63,7 @@ namespace StudentCardVelial {
 			// 
 			this->ButtonDeleteStudent->Location = System::Drawing::Point(13, 257);
 			this->ButtonDeleteStudent->Name = L"ButtonDeleteStudent";
-			this->ButtonDeleteStudent->Size = System::Drawing::Size(158, 23);
+			this->ButtonDeleteStudent->Size = System::Drawing::Size(196, 23);
 			this->ButtonDeleteStudent->TabIndex = 2;
 			this->ButtonDeleteStudent->Text = L"Удаление";
 			this->ButtonDeleteStudent->UseVisualStyleBackColor = true;
@@ -80,7 +74,7 @@ namespace StudentCardVelial {
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->ClientSize = System::Drawing::Size(186, 291);
+			this->ClientSize = System::Drawing::Size(222, 291);
 			this->Controls->Add(this->ButtonDeleteStudent);
 			this->Controls->Add(this->ButtonAddStudent);
 			this->Controls->Add(this->CheckedListBoxStudent);
@@ -95,11 +89,8 @@ namespace StudentCardVelial {
 		BaseData^ bd;
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		
-		//list = gcnew List<Student^>();
 		for (size_t i = 0; i < CheckedListBoxStudent->CheckedItems->Count; i++)
 		{
-			Console::WriteLine("{0} ", CheckedListBoxStudent->CheckedItems[i]);
 			for (size_t j = 0; j < list_students->Count; j++)
 			{
 				if (list_students[j]->Surname == CheckedListBoxStudent->CheckedItems[i]->ToString()) {
@@ -111,15 +102,14 @@ namespace StudentCardVelial {
 				}
 			}
 		}
+		this->Close();
 	}
 	private: System::Void ButtonDeleteStudent_Click(System::Object^ sender, System::EventArgs^ e) {
 		for (size_t i = 0; i < CheckedListBoxStudent->CheckedItems->Count; i++)
 		{
-			Console::WriteLine("{0} ", CheckedListBoxStudent->CheckedItems[i]);
 			for (size_t j = 0; j < list_students->Count; j++)
 			{
 				if (list_students[j]->Surname == CheckedListBoxStudent->CheckedItems[i]->ToString()) {
-					//bd->Update(list_student[j]->ID, 0, PathGroup);
 					bd->Delete(list_students[j]->ID);
 				}
 			}
