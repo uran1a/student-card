@@ -13,6 +13,8 @@ namespace StudentCardVelial {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
+	enum Static { User = 1, Admin = 2, NoneFind = 0 };
+
 	public ref class Autorization : public System::Windows::Forms::Form
 	{
 	public:
@@ -317,16 +319,21 @@ namespace StudentCardVelial {
 		TextBoxPassword->Clear();
 		TextBoxLogin->Focus();
 
-		if (StaticUser == 1) {
+		if (StaticUser == User) {
 			//переход на UserForm
+			MessageBox::Show("Верный логин и пароль!");
 			FacultyForm^ form = gcnew FacultyForm(false);
 			form->Show();
 		}
-		else if (StaticUser == 2) {
+		else if (StaticUser == Admin) {
+			MessageBox::Show("Ты админ!");
 			this->TabControlAuthorization->Size = System::Drawing::Size(415, 275);
 			this->PanelAdmin->Visible = true;
 			this->TabControlAuthorization->Size = System::Drawing::Size(311, 192);
 			this->Size = System::Drawing::Size(350, 255);
+		}
+		else if (StaticUser == NoneFind) {
+			MessageBox::Show("Неверный логин или пароль!");
 		}
 	}
 	private: System::Void ButtonCreateAccount_Click(System::Object^ sender, System::EventArgs^ e) {

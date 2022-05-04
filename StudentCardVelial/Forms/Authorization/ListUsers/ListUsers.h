@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../../Classes/User/User.h"
+#include "../../../Classes/Admin/Admin.h"
 #include "../../../BD/BaseData.h"
 
 namespace StudentCardVelial {
@@ -25,8 +25,8 @@ namespace StudentCardVelial {
 			listView1->Columns->Add("Пароль", 100, HorizontalAlignment::Center);
 
 			bd = gcnew BaseData();
-			list_user = bd->FillListViewUsers();
-			bd->Reload(list_user, listView1);
+			//list_user = bd->FillListViewUsers();
+			//bd->Reload(list_user, listView1);
 		}
 
 	protected:
@@ -85,10 +85,10 @@ namespace StudentCardVelial {
 		}
 	private:
 		BaseData^ bd;
-		List<User^>^ list_user;
+		List<Admin^>^ list_user;
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		String^ UserSelectedItem = listView1->FocusedItem->SubItems[1]->Text;
+		/*String^ UserSelectedItem = listView1->FocusedItem->SubItems[1]->Text;
 		Console::WriteLine("Название группы: {0}", UserSelectedItem);
 		bd = gcnew BaseData();
 		list_user = bd->FillListViewUsers();
@@ -97,7 +97,7 @@ namespace StudentCardVelial {
 			if(list_user[i]->Login == UserSelectedItem)
 				bd->Delete(list_user[i]->ID, listView1);
 		}
-		bd->Reload(list_user, listView1);
+		bd->Reload(list_user, listView1);*/
 	}
 	};
 }

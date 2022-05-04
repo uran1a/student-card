@@ -3,7 +3,7 @@
 #include "../Classes/Faculty/Faculty.h"
 #include "../Classes/Group/Group.h"
 #include "../Classes/Student/Student.h"
-#include "../Classes/User/User.h"
+#include "../Classes/Admin/Admin.h"
 
 using namespace System;
 using namespace System::ComponentModel;
@@ -301,7 +301,7 @@ public:
 			//Подключение в БД
 			ConnectToBD();
 
-			String^ cmdText = "INSERT INTO dbo.TABLE_STUDENTS(Name, Surname, Middlename, Entrant, Title_Group, Birthday, Point_EGE, Stipendiya, Year_Enrollment, Photo_Student, Specialization, Educational_Form, Number_Kurc, Phone_Number, Mail, Otcenka) VALUES(@Name, @Surname, @Middlename, @Entrant, @Title_Group, @Birthday, @Point_EGE, @Stipendiya, @Year_Enrollment, @Photo_Student, @Specialization, @Educational_Form, @Number_Kurc, @Phone_Number, @Mail, @Otcenka)";
+			String^ cmdText = "INSERT INTO dbo.TABLE_STUDENTS(Name, Surname, Middlename, Entrant, Title_Group, Birthday, Point_EGE, Stipendiya, Year_Enrollment, Photo_Student, Specialization, Educational_Form, Number_Kurc, Phone_Number, Mail, Otcenka, Login, Password) VALUES(@Name, @Surname, @Middlename, @Entrant, @Title_Group, @Birthday, @Point_EGE, @Stipendiya, @Year_Enrollment, @Photo_Student, @Specialization, @Educational_Form, @Number_Kurc, @Phone_Number, @Mail, @Otcenka, @Login, @Password)";
 			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
 
 			cmd->Parameters->AddWithValue("@Name", s->Name);
@@ -320,6 +320,8 @@ public:
 			cmd->Parameters->AddWithValue("@Phone_Number", s->Phone_Number);
 			cmd->Parameters->AddWithValue("@Mail", s->Mail);
 			cmd->Parameters->AddWithValue("@Otcenka", 0);
+			cmd->Parameters->AddWithValue("@Login", s->Login);
+			cmd->Parameters->AddWithValue("@Password", s->Password);
 
 			conn->Open();
 			cmd->ExecuteNonQuery();
@@ -413,10 +415,8 @@ public:
 	}
 	void Reload(List<Student^>^% list_student, ListView^ ListViewPanel, String^ NameGroup) {
 		list_student = FillListViewStudent(NameGroup);
-		//list_groups = bd->FillListView();
 		ListViewPanel->Items->Clear();
 		for (int i = 0; i < list_student->Count; i++) {
-			//Console::WriteLine("{0} {1} {2}", list_student[i]->ID, list_student[i]->TitleGroup, list_student[i]->TitleFaculty);
 			ListViewItem^ newItem = gcnew ListViewItem(Convert::ToString(i + 1));
 			ListViewItem::ListViewSubItem^ Name = gcnew ListViewItem::ListViewSubItem(newItem, list_student[i]->Name);
 			ListViewItem::ListViewSubItem^ Surname = gcnew ListViewItem::ListViewSubItem(newItem, list_student[i]->Surname);
@@ -536,38 +536,39 @@ public:
 	//AUTORIZATION
 	//----------------------------------------
 	int SignOn(String^ Login, String^ Password) {
-		try {
+	
 			//Подключение в БД
 			ConnectToBD();
 
-		//List<Faculty^>^ list = gcnew List<Faculty^>();
-			//enum
 			int isAdmin = 0;
 
-			String^ cmdText = "SELECT * FROM dbo.TABLE_USERS";
+			String^ cmdText = "SELECT * FROM dbo.TABLE_STUDENTS";
 			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
 			conn->Open();
 
 			SqlDataReader^ reader = cmd->ExecuteReader();
 			while (reader->Read()) {
-				if (Login == reader["Login"]->ToString() && Password == reader["Password"]->ToString() && "User      " == reader["Type"]->ToString()) {
-					MessageBox::Show("Верный логин и пароль!");
+				if (Login == reader["Login"]->ToString() && Password == reader["Password"]->ToString()) {
 					return isAdmin = 1;
 				}
-				if (Login == "admin" && Password == "lox" && "Admin     " == reader["Type"]->ToString()) {
-					MessageBox::Show("Ты админ!");
+			}
+			if (conn != nullptr) conn->Close();
+
+			cmdText = "SELECT * FROM dbo.TABLE_ADMINS";
+			cmd = gcnew SqlCommand(cmdText, conn);
+			conn->Open();
+
+			reader = cmd->ExecuteReader();
+			while (reader->Read()) {
+				if (Login == reader["Login"]->ToString() && Password == reader["Password"]->ToString()) {
 					return isAdmin = 2;
 				}
 			}
-			if (!isAdmin)
-				MessageBox::Show("Неверный логин или пароль!");
-		}
-		finally {
 			if (conn != nullptr)
 				conn->Close();
-			
-			else MessageBox::Show("Ошибка: При чтении элементов из БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
-		}
+
+			if (!isAdmin) return isAdmin;
+		
 	}
 	void SignIn(String^ Login, String^ Password) {
 		try {
@@ -575,6 +576,7 @@ public:
 			ConnectToBD();
 
 			String^ cmdText = "INSERT INTO dbo.TABLE_USERS(Login, Password, Type) VALUES(@Login, @Password, @Type)";
+			
 			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
 
 			cmd->Parameters->AddWithValue("@Login", Login);
@@ -591,49 +593,49 @@ public:
 		}
 		//try
 	}
-	List<User^>^ FillListViewUsers() {
-		try {
-			//Подключение в БД
-			ConnectToBD();
+	//List<User^>^ FillListViewUsers() {
+	//	try {
+	//		//Подключение в БД
+	//		ConnectToBD();
 
-			List<User^>^ list = gcnew List<User^>();
+	//		List<User^>^ list = gcnew List<User^>();
 
-			String^ cmdText = "SELECT * FROM dbo.TABLE_USERS WHERE Type = @Type";
-			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
-			cmd->Parameters->AddWithValue("@Type", "User      ");
-			conn->Open();
+	//		String^ cmdText = "SELECT * FROM dbo.TABLE_USERS WHERE Type = @Type";
+	//		SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
+	//		cmd->Parameters->AddWithValue("@Type", "User      ");
+	//		conn->Open();
 
-			SqlDataReader^ reader = cmd->ExecuteReader();
-			while (reader->Read()) {
-			
-				User^ user = gcnew User();
-				user->ID = Convert::ToInt32(reader["ID"]->ToString());
-				user->Login = (reader["Login"]->ToString());
-				user->Password = (reader["Password"]->ToString());
+	//		SqlDataReader^ reader = cmd->ExecuteReader();
+	//		while (reader->Read()) {
+	//		
+	//			User^ user = gcnew User();
+	//			user->ID = Convert::ToInt32(reader["ID"]->ToString());
+	//			user->Login = (reader["Login"]->ToString());
+	//			user->Password = (reader["Password"]->ToString());
 
-				list->Add(user);
-			}
-			return list;
-		}
-		finally {
-			if (conn != nullptr)
-				conn->Close();
-			else MessageBox::Show("Ошибка: При чтении элементов из БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
-		}
-	}
-	void Reload(List<User^>^% list_user, ListView^ ListViewPanel) {
-		list_user = FillListViewUsers();
-		ListViewPanel->FullRowSelect = true;
-		ListViewPanel->Items->Clear();
-		for (int i = 0; i < list_user->Count; i++) {
-			ListViewItem^ newItem = gcnew ListViewItem(Convert::ToString(i + 1));
-			ListViewItem::ListViewSubItem^ Login = gcnew ListViewItem::ListViewSubItem(newItem, list_user[i]->Login);
-			ListViewItem::ListViewSubItem^ Password = gcnew ListViewItem::ListViewSubItem(newItem, list_user[i]->Password);
-			newItem->SubItems->Add(Login);
-			newItem->SubItems->Add(Password);
-			ListViewPanel->Items->AddRange(gcnew cli::array< System::Windows::Forms::ListViewItem^  >(1) { newItem });
-		}
-	}
+	//			list->Add(user);
+	//		}
+	//		return list;
+	//	}
+	//	finally {
+	//		if (conn != nullptr)
+	//			conn->Close();
+	//		else MessageBox::Show("Ошибка: При чтении элементов из БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+	//	}
+	//}
+	//void Reload(List<User^>^% list_user, ListView^ ListViewPanel) {
+	//	list_user = FillListViewUsers();
+	//	ListViewPanel->FullRowSelect = true;
+	//	ListViewPanel->Items->Clear();
+	//	for (int i = 0; i < list_user->Count; i++) {
+	//		ListViewItem^ newItem = gcnew ListViewItem(Convert::ToString(i + 1));
+	//		ListViewItem::ListViewSubItem^ Login = gcnew ListViewItem::ListViewSubItem(newItem, list_user[i]->Login);
+	//		ListViewItem::ListViewSubItem^ Password = gcnew ListViewItem::ListViewSubItem(newItem, list_user[i]->Password);
+	//		newItem->SubItems->Add(Login);
+	//		newItem->SubItems->Add(Password);
+	//		ListViewPanel->Items->AddRange(gcnew cli::array< System::Windows::Forms::ListViewItem^  >(1) { newItem });
+	//	}
+	//}
 	void Delete(int ID, ListView^ ListViewPanel) {
 		try {
 			//Подключение в БД

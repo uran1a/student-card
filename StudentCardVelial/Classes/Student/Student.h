@@ -25,6 +25,8 @@ private:
 	String^ Phone_Number_;
 	String^ Mail_;
 	int Otcenka_;
+	String^ Login_;
+	String^ Password_;
 
 public:
 	Student()
@@ -163,6 +165,22 @@ public:
 		}
 		void set(int value) {
 			Otcenka_ = value;
+		}
+	}
+	property String^ Login {
+		String^ get() {
+			return Login_;
+		}
+		void set(String^ value) {
+			Login_ = value;
+		}
+	}
+	property String^ Password {
+		String^ get() {
+			return Password_;
+		}
+		void set(String^ value) {
+			Password_ = value;
 		}
 	}
 };

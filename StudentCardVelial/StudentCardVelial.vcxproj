@@ -41,7 +41,7 @@
     <ClCompile Include="Forms\MainForm\UpdatePanel\UpdatePanel.cpp" />
     <ClCompile Include="Forms\StudentCard\UpdateStudentCard\UpdateStudentCard.cpp" />
     <ClCompile Include="Forms\StudentCard\ViewStudentCard\ViewStudentCard.cpp" />
-    <ClCompile Include="Classes\User\User.cpp" />
+    <ClCompile Include="Classes\Admin\Admin.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BD\BaseData.h" />
@@ -81,7 +81,7 @@
     <ClInclude Include="Forms\StudentCard\ViewStudentCard\ViewStudentCard.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="Classes\User\User.h" />
+    <ClInclude Include="Classes\Admin\Admin.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Forms\Authorization\Authorization.resx">

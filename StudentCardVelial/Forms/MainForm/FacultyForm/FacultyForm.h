@@ -96,6 +96,9 @@ namespace StudentCardVelial {
 	private: System::Windows::Forms::Label^ LabelNameMonitor;
 	private: System::Windows::Forms::Panel^ PanelButton;
 	private: System::Windows::Forms::Label^ LabelTitleUniversity;
+	private: System::Windows::Forms::ToolStrip^ ToolStripFaculty;
+	private: System::Windows::Forms::ToolStripLabel^ ToolStripLabelTitle;
+	private: System::Windows::Forms::ToolStripLabel^ ToolStripLabelProfile;
 
 
 
@@ -137,10 +140,14 @@ namespace StudentCardVelial {
 		this->LabelTitlePanel = (gcnew System::Windows::Forms::Label());
 		this->ButtonCreateStudentBD = (gcnew System::Windows::Forms::Button());
 		this->LabelTitleUniversity = (gcnew System::Windows::Forms::Label());
+		this->ToolStripFaculty = (gcnew System::Windows::Forms::ToolStrip());
+		this->ToolStripLabelTitle = (gcnew System::Windows::Forms::ToolStripLabel());
+		this->ToolStripLabelProfile = (gcnew System::Windows::Forms::ToolStripLabel());
 		this->PanelFacultyButton->SuspendLayout();
 		this->PanelMainForm->SuspendLayout();
 		this->PanelButton->SuspendLayout();
 		this->PanelStudenet->SuspendLayout();
+		this->ToolStripFaculty->SuspendLayout();
 		this->SuspendLayout();
 		// 
 		// TreeViewFaculty
@@ -431,13 +438,43 @@ namespace StudentCardVelial {
 		this->LabelTitleUniversity->Size = System::Drawing::Size(100, 23);
 		this->LabelTitleUniversity->TabIndex = 0;
 		// 
+		// ToolStripFaculty
+		// 
+		this->ToolStripFaculty->BackColor = System::Drawing::SystemColors::ControlDarkDark;
+		this->ToolStripFaculty->Dock = System::Windows::Forms::DockStyle::Bottom;
+		this->ToolStripFaculty->ImageScalingSize = System::Drawing::Size(20, 20);
+		this->ToolStripFaculty->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+			this->ToolStripLabelTitle,
+				this->ToolStripLabelProfile
+		});
+		this->ToolStripFaculty->Location = System::Drawing::Point(0, 509);
+		this->ToolStripFaculty->Name = L"ToolStripFaculty";
+		this->ToolStripFaculty->Size = System::Drawing::Size(934, 31);
+		this->ToolStripFaculty->TabIndex = 7;
+		this->ToolStripFaculty->Text = L"toolStrip1";
+		// 
+		// ToolStripLabelTitle
+		// 
+		this->ToolStripLabelTitle->Name = L"ToolStripLabelTitle";
+		this->ToolStripLabelTitle->Size = System::Drawing::Size(46, 28);
+		this->ToolStripLabelTitle->Text = L"VGTU";
+		// 
+		// ToolStripLabelProfile
+		// 
+		this->ToolStripLabelProfile->Alignment = System::Windows::Forms::ToolStripItemAlignment::Right;
+		this->ToolStripLabelProfile->Name = L"ToolStripLabelProfile";
+		this->ToolStripLabelProfile->Size = System::Drawing::Size(73, 28);
+		this->ToolStripLabelProfile->Text = L"Профиль";
+		this->ToolStripLabelProfile->Click += gcnew System::EventHandler(this, &FacultyForm::ToolStripLabelProfile_Click);
+		// 
 		// FacultyForm
 		// 
 		this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 		this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 		this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(51)), static_cast<System::Int32>(static_cast<System::Byte>(51)),
 			static_cast<System::Int32>(static_cast<System::Byte>(54)));
-		this->ClientSize = System::Drawing::Size(934, 504);
+		this->ClientSize = System::Drawing::Size(934, 540);
+		this->Controls->Add(this->ToolStripFaculty);
 		this->Controls->Add(this->LabelTitleUniversity);
 		this->Controls->Add(this->PanelMainForm);
 		this->Controls->Add(this->ButtonCreateStudentBD);
@@ -454,7 +491,10 @@ namespace StudentCardVelial {
 		this->PanelButton->ResumeLayout(false);
 		this->PanelStudenet->ResumeLayout(false);
 		this->PanelStudenet->PerformLayout();
+		this->ToolStripFaculty->ResumeLayout(false);
+		this->ToolStripFaculty->PerformLayout();
 		this->ResumeLayout(false);
+		this->PerformLayout();
 
 	}
 	private:
@@ -746,6 +786,9 @@ namespace StudentCardVelial {
 				}
 			}
 		}
+	}
+	private: System::Void ToolStripLabelProfile_Click(System::Object^ sender, System::EventArgs^ e) {
+
 	}
 };
 }
