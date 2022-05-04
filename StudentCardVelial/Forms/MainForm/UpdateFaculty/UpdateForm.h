@@ -27,9 +27,6 @@ namespace StudentCardVelial {
 		}
 
 	protected:
-		/// <summary>
-		/// ќсвободить все используемые ресурсы.
-		/// </summary>
 		~UpdateForm()
 		{
 			if (components)
@@ -39,23 +36,11 @@ namespace StudentCardVelial {
 		}
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::TextBox^ TextBoxUpdateTitleFaculty;
-
 	private: System::Windows::Forms::Button^ ButtonUpdateFaculty;
 	private: System::Windows::Forms::TextBox^ TextBoxUpdateNameDekan;
-
-	protected:
-
-	private:
-		/// <summary>
-		/// ќб€зательна€ переменна€ конструктора.
-		/// </summary>
-		System::ComponentModel::Container ^components;
+	private: System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
-		/// <summary>
-		/// “ребуемый метод дл€ поддержки конструктора Ч не измен€йте 
-		/// содержимое этого метода с помощью редактора кода.
-		/// </summary>
 		void InitializeComponent(void)
 		{
 			this->label1 = (gcnew System::Windows::Forms::Label());
@@ -129,8 +114,14 @@ namespace StudentCardVelial {
 			//–еализаци€!
 			BaseData^ bd = gcnew BaseData();
 			Faculty^ f = gcnew Faculty();
+			List<Group^>^ list_groups = bd->FillListView(ItemFaculty->TitleFaculty);
 			f->TitleFaculty = TextBoxUpdateTitleFaculty->Text;
 			f->NameDekan = TextBoxUpdateNameDekan->Text;
+			for (size_t i = 0; i < list_groups->Count; i++)
+			{
+				list_groups[i]->TitleFaculty = f->TitleFaculty;
+				bd->Update(list_groups[i], list_groups[i]->ID);
+			}
 			bd->Update(f, ItemFaculty->ID);
 			this->Close();
 		}

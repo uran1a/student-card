@@ -96,6 +96,14 @@ namespace StudentCardVelial {
 	private: System::Windows::Forms::Label^ LabelNameMonitor;
 	private: System::Windows::Forms::Panel^ PanelButton;
 	private: System::Windows::Forms::Label^ LabelTitleUniversity;
+
+
+
+
+
+
+
+
 	private: System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
@@ -137,7 +145,7 @@ namespace StudentCardVelial {
 		// 
 		// TreeViewFaculty
 		// 
-		this->TreeViewFaculty->Location = System::Drawing::Point(12, 91);
+		this->TreeViewFaculty->Location = System::Drawing::Point(12, 86);
 		this->TreeViewFaculty->Name = L"TreeViewFaculty";
 		this->TreeViewFaculty->Size = System::Drawing::Size(297, 272);
 		this->TreeViewFaculty->TabIndex = 0;
@@ -161,7 +169,7 @@ namespace StudentCardVelial {
 		this->PanelFacultyButton->Controls->Add(this->LabelFacultyForm);
 		this->PanelFacultyButton->Controls->Add(this->ButtonCreateFacultyForm);
 		this->PanelFacultyButton->Controls->Add(this->ButtonUpdateFacultyForm);
-		this->PanelFacultyButton->Location = System::Drawing::Point(12, 12);
+		this->PanelFacultyButton->Location = System::Drawing::Point(12, 7);
 		this->PanelFacultyButton->Name = L"PanelFacultyButton";
 		this->PanelFacultyButton->Size = System::Drawing::Size(298, 73);
 		this->PanelFacultyButton->TabIndex = 2;
@@ -211,7 +219,7 @@ namespace StudentCardVelial {
 		// 
 		this->ButtonUpdateForm->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(198)),
 			static_cast<System::Int32>(static_cast<System::Byte>(179)), static_cast<System::Int32>(static_cast<System::Byte>(112)));
-		this->ButtonUpdateForm->Location = System::Drawing::Point(12, 370);
+		this->ButtonUpdateForm->Location = System::Drawing::Point(12, 365);
 		this->ButtonUpdateForm->Name = L"ButtonUpdateForm";
 		this->ButtonUpdateForm->Size = System::Drawing::Size(297, 53);
 		this->ButtonUpdateForm->TabIndex = 4;
@@ -232,7 +240,7 @@ namespace StudentCardVelial {
 		this->PanelMainForm->Controls->Add(this->LabelNamePanel);
 		this->PanelMainForm->Controls->Add(this->TextBoxTitlePanel);
 		this->PanelMainForm->Controls->Add(this->LabelTitlePanel);
-		this->PanelMainForm->Location = System::Drawing::Point(333, 17);
+		this->PanelMainForm->Location = System::Drawing::Point(333, 12);
 		this->PanelMainForm->Name = L"PanelMainForm";
 		this->PanelMainForm->Size = System::Drawing::Size(589, 477);
 		this->PanelMainForm->TabIndex = 5;
@@ -407,7 +415,7 @@ namespace StudentCardVelial {
 		// 
 		this->ButtonCreateStudentBD->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(198)),
 			static_cast<System::Int32>(static_cast<System::Byte>(179)), static_cast<System::Int32>(static_cast<System::Byte>(112)));
-		this->ButtonCreateStudentBD->Location = System::Drawing::Point(12, 431);
+		this->ButtonCreateStudentBD->Location = System::Drawing::Point(12, 426);
 		this->ButtonCreateStudentBD->Name = L"ButtonCreateStudentBD";
 		this->ButtonCreateStudentBD->Size = System::Drawing::Size(297, 53);
 		this->ButtonCreateStudentBD->TabIndex = 6;
@@ -418,7 +426,7 @@ namespace StudentCardVelial {
 		// LabelTitleUniversity
 		// 
 		this->LabelTitleUniversity->BackColor = System::Drawing::Color::Transparent;
-		this->LabelTitleUniversity->Location = System::Drawing::Point(226, 487);
+		this->LabelTitleUniversity->Location = System::Drawing::Point(226, 482);
 		this->LabelTitleUniversity->Name = L"LabelTitleUniversity";
 		this->LabelTitleUniversity->Size = System::Drawing::Size(100, 23);
 		this->LabelTitleUniversity->TabIndex = 0;
@@ -429,7 +437,7 @@ namespace StudentCardVelial {
 		this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 		this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(51)), static_cast<System::Int32>(static_cast<System::Byte>(51)),
 			static_cast<System::Int32>(static_cast<System::Byte>(54)));
-		this->ClientSize = System::Drawing::Size(934, 506);
+		this->ClientSize = System::Drawing::Size(934, 504);
 		this->Controls->Add(this->LabelTitleUniversity);
 		this->Controls->Add(this->PanelMainForm);
 		this->Controls->Add(this->ButtonCreateStudentBD);
