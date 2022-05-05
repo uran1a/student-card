@@ -706,6 +706,36 @@ public:
 	//----------------------------------------
 	//ADMIN
 	//----------------------------------------
+	void Insert(Admin^ a) {
+		try {
+			//Подключение в БД
+			ConnectToBD();
+
+			String^ cmdText = "INSERT INTO dbo.TABLE_ADMINS(Name, Surname, Patronymic, Birthday, Dolzhnost, Photo, Stazh, Zarplata, Mobile_Phone, Mail, Login, Password) VALUES(@Name, @Surname, @Patronymic, @Birthday, @Dolzhnost, @Photo, @Stazh, @Zarplata, @Mobile_Phone, @Mail, @Login, @Password)";
+			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
+
+			cmd->Parameters->AddWithValue("@Name", a->Name);
+			cmd->Parameters->AddWithValue("@Surname", a->Surname);
+			cmd->Parameters->AddWithValue("@Patronymic", a->Patronymic);
+			cmd->Parameters->AddWithValue("@Birthday", a->Birthday);
+			cmd->Parameters->AddWithValue("@Dolzhnost", a->Dolzhnost);
+			cmd->Parameters->AddWithValue("@Photo", a->Photo);
+			cmd->Parameters->AddWithValue("@Stazh", a->Stazh);
+			cmd->Parameters->AddWithValue("@Zarplata", a->Zarplata);
+			cmd->Parameters->AddWithValue("@Mobile_Phone", a->Mobile_Phone);
+			cmd->Parameters->AddWithValue("@Mail", a->Mail);
+			cmd->Parameters->AddWithValue("@Login", a->Login);
+			cmd->Parameters->AddWithValue("@Password", a->Password);
+
+			conn->Open();
+			cmd->ExecuteNonQuery();
+		}
+		finally {
+			if (conn != nullptr)
+				conn->Close();
+			else MessageBox::Show("Ошибка: При добавлении элемента в БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+		}
+	}
 	Admin^ FillAdmin(int ID) {
 		try {
 			//Подключение в БД
@@ -742,6 +772,7 @@ public:
 			else MessageBox::Show("Ошибка: При чтении элементов из БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		}
 	}
+	
 	//----------------------------------------
 
 

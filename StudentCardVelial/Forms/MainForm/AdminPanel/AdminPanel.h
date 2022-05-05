@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../../../BD/BaseData.h"
+#include "../CreateAdmin/CreateAdmin.h"
 
 namespace StudentCardVelial {
 
@@ -43,7 +44,6 @@ namespace StudentCardVelial {
 				delete components;
 			}
 		}
-
 	private: System::Windows::Forms::TextBox^ TextBoxFIOAdmin;
 	private: System::Windows::Forms::TextBox^ TextBoxBirthday;
 	private: System::Windows::Forms::Label^ label5;
@@ -52,30 +52,19 @@ namespace StudentCardVelial {
 	private: System::Windows::Forms::TextBox^ TextBoxStazhAdmin;
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::TextBox^ TextBoxZarplataAdmin;
-
 	private: System::Windows::Forms::Label^ label7;
 	private: System::Windows::Forms::TextBox^ TextBoxLoginAdmin;
-
 	private: System::Windows::Forms::Label^ label8;
 	private: System::Windows::Forms::TextBox^ TextBoxPasswordAdmin;
-
-
 	private: System::Windows::Forms::Label^ label9;
 	private: System::Windows::Forms::Button^ ButtonCreateAdmin;
 	private: System::Windows::Forms::Button^ ButtonUpdateAdmin;
 	private: System::Windows::Forms::Button^ ButtonListAdmins;
 	private: System::Windows::Forms::Button^ ButtonListUsers;
-
-
-
-
 	private: System::Windows::Forms::PictureBox^ PictureBoxPhotoAdmin;
-
 	private: System::Windows::Forms::TextBox^ TextBoxMailAdmin;
-
 	private: System::Windows::Forms::Label^ label10;
 	private: System::Windows::Forms::TextBox^ TextBoxMobilePhoneAdmin;
-
 	private: System::Windows::Forms::Label^ label11;
 	private:System::ComponentModel::Container^ components;
 
@@ -226,6 +215,7 @@ namespace StudentCardVelial {
 			this->ButtonCreateAdmin->TabIndex = 10;
 			this->ButtonCreateAdmin->Text = L"Создать Admin";
 			this->ButtonCreateAdmin->UseVisualStyleBackColor = true;
+			this->ButtonCreateAdmin->Click += gcnew System::EventHandler(this, &AdminPanel::ButtonCreateAdmin_Click);
 			// 
 			// ButtonUpdateAdmin
 			// 
@@ -336,5 +326,9 @@ namespace StudentCardVelial {
 		private:
 			BaseData^ bd;
 #pragma endregion
-	};
+	private: System::Void ButtonCreateAdmin_Click(System::Object^ sender, System::EventArgs^ e) {
+		CreateAdmin^ admin = gcnew CreateAdmin();
+		admin->Show();
+	}
+};
 }

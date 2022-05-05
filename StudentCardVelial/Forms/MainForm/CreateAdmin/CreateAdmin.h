@@ -17,6 +17,7 @@ namespace StudentCardVelial {
 		CreateAdmin(void)
 		{
 			InitializeComponent();
+			TextBoxNameAdmin->Focus();
 		}
 
 	protected:
@@ -394,23 +395,25 @@ namespace StudentCardVelial {
 		newAdmin->Photo = TextBoxPathPhoto->Text;
 		newAdmin->Mobile_Phone = TextBoxMobilePhoneAdmin->Text;
 		newAdmin->Mail = TextBoxMailAdmin->Text;
-		newAdmin->Login = TextBoxLoginStudent->Text;
-		newAdmin->Password = TextBoxPasswordStudent->Text;
+		newAdmin->Login = TextBoxLoginAdmin->Text;
+		newAdmin->Password = TextBoxPasswordAdmin->Text;
 
-		bd->Insert(newStudent);
+		bd->Insert(newAdmin);
 
-		TextBoxNameStudent->Clear();
-		TextBoxSurnameStudent->Clear();
-		TextBoxMiddlenameStudent->Clear();
-		TextBoxBirthdayStudent->Clear();
-		TextBoxPointEGEStudent->Clear();
-		TextBoxPhoneNumberStudent->Clear();
-		TextBoxEducationalFormStudent->Clear();
-		TextBoxPhotoStudent->Clear();
-		TextBoxMailStudent->Clear();
-		this->pictureBox1->Image = nullptr;
-		TextBoxNameStudent->Focus();
-
+		TextBoxNameAdmin->Clear();
+		TextBoxSurnameAdmin->Clear();
+		TextBoxPatronymicAdmin->Clear();
+		TextBoxBirthdayAdmin->Clear();
+		TextBoxDolzhnostAdmin->Clear();
+		this->PictureBoxPhotoAdmin->Image = nullptr;
+		TextBoxStazhAdmin->Clear();
+		TextBoxZarplataAdmin->Clear();
+		TextBoxPathPhoto->Clear();
+		TextBoxMobilePhoneAdmin->Clear();
+		TextBoxMailAdmin->Clear();
+		TextBoxLoginAdmin->Clear();
+		TextBoxPasswordAdmin->Clear();
+		TextBoxNameAdmin->Focus();
 		this->Close();
 	}
 };
