@@ -24,10 +24,7 @@ namespace StudentCardVelial {
 			//Otcekna
 			TextBoxOtcenka->Text = Convert::ToString(SelectedStudent->Otcenka);
 			TextBoxBirthday->Text = SelectedStudent->Birthday;
-			//TextBoxFaculty->Text = PathGroup[0];
 			TextBoxGroup->Text = SelectedStudent->Title_Group;
-			//TextBoxSpecialization->Text = SelectedStudent->Specialization;
-			//TextBoxNumberKurc->Text = Convert::ToString(SelectedStudent->Number_Kurc);
 			TextBoxEducationalForm->Text = SelectedStudent->Educational_Form;
 			TextBoxYearEnrollment->Text = SelectedStudent->Year_Enrollment;
 			this->PictureBoxPhotoStudent->Load(SelectedStudent->Photo_Student);
@@ -396,17 +393,14 @@ namespace StudentCardVelial {
 		bd = gcnew BaseData();
 		Student^ UpdatedStudent = gcnew Student();
 		array<String^>^ FIO = TextBoxName->Text->Split(' ');
-		//Console::WriteLine("ФИО: {0} {1} {2}", FIO[0], FIO[1], FIO[2]);
+		
 		UpdatedStudent->Name = FIO[0];
 		UpdatedStudent->Surname = FIO[1];
 		UpdatedStudent->Middlename = FIO[2];
 		UpdatedStudent->Otcenka = Convert::ToDouble(TextBoxOtcenka->Text);
 		UpdatedStudent->Birthday = TextBoxBirthday->Text;
 		UpdatedStudent->Photo_Student = TextBoxPhotoStudent->Text;
-		//Нельзя поменять факультет
 		UpdatedStudent->Title_Group = TextBoxGroup->Text;
-		//UpdatedStudent->Specialization = TextBoxSpecialization->Text;
-		//UpdatedStudent->Number_Kurc = Convert::ToInt32(TextBoxNumberKurc->Text);
 		UpdatedStudent->Educational_Form =TextBoxEducationalForm->Text;
 		UpdatedStudent->Year_Enrollment =TextBoxYearEnrollment->Text;
 		UpdatedStudent->Point_EGE = Convert::ToInt32(TextBoxPointEGE->Text);

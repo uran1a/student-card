@@ -642,49 +642,6 @@ public:
 		}
 		//try
 	}
-	//List<User^>^ FillListViewUsers() {
-	//	try {
-	//		//Подключение в БД
-	//		ConnectToBD();
-
-	//		List<User^>^ list = gcnew List<User^>();
-
-	//		String^ cmdText = "SELECT * FROM dbo.TABLE_USERS WHERE Type = @Type";
-	//		SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
-	//		cmd->Parameters->AddWithValue("@Type", "User      ");
-	//		conn->Open();
-
-	//		SqlDataReader^ reader = cmd->ExecuteReader();
-	//		while (reader->Read()) {
-	//		
-	//			User^ user = gcnew User();
-	//			user->ID = Convert::ToInt32(reader["ID"]->ToString());
-	//			user->Login = (reader["Login"]->ToString());
-	//			user->Password = (reader["Password"]->ToString());
-
-	//			list->Add(user);
-	//		}
-	//		return list;
-	//	}
-	//	finally {
-	//		if (conn != nullptr)
-	//			conn->Close();
-	//		else MessageBox::Show("Ошибка: При чтении элементов из БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
-	//	}
-	//}
-	//void Reload(List<User^>^% list_user, ListView^ ListViewPanel) {
-	//	list_user = FillListViewUsers();
-	//	ListViewPanel->FullRowSelect = true;
-	//	ListViewPanel->Items->Clear();
-	//	for (int i = 0; i < list_user->Count; i++) {
-	//		ListViewItem^ newItem = gcnew ListViewItem(Convert::ToString(i + 1));
-	//		ListViewItem::ListViewSubItem^ Login = gcnew ListViewItem::ListViewSubItem(newItem, list_user[i]->Login);
-	//		ListViewItem::ListViewSubItem^ Password = gcnew ListViewItem::ListViewSubItem(newItem, list_user[i]->Password);
-	//		newItem->SubItems->Add(Login);
-	//		newItem->SubItems->Add(Password);
-	//		ListViewPanel->Items->AddRange(gcnew cli::array< System::Windows::Forms::ListViewItem^  >(1) { newItem });
-	//	}
-	//}
 	void Delete(int ID, ListView^ ListViewPanel) {
 		try {
 			//Подключение в БД
@@ -772,7 +729,37 @@ public:
 			else MessageBox::Show("Ошибка: При чтении элементов из БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		}
 	}
-	
+	void Update(Admin^ a, int ID) {
+		try {
+			//Подключение в БД
+			ConnectToBD();
+
+			String^ cmdText = "UPDATE dbo.TABLE_ADMINS SET Name = @Name, Surname = @Surname, Patronymic = @Patronymic, Birthday = @Birthday, Dolzhnost = @Dolzhnost, Photo = @Photo, Stazh = @Stazh, Zarplata = @Zarplata, Mobile_Phone = @Mobile_Phone,  Mail = @Mail, Login = @Login, Password = @Password WHERE ID = @ID";
+			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
+
+			cmd->Parameters->AddWithValue("@ID", ID);
+			cmd->Parameters->AddWithValue("@Name", a->Name);
+			cmd->Parameters->AddWithValue("@Surname", a->Surname);
+			cmd->Parameters->AddWithValue("@Patronymic", a->Patronymic);
+			cmd->Parameters->AddWithValue("@Birthday", a->Birthday);
+			cmd->Parameters->AddWithValue("@Dolzhnost", a->Dolzhnost);
+			cmd->Parameters->AddWithValue("@Photo", a->Photo);
+			cmd->Parameters->AddWithValue("@Stazh", a->Stazh);
+			cmd->Parameters->AddWithValue("@Zarplata", a->Zarplata);
+			cmd->Parameters->AddWithValue("@Mobile_Phone", a->Mobile_Phone);
+			cmd->Parameters->AddWithValue("@Mail", a->Mail);
+			cmd->Parameters->AddWithValue("@Login", a->Login);
+			cmd->Parameters->AddWithValue("@Password", a->Password);
+
+			conn->Open();
+			cmd->ExecuteNonQuery();
+		}
+		finally {
+			if (conn != nullptr)
+				conn->Close();
+			else MessageBox::Show("Ошибка: При обновлении элемента в БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+		}
+	}
 	//----------------------------------------
 
 

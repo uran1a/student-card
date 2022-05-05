@@ -15,21 +15,18 @@ namespace StudentCardVelial {
 	public ref class AdminPanel : public System::Windows::Forms::Form
 	{
 	public:
-		AdminPanel(int ID)
+		AdminPanel(int ID): AdminID(ID)
 		{
-			
 			InitializeComponent();
 			bd = gcnew BaseData();
 			Admin^ admin = bd->FillAdmin(ID);
-
 			TextBoxFIOAdmin->Text = Convert::ToString(admin->Name + " " + admin->Surname + " " + admin->Patronymic);
-			////ButtonStatus
-			////Otcekna
-			TextBoxBirthday->Text = admin->Birthday;
+			TextBoxBirthdayAdmin->Text = admin->Birthday;
 			TextBoxDolzhnostAdmin->Text = admin->Dolzhnost;
 			TextBoxStazhAdmin->Text = Convert::ToString(admin->Stazh);
 			TextBoxZarplataAdmin->Text = Convert::ToString(admin->Zarplata);
 			TextBoxMobilePhoneAdmin->Text = admin->Mobile_Phone;
+			url = admin->Photo;
 			this->PictureBoxPhotoAdmin->Load(admin->Photo);
 			TextBoxMailAdmin->Text = admin->Mail;
 			TextBoxLoginAdmin->Text = admin->Login;
@@ -38,14 +35,11 @@ namespace StudentCardVelial {
 
 	protected:
 		~AdminPanel()
-		{
-			if (components)
-			{
-				delete components;
-			}
+		{ 
+			if (components) delete components;
 		}
 	private: System::Windows::Forms::TextBox^ TextBoxFIOAdmin;
-	private: System::Windows::Forms::TextBox^ TextBoxBirthday;
+	private: System::Windows::Forms::TextBox^ TextBoxBirthdayAdmin;
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::TextBox^ TextBoxDolzhnostAdmin;
 	private: System::Windows::Forms::Label^ label6;
@@ -72,7 +66,7 @@ namespace StudentCardVelial {
 		void InitializeComponent(void)
 		{
 			this->TextBoxFIOAdmin = (gcnew System::Windows::Forms::TextBox());
-			this->TextBoxBirthday = (gcnew System::Windows::Forms::TextBox());
+			this->TextBoxBirthdayAdmin = (gcnew System::Windows::Forms::TextBox());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->TextBoxDolzhnostAdmin = (gcnew System::Windows::Forms::TextBox());
 			this->label6 = (gcnew System::Windows::Forms::Label());
@@ -105,12 +99,12 @@ namespace StudentCardVelial {
 			this->TextBoxFIOAdmin->Size = System::Drawing::Size(328, 33);
 			this->TextBoxFIOAdmin->TabIndex = 1;
 			// 
-			// TextBoxBirthday
+			// TextBoxBirthdayAdmin
 			// 
-			this->TextBoxBirthday->Location = System::Drawing::Point(371, 50);
-			this->TextBoxBirthday->Name = L"TextBoxBirthday";
-			this->TextBoxBirthday->Size = System::Drawing::Size(135, 22);
-			this->TextBoxBirthday->TabIndex = 4;
+			this->TextBoxBirthdayAdmin->Location = System::Drawing::Point(371, 50);
+			this->TextBoxBirthdayAdmin->Name = L"TextBoxBirthdayAdmin";
+			this->TextBoxBirthdayAdmin->Size = System::Drawing::Size(135, 22);
+			this->TextBoxBirthdayAdmin->TabIndex = 4;
 			// 
 			// label5
 			// 
@@ -225,6 +219,7 @@ namespace StudentCardVelial {
 			this->ButtonUpdateAdmin->TabIndex = 11;
 			this->ButtonUpdateAdmin->Text = L"Изменить Admin";
 			this->ButtonUpdateAdmin->UseVisualStyleBackColor = true;
+			this->ButtonUpdateAdmin->Click += gcnew System::EventHandler(this, &AdminPanel::ButtonUpdateAdmin_Click);
 			// 
 			// ButtonListAdmins
 			// 
@@ -253,6 +248,7 @@ namespace StudentCardVelial {
 			this->PictureBoxPhotoAdmin->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->PictureBoxPhotoAdmin->TabIndex = 20;
 			this->PictureBoxPhotoAdmin->TabStop = false;
+			this->PictureBoxPhotoAdmin->Click += gcnew System::EventHandler(this, &AdminPanel::PictureBoxPhotoAdmin_Click);
 			// 
 			// TextBoxMailAdmin
 			// 
@@ -313,7 +309,7 @@ namespace StudentCardVelial {
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->TextBoxDolzhnostAdmin);
 			this->Controls->Add(this->label6);
-			this->Controls->Add(this->TextBoxBirthday);
+			this->Controls->Add(this->TextBoxBirthdayAdmin);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->TextBoxFIOAdmin);
 			this->Name = L"AdminPanel";
@@ -325,10 +321,40 @@ namespace StudentCardVelial {
 		}
 		private:
 			BaseData^ bd;
+			String^ url;
+			int AdminID;
 #pragma endregion
 	private: System::Void ButtonCreateAdmin_Click(System::Object^ sender, System::EventArgs^ e) {
 		CreateAdmin^ admin = gcnew CreateAdmin();
 		admin->Show();
+	}
+	private: System::Void ButtonUpdateAdmin_Click(System::Object^ sender, System::EventArgs^ e) {
+		BaseData^ bd = gcnew BaseData();
+		Admin^ UpdatedAdmin = gcnew Admin();
+		array<String^>^ FIO = TextBoxFIOAdmin->Text->Split(' ');
+		UpdatedAdmin->Name = FIO[0];
+		UpdatedAdmin->Surname = FIO[1];
+		UpdatedAdmin->Patronymic = FIO[2];
+		UpdatedAdmin->Birthday = TextBoxBirthdayAdmin->Text;
+		UpdatedAdmin->Dolzhnost = TextBoxDolzhnostAdmin->Text;
+		UpdatedAdmin->Stazh = Convert::ToInt32(TextBoxStazhAdmin->Text);
+		UpdatedAdmin->Zarplata = Convert::ToInt32(TextBoxZarplataAdmin->Text);
+		UpdatedAdmin->Photo = url;
+		UpdatedAdmin->Mobile_Phone = TextBoxMobilePhoneAdmin->Text;
+		UpdatedAdmin->Mail = TextBoxMailAdmin->Text;
+		UpdatedAdmin->Login = TextBoxLoginAdmin->Text;
+		UpdatedAdmin->Password = TextBoxPasswordAdmin->Text;
+		bd->Update(UpdatedAdmin, AdminID);
+	}
+	private: System::Void PictureBoxPhotoAdmin_Click(System::Object^ sender, System::EventArgs^ e) {
+		OpenFileDialog^ open = gcnew OpenFileDialog();
+		open->Filter = "Image Files(*.jpg; *.png; *.jpeg; *.gif; *.bmp)|*.jpg; *.png; *.jpeg; *.gif; *.bmp";
+		if (open->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+			PictureBoxPhotoAdmin->Image = gcnew Bitmap(open->FileName);
+			url = open->FileName->Replace('\\', '/');
+			PictureBoxPhotoAdmin->Text = url;
+			this->PictureBoxPhotoAdmin->Load(url);
+		}
 	}
 };
 }
