@@ -76,6 +76,7 @@ namespace StudentCardVelial {
 #pragma region Windows Form Designer generated code
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(ViewStudentCard::typeid));
 			this->PictureBoxPhotoStudent = (gcnew System::Windows::Forms::PictureBox());
 			this->LabelNameStudent = (gcnew System::Windows::Forms::Label());
 			this->ButtonStatus = (gcnew System::Windows::Forms::Button());
@@ -107,6 +108,7 @@ namespace StudentCardVelial {
 			// 
 			// PictureBoxPhotoStudent
 			// 
+			//this->PictureBoxPhotoStudent->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"PictureBoxPhotoStudent.Image")));
 			this->PictureBoxPhotoStudent->Location = System::Drawing::Point(13, 13);
 			this->PictureBoxPhotoStudent->Name = L"PictureBoxPhotoStudent";
 			this->PictureBoxPhotoStudent->Size = System::Drawing::Size(200, 209);

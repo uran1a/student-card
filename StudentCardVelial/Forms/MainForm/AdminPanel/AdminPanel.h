@@ -229,6 +229,7 @@ namespace StudentCardVelial {
 			this->ButtonListAdmins->TabIndex = 12;
 			this->ButtonListAdmins->Text = L"Список Admins";
 			this->ButtonListAdmins->UseVisualStyleBackColor = true;
+			this->ButtonListAdmins->Click += gcnew System::EventHandler(this, &AdminPanel::ButtonListAdmins_Click);
 			// 
 			// ButtonListUsers
 			// 
@@ -355,6 +356,9 @@ namespace StudentCardVelial {
 			PictureBoxPhotoAdmin->Text = url;
 			this->PictureBoxPhotoAdmin->Load(url);
 		}
+	}
+	private: System::Void ButtonListAdmins_Click(System::Object^ sender, System::EventArgs^ e) {
+
 	}
 };
 }

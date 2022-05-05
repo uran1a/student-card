@@ -754,7 +754,7 @@ namespace StudentCardVelial {
 	//Просмотр профиля студента
 	private: System::Void ListViewPanel_MouseDoubleClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 		//Console::WriteLine("{0}", ListViewPanel->FocusedItem->Index);
-		ViewStudentCard^ Student = gcnew ViewStudentCard(ListViewPanel->FocusedItem->Index);
+		ViewStudentCard^ Student = gcnew ViewStudentCard(list_students[ListViewPanel->FocusedItem->Index]->ID);
 		Student->Show();
 	}
 	//Обновление TreeView при активации
