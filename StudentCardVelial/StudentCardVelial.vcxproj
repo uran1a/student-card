@@ -26,6 +26,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Classes\Admin\Admin.cpp" />
     <ClCompile Include="BD\BaseData.cpp" />
     <ClCompile Include="Classes\Faculty\Faculty.cpp" />
     <ClCompile Include="Forms\Authorization\Authorization.cpp" />
@@ -42,9 +43,9 @@
     <ClCompile Include="Forms\MainForm\UpdatePanel\UpdatePanel.cpp" />
     <ClCompile Include="Forms\StudentCard\UpdateStudentCard\UpdateStudentCard.cpp" />
     <ClCompile Include="Forms\StudentCard\ViewStudentCard\ViewStudentCard.cpp" />
-    <ClCompile Include="Classes\Admin\Admin.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Classes\Admin\Admin.h" />
     <ClInclude Include="BD\BaseData.h" />
     <ClInclude Include="Classes\Faculty\Faculty.h" />
     <ClInclude Include="Forms\Authorization\Authorization.h">
@@ -85,7 +86,6 @@
     <ClInclude Include="Forms\StudentCard\ViewStudentCard\ViewStudentCard.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="Classes\Admin\Admin.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Forms\Authorization\Authorization.resx">

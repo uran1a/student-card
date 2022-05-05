@@ -1,7 +1,6 @@
 #pragma once
 
 #include "../../../BD/BaseData.h"
-#include "../../../Classes/Admin/Admin.h"
 
 namespace StudentCardVelial {
 
@@ -22,22 +21,18 @@ namespace StudentCardVelial {
 			bd = gcnew BaseData();
 			Admin^ admin = bd->FillAdmin(ID);
 
-
-			//LabelNameStudent->Text = Convert::ToString(student->Name + " " + student->Surname + " " + student->Middlename);
+			TextBoxFIOAdmin->Text = Convert::ToString(admin->Name + " " + admin->Surname + " " + admin->Patronymic);
 			////ButtonStatus
 			////Otcekna
-			//LabelBirthdayStudent->Text = student->Birthday;
-			//LabelTitleFacultyStudent->Text = student->Title_Faculty;
-			//LabelTitleGroupStudent->Text = student->Title_Group;
-			//LabelSpecializationStudent->Text = student->Specialization;
-			//LabelNumberKurcStudent->Text = Convert::ToString(student->Number_Kurc);
-			//LabelEducationalFormStudent->Text = student->Educational_Form;
-			//LabelYearEnrollmentStudent->Text = student->Year_Enrollment;
-			//this->PictureBoxPhotoStudent->Load(student->Photo_Student);
-			//LabelPointEGEStudent->Text = Convert::ToString(student->Point_EGE);
-			//LabelStipendiyaStudent->Text = Convert::ToString(student->Stipendiya);
-			//LabelPhoneNumberStudent->Text = student->Phone_Number;
-			//LabelMailStudent->Text = student->Mail;
+			TextBoxBirthday->Text = admin->Birthday;
+			TextBoxDolzhnostAdmin->Text = admin->Dolzhnost;
+			TextBoxStazhAdmin->Text = Convert::ToString(admin->Stazh);
+			TextBoxZarplataAdmin->Text = Convert::ToString(admin->Zarplata);
+			TextBoxMobilePhoneAdmin->Text = admin->Mobile_Phone;
+			this->PictureBoxPhotoAdmin->Load(admin->Photo);
+			TextBoxMailAdmin->Text = admin->Mail;
+			TextBoxLoginAdmin->Text = admin->Login;
+			TextBoxPasswordAdmin->Text = admin->Password;
 		}
 
 	protected:
@@ -56,20 +51,27 @@ namespace StudentCardVelial {
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::TextBox^ TextBoxStazhAdmin;
 	private: System::Windows::Forms::Label^ label4;
-	private: System::Windows::Forms::TextBox^ TextBoxZarplata;
+	private: System::Windows::Forms::TextBox^ TextBoxZarplataAdmin;
+
 	private: System::Windows::Forms::Label^ label7;
-	private: System::Windows::Forms::TextBox^ textBox8;
+	private: System::Windows::Forms::TextBox^ TextBoxLoginAdmin;
+
 	private: System::Windows::Forms::Label^ label8;
-	private: System::Windows::Forms::TextBox^ textBox9;
+	private: System::Windows::Forms::TextBox^ TextBoxPasswordAdmin;
+
+
 	private: System::Windows::Forms::Label^ label9;
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::Button^ button5;
 	private: System::Windows::Forms::Button^ button6;
-	private: System::Windows::Forms::PictureBox^ PictureBoxPhotoStudent;
-	private: System::Windows::Forms::TextBox^ textBox1;
+	private: System::Windows::Forms::PictureBox^ PictureBoxPhotoAdmin;
+
+	private: System::Windows::Forms::TextBox^ TextBoxMailAdmin;
+
 	private: System::Windows::Forms::Label^ label10;
-	private: System::Windows::Forms::TextBox^ textBox2;
+	private: System::Windows::Forms::TextBox^ TextBoxMobilePhoneAdmin;
+
 	private: System::Windows::Forms::Label^ label11;
 	private:System::ComponentModel::Container^ components;
 
@@ -83,26 +85,27 @@ namespace StudentCardVelial {
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->TextBoxStazhAdmin = (gcnew System::Windows::Forms::TextBox());
 			this->label4 = (gcnew System::Windows::Forms::Label());
-			this->TextBoxZarplata = (gcnew System::Windows::Forms::TextBox());
+			this->TextBoxZarplataAdmin = (gcnew System::Windows::Forms::TextBox());
 			this->label7 = (gcnew System::Windows::Forms::Label());
-			this->textBox8 = (gcnew System::Windows::Forms::TextBox());
+			this->TextBoxLoginAdmin = (gcnew System::Windows::Forms::TextBox());
 			this->label8 = (gcnew System::Windows::Forms::Label());
-			this->textBox9 = (gcnew System::Windows::Forms::TextBox());
+			this->TextBoxPasswordAdmin = (gcnew System::Windows::Forms::TextBox());
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->button6 = (gcnew System::Windows::Forms::Button());
-			this->PictureBoxPhotoStudent = (gcnew System::Windows::Forms::PictureBox());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->PictureBoxPhotoAdmin = (gcnew System::Windows::Forms::PictureBox());
+			this->TextBoxMailAdmin = (gcnew System::Windows::Forms::TextBox());
 			this->label10 = (gcnew System::Windows::Forms::Label());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->TextBoxMobilePhoneAdmin = (gcnew System::Windows::Forms::TextBox());
 			this->label11 = (gcnew System::Windows::Forms::Label());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->PictureBoxPhotoStudent))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->PictureBoxPhotoAdmin))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// TextBoxFIOAdmin
 			// 
+			this->TextBoxFIOAdmin->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.8F));
 			this->TextBoxFIOAdmin->Location = System::Drawing::Point(218, 12);
 			this->TextBoxFIOAdmin->Multiline = true;
 			this->TextBoxFIOAdmin->Name = L"TextBoxFIOAdmin";
@@ -113,7 +116,7 @@ namespace StudentCardVelial {
 			// 
 			this->TextBoxBirthday->Location = System::Drawing::Point(371, 50);
 			this->TextBoxBirthday->Name = L"TextBoxBirthday";
-			this->TextBoxBirthday->Size = System::Drawing::Size(100, 22);
+			this->TextBoxBirthday->Size = System::Drawing::Size(135, 22);
 			this->TextBoxBirthday->TabIndex = 4;
 			// 
 			// label5
@@ -130,7 +133,7 @@ namespace StudentCardVelial {
 			// 
 			this->TextBoxDolzhnostAdmin->Location = System::Drawing::Point(371, 82);
 			this->TextBoxDolzhnostAdmin->Name = L"TextBoxDolzhnostAdmin";
-			this->TextBoxDolzhnostAdmin->Size = System::Drawing::Size(100, 22);
+			this->TextBoxDolzhnostAdmin->Size = System::Drawing::Size(135, 22);
 			this->TextBoxDolzhnostAdmin->TabIndex = 5;
 			// 
 			// label6
@@ -147,7 +150,7 @@ namespace StudentCardVelial {
 			// 
 			this->TextBoxStazhAdmin->Location = System::Drawing::Point(371, 113);
 			this->TextBoxStazhAdmin->Name = L"TextBoxStazhAdmin";
-			this->TextBoxStazhAdmin->Size = System::Drawing::Size(100, 22);
+			this->TextBoxStazhAdmin->Size = System::Drawing::Size(135, 22);
 			this->TextBoxStazhAdmin->TabIndex = 6;
 			// 
 			// label4
@@ -160,12 +163,12 @@ namespace StudentCardVelial {
 			this->label4->TabIndex = 12;
 			this->label4->Text = L"Стаж:";
 			// 
-			// TextBoxZarplata
+			// TextBoxZarplataAdmin
 			// 
-			this->TextBoxZarplata->Location = System::Drawing::Point(371, 144);
-			this->TextBoxZarplata->Name = L"TextBoxZarplata";
-			this->TextBoxZarplata->Size = System::Drawing::Size(100, 22);
-			this->TextBoxZarplata->TabIndex = 7;
+			this->TextBoxZarplataAdmin->Location = System::Drawing::Point(371, 144);
+			this->TextBoxZarplataAdmin->Name = L"TextBoxZarplataAdmin";
+			this->TextBoxZarplataAdmin->Size = System::Drawing::Size(135, 22);
+			this->TextBoxZarplataAdmin->TabIndex = 7;
 			// 
 			// label7
 			// 
@@ -177,12 +180,12 @@ namespace StudentCardVelial {
 			this->label7->TabIndex = 14;
 			this->label7->Text = L"Зарплата:";
 			// 
-			// textBox8
+			// TextBoxLoginAdmin
 			// 
-			this->textBox8->Location = System::Drawing::Point(12, 258);
-			this->textBox8->Name = L"textBox8";
-			this->textBox8->Size = System::Drawing::Size(157, 22);
-			this->textBox8->TabIndex = 8;
+			this->TextBoxLoginAdmin->Location = System::Drawing::Point(12, 258);
+			this->TextBoxLoginAdmin->Name = L"TextBoxLoginAdmin";
+			this->TextBoxLoginAdmin->Size = System::Drawing::Size(157, 22);
+			this->TextBoxLoginAdmin->TabIndex = 8;
 			// 
 			// label8
 			// 
@@ -194,12 +197,12 @@ namespace StudentCardVelial {
 			this->label8->TabIndex = 16;
 			this->label8->Text = L"Логин:";
 			// 
-			// textBox9
+			// TextBoxPasswordAdmin
 			// 
-			this->textBox9->Location = System::Drawing::Point(12, 312);
-			this->textBox9->Name = L"textBox9";
-			this->textBox9->Size = System::Drawing::Size(157, 22);
-			this->textBox9->TabIndex = 9;
+			this->TextBoxPasswordAdmin->Location = System::Drawing::Point(12, 312);
+			this->TextBoxPasswordAdmin->Name = L"TextBoxPasswordAdmin";
+			this->TextBoxPasswordAdmin->Size = System::Drawing::Size(157, 22);
+			this->TextBoxPasswordAdmin->TabIndex = 9;
 			// 
 			// label9
 			// 
@@ -247,21 +250,22 @@ namespace StudentCardVelial {
 			this->button6->Text = L"Список Users";
 			this->button6->UseVisualStyleBackColor = true;
 			// 
-			// PictureBoxPhotoStudent
+			// PictureBoxPhotoAdmin
 			// 
-			this->PictureBoxPhotoStudent->Location = System::Drawing::Point(12, 12);
-			this->PictureBoxPhotoStudent->Name = L"PictureBoxPhotoStudent";
-			this->PictureBoxPhotoStudent->Size = System::Drawing::Size(200, 209);
-			this->PictureBoxPhotoStudent->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-			this->PictureBoxPhotoStudent->TabIndex = 20;
-			this->PictureBoxPhotoStudent->TabStop = false;
+			this->PictureBoxPhotoAdmin->BackColor = System::Drawing::SystemColors::ActiveBorder;
+			this->PictureBoxPhotoAdmin->Location = System::Drawing::Point(12, 12);
+			this->PictureBoxPhotoAdmin->Name = L"PictureBoxPhotoAdmin";
+			this->PictureBoxPhotoAdmin->Size = System::Drawing::Size(200, 209);
+			this->PictureBoxPhotoAdmin->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->PictureBoxPhotoAdmin->TabIndex = 20;
+			this->PictureBoxPhotoAdmin->TabStop = false;
 			// 
-			// textBox1
+			// TextBoxMailAdmin
 			// 
-			this->textBox1->Location = System::Drawing::Point(371, 200);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(100, 22);
-			this->textBox1->TabIndex = 25;
+			this->TextBoxMailAdmin->Location = System::Drawing::Point(371, 200);
+			this->TextBoxMailAdmin->Name = L"TextBoxMailAdmin";
+			this->TextBoxMailAdmin->Size = System::Drawing::Size(135, 22);
+			this->TextBoxMailAdmin->TabIndex = 25;
 			// 
 			// label10
 			// 
@@ -273,12 +277,12 @@ namespace StudentCardVelial {
 			this->label10->TabIndex = 27;
 			this->label10->Text = L"Элект. почта:";
 			// 
-			// textBox2
+			// TextBoxMobilePhoneAdmin
 			// 
-			this->textBox2->Location = System::Drawing::Point(371, 172);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(100, 22);
-			this->textBox2->TabIndex = 24;
+			this->TextBoxMobilePhoneAdmin->Location = System::Drawing::Point(371, 172);
+			this->TextBoxMobilePhoneAdmin->Name = L"TextBoxMobilePhoneAdmin";
+			this->TextBoxMobilePhoneAdmin->Size = System::Drawing::Size(135, 22);
+			this->TextBoxMobilePhoneAdmin->TabIndex = 24;
 			// 
 			// label11
 			// 
@@ -296,20 +300,20 @@ namespace StudentCardVelial {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->ClientSize = System::Drawing::Size(558, 355);
-			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->TextBoxMailAdmin);
 			this->Controls->Add(this->label10);
-			this->Controls->Add(this->textBox2);
+			this->Controls->Add(this->TextBoxMobilePhoneAdmin);
 			this->Controls->Add(this->label11);
-			this->Controls->Add(this->PictureBoxPhotoStudent);
+			this->Controls->Add(this->PictureBoxPhotoAdmin);
 			this->Controls->Add(this->button6);
 			this->Controls->Add(this->button5);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
-			this->Controls->Add(this->textBox9);
+			this->Controls->Add(this->TextBoxPasswordAdmin);
 			this->Controls->Add(this->label9);
-			this->Controls->Add(this->textBox8);
+			this->Controls->Add(this->TextBoxLoginAdmin);
 			this->Controls->Add(this->label8);
-			this->Controls->Add(this->TextBoxZarplata);
+			this->Controls->Add(this->TextBoxZarplataAdmin);
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->TextBoxStazhAdmin);
 			this->Controls->Add(this->label4);
@@ -320,7 +324,7 @@ namespace StudentCardVelial {
 			this->Controls->Add(this->TextBoxFIOAdmin);
 			this->Name = L"AdminPanel";
 			this->Text = L"AdminPanel";
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->PictureBoxPhotoStudent))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->PictureBoxPhotoAdmin))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 

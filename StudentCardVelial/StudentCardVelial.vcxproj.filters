@@ -60,10 +60,10 @@
     <ClCompile Include="Forms\Authorization\ListUsers\ListUsers.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\Admin\Admin.cpp">
+    <ClCompile Include="Forms\MainForm\AdminPanel\AdminPanel.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Forms\MainForm\AdminPanel\AdminPanel.cpp">
+    <ClCompile Include="Classes\Admin\Admin.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -113,10 +113,10 @@
     <ClInclude Include="Forms\Authorization\ListUsers\ListUsers.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\Admin\Admin.h">
+    <ClInclude Include="Forms\MainForm\AdminPanel\AdminPanel.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Forms\MainForm\AdminPanel\AdminPanel.h">
+    <ClInclude Include="Classes\Admin\Admin.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

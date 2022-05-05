@@ -13,7 +13,7 @@ namespace StudentCardVelial {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-	enum Static { User = 1, Admin = 2, NoneFind = 0 };
+	enum Static { User = 1, Administrator = 2, NoneFind = 0 };
 
 	public ref class Autorization : public System::Windows::Forms::Form
 	{
@@ -328,7 +328,7 @@ namespace StudentCardVelial {
 			FacultyForm^ form = gcnew FacultyForm(ID, false);
 			form->Show();
 		}
-		else if (StaticUser == Admin) {
+		else if (StaticUser == Administrator) {
 			MessageBox::Show("Ты админ!");
 			this->TabControlAuthorization->Size = System::Drawing::Size(415, 275);
 			this->PanelAdmin->Visible = true;
