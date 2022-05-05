@@ -31,6 +31,7 @@
     <ClCompile Include="Forms\Authorization\Authorization.cpp" />
     <ClCompile Include="Forms\Authorization\ListUsers\ListUsers.cpp" />
     <ClCompile Include="Forms\MainForm\AddStudent\AddStudent.cpp" />
+    <ClCompile Include="Forms\MainForm\AdminPanel\AdminPanel.cpp" />
     <ClCompile Include="Forms\MainForm\CreateFaculty\CreateFaculty.cpp" />
     <ClCompile Include="Forms\MainForm\CreatePanel\CreatePanel.cpp" />
     <ClCompile Include="Forms\MainForm\CreateStudent\CreateStudent.cpp" />
@@ -53,6 +54,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Forms\MainForm\AddStudent\AddStudent.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Forms\MainForm\AdminPanel\AdminPanel.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Forms\MainForm\CreateFaculty\CreateFaculty.h">
@@ -92,6 +96,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm\AddStudent\AddStudent.resx">
       <DependentUpon>Forms\MainForm\AddStudent\AddStudent.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm\AdminPanel\AdminPanel.resx">
+      <DependentUpon>Forms\MainForm\AdminPanel\AdminPanel.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm\CreateFaculty\CreateFaculty.resx">
       <DependentUpon>Forms\MainForm\CreateFaculty\CreateFaculty.h</DependentUpon>

@@ -13,6 +13,7 @@ private:
 	String^ Surname_;
 	String^ Middlename_;
 	int Entrant_;
+	String^ TitleFaculty_;
 	String^ TitleGroup_;
 	String^ Birthday_;
 	int PointEGE_;
@@ -69,6 +70,14 @@ public:
 		}
 		void set(int value) {
 			Entrant_ = value;
+		}
+	}
+	property String^ Title_Faculty {
+		String^ get() {
+			return TitleFaculty_;
+		}
+		void set(String^ value) {
+			TitleFaculty_ = value;
 		}
 	}
 	property String^ Title_Group {

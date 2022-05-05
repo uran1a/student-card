@@ -9,6 +9,7 @@
 #include "../UpdatePanel/UpdatePanel.h"
 #include "../../StudentCard/ViewStudentCard/ViewStudentCard.h"
 #include "../../StudentCard/UpdateStudentCard/UpdateStudentCard.h"
+#include "../AdminPanel/AdminPanel.h"
 
 
 namespace StudentCardVelial {
@@ -27,7 +28,7 @@ namespace StudentCardVelial {
 	public ref class FacultyForm : public System::Windows::Forms::Form
 	{
 	public:
-		FacultyForm(bool Status) : isAdmin(Status)
+		FacultyForm(int ID, bool Status) : UserID(ID), isAdmin(Status)
 		{
 			InitializeComponent();
 
@@ -52,7 +53,6 @@ namespace StudentCardVelial {
 				this->TreeViewFaculty->Location = System::Drawing::Point(12, 32);
 				this->TreeViewFaculty->Size = System::Drawing::Size(230, 350);
 				//this->TreeViewFaculty->Size = System::Drawing::Size(297, 272);
-
 			}
 
 			
@@ -507,6 +507,7 @@ namespace StudentCardVelial {
 		int ListViewPanel_SelectedIndex;
 		int LevelTreeView;
 		array<String^>^ PathGroup;
+		int UserID;
 		bool isAdmin;
 #pragma endregion
 
@@ -753,7 +754,7 @@ namespace StudentCardVelial {
 	//Просмотр профиля студента
 	private: System::Void ListViewPanel_MouseDoubleClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 		//Console::WriteLine("{0}", ListViewPanel->FocusedItem->Index);
-		ViewStudentCard^ Student = gcnew ViewStudentCard(ListViewPanel->FocusedItem->Index, PathGroup);
+		ViewStudentCard^ Student = gcnew ViewStudentCard(ListViewPanel->FocusedItem->Index);
 		Student->Show();
 	}
 	//Обновление TreeView при активации
@@ -788,7 +789,15 @@ namespace StudentCardVelial {
 		}
 	}
 	private: System::Void ToolStripLabelProfile_Click(System::Object^ sender, System::EventArgs^ e) {
-
+		if (isAdmin) {
+			AdminPanel^ Admin = gcnew AdminPanel(UserID);
+			Admin->Show();
+		}
+		else {
+			ViewStudentCard^ Student = gcnew ViewStudentCard(UserID);
+			Student->Show();
+		}
+		
 	}
 };
 }

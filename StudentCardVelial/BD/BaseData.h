@@ -301,13 +301,14 @@ public:
 			//Подключение в БД
 			ConnectToBD();
 
-			String^ cmdText = "INSERT INTO dbo.TABLE_STUDENTS(Name, Surname, Middlename, Entrant, Title_Group, Birthday, Point_EGE, Stipendiya, Year_Enrollment, Photo_Student, Specialization, Educational_Form, Number_Kurc, Phone_Number, Mail, Otcenka, Login, Password) VALUES(@Name, @Surname, @Middlename, @Entrant, @Title_Group, @Birthday, @Point_EGE, @Stipendiya, @Year_Enrollment, @Photo_Student, @Specialization, @Educational_Form, @Number_Kurc, @Phone_Number, @Mail, @Otcenka, @Login, @Password)";
+			String^ cmdText = "INSERT INTO dbo.TABLE_STUDENTS(Name, Surname, Middlename, Entrant, Title_Faculty, Title_Group, Birthday, Point_EGE, Stipendiya, Year_Enrollment, Photo_Student, Specialization, Educational_Form, Number_Kurc, Phone_Number, Mail, Otcenka, Login, Password) VALUES(@Name, @Surname, @Middlename, @Entrant, @Title_Faculty, @Title_Group, @Birthday, @Point_EGE, @Stipendiya, @Year_Enrollment, @Photo_Student, @Specialization, @Educational_Form, @Number_Kurc, @Phone_Number, @Mail, @Otcenka, @Login, @Password)";
 			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
 
 			cmd->Parameters->AddWithValue("@Name", s->Name);
 			cmd->Parameters->AddWithValue("@Surname", s->Surname);
 			cmd->Parameters->AddWithValue("@Middlename", s->Middlename);
 			cmd->Parameters->AddWithValue("@Entrant", 1);
+			cmd->Parameters->AddWithValue("@Title_Faculty", "");
 			cmd->Parameters->AddWithValue("@Title_Group", "");
 			cmd->Parameters->AddWithValue("@Stipendiya", 0);
 			cmd->Parameters->AddWithValue("@Birthday", s->Birthday);
@@ -353,6 +354,7 @@ public:
 					student->Surname = (reader["Surname"]->ToString());
 					student->Middlename = (reader["Middlename"]->ToString());
 					student->Entrant = Convert::ToInt32(reader["Entrant"]);
+					student->Title_Faculty = (reader["Title_Faculty"]->ToString());
 					student->Title_Group = (reader["Title_Group"]->ToString());
 					student->Birthday = (reader["Birthday"]->ToString());
 					student->Point_EGE = Convert::ToInt32(reader["Point_EGE"]->ToString());
@@ -397,6 +399,7 @@ public:
 				student->Surname = (reader["Surname"]->ToString());
 				student->Middlename = (reader["Middlename"]->ToString());
 				student->Entrant = Convert::ToInt32(reader["Entrant"]->ToString());
+				student->Title_Faculty = (reader["Title_Faculty"]->ToString());
 				student->Title_Group = (reader["Title_Group"]->ToString());
 				student->Birthday = (reader["Birthday"]->ToString());
 				student->Point_EGE = Convert::ToInt32(reader["Point_EGE"]->ToString());
@@ -406,6 +409,50 @@ public:
 			}
 			Console::WriteLine("Все круто!");
 			return list;
+		}
+		finally {
+			if (conn != nullptr)
+				conn->Close();
+			else MessageBox::Show("Ошибка: При чтении элементов из БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+		}
+	}
+	Student^ FillStudent(int ID) {
+		try {
+			//Подключение в БД
+			ConnectToBD();;
+
+			Student^ student = gcnew Student();
+
+			String^ cmdText = "SELECT * FROM dbo.TABLE_STUDENTS WHERE ID = @ID";
+			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
+			cmd->Parameters->AddWithValue("@ID", ID);
+			conn->Open();
+
+			SqlDataReader^ reader = cmd->ExecuteReader();
+			if (reader->Read()) {
+				
+				student->ID = Convert::ToInt32(reader["ID"]->ToString());
+				student->Name = (reader["Name"]->ToString());
+				student->Surname = (reader["Surname"]->ToString());
+				student->Middlename = (reader["Middlename"]->ToString());
+				student->Entrant = Convert::ToInt32(reader["Entrant"]);
+				student->Title_Faculty = (reader["Title_Faculty"]->ToString());
+				student->Title_Group = (reader["Title_Group"]->ToString());
+				student->Birthday = (reader["Birthday"]->ToString());
+				student->Point_EGE = Convert::ToInt32(reader["Point_EGE"]->ToString());
+				student->Stipendiya = Convert::ToInt32(reader["Stipendiya"]->ToString());
+				student->Year_Enrollment = (reader["Year_Enrollment"]->ToString());
+				student->Photo_Student = (reader["Photo_Student"]->ToString());
+				student->Specialization = (reader["Specialization"]->ToString());
+				student->Educational_Form = (reader["Educational_Form"]->ToString());
+				student->Number_Kurc = Convert::ToInt32(reader["Number_Kurc"]->ToString());
+				student->Phone_Number = (reader["Phone_Number"]->ToString());
+				student->Mail = (reader["Mail"]->ToString());
+				student->Otcenka = Convert::ToInt32(reader["Otcenka"]->ToString());
+				student->Login = (reader["Login"]->ToString());
+				student->Password = (reader["Password"]->ToString());
+			}
+			return student;
 		}
 		finally {
 			if (conn != nullptr)
@@ -535,7 +582,7 @@ public:
 	//----------------------------------------
 	//AUTORIZATION
 	//----------------------------------------
-	int SignOn(String^ Login, String^ Password) {
+	int SignOn(int% ID, String^ Login, String^ Password) {
 	
 			//Подключение в БД
 			ConnectToBD();
@@ -549,6 +596,7 @@ public:
 			SqlDataReader^ reader = cmd->ExecuteReader();
 			while (reader->Read()) {
 				if (Login == reader["Login"]->ToString() && Password == reader["Password"]->ToString()) {
+					ID = Convert::ToInt32(reader["ID"]);
 					return isAdmin = 1;
 				}
 			}
@@ -561,6 +609,7 @@ public:
 			reader = cmd->ExecuteReader();
 			while (reader->Read()) {
 				if (Login == reader["Login"]->ToString() && Password == reader["Password"]->ToString()) {
+					ID = Convert::ToInt32(reader["ID"]);
 					return isAdmin = 2;
 				}
 			}
@@ -655,5 +704,46 @@ public:
 		}
 	}
 	//----------------------------------------
+	//ADMIN
+	//----------------------------------------
+	Admin^ FillAdmin(int ID) {
+		try {
+			//Подключение в БД
+			ConnectToBD();
+
+			Admin^ admin = gcnew Admin();
+
+			String^ cmdText = "SELECT * FROM dbo.TABLE_ADMINS WHERE ID = @ID";
+			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
+			cmd->Parameters->AddWithValue("@ID", ID);
+			conn->Open();
+
+			SqlDataReader^ reader = cmd->ExecuteReader();
+			if (reader->Read()) {
+				admin->ID = Convert::ToInt32(reader["ID"]->ToString());
+				admin->Name = (reader["Name"]->ToString());
+				admin->Surname = (reader["Surname"]->ToString());
+				admin->Patronymic = (reader["Patronymic"]->ToString());
+				admin->Birthday = (reader["Birthday"]->ToString());
+				admin->Dolzhnost = (reader["Dolzhnost"]->ToString());
+				admin->Stazh = Convert::ToInt32(reader["Stazh"]->ToString());
+				admin->Zarplata = Convert::ToInt32(reader["Zarplata"]->ToString());
+				admin->Photo = (reader["Photo"]->ToString());
+				admin->Mobile_Phone = (reader["Mobile_Phone"]->ToString());
+				admin->Mail = (reader["Mail"]->ToString());
+				admin->Login = (reader["Login"]->ToString());
+				admin->Password = (reader["Password"]->ToString());
+			}
+			return admin;
+		}
+		finally {
+			if (conn != nullptr)
+				conn->Close();
+			else MessageBox::Show("Ошибка: При чтении элементов из БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+		}
+	}
+	//----------------------------------------
+
+
 };
 

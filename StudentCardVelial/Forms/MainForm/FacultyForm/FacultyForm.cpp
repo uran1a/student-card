@@ -10,7 +10,8 @@ void main(array<String^>^ arg) {
 	Application::SetCompatibleTextRenderingDefault(false);
 
 	StudentCardVelial::Autorization form;
-	//StudentCardVelial::FacultyForm form(true);
+	//StudentCardVelial::CreateStudent form;
+	//StudentCardVelial::FacultyForm form(1,true);
 	Application::Run(% form);
 }
 

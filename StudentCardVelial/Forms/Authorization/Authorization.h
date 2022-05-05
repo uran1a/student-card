@@ -311,10 +311,11 @@ namespace StudentCardVelial {
 		private: 
 			BaseData^ bd;
 			int StaticUser;
+			int ID = 0;
 #pragma endregion
 	private: System::Void buttonAutorization_Click(System::Object^ sender, System::EventArgs^ e) {
 		bd = gcnew BaseData();
-		StaticUser = bd->SignOn(TextBoxLogin->Text, TextBoxPassword->Text);
+		StaticUser = bd->SignOn(ID, TextBoxLogin->Text, TextBoxPassword->Text);
 		TextBoxLogin->Clear();
 		TextBoxPassword->Clear();
 		TextBoxLogin->Focus();
@@ -322,7 +323,9 @@ namespace StudentCardVelial {
 		if (StaticUser == User) {
 			//переход на UserForm
 			MessageBox::Show("¬ерный логин и пароль!");
-			FacultyForm^ form = gcnew FacultyForm(false);
+			Console::WriteLine("ID пользовател€: {0}", ID);
+
+			FacultyForm^ form = gcnew FacultyForm(ID, false);
 			form->Show();
 		}
 		else if (StaticUser == Admin) {
@@ -346,7 +349,7 @@ namespace StudentCardVelial {
 	}
 
 	private: System::Void ButtonFacultyForm_Click(System::Object^ sender, System::EventArgs^ e) {
-		FacultyForm^ form = gcnew FacultyForm(true);
+		FacultyForm^ form = gcnew FacultyForm(ID, true);
 		form->Show();
 	}
 	private: System::Void ButtonListUsers_Click(System::Object^ sender, System::EventArgs^ e) {

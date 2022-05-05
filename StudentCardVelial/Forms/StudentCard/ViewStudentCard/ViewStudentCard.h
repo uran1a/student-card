@@ -11,35 +11,30 @@ namespace StudentCardVelial {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-	/// <summary>
-	/// Сводка для ViewStudentCard
-	/// </summary>
 	public ref class ViewStudentCard : public System::Windows::Forms::Form
 	{
 	public:
-		ViewStudentCard(int ID, array<String^>^ PathGroup) : Index(ID)
+		ViewStudentCard(int ID) : Index(ID)
 		{
 			InitializeComponent();
 			BaseData^ bd = gcnew BaseData();
-			List<Student^>^ list_students = bd->FillListViewStudent(PathGroup[1]);
+			Student^ student = bd->FillStudent(Index);
 
-			LabelNameStudent->Text = Convert::ToString(list_students[Index]->Name + " " + list_students[Index]->Surname + " " + list_students[Index]->Middlename);
+			LabelNameStudent->Text = Convert::ToString(student->Name + " " + student->Surname + " " + student->Middlename);
 			//ButtonStatus
 			//Otcekna
-			LabelBirthdayStudent->Text = list_students[Index]->Birthday;
-			LabelTitleFacultyStudent->Text = PathGroup[0];
-			LabelTitleGroupStudent->Text = PathGroup[1];
-			LabelSpecializationStudent->Text = list_students[Index]->Specialization;
-			LabelNumberKurcStudent->Text = Convert::ToString(list_students[Index]->Number_Kurc);
-			LabelEducationalFormStudent->Text = list_students[Index]->Educational_Form;
-			LabelYearEnrollmentStudent->Text = list_students[Index]->Year_Enrollment;
-			this->PictureBoxPhotoStudent->Load(list_students[Index]->Photo_Student);
-			LabelPointEGEStudent->Text = Convert::ToString(list_students[Index]->Point_EGE);
-			LabelStipendiyaStudent->Text = Convert::ToString(list_students[Index]->Stipendiya);
-			LabelPhoneNumberStudent->Text = list_students[Index]->Phone_Number;
-			LabelMailStudent->Text = list_students[Index]->Mail;
-			
-		
+			LabelBirthdayStudent->Text = student->Birthday;
+			LabelTitleFacultyStudent->Text = student->Title_Faculty;
+			LabelTitleGroupStudent->Text = student->Title_Group;
+			LabelSpecializationStudent->Text = student->Specialization;
+			LabelNumberKurcStudent->Text = Convert::ToString(student->Number_Kurc);
+			LabelEducationalFormStudent->Text = student->Educational_Form;
+			LabelYearEnrollmentStudent->Text = student->Year_Enrollment;
+			this->PictureBoxPhotoStudent->Load(student->Photo_Student);
+			LabelPointEGEStudent->Text = Convert::ToString(student->Point_EGE);
+			LabelStipendiyaStudent->Text = Convert::ToString(student->Stipendiya);
+			LabelPhoneNumberStudent->Text = student->Phone_Number;
+			LabelMailStudent->Text = student->Mail;
 		}
 
 	protected:
@@ -126,8 +121,9 @@ namespace StudentCardVelial {
 			this->LabelNameStudent->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.8F));
 			this->LabelNameStudent->Location = System::Drawing::Point(219, 9);
 			this->LabelNameStudent->Name = L"LabelNameStudent";
-			this->LabelNameStudent->Size = System::Drawing::Size(0, 26);
+			this->LabelNameStudent->Size = System::Drawing::Size(62, 26);
 			this->LabelNameStudent->TabIndex = 1;
+			this->LabelNameStudent->Text = L"Вася";
 			// 
 			// ButtonStatus
 			// 
