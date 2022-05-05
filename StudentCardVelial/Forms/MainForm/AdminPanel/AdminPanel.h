@@ -61,10 +61,14 @@ namespace StudentCardVelial {
 
 
 	private: System::Windows::Forms::Label^ label9;
-	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::Button^ button2;
-	private: System::Windows::Forms::Button^ button5;
-	private: System::Windows::Forms::Button^ button6;
+	private: System::Windows::Forms::Button^ ButtonCreateAdmin;
+	private: System::Windows::Forms::Button^ ButtonUpdateAdmin;
+	private: System::Windows::Forms::Button^ ButtonListAdmins;
+	private: System::Windows::Forms::Button^ ButtonListUsers;
+
+
+
+
 	private: System::Windows::Forms::PictureBox^ PictureBoxPhotoAdmin;
 
 	private: System::Windows::Forms::TextBox^ TextBoxMailAdmin;
@@ -91,10 +95,10 @@ namespace StudentCardVelial {
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->TextBoxPasswordAdmin = (gcnew System::Windows::Forms::TextBox());
 			this->label9 = (gcnew System::Windows::Forms::Label());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->button5 = (gcnew System::Windows::Forms::Button());
-			this->button6 = (gcnew System::Windows::Forms::Button());
+			this->ButtonCreateAdmin = (gcnew System::Windows::Forms::Button());
+			this->ButtonUpdateAdmin = (gcnew System::Windows::Forms::Button());
+			this->ButtonListAdmins = (gcnew System::Windows::Forms::Button());
+			this->ButtonListUsers = (gcnew System::Windows::Forms::Button());
 			this->PictureBoxPhotoAdmin = (gcnew System::Windows::Forms::PictureBox());
 			this->TextBoxMailAdmin = (gcnew System::Windows::Forms::TextBox());
 			this->label10 = (gcnew System::Windows::Forms::Label());
@@ -214,45 +218,45 @@ namespace StudentCardVelial {
 			this->label9->TabIndex = 18;
 			this->label9->Text = L"Пароль:";
 			// 
-			// button1
+			// ButtonCreateAdmin
 			// 
-			this->button1->Location = System::Drawing::Point(214, 248);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(99, 42);
-			this->button1->TabIndex = 10;
-			this->button1->Text = L"Создать Admin";
-			this->button1->UseVisualStyleBackColor = true;
+			this->ButtonCreateAdmin->Location = System::Drawing::Point(214, 248);
+			this->ButtonCreateAdmin->Name = L"ButtonCreateAdmin";
+			this->ButtonCreateAdmin->Size = System::Drawing::Size(129, 42);
+			this->ButtonCreateAdmin->TabIndex = 10;
+			this->ButtonCreateAdmin->Text = L"Создать Admin";
+			this->ButtonCreateAdmin->UseVisualStyleBackColor = true;
 			// 
-			// button2
+			// ButtonUpdateAdmin
 			// 
-			this->button2->Location = System::Drawing::Point(214, 296);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(99, 42);
-			this->button2->TabIndex = 11;
-			this->button2->Text = L"Изменить Admin";
-			this->button2->UseVisualStyleBackColor = true;
+			this->ButtonUpdateAdmin->Location = System::Drawing::Point(214, 296);
+			this->ButtonUpdateAdmin->Name = L"ButtonUpdateAdmin";
+			this->ButtonUpdateAdmin->Size = System::Drawing::Size(129, 42);
+			this->ButtonUpdateAdmin->TabIndex = 11;
+			this->ButtonUpdateAdmin->Text = L"Изменить Admin";
+			this->ButtonUpdateAdmin->UseVisualStyleBackColor = true;
 			// 
-			// button5
+			// ButtonListAdmins
 			// 
-			this->button5->Location = System::Drawing::Point(332, 248);
-			this->button5->Name = L"button5";
-			this->button5->Size = System::Drawing::Size(99, 42);
-			this->button5->TabIndex = 12;
-			this->button5->Text = L"Список Admins";
-			this->button5->UseVisualStyleBackColor = true;
+			this->ButtonListAdmins->Location = System::Drawing::Point(377, 248);
+			this->ButtonListAdmins->Name = L"ButtonListAdmins";
+			this->ButtonListAdmins->Size = System::Drawing::Size(129, 42);
+			this->ButtonListAdmins->TabIndex = 12;
+			this->ButtonListAdmins->Text = L"Список Admins";
+			this->ButtonListAdmins->UseVisualStyleBackColor = true;
 			// 
-			// button6
+			// ButtonListUsers
 			// 
-			this->button6->Location = System::Drawing::Point(331, 296);
-			this->button6->Name = L"button6";
-			this->button6->Size = System::Drawing::Size(99, 42);
-			this->button6->TabIndex = 13;
-			this->button6->Text = L"Список Users";
-			this->button6->UseVisualStyleBackColor = true;
+			this->ButtonListUsers->Location = System::Drawing::Point(377, 296);
+			this->ButtonListUsers->Name = L"ButtonListUsers";
+			this->ButtonListUsers->Size = System::Drawing::Size(129, 42);
+			this->ButtonListUsers->TabIndex = 13;
+			this->ButtonListUsers->Text = L"Список Users";
+			this->ButtonListUsers->UseVisualStyleBackColor = true;
 			// 
 			// PictureBoxPhotoAdmin
 			// 
-			this->PictureBoxPhotoAdmin->BackColor = System::Drawing::SystemColors::ActiveBorder;
+			this->PictureBoxPhotoAdmin->BackColor = System::Drawing::Color::LightGray;
 			this->PictureBoxPhotoAdmin->Location = System::Drawing::Point(12, 12);
 			this->PictureBoxPhotoAdmin->Name = L"PictureBoxPhotoAdmin";
 			this->PictureBoxPhotoAdmin->Size = System::Drawing::Size(200, 209);
@@ -305,10 +309,10 @@ namespace StudentCardVelial {
 			this->Controls->Add(this->TextBoxMobilePhoneAdmin);
 			this->Controls->Add(this->label11);
 			this->Controls->Add(this->PictureBoxPhotoAdmin);
-			this->Controls->Add(this->button6);
-			this->Controls->Add(this->button5);
-			this->Controls->Add(this->button2);
-			this->Controls->Add(this->button1);
+			this->Controls->Add(this->ButtonListUsers);
+			this->Controls->Add(this->ButtonListAdmins);
+			this->Controls->Add(this->ButtonUpdateAdmin);
+			this->Controls->Add(this->ButtonCreateAdmin);
 			this->Controls->Add(this->TextBoxPasswordAdmin);
 			this->Controls->Add(this->label9);
 			this->Controls->Add(this->TextBoxLoginAdmin);

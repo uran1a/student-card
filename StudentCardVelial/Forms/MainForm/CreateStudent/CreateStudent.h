@@ -45,7 +45,7 @@ namespace StudentCardVelial {
 	private: System::Windows::Forms::TextBox^ TextBoxMailStudent;
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
-	private: System::Windows::Forms::SaveFileDialog^ saveFileDialog1;
+
 	private: System::Windows::Forms::Button^ ButtonGetImage;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
 	private: System::Windows::Forms::TextBox^ TextBoxPasswordStudent;
@@ -79,7 +79,6 @@ namespace StudentCardVelial {
 			this->TextBoxMailStudent = (gcnew System::Windows::Forms::TextBox());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
-			this->saveFileDialog1 = (gcnew System::Windows::Forms::SaveFileDialog());
 			this->ButtonGetImage = (gcnew System::Windows::Forms::Button());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->TextBoxPasswordStudent = (gcnew System::Windows::Forms::TextBox());
@@ -400,7 +399,6 @@ namespace StudentCardVelial {
 			String^ url = open->FileName->Replace('\\', '/');
 			TextBoxPhotoStudent->Text = url;
 			this->pictureBox1->Load(url);
-
 		}
 	}
 };

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -33,6 +33,7 @@
     <ClCompile Include="Forms\Authorization\ListUsers\ListUsers.cpp" />
     <ClCompile Include="Forms\MainForm\AddStudent\AddStudent.cpp" />
     <ClCompile Include="Forms\MainForm\AdminPanel\AdminPanel.cpp" />
+    <ClCompile Include="Forms\MainForm\CreateAdmin\CreateAdmin.cpp" />
     <ClCompile Include="Forms\MainForm\CreateFaculty\CreateFaculty.cpp" />
     <ClCompile Include="Forms\MainForm\CreatePanel\CreatePanel.cpp" />
     <ClCompile Include="Forms\MainForm\CreateStudent\CreateStudent.cpp" />
@@ -58,6 +59,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Forms\MainForm\AdminPanel\AdminPanel.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Forms\MainForm\CreateAdmin\CreateAdmin.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Forms\MainForm\CreateFaculty\CreateFaculty.h">
@@ -99,6 +103,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm\AdminPanel\AdminPanel.resx">
       <DependentUpon>Forms\MainForm\AdminPanel\AdminPanel.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm\CreateAdmin\CreateAdmin.resx">
+      <DependentUpon>Forms\MainForm\CreateAdmin\CreateAdmin.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm\CreateFaculty\CreateFaculty.resx">
       <DependentUpon>Forms\MainForm\CreateFaculty\CreateFaculty.h</DependentUpon>
