@@ -397,7 +397,9 @@ namespace StudentCardVelial {
 		UpdatedStudent->Name = FIO[0];
 		UpdatedStudent->Surname = FIO[1];
 		UpdatedStudent->Middlename = FIO[2];
-		UpdatedStudent->Otcenka = Convert::ToDouble(TextBoxOtcenka->Text);
+		UpdatedStudent->Otcenka = 4.0;
+		//UpdatedStudent->Otcenka = Convert::ToDouble(TextBoxOtcenka->Text);
+		//Console::WriteLine(Convert::ToDouble(TextBoxOtcenka->Text));
 		UpdatedStudent->Birthday = TextBoxBirthday->Text;
 		UpdatedStudent->Photo_Student = TextBoxPhotoStudent->Text;
 		UpdatedStudent->Title_Group = TextBoxGroup->Text;

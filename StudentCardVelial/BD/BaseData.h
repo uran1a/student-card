@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 
 #include "../Classes/Faculty/Faculty.h"
 #include "../Classes/Group/Group.h"
@@ -20,7 +20,7 @@ private:
 	SqlConnectionStringBuilder^ connStringBuilder;
 
 private:
-	//Подключение в базе данных MC Sql Server
+	//РџРѕРґРєР»СЋС‡РµРЅРёРµ РІ Р±Р°Р·Рµ РґР°РЅРЅС‹С… MC Sql Server
 	void ConnectToBD() {
 		//Data Source=LAPTOP-N0SDJAIT\SQLEXPRESS;Initial Catalog=StudentCard;Integrated Security=True
 		
@@ -38,7 +38,7 @@ public:
 	//----------------------------------------
 	void Insert(String^ TitleFaculty, String^ NameDekan) {
 		try {
-			//Подключение в БД
+			//РџРѕРґРєР»СЋС‡РµРЅРёРµ РІ Р‘Р”
 			ConnectToBD();
 
 			String^ cmdText = "INSERT INTO dbo.TABLE_FACULTIES(Title_Faculty, Name_Dekan) VALUES(@TitleFaculty, @NameDekan)";
@@ -52,13 +52,13 @@ public:
 		finally {
 			if (conn != nullptr)
 				conn->Close();
-			else MessageBox::Show("Ошибка: При добавлении элемента в БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+			else MessageBox::Show("РћС€РёР±РєР°: РџСЂРё РґРѕР±Р°РІР»РµРЅРёРё СЌР»РµРјРµРЅС‚Р° РІ Р‘Р”!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		}
 
 	}
 	List<Faculty^>^ FillBaseData() {
 		try {
-			//Подключение в БД
+			//РџРѕРґРєР»СЋС‡РµРЅРёРµ РІ Р‘Р”
 			ConnectToBD();
 
 			List<Faculty^>^ list = gcnew List<Faculty^>();
@@ -80,12 +80,12 @@ public:
 		finally {
 			if (conn != nullptr)
 				conn->Close();
-			else MessageBox::Show("Ошибка: При чтении элементов из БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+			else MessageBox::Show("РћС€РёР±РєР°: РџСЂРё С‡С‚РµРЅРёРё СЌР»РµРјРµРЅС‚РѕРІ РёР· Р‘Р”!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		}
 	}
 	ListBox::ObjectCollection^ FillComboBox() {
 		try {
-			//Подключение в БД
+			//РџРѕРґРєР»СЋС‡РµРЅРёРµ РІ Р‘Р”
 			ConnectToBD();
 
 			//List<Faculty^>^ list = gcnew List<Faculty^>();
@@ -109,7 +109,7 @@ public:
 		finally {
 			if (conn != nullptr)
 				conn->Close();
-			else MessageBox::Show("Ошибка: При чтении элементов из БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+			else MessageBox::Show("РћС€РёР±РєР°: РџСЂРё С‡С‚РµРЅРёРё СЌР»РµРјРµРЅС‚РѕРІ РёР· Р‘Р”!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		}
 	}
 	void Reload(List<Faculty^>^% list, TreeView^ TreeViewFaculty) {
@@ -128,8 +128,8 @@ public:
 			for (int j = 0; j < list_groups->Count; j++)
 			{
 				System::Windows::Forms::TreeNode^ newTreeSubNode = (gcnew System::Windows::Forms::TreeNode(Convert::ToString(list_groups[j]->TitleGroup)));
-				//newTreeSubNode->Name = L"Узел5";
-				//newTreeSubNode->Text = L"бИСТ-214";
+				//newTreeSubNode->Name = L"РЈР·РµР»5";
+				//newTreeSubNode->Text = L"Р±РРЎРў-214";
 				newTreeNode->Nodes->Add(newTreeSubNode);
 			}
 			TreeViewFaculty->Nodes->AddRange(gcnew cli::array< System::Windows::Forms::TreeNode^  >(1) { newTreeNode });
@@ -138,7 +138,7 @@ public:
 	}
 	void Delete(Faculty^ f) {
 		try {
-			//Подключение в БД
+			//РџРѕРґРєР»СЋС‡РµРЅРёРµ РІ Р‘Р”
 			ConnectToBD();
 
 			String^ cmdText = "DELETE FROM dbo.TABLE_FACULTIES WHERE ID = @ID";
@@ -151,12 +151,12 @@ public:
 		finally {
 			if (conn != nullptr)
 				conn->Close();
-			else MessageBox::Show("Ошибка: При удалении элемента в БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+			else MessageBox::Show("РћС€РёР±РєР°: РџСЂРё СѓРґР°Р»РµРЅРёРё СЌР»РµРјРµРЅС‚Р° РІ Р‘Р”!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		}
 	}
 	void Update(Faculty^ f, int ID) {
 		try {
-			//Подключение в БД
+			//РџРѕРґРєР»СЋС‡РµРЅРёРµ РІ Р‘Р”
 			ConnectToBD();
 
 			String^ cmdText = "UPDATE dbo.TABLE_FACULTIES SET Title_Faculty = @TitleFaculty, Name_Dekan = @NameDekan WHERE ID = @ID";
@@ -172,7 +172,7 @@ public:
 		finally {
 			if (conn != nullptr)
 				conn->Close();
-			else MessageBox::Show("Ошибка: При обновлении элемента в БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+			else MessageBox::Show("РћС€РёР±РєР°: РџСЂРё РѕР±РЅРѕРІР»РµРЅРёРё СЌР»РµРјРµРЅС‚Р° РІ Р‘Р”!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		}
 	}
 	//----------------------------------------
@@ -181,7 +181,7 @@ public:
 	//----------------------------------------
 	void Insert(String^ TitleGroup, String^ TitleFaculty, String^ NameKurator, String^ NameMonitor, String^ NumberKurc, String^ Specialization) {
 		try {
-			//Подключение в БД
+			//РџРѕРґРєР»СЋС‡РµРЅРёРµ РІ Р‘Р”
 			ConnectToBD();
 
 			String^ cmdText = "INSERT INTO dbo.TABLE_GROUPS(Title_Group, Title_Faculty, Name_Kurator, Name_Monitor, Number_Kurc, Specialization) VALUES(@Title_Group, @Title_Faculty, @Name_Kurator, @Name_Monitor, @Number_Kurc, @Specialization)";
@@ -200,12 +200,12 @@ public:
 		finally {
 			if (conn != nullptr)
 				conn->Close();
-			else MessageBox::Show("Ошибка: При добавлении элемента в БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+			else MessageBox::Show("РћС€РёР±РєР°: РџСЂРё РґРѕР±Р°РІР»РµРЅРёРё СЌР»РµРјРµРЅС‚Р° РІ Р‘Р”!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		}
 	}
 	List<Group^>^ FillListView(String^ NameFaculty) {
 		try {
-			//Подключение в БД
+			//РџРѕРґРєР»СЋС‡РµРЅРёРµ РІ Р‘Р”
 			ConnectToBD();
 
 			List<Group^>^ list = gcnew List<Group^>();
@@ -234,7 +234,7 @@ public:
 		finally {
 			if (conn != nullptr)
 				conn->Close();
-			else MessageBox::Show("Ошибка: При чтении элементов из БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+			else MessageBox::Show("РћС€РёР±РєР°: РџСЂРё С‡С‚РµРЅРёРё СЌР»РµРјРµРЅС‚РѕРІ РёР· Р‘Р”!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		}
 	}
 	void Reload(List<Group^>^% list_groups, ListView^ ListViewPanel, String^ NameFaculty) {
@@ -252,7 +252,7 @@ public:
 	}
 	void Delete(String^ TitleGroup) {
 		try {
-			//Подключение в БД
+			//РџРѕРґРєР»СЋС‡РµРЅРёРµ РІ Р‘Р”
 			ConnectToBD();
 
 			String^ cmdText = "DELETE FROM dbo.TABLE_GROUPS WHERE Title_Group = @TitleGroup";
@@ -265,12 +265,12 @@ public:
 		finally {
 			if (conn != nullptr)
 				conn->Close();
-			else MessageBox::Show("Ошибка: При удалении элемента в БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+			else MessageBox::Show("РћС€РёР±РєР°: РџСЂРё СѓРґР°Р»РµРЅРёРё СЌР»РµРјРµРЅС‚Р° РІ Р‘Р”!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		}
 	}
 	void Update(Group^ g, int ID) {
 		try {
-			//Подключение в БД
+			//РџРѕРґРєР»СЋС‡РµРЅРёРµ РІ Р‘Р”
 			ConnectToBD();
 
 			String^ cmdText = "UPDATE dbo.TABLE_GROUPS SET Title_Group = @TitleGroup, Title_Faculty = @TitleFaculty, Name_Kurator = @NameKurator, Name_Monitor = @NameMonitor, Number_Kurc = @NumberKurc, Specialization = @Specialization WHERE ID = @ID";
@@ -290,7 +290,7 @@ public:
 		finally {
 			if (conn != nullptr)
 				conn->Close();
-			else MessageBox::Show("Ошибка: При обновлении элемента в БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+			else MessageBox::Show("РћС€РёР±РєР°: РџСЂРё РѕР±РЅРѕРІР»РµРЅРёРё СЌР»РµРјРµРЅС‚Р° РІ Р‘Р”!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		}
 	}
 	//----------------------------------------
@@ -298,7 +298,7 @@ public:
 	//----------------------------------------
 	void Insert(Student^ s) {
 		try {
-			//Подключение в БД
+			//РџРѕРґРєР»СЋС‡РµРЅРёРµ РІ Р‘Р”
 			ConnectToBD();
 
 			String^ cmdText = "INSERT INTO dbo.TABLE_STUDENTS(Name, Surname, Middlename, Entrant, Title_Faculty, Title_Group, Birthday, Point_EGE, Stipendiya, Year_Enrollment, Photo_Student, Specialization, Educational_Form, Number_Kurc, Phone_Number, Mail, Otcenka, Login, Password) VALUES(@Name, @Surname, @Middlename, @Entrant, @Title_Faculty, @Title_Group, @Birthday, @Point_EGE, @Stipendiya, @Year_Enrollment, @Photo_Student, @Specialization, @Educational_Form, @Number_Kurc, @Phone_Number, @Mail, @Otcenka, @Login, @Password)";
@@ -330,12 +330,12 @@ public:
 		finally {
 			if (conn != nullptr)
 				conn->Close();
-			else MessageBox::Show("Ошибка: При добавлении элемента в БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+			else MessageBox::Show("РћС€РёР±РєР°: РџСЂРё РґРѕР±Р°РІР»РµРЅРёРё СЌР»РµРјРµРЅС‚Р° РІ Р‘Р”!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		}
 	}
 	List<Student^>^ FillListViewStudent(String^ NameGroup) {
 		try {
-			//Подключение в БД
+			//РџРѕРґРєР»СЋС‡РµРЅРёРµ РІ Р‘Р”
 			ConnectToBD();
 
 			List<Student^>^ list = gcnew List<Student^>();
@@ -367,7 +367,9 @@ public:
 					student->Phone_Number = (reader["Phone_Number"]->ToString());
 					student->Mail = (reader["Mail"]->ToString());
 					student->Otcenka = Convert::ToInt32(reader["Otcenka"]->ToString());
-			
+					student->Login = (reader["Login"]->ToString());
+					student->Password = (reader["Password"]->ToString());
+
 					list->Add(student);
 				}
 			}
@@ -376,19 +378,19 @@ public:
 		finally {
 			if (conn != nullptr)
 				conn->Close();
-			else MessageBox::Show("Ошибка: При чтении элементов из БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+			else MessageBox::Show("РћС€РёР±РєР°: РџСЂРё С‡С‚РµРЅРёРё СЌР»РµРјРµРЅС‚РѕРІ РёР· Р‘Р”!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		}
 	}
-	List<Student^>^ FillCheckedListBoxStudent() {
+	List<Student^>^ FillCheckedListBoxStudent(int StatusEntrant) {
 		try {
-			//Подключение в БД
+			//РџРѕРґРєР»СЋС‡РµРЅРёРµ РІ Р‘Р”
 			ConnectToBD();
 
 			List<Student^>^ list = gcnew List<Student^>();
 
 			String^ cmdText = "SELECT * FROM dbo.TABLE_STUDENTS WHERE Entrant = @Yes";
 			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
-			cmd->Parameters->AddWithValue("@Yes", 1);
+			cmd->Parameters->AddWithValue("@Yes", StatusEntrant);
 			conn->Open();
 
 			SqlDataReader^ reader = cmd->ExecuteReader();
@@ -398,27 +400,36 @@ public:
 				student->Name = (reader["Name"]->ToString());
 				student->Surname = (reader["Surname"]->ToString());
 				student->Middlename = (reader["Middlename"]->ToString());
-				student->Entrant = Convert::ToInt32(reader["Entrant"]->ToString());
+				student->Entrant = Convert::ToInt32(reader["Entrant"]);
 				student->Title_Faculty = (reader["Title_Faculty"]->ToString());
 				student->Title_Group = (reader["Title_Group"]->ToString());
 				student->Birthday = (reader["Birthday"]->ToString());
 				student->Point_EGE = Convert::ToInt32(reader["Point_EGE"]->ToString());
 				student->Stipendiya = Convert::ToInt32(reader["Stipendiya"]->ToString());
 				student->Year_Enrollment = (reader["Year_Enrollment"]->ToString());
+				student->Photo_Student = (reader["Photo_Student"]->ToString());
+				student->Specialization = (reader["Specialization"]->ToString());
+				student->Educational_Form = (reader["Educational_Form"]->ToString());
+				student->Number_Kurc = Convert::ToInt32(reader["Number_Kurc"]->ToString());
+				student->Phone_Number = (reader["Phone_Number"]->ToString());
+				student->Mail = (reader["Mail"]->ToString());
+				student->Otcenka = Convert::ToInt32(reader["Otcenka"]->ToString());
+				student->Login = (reader["Login"]->ToString());
+				student->Password = (reader["Password"]->ToString());
+
 				list->Add(student);
 			}
-			Console::WriteLine("Все круто!");
 			return list;
 		}
 		finally {
 			if (conn != nullptr)
 				conn->Close();
-			else MessageBox::Show("Ошибка: При чтении элементов из БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+			else MessageBox::Show("РћС€РёР±РєР°: РџСЂРё С‡С‚РµРЅРёРё СЌР»РµРјРµРЅС‚РѕРІ РёР· Р‘Р”!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		}
 	}
 	Student^ FillStudent(int ID) {
 		try {
-			//Подключение в БД
+			//РџРѕРґРєР»СЋС‡РµРЅРёРµ РІ Р‘Р”
 			ConnectToBD();;
 
 			Student^ student = gcnew Student();
@@ -457,7 +468,7 @@ public:
 		finally {
 			if (conn != nullptr)
 				conn->Close();
-			else MessageBox::Show("Ошибка: При чтении элементов из БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+			else MessageBox::Show("РћС€РёР±РєР°: РџСЂРё С‡С‚РµРЅРёРё СЌР»РµРјРµРЅС‚РѕРІ РёР· Р‘Р”!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		}
 	}
 	void Reload(List<Student^>^% list_student, ListView^ ListViewPanel, String^ NameGroup) {
@@ -475,17 +486,31 @@ public:
 		}
 	}
 	void Reload(List<Student^>^% list_student, CheckedListBox^ CheckedListBoxStudent) {
-		list_student = FillCheckedListBoxStudent();
-		//Добавить столбец балл ЕГЭ с сортировкой
+		list_student = FillCheckedListBoxStudent(1);
+		//Р”РѕР±Р°РІРёС‚СЊ СЃС‚РѕР»Р±РµС† Р±Р°Р»Р» Р•Р“Р­ СЃ СЃРѕСЂС‚РёСЂРѕРІРєРѕР№
 		CheckedListBoxStudent->Items->Clear();
 		for (size_t i = 0; i < list_student->Count; i++)
 		{
 			CheckedListBoxStudent->Items->AddRange(gcnew cli::array< System::Object^  >(1) { Convert::ToString(list_student[i]->Surname) });
 		}
 	}
+	void Reload(List<Student^>^% list_student, ListView^ ListViewPanel) {
+		list_student = FillCheckedListBoxStudent(0);
+		ListViewPanel->FullRowSelect = true;
+		ListViewPanel->Items->Clear();
+		for (int i = 0; i < list_student->Count; i++) {
+			ListViewItem^ newItem = gcnew ListViewItem(Convert::ToString(i + 1));
+			ListViewItem::ListViewSubItem^ Login = gcnew ListViewItem::ListViewSubItem(newItem, list_student[i]->Login);
+			ListViewItem::ListViewSubItem^ Password = gcnew ListViewItem::ListViewSubItem(newItem, list_student[i]->Password);
+			newItem->SubItems->Add(Login);
+			newItem->SubItems->Add(Password);
+			ListViewPanel->Items->AddRange(gcnew cli::array< System::Windows::Forms::ListViewItem^  >(1) { newItem });
+		}
+	}
+	/*
 	void Delete(int ID) {
 		try {
-			//Подключение в БД
+			//РџРѕРґРєР»СЋС‡РµРЅРёРµ РІ Р‘Р”
 			ConnectToBD();
 
 			String^ cmdText = "DELETE FROM dbo.TABLE_STUDENTS WHERE ID = @ID";
@@ -498,12 +523,31 @@ public:
 		finally {
 			if (conn != nullptr)
 				conn->Close();
-			else MessageBox::Show("Ошибка: При удалении элемента в БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+			else MessageBox::Show("РћС€РёР±РєР°: РџСЂРё СѓРґР°Р»РµРЅРёРё СЌР»РµРјРµРЅС‚Р° РІ Р‘Р”!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+		}
+	}
+	*/
+	void Delete(Student^ student) {
+		try {
+			//РџРѕРґРєР»СЋС‡РµРЅРёРµ РІ Р‘Р”
+			ConnectToBD();
+
+			String^ cmdText = "DELETE FROM dbo.TABLE_STUDENTS WHERE ID = @ID";
+			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
+
+			cmd->Parameters->AddWithValue("@ID", student->ID);
+			conn->Open();
+			cmd->ExecuteNonQuery();
+		}
+		finally {
+			if (conn != nullptr)
+				conn->Close();
+			else MessageBox::Show("РћС€РёР±РєР°: РџСЂРё СѓРґР°Р»РµРЅРёРё СЌР»РµРјРµРЅС‚Р° РІ Р‘Р”!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		}
 	}
 	void Update(Student^ s) {
 		try {
-			//Подключение в БД
+			//РџРѕРґРєР»СЋС‡РµРЅРёРµ РІ Р‘Р”
 			ConnectToBD();
 
 			String^ cmdText = "UPDATE dbo.TABLE_STUDENTS SET Entrant = @Entrant, Title_Group = @Title_Group, Specialization = @Specialization, Number_Kurc = @Number_Kurc WHERE ID = @ID";
@@ -521,15 +565,15 @@ public:
 		finally {
 			if (conn != nullptr)
 				conn->Close();
-			else MessageBox::Show("Ошибка: При обновлении элемента в БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+			else MessageBox::Show("РћС€РёР±РєР°: РџСЂРё РѕР±РЅРѕРІР»РµРЅРёРё СЌР»РµРјРµРЅС‚Р° РІ Р‘Р”!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		}
 	}
 	void Update(Student^ s, int ID) {
 		try {
-			//Подключение в БД
+			//РџРѕРґРєР»СЋС‡РµРЅРёРµ РІ Р‘Р”
 			ConnectToBD();
 
-			String^ cmdText = "UPDATE dbo.TABLE_STUDENTS SET Name = @Name, Surname = @Surname, Middlename = @Middlename, Title_Group = @Title_Group, Birthday = @Birthday, Point_EGE = @Point_EGE, Stipendiya = @Stipendiya, Year_Enrollment = @Year_Enrollment, Photo_Student = @Photo_Student,  Educational_Form = @Educational_Form, Phone_Number = @Phone_Number, Mail = @Mail WHERE ID = @ID";
+			String^ cmdText = "UPDATE dbo.TABLE_STUDENTS SET Name = @Name, Surname = @Surname, Middlename = @Middlename, Title_Group = @Title_Group, Birthday = @Birthday, Point_EGE = @Point_EGE, Stipendiya = @Stipendiya, Year_Enrollment = @Year_Enrollment, Otcenka = @Otcenka, Photo_Student = @Photo_Student,  Educational_Form = @Educational_Form, Phone_Number = @Phone_Number, Mail = @Mail WHERE ID = @ID";
 			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
 
 			cmd->Parameters->AddWithValue("@ID", ID);
@@ -542,6 +586,7 @@ public:
 			cmd->Parameters->AddWithValue("@Point_EGE", s->Point_EGE);
 			cmd->Parameters->AddWithValue("@Stipendiya", s->Stipendiya);
 			cmd->Parameters->AddWithValue("@Year_Enrollment", s->Year_Enrollment);
+			cmd->Parameters->AddWithValue("@Otcenka", s->Otcenka);
 			cmd->Parameters->AddWithValue("@Photo_Student", s->Photo_Student);
 			//cmd->Parameters->AddWithValue("@Specialization", s->Specialization);
 			cmd->Parameters->AddWithValue("@Educational_Form", s->Educational_Form);
@@ -555,12 +600,12 @@ public:
 		finally {
 			if (conn != nullptr)
 				conn->Close();
-			else MessageBox::Show("Ошибка: При обновлении элемента в БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+			else MessageBox::Show("РћС€РёР±РєР°: РџСЂРё РѕР±РЅРѕРІР»РµРЅРёРё СЌР»РµРјРµРЅС‚Р° РІ Р‘Р”!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		}
 	}
 	void Update(int Entrant, String^ PathGroup) {
 		try {
-			//Подключение в БД
+			//РџРѕРґРєР»СЋС‡РµРЅРёРµ РІ Р‘Р”
 			ConnectToBD();
 
 			String^ cmdText = "UPDATE dbo.TABLE_STUDENTS SET Entrant = @Entrant WHERE Title_Group = @Title_Group";
@@ -576,7 +621,7 @@ public:
 		finally {
 			if (conn != nullptr)
 				conn->Close();
-			else MessageBox::Show("Ошибка: При обновлении элемента в БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+			else MessageBox::Show("РћС€РёР±РєР°: РџСЂРё РѕР±РЅРѕРІР»РµРЅРёРё СЌР»РµРјРµРЅС‚Р° РІ Р‘Р”!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		}
 	}
 	//----------------------------------------
@@ -584,7 +629,7 @@ public:
 	//----------------------------------------
 	int SignOn(int% ID, String^ Login, String^ Password) {
 	
-			//Подключение в БД
+			//РџРѕРґРєР»СЋС‡РµРЅРёРµ РІ Р‘Р”
 			ConnectToBD();
 
 			int isAdmin = 0;
@@ -621,7 +666,7 @@ public:
 	}
 	void SignIn(String^ Login, String^ Password) {
 		try {
-			//Подключение в БД
+			//РџРѕРґРєР»СЋС‡РµРЅРёРµ РІ Р‘Р”
 			ConnectToBD();
 
 			String^ cmdText = "INSERT INTO dbo.TABLE_USERS(Login, Password, Type) VALUES(@Login, @Password, @Type)";
@@ -637,35 +682,18 @@ public:
 		finally {
 			if (conn != nullptr)
 				conn->Close();
-			else MessageBox::Show("Ошибка: При добавлении элемента в БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
-			MessageBox::Show("Вы успешно зарегистрировались!");
+			else MessageBox::Show("РћС€РёР±РєР°: РџСЂРё РґРѕР±Р°РІР»РµРЅРёРё СЌР»РµРјРµРЅС‚Р° РІ Р‘Р”!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+			MessageBox::Show("Р’С‹ СѓСЃРїРµС€РЅРѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°Р»РёСЃСЊ!");
 		}
 		//try
 	}
-	void Delete(int ID, ListView^ ListViewPanel) {
-		try {
-			//Подключение в БД
-			ConnectToBD();
-
-			String^ cmdText = "DELETE FROM dbo.TABLE_USERS WHERE ID = @ID";
-			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
-
-			cmd->Parameters->AddWithValue("@ID", ID);
-			conn->Open();
-			cmd->ExecuteNonQuery();
-		}
-		finally {
-			if (conn != nullptr)
-				conn->Close();
-			else MessageBox::Show("Ошибка: При удалении элемента в БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
-		}
-	}
+	
 	//----------------------------------------
 	//ADMIN
 	//----------------------------------------
 	void Insert(Admin^ a) {
 		try {
-			//Подключение в БД
+			//РџРѕРґРєР»СЋС‡РµРЅРёРµ РІ Р‘Р”
 			ConnectToBD();
 
 			String^ cmdText = "INSERT INTO dbo.TABLE_ADMINS(Name, Surname, Patronymic, Birthday, Dolzhnost, Photo, Stazh, Zarplata, Mobile_Phone, Mail, Login, Password) VALUES(@Name, @Surname, @Patronymic, @Birthday, @Dolzhnost, @Photo, @Stazh, @Zarplata, @Mobile_Phone, @Mail, @Login, @Password)";
@@ -690,12 +718,12 @@ public:
 		finally {
 			if (conn != nullptr)
 				conn->Close();
-			else MessageBox::Show("Ошибка: При добавлении элемента в БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+			else MessageBox::Show("РћС€РёР±РєР°: РџСЂРё РґРѕР±Р°РІР»РµРЅРёРё СЌР»РµРјРµРЅС‚Р° РІ Р‘Р”!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		}
 	}
 	Admin^ FillAdmin(int ID) {
 		try {
-			//Подключение в БД
+			//РџРѕРґРєР»СЋС‡РµРЅРёРµ РІ Р‘Р”
 			ConnectToBD();
 
 			Admin^ admin = gcnew Admin();
@@ -726,12 +754,55 @@ public:
 		finally {
 			if (conn != nullptr)
 				conn->Close();
-			else MessageBox::Show("Ошибка: При чтении элементов из БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+			else MessageBox::Show("РћС€РёР±РєР°: РџСЂРё С‡С‚РµРЅРёРё СЌР»РµРјРµРЅС‚РѕРІ РёР· Р‘Р”!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+		}
+	}
+	List<Admin^>^ FillListViewAdmins() {
+		try {
+			//ГЏГ®Г¤ГЄГ«ГѕГ·ГҐГ­ГЁГҐ Гў ГЃГ„
+			ConnectToBD();
+
+			List<Admin^>^ list = gcnew List<Admin^>();
+
+			String^ cmdText = "SELECT * FROM dbo.TABLE_ADMINS";
+			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
+			cmd->Parameters->AddWithValue("@Type", "User      ");
+			conn->Open();
+
+			SqlDataReader^ reader = cmd->ExecuteReader();
+			while (reader->Read()) {
+			
+				Admin^ admin = gcnew Admin();
+				admin->ID = Convert::ToInt32(reader["ID"]->ToString());
+				admin->Login = (reader["Login"]->ToString());
+				admin->Password = (reader["Password"]->ToString());
+
+				list->Add(admin);
+			}
+			return list;
+		}
+		finally {
+			if (conn != nullptr)
+				conn->Close();
+			else MessageBox::Show("ГЋГёГЁГЎГЄГ : ГЏГ°ГЁ Г·ГІГҐГ­ГЁГЁ ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў ГЁГ§ ГЃГ„!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+		}
+	}
+	void Reload(List<Admin^>^% list_admin, ListView^ ListViewPanel) {
+		list_admin = FillListViewAdmins();
+		ListViewPanel->FullRowSelect = true;
+		ListViewPanel->Items->Clear();
+		for (int i = 0; i < list_admin->Count; i++) {
+			ListViewItem^ newItem = gcnew ListViewItem(Convert::ToString(i + 1));
+			ListViewItem::ListViewSubItem^ Login = gcnew ListViewItem::ListViewSubItem(newItem, list_admin[i]->Login);
+			ListViewItem::ListViewSubItem^ Password = gcnew ListViewItem::ListViewSubItem(newItem, list_admin[i]->Password);
+			newItem->SubItems->Add(Login);
+			newItem->SubItems->Add(Password);
+			ListViewPanel->Items->AddRange(gcnew cli::array< System::Windows::Forms::ListViewItem^  >(1) { newItem });
 		}
 	}
 	void Update(Admin^ a, int ID) {
 		try {
-			//Подключение в БД
+			//РџРѕРґРєР»СЋС‡РµРЅРёРµ РІ Р‘Р”
 			ConnectToBD();
 
 			String^ cmdText = "UPDATE dbo.TABLE_ADMINS SET Name = @Name, Surname = @Surname, Patronymic = @Patronymic, Birthday = @Birthday, Dolzhnost = @Dolzhnost, Photo = @Photo, Stazh = @Stazh, Zarplata = @Zarplata, Mobile_Phone = @Mobile_Phone,  Mail = @Mail, Login = @Login, Password = @Password WHERE ID = @ID";
@@ -757,7 +828,25 @@ public:
 		finally {
 			if (conn != nullptr)
 				conn->Close();
-			else MessageBox::Show("Ошибка: При обновлении элемента в БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+			else MessageBox::Show("РћС€РёР±РєР°: РџСЂРё РѕР±РЅРѕРІР»РµРЅРёРё СЌР»РµРјРµРЅС‚Р° РІ Р‘Р”!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+		}
+	}
+	void Delete(Admin^ admin) {
+		try {
+			//РџРѕРґРєР»СЋС‡РµРЅРёРµ РІ Р‘Р”
+			ConnectToBD();
+
+			String^ cmdText = "DELETE FROM dbo.TABLE_ADMINS WHERE ID = @ID";
+			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
+
+			cmd->Parameters->AddWithValue("@ID", admin->ID);
+			conn->Open();
+			cmd->ExecuteNonQuery();
+		}
+		finally {
+			if (conn != nullptr)
+				conn->Close();
+			else MessageBox::Show("РћС€РёР±РєР°: РџСЂРё СѓРґР°Р»РµРЅРёРё СЌР»РµРјРµРЅС‚Р° РІ Р‘Р”!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		}
 	}
 	//----------------------------------------

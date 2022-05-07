@@ -353,7 +353,7 @@ namespace StudentCardVelial {
 		form->Show();
 	}
 	private: System::Void ButtonListUsers_Click(System::Object^ sender, System::EventArgs^ e) {
-		ListUsers^ form = gcnew ListUsers();
+		ListUsers^ form = gcnew ListUsers(false);
 		form->Show();
 	}
 };

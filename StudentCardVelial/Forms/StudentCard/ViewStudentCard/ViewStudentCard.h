@@ -23,6 +23,13 @@ namespace StudentCardVelial {
 			LabelNameStudent->Text = Convert::ToString(student->Name + " " + student->Surname + " " + student->Middlename);
 			//ButtonStatus
 			//Otcekna
+
+			//ButtonStatusStudent->BackColor = 
+			if (student->Otcenka <= 2.5) ButtonStatusStudent->BackColor = Color::Red;
+			else if (student->Otcenka > 2.5 && student->Otcenka <= 3.5)  ButtonStatusStudent->BackColor = Color::Yellow;
+			else if (student->Otcenka > 3.5 && student->Otcenka <= 4.5)  ButtonStatusStudent->BackColor = Color::GreenYellow;
+			else if (student->Otcenka > 4.5)  ButtonStatusStudent->BackColor = Color::Green;
+			else ButtonStatusStudent->BackColor = Color::Black;
 			LabelBirthdayStudent->Text = student->Birthday;
 			LabelTitleFacultyStudent->Text = student->Title_Faculty;
 			LabelTitleGroupStudent->Text = student->Title_Group;
@@ -47,7 +54,8 @@ namespace StudentCardVelial {
 		}
 	private: System::Windows::Forms::PictureBox^ PictureBoxPhotoStudent;
 	private: System::Windows::Forms::Label^ LabelNameStudent;
-	private: System::Windows::Forms::Button^ ButtonStatus;
+	private: System::Windows::Forms::Button^ ButtonStatusStudent;
+
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ LabelBirthdayStudent;
@@ -76,10 +84,9 @@ namespace StudentCardVelial {
 #pragma region Windows Form Designer generated code
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(ViewStudentCard::typeid));
 			this->PictureBoxPhotoStudent = (gcnew System::Windows::Forms::PictureBox());
 			this->LabelNameStudent = (gcnew System::Windows::Forms::Label());
-			this->ButtonStatus = (gcnew System::Windows::Forms::Button());
+			this->ButtonStatusStudent = (gcnew System::Windows::Forms::Button());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->LabelBirthdayStudent = (gcnew System::Windows::Forms::Label());
@@ -108,7 +115,6 @@ namespace StudentCardVelial {
 			// 
 			// PictureBoxPhotoStudent
 			// 
-			//this->PictureBoxPhotoStudent->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"PictureBoxPhotoStudent.Image")));
 			this->PictureBoxPhotoStudent->Location = System::Drawing::Point(13, 13);
 			this->PictureBoxPhotoStudent->Name = L"PictureBoxPhotoStudent";
 			this->PictureBoxPhotoStudent->Size = System::Drawing::Size(200, 209);
@@ -127,14 +133,14 @@ namespace StudentCardVelial {
 			this->LabelNameStudent->TabIndex = 1;
 			this->LabelNameStudent->Text = L"Вася";
 			// 
-			// ButtonStatus
+			// ButtonStatusStudent
 			// 
-			this->ButtonStatus->BackColor = System::Drawing::Color::Lime;
-			this->ButtonStatus->Location = System::Drawing::Point(300, 45);
-			this->ButtonStatus->Name = L"ButtonStatus";
-			this->ButtonStatus->Size = System::Drawing::Size(20, 20);
-			this->ButtonStatus->TabIndex = 2;
-			this->ButtonStatus->UseVisualStyleBackColor = false;
+			this->ButtonStatusStudent->BackColor = System::Drawing::Color::Lime;
+			this->ButtonStatusStudent->Location = System::Drawing::Point(300, 45);
+			this->ButtonStatusStudent->Name = L"ButtonStatusStudent";
+			this->ButtonStatusStudent->Size = System::Drawing::Size(20, 20);
+			this->ButtonStatusStudent->TabIndex = 2;
+			this->ButtonStatusStudent->UseVisualStyleBackColor = false;
 			// 
 			// label2
 			// 
@@ -417,7 +423,7 @@ namespace StudentCardVelial {
 			this->Controls->Add(this->LabelBirthdayStudent);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
-			this->Controls->Add(this->ButtonStatus);
+			this->Controls->Add(this->ButtonStatusStudent);
 			this->Controls->Add(this->LabelNameStudent);
 			this->Controls->Add(this->PictureBoxPhotoStudent);
 			this->Name = L"ViewStudentCard";

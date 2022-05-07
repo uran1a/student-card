@@ -18,7 +18,7 @@ namespace StudentCardVelial {
 		{
 			InitializeComponent();
 			bd = gcnew BaseData();
-			list_students = bd->FillCheckedListBoxStudent();
+			list_students = bd->FillCheckedListBoxStudent(1);
 			bd->Reload(list_students, CheckedListBoxStudent);
 		}
 
@@ -110,7 +110,7 @@ namespace StudentCardVelial {
 			for (size_t j = 0; j < list_students->Count; j++)
 			{
 				if (list_students[j]->Surname == CheckedListBoxStudent->CheckedItems[i]->ToString()) {
-					bd->Delete(list_students[j]->ID);
+					bd->Delete(list_students[j]);
 				}
 			}
 		}

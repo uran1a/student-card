@@ -2,6 +2,7 @@
 
 #include "../../../BD/BaseData.h"
 #include "../CreateAdmin/CreateAdmin.h"
+#include "../../Authorization/ListUsers/ListUsers.h"
 
 namespace StudentCardVelial {
 
@@ -239,6 +240,7 @@ namespace StudentCardVelial {
 			this->ButtonListUsers->TabIndex = 13;
 			this->ButtonListUsers->Text = L"Список Users";
 			this->ButtonListUsers->UseVisualStyleBackColor = true;
+			this->ButtonListUsers->Click += gcnew System::EventHandler(this, &AdminPanel::ButtonListUsers_Click);
 			// 
 			// PictureBoxPhotoAdmin
 			// 
@@ -358,7 +360,12 @@ namespace StudentCardVelial {
 		}
 	}
 	private: System::Void ButtonListAdmins_Click(System::Object^ sender, System::EventArgs^ e) {
-
+		ListUsers^ form = gcnew ListUsers(true);
+		form->Show();
+	}
+	private: System::Void ButtonListUsers_Click(System::Object^ sender, System::EventArgs^ e) {
+		ListUsers^ form = gcnew ListUsers(false);
+		form->Show();
 	}
 };
 }

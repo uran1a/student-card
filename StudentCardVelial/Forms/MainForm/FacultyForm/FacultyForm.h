@@ -38,7 +38,7 @@ namespace StudentCardVelial {
 			else {
 				this->PanelButton->Visible = false;
 				this->PanelFacultyButton->Visible = false;
-				this->ButtonUpdateForm->Visible = false;
+				//this->ButtonUpdateForm->Visible = false;
 				this->ButtonCreateStudentBD->Visible = false;
 
 				this->LabelTitleUniversity->AutoSize = true;
@@ -54,13 +54,9 @@ namespace StudentCardVelial {
 				this->TreeViewFaculty->Size = System::Drawing::Size(230, 350);
 				//this->TreeViewFaculty->Size = System::Drawing::Size(297, 272);
 			}
-
-			
 			bd = gcnew BaseData();
 			list = bd->FillBaseData();
 			bd->Reload(list, TreeViewFaculty);
-
-			
 		}
 
 	protected:
@@ -71,13 +67,12 @@ namespace StudentCardVelial {
 	private: System::Windows::Forms::TreeView^ TreeViewFaculty;
 	private: System::Windows::Forms::Label^ LabelFacultyForm;
 	private: System::Windows::Forms::Panel^ PanelFacultyButton;
-
 	private: System::Windows::Forms::Button^ ButtonDeleteFaculty;
 	private: System::Windows::Forms::Button^ ButtonCreateFacultyForm;
 	private: System::Windows::Forms::Button^ ButtonUpdateFacultyForm;
-	private: System::Windows::Forms::Button^ ButtonUpdateForm;
+
 	private: System::Windows::Forms::Panel^ PanelMainForm;
-	private: System::Windows::Forms::Button^ ButtonUpdateListViewPanel;
+
 	private: System::Windows::Forms::Button^ ButtonDeletePanel;
 	private: System::Windows::Forms::Button^ ButtonUpdatePanel;
 	private: System::Windows::Forms::Button^ ButtonCreatePanel;
@@ -99,14 +94,6 @@ namespace StudentCardVelial {
 	private: System::Windows::Forms::ToolStrip^ ToolStripFaculty;
 	private: System::Windows::Forms::ToolStripLabel^ ToolStripLabelTitle;
 	private: System::Windows::Forms::ToolStripLabel^ ToolStripLabelProfile;
-
-
-
-
-
-
-
-
 	private: System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
@@ -119,13 +106,11 @@ namespace StudentCardVelial {
 		this->ButtonDeleteFaculty = (gcnew System::Windows::Forms::Button());
 		this->ButtonCreateFacultyForm = (gcnew System::Windows::Forms::Button());
 		this->ButtonUpdateFacultyForm = (gcnew System::Windows::Forms::Button());
-		this->ButtonUpdateForm = (gcnew System::Windows::Forms::Button());
 		this->PanelMainForm = (gcnew System::Windows::Forms::Panel());
 		this->PanelButton = (gcnew System::Windows::Forms::Panel());
 		this->ButtonCreatePanel = (gcnew System::Windows::Forms::Button());
 		this->ButtonUpdatePanel = (gcnew System::Windows::Forms::Button());
 		this->ButtonDeletePanel = (gcnew System::Windows::Forms::Button());
-		this->ButtonUpdateListViewPanel = (gcnew System::Windows::Forms::Button());
 		this->PanelStudenet = (gcnew System::Windows::Forms::Panel());
 		this->TextBoxNumberKurc = (gcnew System::Windows::Forms::TextBox());
 		this->TextBoxNameMonitor = (gcnew System::Windows::Forms::TextBox());
@@ -152,16 +137,19 @@ namespace StudentCardVelial {
 		// 
 		// TreeViewFaculty
 		// 
-		this->TreeViewFaculty->Location = System::Drawing::Point(12, 86);
+		this->TreeViewFaculty->BackColor = System::Drawing::Color::White;
+		this->TreeViewFaculty->Location = System::Drawing::Point(12, 118);
 		this->TreeViewFaculty->Name = L"TreeViewFaculty";
-		this->TreeViewFaculty->Size = System::Drawing::Size(297, 272);
+		this->TreeViewFaculty->Size = System::Drawing::Size(325, 339);
 		this->TreeViewFaculty->TabIndex = 0;
 		this->TreeViewFaculty->AfterSelect += gcnew System::Windows::Forms::TreeViewEventHandler(this, &FacultyForm::TreeViewFaculty_AfterSelect);
 		// 
 		// LabelFacultyForm
 		// 
 		this->LabelFacultyForm->AutoSize = true;
+		this->LabelFacultyForm->BackColor = System::Drawing::Color::Transparent;
 		this->LabelFacultyForm->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
+		this->LabelFacultyForm->ForeColor = System::Drawing::Color::White;
 		this->LabelFacultyForm->Location = System::Drawing::Point(5, 5);
 		this->LabelFacultyForm->Name = L"LabelFacultyForm";
 		this->LabelFacultyForm->Size = System::Drawing::Size(98, 22);
@@ -170,26 +158,26 @@ namespace StudentCardVelial {
 		// 
 		// PanelFacultyButton
 		// 
-		this->PanelFacultyButton->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(198)),
-			static_cast<System::Int32>(static_cast<System::Byte>(179)), static_cast<System::Int32>(static_cast<System::Byte>(112)));
+		this->PanelFacultyButton->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)),
+			static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(87)));
 		this->PanelFacultyButton->Controls->Add(this->ButtonDeleteFaculty);
 		this->PanelFacultyButton->Controls->Add(this->LabelFacultyForm);
 		this->PanelFacultyButton->Controls->Add(this->ButtonCreateFacultyForm);
 		this->PanelFacultyButton->Controls->Add(this->ButtonUpdateFacultyForm);
-		this->PanelFacultyButton->Location = System::Drawing::Point(12, 7);
+		this->PanelFacultyButton->Location = System::Drawing::Point(12, 39);
 		this->PanelFacultyButton->Name = L"PanelFacultyButton";
-		this->PanelFacultyButton->Size = System::Drawing::Size(298, 73);
+		this->PanelFacultyButton->Size = System::Drawing::Size(325, 73);
 		this->PanelFacultyButton->TabIndex = 2;
 		// 
 		// ButtonDeleteFaculty
 		// 
-		this->ButtonDeleteFaculty->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)),
-			static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(128)));
-		this->ButtonDeleteFaculty->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-		this->ButtonDeleteFaculty->Location = System::Drawing::Point(217, 30);
+		this->ButtonDeleteFaculty->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(237)),
+			static_cast<System::Int32>(static_cast<System::Byte>(225)), static_cast<System::Int32>(static_cast<System::Byte>(117)));
+		this->ButtonDeleteFaculty->ForeColor = System::Drawing::Color::Black;
+		this->ButtonDeleteFaculty->Location = System::Drawing::Point(216, 30);
 		this->ButtonDeleteFaculty->Margin = System::Windows::Forms::Padding(0);
 		this->ButtonDeleteFaculty->Name = L"ButtonDeleteFaculty";
-		this->ButtonDeleteFaculty->Size = System::Drawing::Size(73, 36);
+		this->ButtonDeleteFaculty->Size = System::Drawing::Size(98, 36);
 		this->ButtonDeleteFaculty->TabIndex = 2;
 		this->ButtonDeleteFaculty->Text = L"Удалить";
 		this->ButtonDeleteFaculty->UseVisualStyleBackColor = false;
@@ -197,9 +185,9 @@ namespace StudentCardVelial {
 		// 
 		// ButtonCreateFacultyForm
 		// 
-		this->ButtonCreateFacultyForm->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(224)),
-			static_cast<System::Int32>(static_cast<System::Byte>(224)), static_cast<System::Int32>(static_cast<System::Byte>(224)));
-		this->ButtonCreateFacultyForm->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
+		this->ButtonCreateFacultyForm->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(78)),
+			static_cast<System::Int32>(static_cast<System::Byte>(108)), static_cast<System::Int32>(static_cast<System::Byte>(164)));
+		this->ButtonCreateFacultyForm->ForeColor = System::Drawing::Color::White;
 		this->ButtonCreateFacultyForm->Location = System::Drawing::Point(9, 30);
 		this->ButtonCreateFacultyForm->Name = L"ButtonCreateFacultyForm";
 		this->ButtonCreateFacultyForm->Size = System::Drawing::Size(100, 36);
@@ -210,10 +198,11 @@ namespace StudentCardVelial {
 		// 
 		// ButtonUpdateFacultyForm
 		// 
-		this->ButtonUpdateFacultyForm->BackColor = System::Drawing::Color::Silver;
+		this->ButtonUpdateFacultyForm->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(78)),
+			static_cast<System::Int32>(static_cast<System::Byte>(108)), static_cast<System::Int32>(static_cast<System::Byte>(164)));
 		this->ButtonUpdateFacultyForm->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular,
 			System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
-		this->ButtonUpdateFacultyForm->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
+		this->ButtonUpdateFacultyForm->ForeColor = System::Drawing::Color::White;
 		this->ButtonUpdateFacultyForm->Location = System::Drawing::Point(115, 30);
 		this->ButtonUpdateFacultyForm->Name = L"ButtonUpdateFacultyForm";
 		this->ButtonUpdateFacultyForm->Size = System::Drawing::Size(98, 36);
@@ -222,22 +211,10 @@ namespace StudentCardVelial {
 		this->ButtonUpdateFacultyForm->UseVisualStyleBackColor = false;
 		this->ButtonUpdateFacultyForm->Click += gcnew System::EventHandler(this, &FacultyForm::ButtonUpdateFacultyForm_Click);
 		// 
-		// ButtonUpdateForm
-		// 
-		this->ButtonUpdateForm->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(198)),
-			static_cast<System::Int32>(static_cast<System::Byte>(179)), static_cast<System::Int32>(static_cast<System::Byte>(112)));
-		this->ButtonUpdateForm->Location = System::Drawing::Point(12, 365);
-		this->ButtonUpdateForm->Name = L"ButtonUpdateForm";
-		this->ButtonUpdateForm->Size = System::Drawing::Size(297, 53);
-		this->ButtonUpdateForm->TabIndex = 4;
-		this->ButtonUpdateForm->Text = L"Обновить";
-		this->ButtonUpdateForm->UseVisualStyleBackColor = false;
-		this->ButtonUpdateForm->Click += gcnew System::EventHandler(this, &FacultyForm::ButtonUpdateForm_Click);
-		// 
 		// PanelMainForm
 		// 
-		this->PanelMainForm->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(85)), static_cast<System::Int32>(static_cast<System::Byte>(85)),
-			static_cast<System::Int32>(static_cast<System::Byte>(86)));
+		this->PanelMainForm->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
+			static_cast<System::Int32>(static_cast<System::Byte>(87)));
 		this->PanelMainForm->Controls->Add(this->PanelButton);
 		this->PanelMainForm->Controls->Add(this->PanelStudenet);
 		this->PanelMainForm->Controls->Add(this->LabelPathPanel);
@@ -247,7 +224,7 @@ namespace StudentCardVelial {
 		this->PanelMainForm->Controls->Add(this->LabelNamePanel);
 		this->PanelMainForm->Controls->Add(this->TextBoxTitlePanel);
 		this->PanelMainForm->Controls->Add(this->LabelTitlePanel);
-		this->PanelMainForm->Location = System::Drawing::Point(333, 12);
+		this->PanelMainForm->Location = System::Drawing::Point(354, 39);
 		this->PanelMainForm->Name = L"PanelMainForm";
 		this->PanelMainForm->Size = System::Drawing::Size(589, 477);
 		this->PanelMainForm->TabIndex = 5;
@@ -258,53 +235,49 @@ namespace StudentCardVelial {
 		this->PanelButton->Controls->Add(this->ButtonCreatePanel);
 		this->PanelButton->Controls->Add(this->ButtonUpdatePanel);
 		this->PanelButton->Controls->Add(this->ButtonDeletePanel);
-		this->PanelButton->Controls->Add(this->ButtonUpdateListViewPanel);
-		this->PanelButton->Location = System::Drawing::Point(33, 414);
+		this->PanelButton->Location = System::Drawing::Point(33, 412);
 		this->PanelButton->Name = L"PanelButton";
-		this->PanelButton->Size = System::Drawing::Size(507, 40);
+		this->PanelButton->Size = System::Drawing::Size(320, 46);
 		this->PanelButton->TabIndex = 12;
 		// 
 		// ButtonCreatePanel
 		// 
+		this->ButtonCreatePanel->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(78)),
+			static_cast<System::Int32>(static_cast<System::Byte>(108)), static_cast<System::Int32>(static_cast<System::Byte>(164)));
+		this->ButtonCreatePanel->ForeColor = System::Drawing::Color::White;
 		this->ButtonCreatePanel->Location = System::Drawing::Point(4, 5);
 		this->ButtonCreatePanel->Name = L"ButtonCreatePanel";
-		this->ButtonCreatePanel->Size = System::Drawing::Size(87, 30);
+		this->ButtonCreatePanel->Size = System::Drawing::Size(100, 35);
 		this->ButtonCreatePanel->TabIndex = 5;
 		this->ButtonCreatePanel->Text = L"Добавить";
-		this->ButtonCreatePanel->UseVisualStyleBackColor = true;
+		this->ButtonCreatePanel->UseVisualStyleBackColor = false;
 		this->ButtonCreatePanel->Click += gcnew System::EventHandler(this, &FacultyForm::ButtonCreatePanel_Click);
 		// 
 		// ButtonUpdatePanel
 		// 
-		this->ButtonUpdatePanel->Location = System::Drawing::Point(118, 6);
+		this->ButtonUpdatePanel->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(78)),
+			static_cast<System::Int32>(static_cast<System::Byte>(108)), static_cast<System::Int32>(static_cast<System::Byte>(164)));
+		this->ButtonUpdatePanel->ForeColor = System::Drawing::Color::White;
+		this->ButtonUpdatePanel->Location = System::Drawing::Point(108, 5);
 		this->ButtonUpdatePanel->Name = L"ButtonUpdatePanel";
-		this->ButtonUpdatePanel->Size = System::Drawing::Size(87, 31);
+		this->ButtonUpdatePanel->Size = System::Drawing::Size(100, 35);
 		this->ButtonUpdatePanel->TabIndex = 6;
 		this->ButtonUpdatePanel->Text = L"Изменить";
-		this->ButtonUpdatePanel->UseVisualStyleBackColor = true;
+		this->ButtonUpdatePanel->UseVisualStyleBackColor = false;
 		this->ButtonUpdatePanel->Click += gcnew System::EventHandler(this, &FacultyForm::ButtonUpdatePanel_Click);
 		// 
 		// ButtonDeletePanel
 		// 
-		this->ButtonDeletePanel->Location = System::Drawing::Point(230, 6);
+		this->ButtonDeletePanel->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(237)),
+			static_cast<System::Int32>(static_cast<System::Byte>(225)), static_cast<System::Int32>(static_cast<System::Byte>(117)));
+		this->ButtonDeletePanel->ForeColor = System::Drawing::Color::Black;
+		this->ButtonDeletePanel->Location = System::Drawing::Point(214, 5);
 		this->ButtonDeletePanel->Name = L"ButtonDeletePanel";
-		this->ButtonDeletePanel->Size = System::Drawing::Size(87, 31);
+		this->ButtonDeletePanel->Size = System::Drawing::Size(100, 35);
 		this->ButtonDeletePanel->TabIndex = 7;
 		this->ButtonDeletePanel->Text = L"Удалить";
-		this->ButtonDeletePanel->UseVisualStyleBackColor = true;
+		this->ButtonDeletePanel->UseVisualStyleBackColor = false;
 		this->ButtonDeletePanel->Click += gcnew System::EventHandler(this, &FacultyForm::ButtonDeletePanel_Click);
-		// 
-		// ButtonUpdateListViewPanel
-		// 
-		this->ButtonUpdateListViewPanel->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)),
-			static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)));
-		this->ButtonUpdateListViewPanel->Location = System::Drawing::Point(406, 4);
-		this->ButtonUpdateListViewPanel->Name = L"ButtonUpdateListViewPanel";
-		this->ButtonUpdateListViewPanel->Size = System::Drawing::Size(88, 32);
-		this->ButtonUpdateListViewPanel->TabIndex = 8;
-		this->ButtonUpdateListViewPanel->Text = L"Reboot";
-		this->ButtonUpdateListViewPanel->UseVisualStyleBackColor = false;
-		this->ButtonUpdateListViewPanel->Click += gcnew System::EventHandler(this, &FacultyForm::ButtonUpdateListViewPanel_Click);
 		// 
 		// PanelStudenet
 		// 
@@ -355,7 +328,8 @@ namespace StudentCardVelial {
 		// LabelPathPanel
 		// 
 		this->LabelPathPanel->AutoSize = true;
-		this->LabelPathPanel->Location = System::Drawing::Point(40, 6);
+		this->LabelPathPanel->ForeColor = System::Drawing::SystemColors::Control;
+		this->LabelPathPanel->Location = System::Drawing::Point(40, 5);
 		this->LabelPathPanel->Name = L"LabelPathPanel";
 		this->LabelPathPanel->Size = System::Drawing::Size(0, 16);
 		this->LabelPathPanel->TabIndex = 10;
@@ -365,7 +339,7 @@ namespace StudentCardVelial {
 		this->LabelTextPathPanel->AutoSize = true;
 		this->LabelTextPathPanel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F));
 		this->LabelTextPathPanel->ForeColor = System::Drawing::SystemColors::Control;
-		this->LabelTextPathPanel->Location = System::Drawing::Point(3, 6);
+		this->LabelTextPathPanel->Location = System::Drawing::Point(3, 5);
 		this->LabelTextPathPanel->Name = L"LabelTextPathPanel";
 		this->LabelTextPathPanel->Size = System::Drawing::Size(45, 16);
 		this->LabelTextPathPanel->TabIndex = 9;
@@ -420,11 +394,12 @@ namespace StudentCardVelial {
 		// 
 		// ButtonCreateStudentBD
 		// 
-		this->ButtonCreateStudentBD->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(198)),
-			static_cast<System::Int32>(static_cast<System::Byte>(179)), static_cast<System::Int32>(static_cast<System::Byte>(112)));
-		this->ButtonCreateStudentBD->Location = System::Drawing::Point(12, 426);
+		this->ButtonCreateStudentBD->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(78)),
+			static_cast<System::Int32>(static_cast<System::Byte>(108)), static_cast<System::Int32>(static_cast<System::Byte>(164)));
+		this->ButtonCreateStudentBD->ForeColor = System::Drawing::Color::White;
+		this->ButtonCreateStudentBD->Location = System::Drawing::Point(12, 463);
 		this->ButtonCreateStudentBD->Name = L"ButtonCreateStudentBD";
-		this->ButtonCreateStudentBD->Size = System::Drawing::Size(297, 53);
+		this->ButtonCreateStudentBD->Size = System::Drawing::Size(325, 53);
 		this->ButtonCreateStudentBD->TabIndex = 6;
 		this->ButtonCreateStudentBD->Text = L"Добавить студента в БД";
 		this->ButtonCreateStudentBD->UseVisualStyleBackColor = false;
@@ -433,37 +408,39 @@ namespace StudentCardVelial {
 		// LabelTitleUniversity
 		// 
 		this->LabelTitleUniversity->BackColor = System::Drawing::Color::Transparent;
-		this->LabelTitleUniversity->Location = System::Drawing::Point(226, 482);
+		this->LabelTitleUniversity->Location = System::Drawing::Point(205, 534);
 		this->LabelTitleUniversity->Name = L"LabelTitleUniversity";
 		this->LabelTitleUniversity->Size = System::Drawing::Size(100, 23);
 		this->LabelTitleUniversity->TabIndex = 0;
 		// 
 		// ToolStripFaculty
 		// 
-		this->ToolStripFaculty->BackColor = System::Drawing::SystemColors::ControlDarkDark;
-		this->ToolStripFaculty->Dock = System::Windows::Forms::DockStyle::Bottom;
+		this->ToolStripFaculty->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
+			static_cast<System::Int32>(static_cast<System::Byte>(87)));
 		this->ToolStripFaculty->ImageScalingSize = System::Drawing::Size(20, 20);
 		this->ToolStripFaculty->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
 			this->ToolStripLabelTitle,
 				this->ToolStripLabelProfile
 		});
-		this->ToolStripFaculty->Location = System::Drawing::Point(0, 509);
+		this->ToolStripFaculty->Location = System::Drawing::Point(0, 0);
 		this->ToolStripFaculty->Name = L"ToolStripFaculty";
-		this->ToolStripFaculty->Size = System::Drawing::Size(934, 31);
+		this->ToolStripFaculty->Size = System::Drawing::Size(958, 25);
 		this->ToolStripFaculty->TabIndex = 7;
 		this->ToolStripFaculty->Text = L"toolStrip1";
 		// 
 		// ToolStripLabelTitle
 		// 
+		this->ToolStripLabelTitle->ForeColor = System::Drawing::SystemColors::Control;
 		this->ToolStripLabelTitle->Name = L"ToolStripLabelTitle";
-		this->ToolStripLabelTitle->Size = System::Drawing::Size(46, 28);
+		this->ToolStripLabelTitle->Size = System::Drawing::Size(46, 22);
 		this->ToolStripLabelTitle->Text = L"VGTU";
 		// 
 		// ToolStripLabelProfile
 		// 
 		this->ToolStripLabelProfile->Alignment = System::Windows::Forms::ToolStripItemAlignment::Right;
+		this->ToolStripLabelProfile->ForeColor = System::Drawing::SystemColors::Control;
 		this->ToolStripLabelProfile->Name = L"ToolStripLabelProfile";
-		this->ToolStripLabelProfile->Size = System::Drawing::Size(73, 28);
+		this->ToolStripLabelProfile->Size = System::Drawing::Size(73, 22);
 		this->ToolStripLabelProfile->Text = L"Профиль";
 		this->ToolStripLabelProfile->Click += gcnew System::EventHandler(this, &FacultyForm::ToolStripLabelProfile_Click);
 		// 
@@ -471,14 +448,13 @@ namespace StudentCardVelial {
 		// 
 		this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 		this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-		this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(51)), static_cast<System::Int32>(static_cast<System::Byte>(51)),
-			static_cast<System::Int32>(static_cast<System::Byte>(54)));
-		this->ClientSize = System::Drawing::Size(934, 540);
+		this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(42)), static_cast<System::Int32>(static_cast<System::Byte>(46)),
+			static_cast<System::Int32>(static_cast<System::Byte>(66)));
+		this->ClientSize = System::Drawing::Size(958, 528);
 		this->Controls->Add(this->ToolStripFaculty);
 		this->Controls->Add(this->LabelTitleUniversity);
 		this->Controls->Add(this->PanelMainForm);
 		this->Controls->Add(this->ButtonCreateStudentBD);
-		this->Controls->Add(this->ButtonUpdateForm);
 		this->Controls->Add(this->PanelFacultyButton);
 		this->Controls->Add(this->TreeViewFaculty);
 		this->Name = L"FacultyForm";
@@ -498,7 +474,6 @@ namespace StudentCardVelial {
 
 	}
 	private:
-		
 		//Переменные (Поля класса)
 		BaseData^ bd;
 		List<Faculty^>^ list;
@@ -510,7 +485,6 @@ namespace StudentCardVelial {
 		int UserID;
 		bool isAdmin;
 #pragma endregion
-
 	//Добавление нового факультета
 	private: System::Void ButtonCreateFacultyForm_Click(System::Object^ sender, System::EventArgs^ e) {
 		try {
@@ -635,10 +609,12 @@ namespace StudentCardVelial {
 	}
 	//Обновление ListView
 	private: System::Void ButtonUpdateListViewPanel_Click(System::Object^ sender, System::EventArgs^ e) {
+		
 		if(LevelTreeView == GroupLevel)
 			bd->Reload(list_groups, ListViewPanel, list[this->TreeViewFaculty->SelectedNode->Index]->TitleFaculty);
-		else if(LevelTreeView == StudentLevel)
+		else if (LevelTreeView == StudentLevel) {
 			bd->Reload(list_students, ListViewPanel, PathGroup[1]);
+		}
 		else MessageBox::Show("Решение: Выберите ветвь TreeView", "Ошибка", MessageBoxButtons::OK);
 	}
 	//Удалание Группы/Студента
@@ -665,6 +641,7 @@ namespace StudentCardVelial {
 			}
 			else if (LevelTreeView == StudentLevel) {
 				//Console::WriteLine(list_students[ListViewPanel->FocusedItem->Index]->ID);
+				list_students = bd->FillListViewStudent(PathGroup[1]);
 				list_students[ListViewPanel->FocusedItem->Index]->Entrant = 1;
 				list_students[ListViewPanel->FocusedItem->Index]->Title_Group = PathGroup[GroupLevel];
 				bd->Update(list_students[ListViewPanel->FocusedItem->Index]);
@@ -689,7 +666,7 @@ namespace StudentCardVelial {
 		//Включение Панели факультета
 		PanelMainForm->Visible = true;
 		//Определение пути/уровня
-		LabelPathPanel->Text = e->Node->FullPath;
+		LabelPathPanel->Text = e->Node->FullPath->Replace(" ", "");
 		LevelTreeView = e->Node->Level;
 
 		//Разбиение на уровни
@@ -739,7 +716,6 @@ namespace StudentCardVelial {
 			ListViewPanel->Columns->Add("Отчество", 120, HorizontalAlignment::Center);
 
 			list_students = gcnew List<Student^>();
-			list_students = bd->FillListViewStudent(PathGroup[1]);
 			bd->Reload(list_students, ListViewPanel, PathGroup[1]);
 		}
 		else {
@@ -754,8 +730,10 @@ namespace StudentCardVelial {
 	//Просмотр профиля студента
 	private: System::Void ListViewPanel_MouseDoubleClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 		//Console::WriteLine("{0}", ListViewPanel->FocusedItem->Index);
-		ViewStudentCard^ Student = gcnew ViewStudentCard(list_students[ListViewPanel->FocusedItem->Index]->ID);
-		Student->Show();
+		if (LevelTreeView == StudentLevel) {
+			ViewStudentCard^ Student = gcnew ViewStudentCard(list_students[ListViewPanel->FocusedItem->Index]->ID);
+			Student->Show();
+		}
 	}
 	//Обновление TreeView при активации
 	private: System::Void FacultyForm_Activated(System::Object^ sender, System::EventArgs^ e) {
@@ -788,6 +766,7 @@ namespace StudentCardVelial {
 			}
 		}
 	}
+	//Профиль
 	private: System::Void ToolStripLabelProfile_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (isAdmin) {
 			AdminPanel^ Admin = gcnew AdminPanel(UserID);
@@ -797,7 +776,6 @@ namespace StudentCardVelial {
 			ViewStudentCard^ Student = gcnew ViewStudentCard(UserID);
 			Student->Show();
 		}
-		
 	}
 };
 }

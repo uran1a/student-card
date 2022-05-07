@@ -15,7 +15,7 @@ namespace StudentCardVelial {
 	public ref class ListUsers : public System::Windows::Forms::Form
 	{
 	public:
-		ListUsers(void)
+		ListUsers(bool isAdmin): isAdmin(isAdmin)
 		{
 			InitializeComponent();
 
@@ -25,8 +25,17 @@ namespace StudentCardVelial {
 			listView1->Columns->Add("Пароль", 100, HorizontalAlignment::Center);
 
 			bd = gcnew BaseData();
-			//list_user = bd->FillListViewUsers();
-			//bd->Reload(list_user, listView1);
+			if (isAdmin) {
+				//list_admin = bd->();
+				//bd->Reload(list_user, listView1);
+				list_admin = bd->FillListViewAdmins();
+				bd->Reload(list_admin, listView1);
+			}
+			else {
+				list_user = bd->FillCheckedListBoxStudent(0);
+				bd->Reload(list_user, listView1);
+			}
+		
 		}
 
 	protected:
@@ -85,19 +94,33 @@ namespace StudentCardVelial {
 		}
 	private:
 		BaseData^ bd;
-		List<Admin^>^ list_user;
+		List<Admin^>^ list_admin;
+		List<Student^>^ list_user;
+		bool isAdmin;
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		/*String^ UserSelectedItem = listView1->FocusedItem->SubItems[1]->Text;
+		String^ UserSelectedItem = listView1->FocusedItem->SubItems[1]->Text;
 		Console::WriteLine("Название группы: {0}", UserSelectedItem);
 		bd = gcnew BaseData();
-		list_user = bd->FillListViewUsers();
-		for (size_t i = 0; i < list_user->Count; i++)
-		{
-			if(list_user[i]->Login == UserSelectedItem)
-				bd->Delete(list_user[i]->ID, listView1);
+		if (isAdmin) {
+			list_admin = bd->FillListViewAdmins();
+			for (size_t i = 0; i < list_admin->Count; i++)
+			{
+				if (list_admin[i]->Login == UserSelectedItem)
+					bd->Delete(list_admin[i]);
+			}
+			bd->Reload(list_admin, listView1);
 		}
-		bd->Reload(list_user, listView1);*/
+		else {
+			list_user = bd->FillCheckedListBoxStudent(0);
+			for (size_t i = 0; i < list_user->Count; i++)
+			{
+				if (list_user[i]->Login == UserSelectedItem)
+					bd->Delete(list_user[i]);
+			}
+			bd->Reload(list_user, listView1);
+		}
+		
 	}
 	};
 }

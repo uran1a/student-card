@@ -25,7 +25,7 @@ private:
 	int Number_Kurc_;
 	String^ Phone_Number_;
 	String^ Mail_;
-	int Otcenka_;
+	double Otcenka_;
 	String^ Login_;
 	String^ Password_;
 
@@ -168,11 +168,11 @@ public:
 			Mail_ = value;
 		}
 	}
-	property int Otcenka {
-		int get() {
+	property double Otcenka {
+		double get() {
 			return Otcenka_;
 		}
-		void set(int value) {
+		void set(double value) {
 			Otcenka_ = value;
 		}
 	}
