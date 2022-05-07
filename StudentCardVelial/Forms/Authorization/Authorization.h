@@ -21,9 +21,10 @@ namespace StudentCardVelial {
 		Autorization(void)
 		{
 			InitializeComponent();
-			TextBoxLogin->Focus();
-			this->TabControlAuthorization->Size = System::Drawing::Size(165, 192);
-			this->Size = System::Drawing::Size(200, 255);
+			this->panel1->Size = System::Drawing::Size(366, 337);
+		
+			this->Size = System::Drawing::Size(417, 453);
+			this->TabControlAuthorization->Size = System::Drawing::Size(381, 378);
 		}
 
 	protected:
@@ -92,24 +93,26 @@ namespace StudentCardVelial {
 			this->TabControlAuthorization->Location = System::Drawing::Point(12, 12);
 			this->TabControlAuthorization->Name = L"TabControlAuthorization";
 			this->TabControlAuthorization->SelectedIndex = 0;
-			this->TabControlAuthorization->Size = System::Drawing::Size(443, 258);
+			this->TabControlAuthorization->Size = System::Drawing::Size(578, 378);
 			this->TabControlAuthorization->TabIndex = 0;
 			// 
 			// TabPageAuthorization
 			// 
-			this->TabPageAuthorization->BackColor = System::Drawing::Color::LightGray;
+			this->TabPageAuthorization->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(42)),
+				static_cast<System::Int32>(static_cast<System::Byte>(46)), static_cast<System::Int32>(static_cast<System::Byte>(66)));
 			this->TabPageAuthorization->Controls->Add(this->panel1);
 			this->TabPageAuthorization->Controls->Add(this->PanelAdmin);
 			this->TabPageAuthorization->Location = System::Drawing::Point(4, 25);
 			this->TabPageAuthorization->Name = L"TabPageAuthorization";
 			this->TabPageAuthorization->Padding = System::Windows::Forms::Padding(3);
-			this->TabPageAuthorization->Size = System::Drawing::Size(435, 229);
+			this->TabPageAuthorization->Size = System::Drawing::Size(570, 349);
 			this->TabPageAuthorization->TabIndex = 0;
 			this->TabPageAuthorization->Text = L"Авторизация";
 			// 
 			// panel1
 			// 
-			this->panel1->BackColor = System::Drawing::Color::Transparent;
+			this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
+				static_cast<System::Int32>(static_cast<System::Byte>(87)));
 			this->panel1->Controls->Add(this->TextBoxLogin);
 			this->panel1->Controls->Add(this->label1);
 			this->panel1->Controls->Add(this->buttonAuthorization);
@@ -117,13 +120,13 @@ namespace StudentCardVelial {
 			this->panel1->Controls->Add(this->TextBoxPassword);
 			this->panel1->Location = System::Drawing::Point(6, 6);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(198, 193);
+			this->panel1->Size = System::Drawing::Size(366, 337);
 			this->panel1->TabIndex = 7;
 			// 
 			// TextBoxLogin
 			// 
 			this->TextBoxLogin->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.8F));
-			this->TextBoxLogin->Location = System::Drawing::Point(17, 34);
+			this->TextBoxLogin->Location = System::Drawing::Point(149, 136);
 			this->TextBoxLogin->Name = L"TextBoxLogin";
 			this->TextBoxLogin->Size = System::Drawing::Size(166, 24);
 			this->TextBoxLogin->TabIndex = 1;
@@ -131,8 +134,10 @@ namespace StudentCardVelial {
 			// label1
 			// 
 			this->label1->AutoSize = true;
+			this->label1->BackColor = System::Drawing::Color::Transparent;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->label1->Location = System::Drawing::Point(19, 9);
+			this->label1->ForeColor = System::Drawing::Color::White;
+			this->label1->Location = System::Drawing::Point(151, 111);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(65, 22);
 			this->label1->TabIndex = 0;
@@ -140,8 +145,9 @@ namespace StudentCardVelial {
 			// 
 			// buttonAuthorization
 			// 
-			this->buttonAuthorization->BackColor = System::Drawing::Color::Transparent;
-			this->buttonAuthorization->Location = System::Drawing::Point(48, 144);
+			this->buttonAuthorization->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(237)),
+				static_cast<System::Int32>(static_cast<System::Byte>(225)), static_cast<System::Int32>(static_cast<System::Byte>(117)));
+			this->buttonAuthorization->Location = System::Drawing::Point(180, 246);
 			this->buttonAuthorization->Name = L"buttonAuthorization";
 			this->buttonAuthorization->Size = System::Drawing::Size(105, 36);
 			this->buttonAuthorization->TabIndex = 4;
@@ -153,7 +159,8 @@ namespace StudentCardVelial {
 			// 
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->label2->Location = System::Drawing::Point(20, 79);
+			this->label2->ForeColor = System::Drawing::Color::White;
+			this->label2->Location = System::Drawing::Point(152, 181);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(77, 22);
 			this->label2->TabIndex = 2;
@@ -162,7 +169,7 @@ namespace StudentCardVelial {
 			// TextBoxPassword
 			// 
 			this->TextBoxPassword->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.8F));
-			this->TextBoxPassword->Location = System::Drawing::Point(16, 104);
+			this->TextBoxPassword->Location = System::Drawing::Point(148, 206);
 			this->TextBoxPassword->Name = L"TextBoxPassword";
 			this->TextBoxPassword->PasswordChar = '*';
 			this->TextBoxPassword->Size = System::Drawing::Size(167, 24);
@@ -170,11 +177,12 @@ namespace StudentCardVelial {
 			// 
 			// PanelAdmin
 			// 
-			this->PanelAdmin->BackColor = System::Drawing::Color::Transparent;
+			this->PanelAdmin->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
+				static_cast<System::Int32>(static_cast<System::Byte>(87)));
 			this->PanelAdmin->Controls->Add(this->ButtonFacultyForm);
 			this->PanelAdmin->Controls->Add(this->label5);
 			this->PanelAdmin->Controls->Add(this->ButtonListUsers);
-			this->PanelAdmin->Location = System::Drawing::Point(210, 6);
+			this->PanelAdmin->Location = System::Drawing::Point(378, 6);
 			this->PanelAdmin->Name = L"PanelAdmin";
 			this->PanelAdmin->Size = System::Drawing::Size(186, 193);
 			this->PanelAdmin->TabIndex = 6;
@@ -182,7 +190,8 @@ namespace StudentCardVelial {
 			// 
 			// ButtonFacultyForm
 			// 
-			this->ButtonFacultyForm->BackColor = System::Drawing::Color::Transparent;
+			this->ButtonFacultyForm->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(237)),
+				static_cast<System::Int32>(static_cast<System::Byte>(225)), static_cast<System::Int32>(static_cast<System::Byte>(117)));
 			this->ButtonFacultyForm->Location = System::Drawing::Point(34, 116);
 			this->ButtonFacultyForm->Name = L"ButtonFacultyForm";
 			this->ButtonFacultyForm->Size = System::Drawing::Size(117, 44);
@@ -196,6 +205,7 @@ namespace StudentCardVelial {
 			this->label5->AutoSize = true;
 			this->label5->BackColor = System::Drawing::Color::Transparent;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
+			this->label5->ForeColor = System::Drawing::Color::White;
 			this->label5->Location = System::Drawing::Point(20, 9);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(143, 22);
@@ -204,7 +214,9 @@ namespace StudentCardVelial {
 			// 
 			// ButtonListUsers
 			// 
-			this->ButtonListUsers->BackColor = System::Drawing::Color::Transparent;
+			this->ButtonListUsers->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(78)), static_cast<System::Int32>(static_cast<System::Byte>(108)),
+				static_cast<System::Int32>(static_cast<System::Byte>(164)));
+			this->ButtonListUsers->ForeColor = System::Drawing::Color::White;
 			this->ButtonListUsers->Location = System::Drawing::Point(34, 47);
 			this->ButtonListUsers->Name = L"ButtonListUsers";
 			this->ButtonListUsers->Size = System::Drawing::Size(117, 49);
@@ -220,7 +232,7 @@ namespace StudentCardVelial {
 			this->tabPageRegistration->Location = System::Drawing::Point(4, 25);
 			this->tabPageRegistration->Name = L"tabPageRegistration";
 			this->tabPageRegistration->Padding = System::Windows::Forms::Padding(3);
-			this->tabPageRegistration->Size = System::Drawing::Size(435, 229);
+			this->tabPageRegistration->Size = System::Drawing::Size(570, 349);
 			this->tabPageRegistration->TabIndex = 1;
 			this->tabPageRegistration->Text = L"Регистрация";
 			// 
@@ -288,8 +300,9 @@ namespace StudentCardVelial {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->ClientSize = System::Drawing::Size(468, 283);
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(42)), static_cast<System::Int32>(static_cast<System::Byte>(46)),
+				static_cast<System::Int32>(static_cast<System::Byte>(66)));
+			this->ClientSize = System::Drawing::Size(600, 402);
 			this->Controls->Add(this->TabControlAuthorization);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::Fixed3D;
 			this->MinimizeBox = false;
@@ -314,29 +327,49 @@ namespace StudentCardVelial {
 			int ID = 0;
 #pragma endregion
 	private: System::Void buttonAutorization_Click(System::Object^ sender, System::EventArgs^ e) {
-		bd = gcnew BaseData();
-		StaticUser = bd->SignOn(ID, TextBoxLogin->Text, TextBoxPassword->Text);
-		TextBoxLogin->Clear();
-		TextBoxPassword->Clear();
-		TextBoxLogin->Focus();
+		try {
+			//Проверка!
+ 			if (String::IsNullOrEmpty(TextBoxLogin->Text))
+			{
+				throw gcnew Exception("Введите логин!");
+			}
+			else if (String::IsNullOrEmpty(TextBoxPassword->Text))
+			{
+				throw gcnew Exception("Введите пароль!");
+			}
 
-		if (StaticUser == User) {
-			//переход на UserForm
-			MessageBox::Show("Верный логин и пароль!");
-			Console::WriteLine("ID пользователя: {0}", ID);
+			bd = gcnew BaseData();
+			StaticUser = bd->SignOn(ID, TextBoxLogin->Text, TextBoxPassword->Text);
+			TextBoxLogin->Clear();
+			TextBoxPassword->Clear();
+			TextBoxLogin->Focus();
 
-			FacultyForm^ form = gcnew FacultyForm(ID, false);
-			form->Show();
+			if (StaticUser == User) {
+				//переход на UserForm
+				MessageBox::Show("Верный логин и пароль!");
+				Console::WriteLine("ID пользователя: {0}", ID);
+
+				FacultyForm^ form = gcnew FacultyForm(ID, false);
+				form->Show();
+			}
+			else if (StaticUser == Administrator) {
+				MessageBox::Show("Ты админ!");
+				//this->TabControlAuthorization->Size = System::Drawing::Size(415, 275);
+				this->TabControlAuthorization->Size = System::Drawing::Size(528, 378);
+
+				this->PanelAdmin->Location = System::Drawing::Point(375, 6);
+				this->PanelAdmin->Visible = true;
+				//
+
+				this->Size = System::Drawing::Size(567, 453);
+			}
+			else if (StaticUser == NoneFind) {
+				MessageBox::Show("Неверный логин или пароль!");
+			}
 		}
-		else if (StaticUser == Administrator) {
-			MessageBox::Show("Ты админ!");
-			this->TabControlAuthorization->Size = System::Drawing::Size(415, 275);
-			this->PanelAdmin->Visible = true;
-			this->TabControlAuthorization->Size = System::Drawing::Size(311, 192);
-			this->Size = System::Drawing::Size(350, 255);
-		}
-		else if (StaticUser == NoneFind) {
-			MessageBox::Show("Неверный логин или пароль!");
+		catch (Exception^ e) {
+			//Ошибка
+			MessageBox::Show("Решение: " + Convert::ToString(e->Message), "Ошибка", MessageBoxButtons::OK);
 		}
 	}
 	private: System::Void ButtonCreateAccount_Click(System::Object^ sender, System::EventArgs^ e) {

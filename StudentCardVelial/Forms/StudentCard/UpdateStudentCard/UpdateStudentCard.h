@@ -19,7 +19,7 @@ namespace StudentCardVelial {
 			InitializeComponent();
 			bd = gcnew BaseData();
 		
-			TextBoxName->Text = Convert::ToString(SelectedStudent->Name + " " + SelectedStudent->Surname + " " + SelectedStudent->Middlename);
+			TextBoxFIO->Text = Convert::ToString(SelectedStudent->Name + " " + SelectedStudent->Surname + " " + SelectedStudent->Middlename);
 			//ButtonStatus
 			//Otcekna
 			TextBoxOtcenka->Text = Convert::ToString(SelectedStudent->Otcenka);
@@ -50,19 +50,16 @@ namespace StudentCardVelial {
 	private: System::Windows::Forms::Label^ label16;
 	private: System::Windows::Forms::Label^ label14;
 	private: System::Windows::Forms::Label^ label12;
-
-
 	private: System::Windows::Forms::Label^ LabelBirthdayStudent;
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ LabelNameStudent;
 	private: System::Windows::Forms::PictureBox^ PictureBoxPhotoStudent;
-	private: System::Windows::Forms::TextBox^ TextBoxName;
-	private: System::Windows::Forms::TextBox^ TextBoxGroup;
+	private: System::Windows::Forms::TextBox^ TextBoxFIO;
 
+	private: System::Windows::Forms::TextBox^ TextBoxGroup;
 	private: System::Windows::Forms::TextBox^ TextBoxOtcenka;
 	private: System::Windows::Forms::TextBox^ TextBoxBirthday;
-
 	private: System::Windows::Forms::TextBox^ TextBoxPhoneNumber;
 	private: System::Windows::Forms::TextBox^ TextBoxStipendiya;
 	private: System::Windows::Forms::TextBox^ TextBoxMail;
@@ -89,7 +86,7 @@ namespace StudentCardVelial {
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->LabelNameStudent = (gcnew System::Windows::Forms::Label());
 			this->PictureBoxPhotoStudent = (gcnew System::Windows::Forms::PictureBox());
-			this->TextBoxName = (gcnew System::Windows::Forms::TextBox());
+			this->TextBoxFIO = (gcnew System::Windows::Forms::TextBox());
 			this->TextBoxGroup = (gcnew System::Windows::Forms::TextBox());
 			this->TextBoxOtcenka = (gcnew System::Windows::Forms::TextBox());
 			this->TextBoxBirthday = (gcnew System::Windows::Forms::TextBox());
@@ -235,13 +232,13 @@ namespace StudentCardVelial {
 			this->PictureBoxPhotoStudent->TabStop = false;
 			this->PictureBoxPhotoStudent->Click += gcnew System::EventHandler(this, &UpdateStudentCard::PictureBoxPhotoStudent_Click);
 			// 
-			// TextBoxName
+			// TextBoxFIO
 			// 
-			this->TextBoxName->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->TextBoxName->Location = System::Drawing::Point(218, 12);
-			this->TextBoxName->Name = L"TextBoxName";
-			this->TextBoxName->Size = System::Drawing::Size(406, 28);
-			this->TextBoxName->TabIndex = 52;
+			this->TextBoxFIO->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
+			this->TextBoxFIO->Location = System::Drawing::Point(218, 12);
+			this->TextBoxFIO->Name = L"TextBoxFIO";
+			this->TextBoxFIO->Size = System::Drawing::Size(406, 28);
+			this->TextBoxFIO->TabIndex = 1;
 			// 
 			// TextBoxGroup
 			// 
@@ -249,7 +246,7 @@ namespace StudentCardVelial {
 			this->TextBoxGroup->Location = System::Drawing::Point(440, 75);
 			this->TextBoxGroup->Name = L"TextBoxGroup";
 			this->TextBoxGroup->Size = System::Drawing::Size(143, 24);
-			this->TextBoxGroup->TabIndex = 54;
+			this->TextBoxGroup->TabIndex = 4;
 			// 
 			// TextBoxOtcenka
 			// 
@@ -257,7 +254,7 @@ namespace StudentCardVelial {
 			this->TextBoxOtcenka->Location = System::Drawing::Point(307, 45);
 			this->TextBoxOtcenka->Name = L"TextBoxOtcenka";
 			this->TextBoxOtcenka->Size = System::Drawing::Size(49, 24);
-			this->TextBoxOtcenka->TabIndex = 56;
+			this->TextBoxOtcenka->TabIndex = 2;
 			// 
 			// TextBoxBirthday
 			// 
@@ -265,7 +262,7 @@ namespace StudentCardVelial {
 			this->TextBoxBirthday->Location = System::Drawing::Point(524, 45);
 			this->TextBoxBirthday->Name = L"TextBoxBirthday";
 			this->TextBoxBirthday->Size = System::Drawing::Size(100, 24);
-			this->TextBoxBirthday->TabIndex = 57;
+			this->TextBoxBirthday->TabIndex = 3;
 			// 
 			// TextBoxPhoneNumber
 			// 
@@ -273,7 +270,7 @@ namespace StudentCardVelial {
 			this->TextBoxPhoneNumber->Location = System::Drawing::Point(440, 225);
 			this->TextBoxPhoneNumber->Name = L"TextBoxPhoneNumber";
 			this->TextBoxPhoneNumber->Size = System::Drawing::Size(150, 24);
-			this->TextBoxPhoneNumber->TabIndex = 59;
+			this->TextBoxPhoneNumber->TabIndex = 9;
 			// 
 			// TextBoxStipendiya
 			// 
@@ -281,7 +278,7 @@ namespace StudentCardVelial {
 			this->TextBoxStipendiya->Location = System::Drawing::Point(440, 195);
 			this->TextBoxStipendiya->Name = L"TextBoxStipendiya";
 			this->TextBoxStipendiya->Size = System::Drawing::Size(150, 24);
-			this->TextBoxStipendiya->TabIndex = 60;
+			this->TextBoxStipendiya->TabIndex = 8;
 			// 
 			// TextBoxMail
 			// 
@@ -289,7 +286,7 @@ namespace StudentCardVelial {
 			this->TextBoxMail->Location = System::Drawing::Point(440, 255);
 			this->TextBoxMail->Name = L"TextBoxMail";
 			this->TextBoxMail->Size = System::Drawing::Size(150, 24);
-			this->TextBoxMail->TabIndex = 61;
+			this->TextBoxMail->TabIndex = 10;
 			// 
 			// TextBoxPointEGE
 			// 
@@ -297,7 +294,7 @@ namespace StudentCardVelial {
 			this->TextBoxPointEGE->Location = System::Drawing::Point(440, 165);
 			this->TextBoxPointEGE->Name = L"TextBoxPointEGE";
 			this->TextBoxPointEGE->Size = System::Drawing::Size(100, 24);
-			this->TextBoxPointEGE->TabIndex = 64;
+			this->TextBoxPointEGE->TabIndex = 7;
 			// 
 			// TextBoxEducationalForm
 			// 
@@ -305,7 +302,7 @@ namespace StudentCardVelial {
 			this->TextBoxEducationalForm->Location = System::Drawing::Point(440, 105);
 			this->TextBoxEducationalForm->Name = L"TextBoxEducationalForm";
 			this->TextBoxEducationalForm->Size = System::Drawing::Size(100, 24);
-			this->TextBoxEducationalForm->TabIndex = 63;
+			this->TextBoxEducationalForm->TabIndex = 5;
 			// 
 			// TextBoxYearEnrollment
 			// 
@@ -313,17 +310,20 @@ namespace StudentCardVelial {
 			this->TextBoxYearEnrollment->Location = System::Drawing::Point(440, 135);
 			this->TextBoxYearEnrollment->Name = L"TextBoxYearEnrollment";
 			this->TextBoxYearEnrollment->Size = System::Drawing::Size(100, 24);
-			this->TextBoxYearEnrollment->TabIndex = 62;
+			this->TextBoxYearEnrollment->TabIndex = 6;
 			// 
 			// buttonUpdateStudentCard
 			// 
+			this->buttonUpdateStudentCard->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(78)),
+				static_cast<System::Int32>(static_cast<System::Byte>(108)), static_cast<System::Int32>(static_cast<System::Byte>(164)));
 			this->buttonUpdateStudentCard->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
+			this->buttonUpdateStudentCard->ForeColor = System::Drawing::SystemColors::Control;
 			this->buttonUpdateStudentCard->Location = System::Drawing::Point(47, 255);
 			this->buttonUpdateStudentCard->Name = L"buttonUpdateStudentCard";
 			this->buttonUpdateStudentCard->Size = System::Drawing::Size(129, 44);
-			this->buttonUpdateStudentCard->TabIndex = 65;
+			this->buttonUpdateStudentCard->TabIndex = 12;
 			this->buttonUpdateStudentCard->Text = L"Изменить";
-			this->buttonUpdateStudentCard->UseVisualStyleBackColor = true;
+			this->buttonUpdateStudentCard->UseVisualStyleBackColor = false;
 			this->buttonUpdateStudentCard->Click += gcnew System::EventHandler(this, &UpdateStudentCard::buttonUpdateStudentCard_Click);
 			// 
 			// openFileDialog1
@@ -335,13 +335,14 @@ namespace StudentCardVelial {
 			this->TextBoxPhotoStudent->Location = System::Drawing::Point(12, 225);
 			this->TextBoxPhotoStudent->Name = L"TextBoxPhotoStudent";
 			this->TextBoxPhotoStudent->Size = System::Drawing::Size(200, 22);
-			this->TextBoxPhotoStudent->TabIndex = 66;
+			this->TextBoxPhotoStudent->TabIndex = 11;
 			// 
 			// UpdateStudentCard
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
+				static_cast<System::Int32>(static_cast<System::Byte>(87)));
 			this->ClientSize = System::Drawing::Size(638, 307);
 			this->Controls->Add(this->TextBoxPhotoStudent);
 			this->Controls->Add(this->buttonUpdateStudentCard);
@@ -354,7 +355,7 @@ namespace StudentCardVelial {
 			this->Controls->Add(this->TextBoxBirthday);
 			this->Controls->Add(this->TextBoxOtcenka);
 			this->Controls->Add(this->TextBoxGroup);
-			this->Controls->Add(this->TextBoxName);
+			this->Controls->Add(this->TextBoxFIO);
 			this->Controls->Add(this->label20);
 			this->Controls->Add(this->label22);
 			this->Controls->Add(this->label24);
@@ -367,6 +368,8 @@ namespace StudentCardVelial {
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->LabelNameStudent);
 			this->Controls->Add(this->PictureBoxPhotoStudent);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::Fixed3D;
+			this->MinimizeBox = false;
 			this->Name = L"UpdateStudentCard";
 			this->Text = L"UpdateStudentCard";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->PictureBoxPhotoStudent))->EndInit();
@@ -389,30 +392,75 @@ namespace StudentCardVelial {
 		}
 	}
 	private: System::Void buttonUpdateStudentCard_Click(System::Object^ sender, System::EventArgs^ e) {
-		//проверка empty
-		bd = gcnew BaseData();
-		Student^ UpdatedStudent = gcnew Student();
-		array<String^>^ FIO = TextBoxName->Text->Split(' ');
-		
-		UpdatedStudent->Name = FIO[0];
-		UpdatedStudent->Surname = FIO[1];
-		UpdatedStudent->Middlename = FIO[2];
-		UpdatedStudent->Otcenka = 4.0;
-		//UpdatedStudent->Otcenka = Convert::ToDouble(TextBoxOtcenka->Text);
-		//Console::WriteLine(Convert::ToDouble(TextBoxOtcenka->Text));
-		UpdatedStudent->Birthday = TextBoxBirthday->Text;
-		UpdatedStudent->Photo_Student = TextBoxPhotoStudent->Text;
-		UpdatedStudent->Title_Group = TextBoxGroup->Text;
-		UpdatedStudent->Educational_Form =TextBoxEducationalForm->Text;
-		UpdatedStudent->Year_Enrollment =TextBoxYearEnrollment->Text;
-		UpdatedStudent->Point_EGE = Convert::ToInt32(TextBoxPointEGE->Text);
-		UpdatedStudent->Stipendiya = Convert::ToInt32(TextBoxStipendiya->Text);
-		UpdatedStudent->Phone_Number = TextBoxPhoneNumber->Text;
-		UpdatedStudent->Mail = TextBoxMail->Text;
+		try {
+			//Проверка!
+			if (String::IsNullOrEmpty(TextBoxFIO->Text)) {
+				throw gcnew Exception("Заполните поле \"ФИО студент\"!");
+			}
+			else if (String::IsNullOrEmpty(TextBoxOtcenka->Text)) {
+				throw gcnew Exception("Заполните поле \"Оценка\"!");
+			}
+			else if (String::IsNullOrEmpty(TextBoxBirthday->Text)) {
+				throw gcnew Exception("Заполните поле \"Дата рождения\"!");
+			}
+			else if (String::IsNullOrEmpty(TextBoxGroup->Text)) {
+				throw gcnew Exception("Заполните поле \"Название группы\"!");
+			}
+			else if (String::IsNullOrEmpty(TextBoxEducationalForm->Text)) {
+				throw gcnew Exception("Заполните поле \"Форма обучения\"!");
+			}
+			else if (String::IsNullOrEmpty(TextBoxYearEnrollment->Text)) {
+				throw gcnew Exception("Заполните поле \"Год поступления\"!");
+			}
+			else if (String::IsNullOrEmpty(TextBoxPointEGE->Text)) {
+				throw gcnew Exception("Заполните поле \"Баллы ЕГЭ\"!");
+			}
+			else if (String::IsNullOrEmpty(TextBoxStipendiya->Text)) {
+				throw gcnew Exception("Заполните поле \"Стипендия\"!");
+			}
+			else if (String::IsNullOrEmpty(TextBoxPhoneNumber->Text)) {
+				throw gcnew Exception("Заполните поле \"Моб. телефон\"!");
+			}
+			else if (String::IsNullOrEmpty(TextBoxMail->Text)) {
+				throw gcnew Exception("Заполните поле \"Элект. почта\"!");
+			}
+			else if (String::IsNullOrEmpty(TextBoxPhotoStudent->Text)) {
+				throw gcnew Exception("Заполните поле \"Фото студента\"!");
+			}
+			//проверка empty
+			bd = gcnew BaseData();
+			Student^ UpdatedStudent = gcnew Student();
+			array<String^>^ FIO = TextBoxFIO->Text->Split(' ');
 
-		bd->Update(UpdatedStudent, SelectedStudent->ID);
-		//bd->Reload(list_students, ListViewPanel, PathGroup[1]);
-		this->Close();
+			UpdatedStudent->Name = FIO[0];
+			UpdatedStudent->Surname = FIO[1];
+			UpdatedStudent->Middlename = FIO[2];
+			//UpdatedStudent->Otcenka = 4.0;
+			UpdatedStudent->Otcenka = Convert::ToDouble(TextBoxOtcenka->Text->Replace(',','.'));
+			Console::WriteLine(UpdatedStudent->Otcenka);
+			UpdatedStudent->Birthday = TextBoxBirthday->Text;
+			UpdatedStudent->Photo_Student = TextBoxPhotoStudent->Text;
+			UpdatedStudent->Title_Group = TextBoxGroup->Text;
+			UpdatedStudent->Educational_Form = TextBoxEducationalForm->Text;
+			UpdatedStudent->Year_Enrollment = TextBoxYearEnrollment->Text;
+			UpdatedStudent->Point_EGE = Convert::ToInt32(TextBoxPointEGE->Text);
+			UpdatedStudent->Stipendiya = Convert::ToInt32(TextBoxStipendiya->Text);
+			UpdatedStudent->Phone_Number = TextBoxPhoneNumber->Text;
+			UpdatedStudent->Mail = TextBoxMail->Text;
+
+			if (bd->Checking(UpdatedStudent)) {
+				TextBoxFIO->Text = Convert::ToString(SelectedStudent->Name + " " + SelectedStudent->Surname + " " + SelectedStudent->Middlename);
+				TextBoxFIO->Focus();
+				throw gcnew Exception("Измените ФИО студента. Нынешнее ФИО совпадает с уже имеющимися!");
+			}
+
+			bd->Update(UpdatedStudent, SelectedStudent->ID);
+			this->Close();
+		}
+		catch (Exception^ e) {
+			//Ошибка
+			MessageBox::Show("Решение: " + Convert::ToString(e->Message), "Ошибка", MessageBoxButtons::OK);
+		}
 	}
 };
 }

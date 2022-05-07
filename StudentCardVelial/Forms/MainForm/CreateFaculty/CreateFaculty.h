@@ -48,7 +48,8 @@ namespace StudentCardVelial {
 			// 
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->label1->Location = System::Drawing::Point(12, 15);
+			this->label1->ForeColor = System::Drawing::SystemColors::Control;
+			this->label1->Location = System::Drawing::Point(44, 34);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(334, 22);
 			this->label1->TabIndex = 0;
@@ -56,7 +57,7 @@ namespace StudentCardVelial {
 			// 
 			// TextBoxCreateFaculty
 			// 
-			this->TextBoxCreateFaculty->Location = System::Drawing::Point(67, 40);
+			this->TextBoxCreateFaculty->Location = System::Drawing::Point(99, 59);
 			this->TextBoxCreateFaculty->Name = L"TextBoxCreateFaculty";
 			this->TextBoxCreateFaculty->Size = System::Drawing::Size(219, 22);
 			this->TextBoxCreateFaculty->TabIndex = 1;
@@ -64,7 +65,8 @@ namespace StudentCardVelial {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(22, 65);
+			this->label4->ForeColor = System::Drawing::SystemColors::Control;
+			this->label4->Location = System::Drawing::Point(54, 84);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(314, 32);
 			this->label4->TabIndex = 8;
@@ -73,19 +75,23 @@ namespace StudentCardVelial {
 			// 
 			// ButtonCreateFaculty
 			// 
-			this->ButtonCreateFaculty->Location = System::Drawing::Point(130, 161);
+			this->ButtonCreateFaculty->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(78)),
+				static_cast<System::Int32>(static_cast<System::Byte>(108)), static_cast<System::Int32>(static_cast<System::Byte>(164)));
+			this->ButtonCreateFaculty->ForeColor = System::Drawing::SystemColors::Control;
+			this->ButtonCreateFaculty->Location = System::Drawing::Point(152, 180);
 			this->ButtonCreateFaculty->Name = L"ButtonCreateFaculty";
-			this->ButtonCreateFaculty->Size = System::Drawing::Size(102, 33);
+			this->ButtonCreateFaculty->Size = System::Drawing::Size(120, 41);
 			this->ButtonCreateFaculty->TabIndex = 3;
 			this->ButtonCreateFaculty->Text = L"Добавить";
-			this->ButtonCreateFaculty->UseVisualStyleBackColor = true;
+			this->ButtonCreateFaculty->UseVisualStyleBackColor = false;
 			this->ButtonCreateFaculty->Click += gcnew System::EventHandler(this, &CreateFaculty::ButtonCreateFaculty_Click);
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->label2->Location = System::Drawing::Point(78, 108);
+			this->label2->ForeColor = System::Drawing::SystemColors::Control;
+			this->label2->Location = System::Drawing::Point(110, 127);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(198, 22);
 			this->label2->TabIndex = 10;
@@ -93,7 +99,7 @@ namespace StudentCardVelial {
 			// 
 			// TextBoxNameDekan
 			// 
-			this->TextBoxNameDekan->Location = System::Drawing::Point(67, 133);
+			this->TextBoxNameDekan->Location = System::Drawing::Point(99, 152);
 			this->TextBoxNameDekan->Name = L"TextBoxNameDekan";
 			this->TextBoxNameDekan->Size = System::Drawing::Size(219, 22);
 			this->TextBoxNameDekan->TabIndex = 2;
@@ -102,14 +108,17 @@ namespace StudentCardVelial {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->ClientSize = System::Drawing::Size(369, 206);
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
+				static_cast<System::Int32>(static_cast<System::Byte>(87)));
+			this->ClientSize = System::Drawing::Size(429, 242);
 			this->Controls->Add(this->TextBoxNameDekan);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->ButtonCreateFaculty);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->TextBoxCreateFaculty);
 			this->Controls->Add(this->label1);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::Fixed3D;
+			this->MinimizeBox = false;
 			this->Name = L"CreateFaculty";
 			this->Text = L"CreateFaculty";
 			this->ResumeLayout(false);
@@ -122,18 +131,26 @@ namespace StudentCardVelial {
 
 		try {
 			//Проверка!
-			if (TextBoxCreateFaculty->Text == "") {
-				throw gcnew Exception("Заполните поле Факультет!");
+			if (String::IsNullOrEmpty(TextBoxCreateFaculty->Text)) {
+				throw gcnew Exception("Заполните поле \"Факультет\"!");
 			}
-			else if (TextBoxNameDekan->Text == "") {
-				throw gcnew Exception("Заполните поле Декан!");
+			else if (String::IsNullOrEmpty(TextBoxNameDekan->Text)) {
+				throw gcnew Exception("Заполните поле \"Декан\"!");
 			}
 			//Реализация!
 			BaseData^ bd = gcnew BaseData();
-			TextBoxCreateFaculty->Focus();
-			bd->Insert(TextBoxCreateFaculty->Text, TextBoxNameDekan->Text);
+			Faculty^ f = gcnew Faculty();
+			f->TitleFaculty = TextBoxCreateFaculty->Text;
+			f->NameDekan = TextBoxNameDekan->Text;
+			if (bd->Checking(f)) {
+				TextBoxCreateFaculty->Clear();
+				TextBoxCreateFaculty->Focus();
+				throw gcnew Exception("Измените название факультета. Нынешнее название совпадает с уже имеющимися!");
+			}
+			bd->Insert(f);
 			TextBoxCreateFaculty->Clear();
 			TextBoxNameDekan->Clear();
+			TextBoxCreateFaculty->Focus();
 			this->Close();
 		}
 		catch (Exception^ e) {

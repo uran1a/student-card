@@ -110,19 +110,23 @@ namespace StudentCardVelial {
 			// 
 			// ButtonUpdatePanel
 			// 
+			this->ButtonUpdatePanel->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(78)),
+				static_cast<System::Int32>(static_cast<System::Byte>(108)), static_cast<System::Int32>(static_cast<System::Byte>(164)));
+			this->ButtonUpdatePanel->ForeColor = System::Drawing::Color::White;
 			this->ButtonUpdatePanel->Location = System::Drawing::Point(61, 208);
 			this->ButtonUpdatePanel->Name = L"ButtonUpdatePanel";
 			this->ButtonUpdatePanel->Size = System::Drawing::Size(138, 36);
 			this->ButtonUpdatePanel->TabIndex = 16;
 			this->ButtonUpdatePanel->Text = L"Добавить";
-			this->ButtonUpdatePanel->UseVisualStyleBackColor = true;
+			this->ButtonUpdatePanel->UseVisualStyleBackColor = false;
 			this->ButtonUpdatePanel->Click += gcnew System::EventHandler(this, &UpdatePanel::ButtonUpdatePanel_Click);
 			// 
 			// label8
 			// 
 			this->label8->AutoSize = true;
 			this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->label8->Location = System::Drawing::Point(49, 13);
+			this->label8->ForeColor = System::Drawing::Color::White;
+			this->label8->Location = System::Drawing::Point(45, 13);
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(167, 22);
 			this->label8->TabIndex = 30;
@@ -132,7 +136,8 @@ namespace StudentCardVelial {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
+				static_cast<System::Int32>(static_cast<System::Byte>(87)));
 			this->ClientSize = System::Drawing::Size(258, 257);
 			this->Controls->Add(this->label8);
 			this->Controls->Add(this->TextboxSpecializationUpdatePanel);
@@ -152,9 +157,24 @@ namespace StudentCardVelial {
 		Group^ ItemGroup = gcnew Group();
 #pragma endregion
 	private: System::Void ButtonUpdatePanel_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (TextBoxTitleGroupUpdatePanel->Text == " " && ComboBoxTitleFacultyUpdatePanel->SelectedText == " "  && TextboxSpecializationUpdatePanel->Text == " " && TextBoxNameKuratorUpdatePanel->Text == " " && TextBoxNameMonitorUpdatePanel->Text == " " && TextBoxNumberKurcUpdatePanel->Text == " ")
-			MessageBox::Show("Поле для ввода нового имени не может быть пустым!");
-		else {
+		try {
+			//Проверка!
+			if (String::IsNullOrEmpty(TextBoxTitleGroupUpdatePanel->Text)) {
+				throw gcnew Exception("Заполните поле \"Название группы\"!");
+			}
+			else if (String::IsNullOrEmpty(TextboxSpecializationUpdatePanel->Text)) {
+				throw gcnew Exception("Заполните поле \"Специализации\"!");
+			}
+			else if (String::IsNullOrEmpty(TextBoxNameKuratorUpdatePanel->Text)) {
+				throw gcnew Exception("Заполните поле \"ФИО куратора\"!");
+			}
+			else if (String::IsNullOrEmpty(TextBoxNameMonitorUpdatePanel->Text)) {
+				throw gcnew Exception("Заполните поле \"ФИО старосты\"!");
+			}
+			else if (String::IsNullOrEmpty(TextBoxNumberKurcUpdatePanel->Text)) {
+				throw gcnew Exception("Заполните поле \"Курс\"!");
+			}
+			
 			Group^ g = gcnew Group();
 			BaseData^ bd = gcnew BaseData();
 			List<Faculty^>^ list = bd->FillBaseData();
@@ -162,14 +182,16 @@ namespace StudentCardVelial {
 
 			g->TitleGroup = TextBoxTitleGroupUpdatePanel->Text;
 			g->TitleFaculty = list[ComboBoxTitleFacultyUpdatePanel->SelectedIndex]->TitleFaculty;
-			g->NameKurator = TextBoxNameKuratorUpdatePanel->Text;
-			//Console::WriteLine("{0} ", list[ComboBoxTitleFacultyUpdatePanel->SelectedIndex]->TitleFaculty);
 			g->Specialization = TextboxSpecializationUpdatePanel->Text;
-			//Console::WriteLine("{0} ", g->Specialization);
+			g->NameKurator = TextBoxNameKuratorUpdatePanel->Text;
 			g->NameMonitor = TextBoxNameMonitorUpdatePanel->Text;
 			g->NumberKurc = Convert::ToInt32(TextBoxNumberKurcUpdatePanel->Text);
-		
-			//передать новые данные о студенте: группа факультет курс направление
+
+			if (bd->Checking(g)) {
+				TextBoxTitleGroupUpdatePanel->Text = ItemGroup->TitleGroup;
+				TextBoxTitleGroupUpdatePanel->Focus();
+				throw gcnew Exception("Измените название группы. Нынешнее название совпадает с уже имеющимися!");
+			}
 
 			for (size_t i = 0; i < list_students->Count; i++)
 			{
@@ -180,6 +202,10 @@ namespace StudentCardVelial {
 			}
 			bd->Update(g, ItemGroup->ID);
 			this->Close();
+		}
+		catch (Exception^ e) {
+			//Ошибка
+			MessageBox::Show("Решение: " + Convert::ToString(e->Message), "Ошибка", MessageBoxButtons::OK);
 		}
 	}
 };

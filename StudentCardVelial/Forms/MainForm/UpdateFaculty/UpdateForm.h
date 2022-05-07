@@ -53,6 +53,7 @@ namespace StudentCardVelial {
 			// 
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
+			this->label1->ForeColor = System::Drawing::Color::White;
 			this->label1->Location = System::Drawing::Point(84, 20);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(167, 22);
@@ -68,12 +69,15 @@ namespace StudentCardVelial {
 			// 
 			// ButtonUpdateFaculty
 			// 
-			this->ButtonUpdateFaculty->Location = System::Drawing::Point(109, 101);
+			this->ButtonUpdateFaculty->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(78)),
+				static_cast<System::Int32>(static_cast<System::Byte>(108)), static_cast<System::Int32>(static_cast<System::Byte>(164)));
+			this->ButtonUpdateFaculty->ForeColor = System::Drawing::SystemColors::Control;
+			this->ButtonUpdateFaculty->Location = System::Drawing::Point(115, 101);
 			this->ButtonUpdateFaculty->Name = L"ButtonUpdateFaculty";
 			this->ButtonUpdateFaculty->Size = System::Drawing::Size(111, 34);
 			this->ButtonUpdateFaculty->TabIndex = 3;
 			this->ButtonUpdateFaculty->Text = L"Изменить";
-			this->ButtonUpdateFaculty->UseVisualStyleBackColor = true;
+			this->ButtonUpdateFaculty->UseVisualStyleBackColor = false;
 			this->ButtonUpdateFaculty->Click += gcnew System::EventHandler(this, &UpdateForm::ButtonUpdateFaculty_Click);
 			// 
 			// TextBoxUpdateNameDekan
@@ -87,7 +91,8 @@ namespace StudentCardVelial {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
+				static_cast<System::Int32>(static_cast<System::Byte>(87)));
 			this->ClientSize = System::Drawing::Size(345, 166);
 			this->Controls->Add(this->TextBoxUpdateNameDekan);
 			this->Controls->Add(this->ButtonUpdateFaculty);
@@ -117,6 +122,11 @@ namespace StudentCardVelial {
 			List<Group^>^ list_groups = bd->FillListView(ItemFaculty->TitleFaculty);
 			f->TitleFaculty = TextBoxUpdateTitleFaculty->Text;
 			f->NameDekan = TextBoxUpdateNameDekan->Text;
+			if (bd->Checking(f)) {
+				TextBoxUpdateTitleFaculty->Text = ItemFaculty->TitleFaculty;
+				TextBoxUpdateNameDekan->Text = ItemFaculty->NameDekan;
+				throw gcnew Exception("Измените название факультета. Нынешнее название совпадает с уже имеющимися!");
+			}
 			for (size_t i = 0; i < list_groups->Count; i++)
 			{
 				list_groups[i]->TitleFaculty = f->TitleFaculty;

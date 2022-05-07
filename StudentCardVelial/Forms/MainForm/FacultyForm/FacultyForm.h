@@ -458,6 +458,7 @@ namespace StudentCardVelial {
 		this->Controls->Add(this->PanelFacultyButton);
 		this->Controls->Add(this->TreeViewFaculty);
 		this->Name = L"FacultyForm";
+		this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 		this->Text = L"FacultyForm";
 		this->Activated += gcnew System::EventHandler(this, &FacultyForm::FacultyForm_Activated);
 		this->PanelFacultyButton->ResumeLayout(false);

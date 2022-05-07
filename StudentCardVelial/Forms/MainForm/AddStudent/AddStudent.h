@@ -44,42 +44,50 @@ namespace StudentCardVelial {
 			// 
 			this->CheckedListBoxStudent->CheckOnClick = true;
 			this->CheckedListBoxStudent->FormattingEnabled = true;
-			this->CheckedListBoxStudent->Location = System::Drawing::Point(13, 13);
+			this->CheckedListBoxStudent->Location = System::Drawing::Point(12, 12);
 			this->CheckedListBoxStudent->Name = L"CheckedListBoxStudent";
-			this->CheckedListBoxStudent->Size = System::Drawing::Size(196, 208);
+			this->CheckedListBoxStudent->Size = System::Drawing::Size(314, 242);
 			this->CheckedListBoxStudent->TabIndex = 0;
 			// 
 			// ButtonAddStudent
 			// 
-			this->ButtonAddStudent->Location = System::Drawing::Point(13, 228);
+			this->ButtonAddStudent->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(78)), static_cast<System::Int32>(static_cast<System::Byte>(108)),
+				static_cast<System::Int32>(static_cast<System::Byte>(164)));
+			this->ButtonAddStudent->ForeColor = System::Drawing::Color::White;
+			this->ButtonAddStudent->Location = System::Drawing::Point(12, 260);
 			this->ButtonAddStudent->Name = L"ButtonAddStudent";
-			this->ButtonAddStudent->Size = System::Drawing::Size(196, 23);
+			this->ButtonAddStudent->Size = System::Drawing::Size(154, 30);
 			this->ButtonAddStudent->TabIndex = 1;
 			this->ButtonAddStudent->Text = L"Добавить";
-			this->ButtonAddStudent->UseVisualStyleBackColor = true;
+			this->ButtonAddStudent->UseVisualStyleBackColor = false;
 			this->ButtonAddStudent->Click += gcnew System::EventHandler(this, &AddStudent::button1_Click);
 			// 
 			// ButtonDeleteStudent
 			// 
-			this->ButtonDeleteStudent->Location = System::Drawing::Point(13, 257);
+			this->ButtonDeleteStudent->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(237)),
+				static_cast<System::Int32>(static_cast<System::Byte>(225)), static_cast<System::Int32>(static_cast<System::Byte>(117)));
+			this->ButtonDeleteStudent->Location = System::Drawing::Point(172, 260);
 			this->ButtonDeleteStudent->Name = L"ButtonDeleteStudent";
-			this->ButtonDeleteStudent->Size = System::Drawing::Size(196, 23);
+			this->ButtonDeleteStudent->Size = System::Drawing::Size(154, 30);
 			this->ButtonDeleteStudent->TabIndex = 2;
 			this->ButtonDeleteStudent->Text = L"Удаление";
-			this->ButtonDeleteStudent->UseVisualStyleBackColor = true;
+			this->ButtonDeleteStudent->UseVisualStyleBackColor = false;
 			this->ButtonDeleteStudent->Click += gcnew System::EventHandler(this, &AddStudent::ButtonDeleteStudent_Click);
 			// 
 			// AddStudent
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->ClientSize = System::Drawing::Size(222, 291);
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(42)), static_cast<System::Int32>(static_cast<System::Byte>(46)),
+				static_cast<System::Int32>(static_cast<System::Byte>(66)));
+			this->ClientSize = System::Drawing::Size(337, 300);
 			this->Controls->Add(this->ButtonDeleteStudent);
 			this->Controls->Add(this->ButtonAddStudent);
 			this->Controls->Add(this->CheckedListBoxStudent);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::Fixed3D;
+			this->MinimizeBox = false;
 			this->Name = L"AddStudent";
-			this->Text = L"AddStudent";
+			this->Text = L"Список абитуриентов";
 			this->ResumeLayout(false);
 
 		}
@@ -96,6 +104,7 @@ namespace StudentCardVelial {
 				if (list_students[j]->Surname == CheckedListBoxStudent->CheckedItems[i]->ToString()) {
 					list_students[j]->Entrant = 0;
 					list_students[j]->Title_Group = ItemGroup->TitleGroup;
+					list_students[j]->Title_Faculty = ItemGroup->TitleFaculty;
 					list_students[j]->Specialization = ItemGroup->Specialization;
 					list_students[j]->Number_Kurc = ItemGroup->NumberKurc;
 					bd->Update(list_students[j]);

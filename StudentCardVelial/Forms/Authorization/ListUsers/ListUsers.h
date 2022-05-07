@@ -26,8 +26,6 @@ namespace StudentCardVelial {
 
 			bd = gcnew BaseData();
 			if (isAdmin) {
-				//list_admin = bd->();
-				//bd->Reload(list_user, listView1);
 				list_admin = bd->FillListViewAdmins();
 				bd->Reload(list_admin, listView1);
 			}
@@ -71,24 +69,30 @@ namespace StudentCardVelial {
 			// 
 			// button1
 			// 
+			this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(237)), static_cast<System::Int32>(static_cast<System::Byte>(225)),
+				static_cast<System::Int32>(static_cast<System::Byte>(117)));
 			this->button1->Location = System::Drawing::Point(12, 212);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(312, 34);
 			this->button1->TabIndex = 1;
 			this->button1->Text = L"Удалить";
-			this->button1->UseVisualStyleBackColor = true;
+			this->button1->UseVisualStyleBackColor = false;
 			this->button1->Click += gcnew System::EventHandler(this, &ListUsers::button1_Click);
 			// 
 			// ListUsers
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(42)), static_cast<System::Int32>(static_cast<System::Byte>(46)),
+				static_cast<System::Int32>(static_cast<System::Byte>(66)));
 			this->ClientSize = System::Drawing::Size(336, 253);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->listView1);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::Fixed3D;
+			this->MinimizeBox = false;
 			this->Name = L"ListUsers";
-			this->Text = L"ListUsers";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
+			this->Text = L"Список пользователей";
 			this->ResumeLayout(false);
 
 		}
@@ -99,26 +103,40 @@ namespace StudentCardVelial {
 		bool isAdmin;
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		String^ UserSelectedItem = listView1->FocusedItem->SubItems[1]->Text;
-		Console::WriteLine("Название группы: {0}", UserSelectedItem);
-		bd = gcnew BaseData();
-		if (isAdmin) {
-			list_admin = bd->FillListViewAdmins();
-			for (size_t i = 0; i < list_admin->Count; i++)
-			{
-				if (list_admin[i]->Login == UserSelectedItem)
-					bd->Delete(list_admin[i]);
+		try {
+			//Проверка!
+			if (listView1->FocusedItem == nullptr) {
+				if (isAdmin)
+					throw gcnew Exception("Выберите админа для удаления!");
+				else {
+					throw gcnew Exception("Выберите пользователя для исключения!");
+				}
 			}
-			bd->Reload(list_admin, listView1);
+			String^ UserSelectedItem = listView1->FocusedItem->SubItems[1]->Text;
+			Console::WriteLine("Название группы: {0}", UserSelectedItem);
+			bd = gcnew BaseData();
+			if (isAdmin) {
+				list_admin = bd->FillListViewAdmins();
+				for (size_t i = 0; i < list_admin->Count; i++)
+				{
+					if (list_admin[i]->Login == UserSelectedItem)
+						bd->Delete(list_admin[i]);
+				}
+				bd->Reload(list_admin, listView1);
+			}
+			else {
+				list_user = bd->FillCheckedListBoxStudent(0);
+				for (size_t i = 0; i < list_user->Count; i++)
+				{
+					if (list_user[i]->Login == UserSelectedItem)
+						bd->Delete(list_user[i]);
+				}
+				bd->Reload(list_user, listView1);
+			}
 		}
-		else {
-			list_user = bd->FillCheckedListBoxStudent(0);
-			for (size_t i = 0; i < list_user->Count; i++)
-			{
-				if (list_user[i]->Login == UserSelectedItem)
-					bd->Delete(list_user[i]);
-			}
-			bd->Reload(list_user, listView1);
+		catch (Exception^ e) {
+			//Ошибка
+			MessageBox::Show("Решение: " + Convert::ToString(e->Message), "Ошибка", MessageBoxButtons::OK);
 		}
 		
 	}

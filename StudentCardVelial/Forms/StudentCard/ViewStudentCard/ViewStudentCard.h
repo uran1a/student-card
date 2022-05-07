@@ -398,7 +398,8 @@ namespace StudentCardVelial {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
+				static_cast<System::Int32>(static_cast<System::Byte>(87)));
 			this->ClientSize = System::Drawing::Size(704, 343);
 			this->Controls->Add(this->LabelMailStudent);
 			this->Controls->Add(this->label20);
@@ -426,6 +427,8 @@ namespace StudentCardVelial {
 			this->Controls->Add(this->ButtonStatusStudent);
 			this->Controls->Add(this->LabelNameStudent);
 			this->Controls->Add(this->PictureBoxPhotoStudent);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::Fixed3D;
+			this->MinimizeBox = false;
 			this->Name = L"ViewStudentCard";
 			this->Text = L"ViewStudentCard";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->PictureBoxPhotoStudent))->EndInit();

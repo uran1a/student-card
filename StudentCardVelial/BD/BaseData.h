@@ -36,7 +36,7 @@ public:
 	{}
 	//FACULTY
 	//----------------------------------------
-	void Insert(String^ TitleFaculty, String^ NameDekan) {
+	void Insert(Faculty^ f) {
 		try {
 			//Подключение в БД
 			ConnectToBD();
@@ -44,8 +44,8 @@ public:
 			String^ cmdText = "INSERT INTO dbo.TABLE_FACULTIES(Title_Faculty, Name_Dekan) VALUES(@TitleFaculty, @NameDekan)";
 			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
 
-			cmd->Parameters->AddWithValue("@TitleFaculty", TitleFaculty);
-			cmd->Parameters->AddWithValue("@NameDekan", NameDekan);
+			cmd->Parameters->AddWithValue("@TitleFaculty", f->TitleFaculty);
+			cmd->Parameters->AddWithValue("@NameDekan", f->NameDekan);
 			conn->Open();
 			cmd->ExecuteNonQuery();
 		}
@@ -175,11 +175,35 @@ public:
 			else MessageBox::Show("Ошибка: При обновлении элемента в БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		}
 	}
+	bool Checking(Faculty^ f) {
+		try {
+			//Подключение в БД
+			ConnectToBD();
+
+			List<Faculty^>^ list = gcnew List<Faculty^>();
+			bool checkingForMatches = false;
+			String^ cmdText = "SELECT * FROM dbo.TABLE_FACULTIES";
+			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
+			conn->Open();
+
+			SqlDataReader^ reader = cmd->ExecuteReader();
+			while (reader->Read()) {
+				if (f->TitleFaculty->ToUpper() == (reader["Title_Faculty"]->ToString()->Replace(" ", "")->ToUpper()))
+					return checkingForMatches = true;
+			}
+			return checkingForMatches;
+		}
+		finally {
+			if (conn != nullptr)
+				conn->Close();
+			else MessageBox::Show("Ошибка: При чтении элементов из БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+		}
+	}
 	//----------------------------------------
 	
 	//GROUP
 	//----------------------------------------
-	void Insert(String^ TitleGroup, String^ TitleFaculty, String^ NameKurator, String^ NameMonitor, String^ NumberKurc, String^ Specialization) {
+	void Insert(Group^ g) {
 		try {
 			//Подключение в БД
 			ConnectToBD();
@@ -187,12 +211,12 @@ public:
 			String^ cmdText = "INSERT INTO dbo.TABLE_GROUPS(Title_Group, Title_Faculty, Name_Kurator, Name_Monitor, Number_Kurc, Specialization) VALUES(@Title_Group, @Title_Faculty, @Name_Kurator, @Name_Monitor, @Number_Kurc, @Specialization)";
 			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
 
-			cmd->Parameters->AddWithValue("@Title_Group", TitleGroup);
-			cmd->Parameters->AddWithValue("@Title_Faculty", TitleFaculty);
-			cmd->Parameters->AddWithValue("@Name_Kurator", NameKurator);
-			cmd->Parameters->AddWithValue("@Name_Monitor", NameMonitor);
-			cmd->Parameters->AddWithValue("@Number_Kurc", NumberKurc);
-			cmd->Parameters->AddWithValue("@Specialization", Specialization);
+			cmd->Parameters->AddWithValue("@Title_Group", g->TitleGroup);
+			cmd->Parameters->AddWithValue("@Title_Faculty", g->TitleFaculty);
+			cmd->Parameters->AddWithValue("@Name_Kurator", g->NameKurator);
+			cmd->Parameters->AddWithValue("@Name_Monitor", g->NameMonitor);
+			cmd->Parameters->AddWithValue("@Number_Kurc", g->NumberKurc);
+			cmd->Parameters->AddWithValue("@Specialization", g->Specialization);
 
 			conn->Open();
 			cmd->ExecuteNonQuery();
@@ -291,6 +315,30 @@ public:
 			if (conn != nullptr)
 				conn->Close();
 			else MessageBox::Show("Ошибка: При обновлении элемента в БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+		}
+	}
+	bool Checking(Group^ g) {
+		try {
+			//Подключение в БД
+			ConnectToBD();
+
+			List<Faculty^>^ list = gcnew List<Faculty^>();
+			bool checkingForMatches = false;
+			String^ cmdText = "SELECT * FROM dbo.TABLE_GROUPS";
+			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
+			conn->Open();
+
+			SqlDataReader^ reader = cmd->ExecuteReader();
+			while (reader->Read()) {
+				if (g->TitleGroup->ToUpper() == (reader["Title_Group"]->ToString()->Replace(" ", "")->ToUpper()))
+					return checkingForMatches = true;
+			}
+			return checkingForMatches;
+		}
+		finally {
+			if (conn != nullptr)
+				conn->Close();
+			else MessageBox::Show("Ошибка: При чтении элементов из БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		}
 	}
 	//----------------------------------------
@@ -550,12 +598,13 @@ public:
 			//Подключение в БД
 			ConnectToBD();
 
-			String^ cmdText = "UPDATE dbo.TABLE_STUDENTS SET Entrant = @Entrant, Title_Group = @Title_Group, Specialization = @Specialization, Number_Kurc = @Number_Kurc WHERE ID = @ID";
+			String^ cmdText = "UPDATE dbo.TABLE_STUDENTS SET Entrant = @Entrant, Title_Faculty = @Title_Faculty, Title_Group = @Title_Group, Specialization = @Specialization, Number_Kurc = @Number_Kurc WHERE ID = @ID";
 			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
 
 			cmd->Parameters->AddWithValue("@ID", s->ID);
 			cmd->Parameters->AddWithValue("@Entrant", s->Entrant);
 			cmd->Parameters->AddWithValue("@Title_Group", s->Title_Group);
+			cmd->Parameters->AddWithValue("@Title_Faculty", s->Title_Faculty);
 			cmd->Parameters->AddWithValue("@Specialization", s->Specialization);
 			cmd->Parameters->AddWithValue("@Number_Kurc", s->Number_Kurc);
 
@@ -624,6 +673,30 @@ public:
 			else MessageBox::Show("Ошибка: При обновлении элемента в БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		}
 	}
+	bool Checking(Student^ s) {
+		try {
+			//Подключение в БД
+			ConnectToBD();
+
+			List<Faculty^>^ list = gcnew List<Faculty^>();
+			bool checkingForMatches = false;
+			String^ cmdText = "SELECT * FROM dbo.TABLE_STUDENTS";
+			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
+			conn->Open();
+
+			SqlDataReader^ reader = cmd->ExecuteReader();
+			while (reader->Read()) {
+				if (s->Name->ToUpper() == (reader["Name"]->ToString()->Replace(" ", "")->ToUpper()) && s->Surname->ToUpper() == (reader["Surname"]->ToString()->Replace(" ", "")->ToUpper()) && s->Middlename->ToUpper() == (reader["Middlename"]->ToString()->Replace(" ", "")->ToUpper()))
+					return checkingForMatches = true;
+			}
+			return checkingForMatches;
+		}
+		finally {
+			if (conn != nullptr)
+				conn->Close();
+			else MessageBox::Show("Ошибка: При чтении элементов из БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+		}
+	}
 	//----------------------------------------
 	//AUTORIZATION
 	//----------------------------------------
@@ -687,7 +760,6 @@ public:
 		}
 		//try
 	}
-	
 	//----------------------------------------
 	//ADMIN
 	//----------------------------------------

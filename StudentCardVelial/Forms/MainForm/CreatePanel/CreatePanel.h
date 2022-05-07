@@ -67,18 +67,22 @@ namespace StudentCardVelial {
 			// 
 			// ButtonCreatePanel
 			// 
+			this->ButtonCreatePanel->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(78)),
+				static_cast<System::Int32>(static_cast<System::Byte>(108)), static_cast<System::Int32>(static_cast<System::Byte>(164)));
+			this->ButtonCreatePanel->ForeColor = System::Drawing::Color::White;
 			this->ButtonCreatePanel->Location = System::Drawing::Point(85, 386);
 			this->ButtonCreatePanel->Name = L"ButtonCreatePanel";
 			this->ButtonCreatePanel->Size = System::Drawing::Size(138, 36);
 			this->ButtonCreatePanel->TabIndex = 7;
 			this->ButtonCreatePanel->Text = L"Добавить";
-			this->ButtonCreatePanel->UseVisualStyleBackColor = true;
+			this->ButtonCreatePanel->UseVisualStyleBackColor = false;
 			this->ButtonCreatePanel->Click += gcnew System::EventHandler(this, &CreatePanel::ButtonCreatePanel_Click);
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
+			this->label1->ForeColor = System::Drawing::Color::White;
 			this->label1->Location = System::Drawing::Point(33, 10);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(234, 22);
@@ -96,6 +100,7 @@ namespace StudentCardVelial {
 			// 
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
+			this->label2->ForeColor = System::Drawing::Color::White;
 			this->label2->Location = System::Drawing::Point(18, 102);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(272, 22);
@@ -113,6 +118,7 @@ namespace StudentCardVelial {
 			// 
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
+			this->label3->ForeColor = System::Drawing::Color::White;
 			this->label3->Location = System::Drawing::Point(46, 210);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(214, 22);
@@ -122,6 +128,7 @@ namespace StudentCardVelial {
 			// label4
 			// 
 			this->label4->AutoSize = true;
+			this->label4->ForeColor = System::Drawing::Color::White;
 			this->label4->Location = System::Drawing::Point(13, 62);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(282, 32);
@@ -147,6 +154,7 @@ namespace StudentCardVelial {
 			// 
 			this->label5->AutoSize = true;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
+			this->label5->ForeColor = System::Drawing::Color::White;
 			this->label5->Location = System::Drawing::Point(81, 328);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(128, 22);
@@ -157,6 +165,7 @@ namespace StudentCardVelial {
 			// 
 			this->label6->AutoSize = true;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
+			this->label6->ForeColor = System::Drawing::Color::White;
 			this->label6->Location = System::Drawing::Point(48, 269);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(210, 22);
@@ -181,6 +190,7 @@ namespace StudentCardVelial {
 			// 
 			this->label7->AutoSize = true;
 			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
+			this->label7->ForeColor = System::Drawing::Color::White;
 			this->label7->Location = System::Drawing::Point(54, 160);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(201, 22);
@@ -191,7 +201,8 @@ namespace StudentCardVelial {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
+				static_cast<System::Int32>(static_cast<System::Byte>(87)));
 			this->ClientSize = System::Drawing::Size(303, 433);
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->TextboxSpecialization);
@@ -218,15 +229,52 @@ namespace StudentCardVelial {
 		int IndexSelectedFaculty;
 #pragma endregion
 	private: System::Void ButtonCreatePanel_Click(System::Object^ sender, System::EventArgs^ e) {
-		BaseData^ bd = gcnew BaseData();
-		bd->Insert(TextBoxTitleGroupCreatePanel->Text, Convert::ToString(ComboBoxTitleFacultyCreatePanel->SelectedItem), TextBoxNameKuratorCreatePanel->Text, TextBoxNameMonitor->Text, TextBoxNumberKurc->Text, TextboxSpecialization->Text);
-		TextBoxTitleGroupCreatePanel->Clear();
-		TextBoxNameKuratorCreatePanel->Clear();
-		TextBoxNameMonitor->Clear();
-		TextBoxNumberKurc->Clear();
-		TextboxSpecialization->Clear();
-		TextBoxTitleGroupCreatePanel->Focus();
-		this->Close();
+		try {
+			//Проверка!
+			if (String::IsNullOrEmpty(TextBoxTitleGroupCreatePanel->Text)) {
+				throw gcnew Exception("Заполните поле \"Название группы\"!");
+			}
+			else if (TextboxSpecialization->Text == "") {
+				throw gcnew Exception("Заполните поле \"Специализации\"!");
+			}
+			else if (TextBoxNameKuratorCreatePanel->Text == "") {
+				throw gcnew Exception("Заполните поле \"ФИО куратора\"!");
+			}
+			else if (TextBoxNameMonitor->Text == "") {
+				throw gcnew Exception("Заполните поле \"ФИО старосты\"!");
+			}
+			else if (TextBoxNumberKurc->Text == "") {
+				throw gcnew Exception("Заполните поле \"Курс\"!");
+			}
+
+			BaseData^ bd = gcnew BaseData();
+			Group^ g = gcnew Group();
+			g->TitleGroup = TextBoxTitleGroupCreatePanel->Text;
+			g->TitleFaculty = Convert::ToString(ComboBoxTitleFacultyCreatePanel->SelectedItem);
+			g->NameKurator = TextBoxNameKuratorCreatePanel->Text;
+			g->NameMonitor = TextBoxNameMonitor->Text;
+			g->NumberKurc = Convert::ToInt32(TextBoxNumberKurc->Text);
+			g->Specialization = TextboxSpecialization->Text;
+
+			if (bd->Checking(g)) {
+				TextBoxTitleGroupCreatePanel->Clear();
+				TextBoxTitleGroupCreatePanel->Focus();
+				throw gcnew Exception("Измените название группы. Нынешнее название совпадает с уже имеющимися!");
+			}
+
+			bd->Insert(g);
+			TextBoxTitleGroupCreatePanel->Clear();
+			TextBoxNameKuratorCreatePanel->Clear();
+			TextBoxNameMonitor->Clear();
+			TextBoxNumberKurc->Clear();
+			TextboxSpecialization->Clear();
+			TextBoxTitleGroupCreatePanel->Focus();
+			this->Close();
+		}
+		catch (Exception^ e) {
+			//Ошибка
+			MessageBox::Show("Решение: " + Convert::ToString(e->Message), "Ошибка", MessageBoxButtons::OK);
+		}
 	}
 };
 }
