@@ -368,7 +368,7 @@ public:
 			cmd->Parameters->AddWithValue("@Number_Kurc", "");
 			cmd->Parameters->AddWithValue("@Phone_Number", s->Phone_Number);
 			cmd->Parameters->AddWithValue("@Mail", s->Mail);
-			cmd->Parameters->AddWithValue("@Otcenka", 0);
+			cmd->Parameters->AddWithValue("@Otcenka", "0");
 			cmd->Parameters->AddWithValue("@Login", s->Login);
 			cmd->Parameters->AddWithValue("@Password", s->Password);
 
@@ -414,7 +414,7 @@ public:
 					student->Number_Kurc = Convert::ToInt32(reader["Number_Kurc"]->ToString());
 					student->Phone_Number = (reader["Phone_Number"]->ToString());
 					student->Mail = (reader["Mail"]->ToString());
-					student->Otcenka = Convert::ToInt32(reader["Otcenka"]->ToString());
+					student->Otcenka = Convert::ToDouble(reader["Otcenka"]->ToString());
 					student->Login = (reader["Login"]->ToString());
 					student->Password = (reader["Password"]->ToString());
 
@@ -461,7 +461,7 @@ public:
 				student->Number_Kurc = Convert::ToInt32(reader["Number_Kurc"]->ToString());
 				student->Phone_Number = (reader["Phone_Number"]->ToString());
 				student->Mail = (reader["Mail"]->ToString());
-				student->Otcenka = Convert::ToInt32(reader["Otcenka"]->ToString());
+				student->Otcenka = Convert::ToDouble(reader["Otcenka"]->ToString());
 				student->Login = (reader["Login"]->ToString());
 				student->Password = (reader["Password"]->ToString());
 
@@ -507,7 +507,7 @@ public:
 				student->Number_Kurc = Convert::ToInt32(reader["Number_Kurc"]->ToString());
 				student->Phone_Number = (reader["Phone_Number"]->ToString());
 				student->Mail = (reader["Mail"]->ToString());
-				student->Otcenka = Convert::ToInt32(reader["Otcenka"]->ToString());
+				student->Otcenka = Convert::ToDouble(reader["Otcenka"]->ToString());
 				student->Login = (reader["Login"]->ToString());
 				student->Password = (reader["Password"]->ToString());
 			}
@@ -635,7 +635,7 @@ public:
 			cmd->Parameters->AddWithValue("@Point_EGE", s->Point_EGE);
 			cmd->Parameters->AddWithValue("@Stipendiya", s->Stipendiya);
 			cmd->Parameters->AddWithValue("@Year_Enrollment", s->Year_Enrollment);
-			cmd->Parameters->AddWithValue("@Otcenka", s->Otcenka);
+			cmd->Parameters->AddWithValue("@Otcenka", Convert::ToString(s->Otcenka));
 			cmd->Parameters->AddWithValue("@Photo_Student", s->Photo_Student);
 			//cmd->Parameters->AddWithValue("@Specialization", s->Specialization);
 			cmd->Parameters->AddWithValue("@Educational_Form", s->Educational_Form);
@@ -680,8 +680,9 @@ public:
 
 			List<Faculty^>^ list = gcnew List<Faculty^>();
 			bool checkingForMatches = false;
-			String^ cmdText = "SELECT * FROM dbo.TABLE_STUDENTS";
+			String^ cmdText = "SELECT * FROM dbo.TABLE_STUDENTS WHERE ID != @ID";
 			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
+			cmd->Parameters->AddWithValue("@ID", s->ID);
 			conn->Open();
 
 			SqlDataReader^ reader = cmd->ExecuteReader();

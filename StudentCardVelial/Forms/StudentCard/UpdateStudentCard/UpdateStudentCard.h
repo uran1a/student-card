@@ -432,11 +432,12 @@ namespace StudentCardVelial {
 			Student^ UpdatedStudent = gcnew Student();
 			array<String^>^ FIO = TextBoxFIO->Text->Split(' ');
 
+			UpdatedStudent->ID = SelectedStudent->ID;
 			UpdatedStudent->Name = FIO[0];
 			UpdatedStudent->Surname = FIO[1];
 			UpdatedStudent->Middlename = FIO[2];
 			//UpdatedStudent->Otcenka = 4.0;
-			UpdatedStudent->Otcenka = Convert::ToDouble(TextBoxOtcenka->Text->Replace(',','.'));
+			UpdatedStudent->Otcenka = Convert::ToDouble(TextBoxOtcenka->Text);
 			Console::WriteLine(UpdatedStudent->Otcenka);
 			UpdatedStudent->Birthday = TextBoxBirthday->Text;
 			UpdatedStudent->Photo_Student = TextBoxPhotoStudent->Text;
