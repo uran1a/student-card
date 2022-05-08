@@ -38,21 +38,18 @@ namespace StudentCardVelial {
 			else {
 				this->PanelButton->Visible = false;
 				this->PanelFacultyButton->Visible = false;
-				//this->ButtonUpdateForm->Visible = false;
 				this->ButtonCreateStudentBD->Visible = false;
 
 				this->LabelTitleUniversity->AutoSize = true;
 				this->LabelTitleUniversity->BackColor = System::Drawing::SystemColors::ActiveBorder;
 				this->LabelTitleUniversity->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
 				this->LabelTitleUniversity->Location = System::Drawing::Point(12, 9);
-				//this->LabelTitleUniversity->Name = L"LabelTitleUniversity";
 				this->LabelTitleUniversity->Size = System::Drawing::Size(171, 22);
 				this->LabelTitleUniversity->TabIndex = 0;
 				this->LabelTitleUniversity->Text = L"Архитектура VGTU";
 
 				this->TreeViewFaculty->Location = System::Drawing::Point(12, 32);
 				this->TreeViewFaculty->Size = System::Drawing::Size(230, 350);
-				//this->TreeViewFaculty->Size = System::Drawing::Size(297, 272);
 			}
 			bd = gcnew BaseData();
 			list = bd->FillBaseData();
@@ -70,9 +67,7 @@ namespace StudentCardVelial {
 	private: System::Windows::Forms::Button^ ButtonDeleteFaculty;
 	private: System::Windows::Forms::Button^ ButtonCreateFacultyForm;
 	private: System::Windows::Forms::Button^ ButtonUpdateFacultyForm;
-
 	private: System::Windows::Forms::Panel^ PanelMainForm;
-
 	private: System::Windows::Forms::Button^ ButtonDeletePanel;
 	private: System::Windows::Forms::Button^ ButtonUpdatePanel;
 	private: System::Windows::Forms::Button^ ButtonCreatePanel;
@@ -660,10 +655,6 @@ namespace StudentCardVelial {
 	}
 	//Определние элемента для открытия Panel
 	private: System::Void TreeViewFaculty_AfterSelect(System::Object^ sender, System::Windows::Forms::TreeViewEventArgs^ e) {
-		//Console::WriteLine("{0}", e->Node->FullPath);
-		//Console::WriteLine("{0}", e->Node->Index);
-		//Console::WriteLine("{0}", e->Node->Level);
-
 		//Включение Панели факультета
 		PanelMainForm->Visible = true;
 		//Определение пути/уровня
@@ -712,8 +703,8 @@ namespace StudentCardVelial {
 			//Добавление столбцев
 			ListViewPanel->Columns->Clear();
 			ListViewPanel->Columns->Add("#", 21, HorizontalAlignment::Center);
-			ListViewPanel->Columns->Add("Имя", 115, HorizontalAlignment::Center);
 			ListViewPanel->Columns->Add("Фамилия", 120, HorizontalAlignment::Center);
+			ListViewPanel->Columns->Add("Имя", 115, HorizontalAlignment::Center);
 			ListViewPanel->Columns->Add("Отчество", 120, HorizontalAlignment::Center);
 
 			list_students = gcnew List<Student^>();
@@ -730,7 +721,6 @@ namespace StudentCardVelial {
 	}
 	//Просмотр профиля студента
 	private: System::Void ListViewPanel_MouseDoubleClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
-		//Console::WriteLine("{0}", ListViewPanel->FocusedItem->Index);
 		if (LevelTreeView == StudentLevel) {
 			ViewStudentCard^ Student = gcnew ViewStudentCard(list_students[ListViewPanel->FocusedItem->Index]->ID);
 			Student->Show();

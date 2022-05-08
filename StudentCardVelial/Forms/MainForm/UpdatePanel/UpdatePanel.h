@@ -19,7 +19,7 @@ namespace StudentCardVelial {
 		{
 			InitializeComponent();
 			BaseData^ bd = gcnew BaseData();
-			TextBoxTitleGroupUpdatePanel->Text = ItemGroup->TitleGroup;
+			TextBoxTitleGroupUpdatePanel->Text = ItemGroup->TitleGroup->Replace(" ", "");
 			ComboBoxTitleFacultyUpdatePanel->DataSource = bd->FillComboBox();
 			List<Faculty^>^ list = bd->FillBaseData();
 			for (size_t i = 0; i < list->Count; i++)
@@ -188,7 +188,7 @@ namespace StudentCardVelial {
 			g->NumberKurc = Convert::ToInt32(TextBoxNumberKurcUpdatePanel->Text);
 
 			if (bd->Checking(g)) {
-				TextBoxTitleGroupUpdatePanel->Text = ItemGroup->TitleGroup;
+				TextBoxTitleGroupUpdatePanel->Text = ItemGroup->TitleGroup->Replace(" ", "");
 				TextBoxTitleGroupUpdatePanel->Focus();
 				throw gcnew Exception("Измените название группы. Нынешнее название совпадает с уже имеющимися!");
 			}

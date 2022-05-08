@@ -79,7 +79,11 @@ namespace StudentCardVelial {
 	private: System::Windows::Forms::Label^ label22;
 	private: System::Windows::Forms::Label^ LabelStipendiyaStudent;
 	private: System::Windows::Forms::Label^ label24;
-	private: System::ComponentModel::Container ^components;
+	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Label^ label4;
+	private: System::Windows::Forms::Label^ label5;
+	private: System::Windows::Forms::Label^ label7;
+	private: System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		void InitializeComponent(void)
@@ -110,6 +114,10 @@ namespace StudentCardVelial {
 			this->label22 = (gcnew System::Windows::Forms::Label());
 			this->LabelStipendiyaStudent = (gcnew System::Windows::Forms::Label());
 			this->label24 = (gcnew System::Windows::Forms::Label());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->label7 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->PictureBoxPhotoStudent))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -127,7 +135,7 @@ namespace StudentCardVelial {
 			this->LabelNameStudent->AutoSize = true;
 			this->LabelNameStudent->BackColor = System::Drawing::SystemColors::Control;
 			this->LabelNameStudent->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.8F));
-			this->LabelNameStudent->Location = System::Drawing::Point(219, 9);
+			this->LabelNameStudent->Location = System::Drawing::Point(220, 5);
 			this->LabelNameStudent->Name = L"LabelNameStudent";
 			this->LabelNameStudent->Size = System::Drawing::Size(62, 26);
 			this->LabelNameStudent->TabIndex = 1;
@@ -136,7 +144,7 @@ namespace StudentCardVelial {
 			// ButtonStatusStudent
 			// 
 			this->ButtonStatusStudent->BackColor = System::Drawing::Color::Lime;
-			this->ButtonStatusStudent->Location = System::Drawing::Point(300, 45);
+			this->ButtonStatusStudent->Location = System::Drawing::Point(305, 41);
 			this->ButtonStatusStudent->Name = L"ButtonStatusStudent";
 			this->ButtonStatusStudent->Size = System::Drawing::Size(20, 20);
 			this->ButtonStatusStudent->TabIndex = 2;
@@ -147,7 +155,7 @@ namespace StudentCardVelial {
 			this->label2->AutoSize = true;
 			this->label2->BackColor = System::Drawing::SystemColors::Control;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->label2->Location = System::Drawing::Point(220, 43);
+			this->label2->Location = System::Drawing::Point(220, 40);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(72, 22);
 			this->label2->TabIndex = 3;
@@ -158,7 +166,7 @@ namespace StudentCardVelial {
 			this->label3->AutoSize = true;
 			this->label3->BackColor = System::Drawing::SystemColors::Control;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->label3->Location = System::Drawing::Point(341, 44);
+			this->label3->Location = System::Drawing::Point(341, 40);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(147, 22);
 			this->label3->TabIndex = 4;
@@ -169,17 +177,18 @@ namespace StudentCardVelial {
 			this->LabelBirthdayStudent->AutoSize = true;
 			this->LabelBirthdayStudent->BackColor = System::Drawing::SystemColors::Control;
 			this->LabelBirthdayStudent->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->LabelBirthdayStudent->Location = System::Drawing::Point(494, 44);
+			this->LabelBirthdayStudent->Location = System::Drawing::Point(514, 40);
 			this->LabelBirthdayStudent->Name = L"LabelBirthdayStudent";
-			this->LabelBirthdayStudent->Size = System::Drawing::Size(0, 22);
+			this->LabelBirthdayStudent->Size = System::Drawing::Size(100, 22);
 			this->LabelBirthdayStudent->TabIndex = 5;
+			this->LabelBirthdayStudent->Text = L"26.09.2003";
 			// 
 			// LabelTitleFacultyStudent
 			// 
 			this->LabelTitleFacultyStudent->AutoSize = true;
 			this->LabelTitleFacultyStudent->BackColor = System::Drawing::SystemColors::Control;
 			this->LabelTitleFacultyStudent->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->LabelTitleFacultyStudent->Location = System::Drawing::Point(372, 80);
+			this->LabelTitleFacultyStudent->Location = System::Drawing::Point(372, 75);
 			this->LabelTitleFacultyStudent->Name = L"LabelTitleFacultyStudent";
 			this->LabelTitleFacultyStudent->Size = System::Drawing::Size(77, 22);
 			this->LabelTitleFacultyStudent->TabIndex = 7;
@@ -190,7 +199,7 @@ namespace StudentCardVelial {
 			this->label6->AutoSize = true;
 			this->label6->BackColor = System::Drawing::SystemColors::Control;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->label6->Location = System::Drawing::Point(219, 80);
+			this->label6->Location = System::Drawing::Point(220, 75);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(103, 22);
 			this->label6->TabIndex = 6;
@@ -212,7 +221,7 @@ namespace StudentCardVelial {
 			this->label8->AutoSize = true;
 			this->label8->BackColor = System::Drawing::SystemColors::Control;
 			this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->label8->Location = System::Drawing::Point(219, 200);
+			this->label8->Location = System::Drawing::Point(220, 200);
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(55, 22);
 			this->label8->TabIndex = 8;
@@ -223,7 +232,7 @@ namespace StudentCardVelial {
 			this->LabelSpecializationStudent->AutoSize = true;
 			this->LabelSpecializationStudent->BackColor = System::Drawing::SystemColors::Control;
 			this->LabelSpecializationStudent->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->LabelSpecializationStudent->Location = System::Drawing::Point(372, 146);
+			this->LabelSpecializationStudent->Location = System::Drawing::Point(372, 145);
 			this->LabelSpecializationStudent->Name = L"LabelSpecializationStudent";
 			this->LabelSpecializationStudent->Size = System::Drawing::Size(241, 44);
 			this->LabelSpecializationStudent->TabIndex = 11;
@@ -234,7 +243,7 @@ namespace StudentCardVelial {
 			this->label10->AutoSize = true;
 			this->label10->BackColor = System::Drawing::SystemColors::Control;
 			this->label10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->label10->Location = System::Drawing::Point(219, 146);
+			this->label10->Location = System::Drawing::Point(220, 144);
 			this->label10->Name = L"label10";
 			this->label10->Size = System::Drawing::Size(128, 22);
 			this->label10->TabIndex = 10;
@@ -245,7 +254,7 @@ namespace StudentCardVelial {
 			this->LabelTitleGroupStudent->AutoSize = true;
 			this->LabelTitleGroupStudent->BackColor = System::Drawing::SystemColors::Control;
 			this->LabelTitleGroupStudent->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->LabelTitleGroupStudent->Location = System::Drawing::Point(372, 113);
+			this->LabelTitleGroupStudent->Location = System::Drawing::Point(372, 110);
 			this->LabelTitleGroupStudent->Name = L"LabelTitleGroupStudent";
 			this->LabelTitleGroupStudent->Size = System::Drawing::Size(94, 22);
 			this->LabelTitleGroupStudent->TabIndex = 13;
@@ -256,7 +265,7 @@ namespace StudentCardVelial {
 			this->label12->AutoSize = true;
 			this->label12->BackColor = System::Drawing::SystemColors::Control;
 			this->label12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->label12->Location = System::Drawing::Point(219, 113);
+			this->label12->Location = System::Drawing::Point(220, 110);
 			this->label12->Name = L"label12";
 			this->label12->Size = System::Drawing::Size(74, 22);
 			this->label12->TabIndex = 12;
@@ -267,7 +276,7 @@ namespace StudentCardVelial {
 			this->LabelEducationalFormStudent->AutoSize = true;
 			this->LabelEducationalFormStudent->BackColor = System::Drawing::SystemColors::Control;
 			this->LabelEducationalFormStudent->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->LabelEducationalFormStudent->Location = System::Drawing::Point(172, 238);
+			this->LabelEducationalFormStudent->Location = System::Drawing::Point(200, 235);
 			this->LabelEducationalFormStudent->Name = L"LabelEducationalFormStudent";
 			this->LabelEducationalFormStudent->Size = System::Drawing::Size(64, 22);
 			this->LabelEducationalFormStudent->TabIndex = 15;
@@ -278,7 +287,7 @@ namespace StudentCardVelial {
 			this->label14->AutoSize = true;
 			this->label14->BackColor = System::Drawing::SystemColors::Control;
 			this->label14->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->label14->Location = System::Drawing::Point(9, 238);
+			this->label14->Location = System::Drawing::Point(13, 235);
 			this->label14->Name = L"label14";
 			this->label14->Size = System::Drawing::Size(157, 22);
 			this->label14->TabIndex = 14;
@@ -289,7 +298,7 @@ namespace StudentCardVelial {
 			this->LabelYearEnrollmentStudent->AutoSize = true;
 			this->LabelYearEnrollmentStudent->BackColor = System::Drawing::SystemColors::Control;
 			this->LabelYearEnrollmentStudent->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->LabelYearEnrollmentStudent->Location = System::Drawing::Point(172, 273);
+			this->LabelYearEnrollmentStudent->Location = System::Drawing::Point(200, 270);
 			this->LabelYearEnrollmentStudent->Name = L"LabelYearEnrollmentStudent";
 			this->LabelYearEnrollmentStudent->Size = System::Drawing::Size(50, 22);
 			this->LabelYearEnrollmentStudent->TabIndex = 17;
@@ -300,7 +309,7 @@ namespace StudentCardVelial {
 			this->label16->AutoSize = true;
 			this->label16->BackColor = System::Drawing::SystemColors::Control;
 			this->label16->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->label16->Location = System::Drawing::Point(9, 273);
+			this->label16->Location = System::Drawing::Point(13, 270);
 			this->label16->Name = L"label16";
 			this->label16->Size = System::Drawing::Size(157, 22);
 			this->label16->TabIndex = 16;
@@ -311,7 +320,7 @@ namespace StudentCardVelial {
 			this->LabelPointEGEStudent->AutoSize = true;
 			this->LabelPointEGEStudent->BackColor = System::Drawing::SystemColors::Control;
 			this->LabelPointEGEStudent->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->LabelPointEGEStudent->Location = System::Drawing::Point(172, 307);
+			this->LabelPointEGEStudent->Location = System::Drawing::Point(200, 305);
 			this->LabelPointEGEStudent->Name = L"LabelPointEGEStudent";
 			this->LabelPointEGEStudent->Size = System::Drawing::Size(40, 22);
 			this->LabelPointEGEStudent->TabIndex = 19;
@@ -322,7 +331,7 @@ namespace StudentCardVelial {
 			this->label18->AutoSize = true;
 			this->label18->BackColor = System::Drawing::SystemColors::Control;
 			this->label18->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->label18->Location = System::Drawing::Point(9, 307);
+			this->label18->Location = System::Drawing::Point(13, 305);
 			this->label18->Name = L"label18";
 			this->label18->Size = System::Drawing::Size(97, 22);
 			this->label18->TabIndex = 18;
@@ -333,7 +342,7 @@ namespace StudentCardVelial {
 			this->LabelMailStudent->AutoSize = true;
 			this->LabelMailStudent->BackColor = System::Drawing::SystemColors::Control;
 			this->LabelMailStudent->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->LabelMailStudent->Location = System::Drawing::Point(510, 307);
+			this->LabelMailStudent->Location = System::Drawing::Point(560, 270);
 			this->LabelMailStudent->Name = L"LabelMailStudent";
 			this->LabelMailStudent->Size = System::Drawing::Size(135, 22);
 			this->LabelMailStudent->TabIndex = 25;
@@ -344,7 +353,7 @@ namespace StudentCardVelial {
 			this->label20->AutoSize = true;
 			this->label20->BackColor = System::Drawing::SystemColors::Control;
 			this->label20->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->label20->Location = System::Drawing::Point(294, 307);
+			this->label20->Location = System::Drawing::Point(340, 270);
 			this->label20->Name = L"label20";
 			this->label20->Size = System::Drawing::Size(178, 22);
 			this->label20->TabIndex = 24;
@@ -355,7 +364,7 @@ namespace StudentCardVelial {
 			this->LabelPhoneNumberStudent->AutoSize = true;
 			this->LabelPhoneNumberStudent->BackColor = System::Drawing::SystemColors::Control;
 			this->LabelPhoneNumberStudent->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->LabelPhoneNumberStudent->Location = System::Drawing::Point(510, 273);
+			this->LabelPhoneNumberStudent->Location = System::Drawing::Point(560, 235);
 			this->LabelPhoneNumberStudent->Name = L"LabelPhoneNumberStudent";
 			this->LabelPhoneNumberStudent->Size = System::Drawing::Size(131, 22);
 			this->LabelPhoneNumberStudent->TabIndex = 23;
@@ -366,7 +375,7 @@ namespace StudentCardVelial {
 			this->label22->AutoSize = true;
 			this->label22->BackColor = System::Drawing::SystemColors::Control;
 			this->label22->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->label22->Location = System::Drawing::Point(294, 273);
+			this->label22->Location = System::Drawing::Point(340, 235);
 			this->label22->Name = L"label22";
 			this->label22->Size = System::Drawing::Size(188, 22);
 			this->label22->TabIndex = 22;
@@ -377,7 +386,7 @@ namespace StudentCardVelial {
 			this->LabelStipendiyaStudent->AutoSize = true;
 			this->LabelStipendiyaStudent->BackColor = System::Drawing::SystemColors::Control;
 			this->LabelStipendiyaStudent->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->LabelStipendiyaStudent->Location = System::Drawing::Point(510, 238);
+			this->LabelStipendiyaStudent->Location = System::Drawing::Point(200, 340);
 			this->LabelStipendiyaStudent->Name = L"LabelStipendiyaStudent";
 			this->LabelStipendiyaStudent->Size = System::Drawing::Size(38, 22);
 			this->LabelStipendiyaStudent->TabIndex = 21;
@@ -388,11 +397,55 @@ namespace StudentCardVelial {
 			this->label24->AutoSize = true;
 			this->label24->BackColor = System::Drawing::SystemColors::Control;
 			this->label24->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->label24->Location = System::Drawing::Point(294, 238);
+			this->label24->Location = System::Drawing::Point(13, 340);
 			this->label24->Name = L"label24";
 			this->label24->Size = System::Drawing::Size(107, 22);
 			this->label24->TabIndex = 20;
 			this->label24->Text = L"Стипендия:";
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->BackColor = System::Drawing::SystemColors::Control;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
+			this->label1->Location = System::Drawing::Point(560, 305);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(97, 22);
+			this->label1->TabIndex = 29;
+			this->label1->Text = L"password1";
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->BackColor = System::Drawing::SystemColors::Control;
+			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
+			this->label4->Location = System::Drawing::Point(340, 305);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(77, 22);
+			this->label4->TabIndex = 28;
+			this->label4->Text = L"Пароль:";
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->BackColor = System::Drawing::SystemColors::Control;
+			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
+			this->label5->Location = System::Drawing::Point(560, 340);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(79, 22);
+			this->label5->TabIndex = 27;
+			this->label5->Text = L"student1";
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->BackColor = System::Drawing::SystemColors::Control;
+			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
+			this->label7->Location = System::Drawing::Point(340, 340);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(65, 22);
+			this->label7->TabIndex = 26;
+			this->label7->Text = L"Логин:";
 			// 
 			// ViewStudentCard
 			// 
@@ -400,7 +453,11 @@ namespace StudentCardVelial {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
 				static_cast<System::Int32>(static_cast<System::Byte>(87)));
-			this->ClientSize = System::Drawing::Size(704, 343);
+			this->ClientSize = System::Drawing::Size(734, 378);
+			this->Controls->Add(this->label1);
+			this->Controls->Add(this->label4);
+			this->Controls->Add(this->label5);
+			this->Controls->Add(this->label7);
 			this->Controls->Add(this->LabelMailStudent);
 			this->Controls->Add(this->label20);
 			this->Controls->Add(this->LabelPhoneNumberStudent);
@@ -430,7 +487,7 @@ namespace StudentCardVelial {
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::Fixed3D;
 			this->MinimizeBox = false;
 			this->Name = L"ViewStudentCard";
-			this->Text = L"ViewStudentCard";
+			this->Text = L"Профиль студента";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->PictureBoxPhotoStudent))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -439,6 +496,5 @@ namespace StudentCardVelial {
 	private:
 		int Index;
 #pragma endregion
-
 };
 }

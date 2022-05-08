@@ -140,7 +140,7 @@ namespace StudentCardVelial {
 			//Реализация!
 			BaseData^ bd = gcnew BaseData();
 			Faculty^ f = gcnew Faculty();
-			f->TitleFaculty = TextBoxCreateFaculty->Text;
+			f->TitleFaculty = TextBoxCreateFaculty->Text->Replace(" ", "");
 			f->NameDekan = TextBoxNameDekan->Text;
 			if (bd->Checking(f)) {
 				TextBoxCreateFaculty->Clear();

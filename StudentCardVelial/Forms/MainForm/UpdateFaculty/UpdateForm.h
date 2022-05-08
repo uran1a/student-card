@@ -22,8 +22,8 @@ namespace StudentCardVelial {
 			InitializeComponent();
 			BaseData^ bd = gcnew BaseData();
 			//List<Faculty^>^ list = bd->FillBaseData();
-			TextBoxUpdateTitleFaculty->Text = ItemFaculty->TitleFaculty;
-			TextBoxUpdateNameDekan->Text = ItemFaculty->NameDekan;
+			TextBoxUpdateTitleFaculty->Text = ItemFaculty->TitleFaculty->Replace(" ", "");
+			TextBoxUpdateNameDekan->Text = ItemFaculty->NameDekan->Replace(" ", "");
 		}
 
 	protected:
@@ -99,7 +99,7 @@ namespace StudentCardVelial {
 			this->Controls->Add(this->TextBoxUpdateTitleFaculty);
 			this->Controls->Add(this->label1);
 			this->Name = L"UpdateForm";
-			this->Text = L"UpdateForm";
+			this->Text = L"Факультет";
 			this->ResumeLayout(false);
 			this->PerformLayout();
 

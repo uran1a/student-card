@@ -188,7 +188,7 @@ public:
 
 			SqlDataReader^ reader = cmd->ExecuteReader();
 			while (reader->Read()) {
-				if (f->TitleFaculty->ToUpper() == (reader["Title_Faculty"]->ToString()->Replace(" ", "")->ToUpper()))
+				if (f->TitleFaculty->ToUpper()->Replace(" ", "") == (reader["Title_Faculty"]->ToString()->Replace(" ", "")->ToUpper()))
 					return checkingForMatches = true;
 			}
 			return checkingForMatches;
@@ -200,7 +200,6 @@ public:
 		}
 	}
 	//----------------------------------------
-	
 	//GROUP
 	//----------------------------------------
 	void Insert(Group^ g) {
@@ -330,7 +329,7 @@ public:
 
 			SqlDataReader^ reader = cmd->ExecuteReader();
 			while (reader->Read()) {
-				if (g->TitleGroup->ToUpper() == (reader["Title_Group"]->ToString()->Replace(" ", "")->ToUpper()))
+				if (g->TitleGroup->ToUpper()->Replace(" ", "") == (reader["Title_Group"]->ToString()->Replace(" ", "")->ToUpper()))
 					return checkingForMatches = true;
 			}
 			return checkingForMatches;
@@ -527,8 +526,8 @@ public:
 			ListViewItem::ListViewSubItem^ Name = gcnew ListViewItem::ListViewSubItem(newItem, list_student[i]->Name);
 			ListViewItem::ListViewSubItem^ Surname = gcnew ListViewItem::ListViewSubItem(newItem, list_student[i]->Surname);
 			ListViewItem::ListViewSubItem^ Middlename = gcnew ListViewItem::ListViewSubItem(newItem, list_student[i]->Middlename);
-			newItem->SubItems->Add(Name);
 			newItem->SubItems->Add(Surname);
+			newItem->SubItems->Add(Name);
 			newItem->SubItems->Add(Middlename);
 			ListViewPanel->Items->AddRange(gcnew cli::array< System::Windows::Forms::ListViewItem^  >(1) { newItem });
 		}
@@ -555,26 +554,6 @@ public:
 			ListViewPanel->Items->AddRange(gcnew cli::array< System::Windows::Forms::ListViewItem^  >(1) { newItem });
 		}
 	}
-	/*
-	void Delete(int ID) {
-		try {
-			//Подключение в БД
-			ConnectToBD();
-
-			String^ cmdText = "DELETE FROM dbo.TABLE_STUDENTS WHERE ID = @ID";
-			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
-
-			cmd->Parameters->AddWithValue("@ID", ID);
-			conn->Open();
-			cmd->ExecuteNonQuery();
-		}
-		finally {
-			if (conn != nullptr)
-				conn->Close();
-			else MessageBox::Show("Ошибка: При удалении элемента в БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
-		}
-	}
-	*/
 	void Delete(Student^ student) {
 		try {
 			//Подключение в БД
@@ -687,7 +666,7 @@ public:
 
 			SqlDataReader^ reader = cmd->ExecuteReader();
 			while (reader->Read()) {
-				if (s->Name->ToUpper() == (reader["Name"]->ToString()->Replace(" ", "")->ToUpper()) && s->Surname->ToUpper() == (reader["Surname"]->ToString()->Replace(" ", "")->ToUpper()) && s->Middlename->ToUpper() == (reader["Middlename"]->ToString()->Replace(" ", "")->ToUpper()))
+				if (s->Name->ToUpper()->Replace(" ", "") == (reader["Name"]->ToString()->Replace(" ", "")->ToUpper()) && s->Surname->ToUpper()->Replace(" ", "") == (reader["Surname"]->ToString()->Replace(" ", "")->ToUpper()) && s->Middlename->ToUpper()->Replace(" ", "") == (reader["Middlename"]->ToString()->Replace(" ", "")->ToUpper()))
 					return checkingForMatches = true;
 			}
 			return checkingForMatches;
@@ -712,7 +691,7 @@ public:
 
 			SqlDataReader^ reader = cmd->ExecuteReader();
 			while (reader->Read()) {
-				if (s->Login->ToUpper() == (reader["Login"]->ToString()->Replace(" ", "")->ToUpper()) && s->Password->ToUpper() == (reader["Password"]->ToString()->Replace(" ", "")->ToUpper()))
+				if (s->Login->ToUpper()->Replace(" ", "") == (reader["Login"]->ToString()->Replace(" ", "")->ToUpper()) && s->Password->ToUpper()->Replace(" ", "") == (reader["Password"]->ToString()->Replace(" ", "")->ToUpper()))
 					return checkingForMatches = true;
 			}
 			return checkingForMatches;
