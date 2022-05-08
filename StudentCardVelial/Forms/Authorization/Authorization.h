@@ -353,14 +353,9 @@ namespace StudentCardVelial {
 				form->Show();
 			}
 			else if (StaticUser == Administrator) {
-				MessageBox::Show("Ты админ!");
-				//this->TabControlAuthorization->Size = System::Drawing::Size(415, 275);
 				this->TabControlAuthorization->Size = System::Drawing::Size(528, 378);
-
 				this->PanelAdmin->Location = System::Drawing::Point(375, 6);
 				this->PanelAdmin->Visible = true;
-				//
-
 				this->Size = System::Drawing::Size(567, 453);
 			}
 			else if (StaticUser == NoneFind) {
@@ -373,7 +368,6 @@ namespace StudentCardVelial {
 		}
 	}
 	private: System::Void ButtonCreateAccount_Click(System::Object^ sender, System::EventArgs^ e) {
-		//проверку empty
 		bd = gcnew BaseData();
 		bd->SignIn(TextBoxCreateAccountLogin->Text, TextBoxCreateAccountPassword->Text);
 		TextBoxCreateAccountLogin->Clear();

@@ -334,6 +334,7 @@ namespace StudentCardVelial {
 			this->ButtonCreatePassword->TabIndex = 24;
 			this->ButtonCreatePassword->Text = L"Сгенерировать";
 			this->ButtonCreatePassword->UseVisualStyleBackColor = false;
+			this->ButtonCreatePassword->Click += gcnew System::EventHandler(this, &CreateStudent::ButtonCreatePassword_Click);
 			// 
 			// ComboBoxEducationalForm
 			// 
@@ -401,7 +402,7 @@ namespace StudentCardVelial {
 			else if (String::IsNullOrEmpty(TextBoxBirthdayStudent->Text)) {
 				throw gcnew Exception("Заполните поле \"Дата рождения\"!");
 			}
-			else if (((Convert::ToInt32(TextBoxPointEGEStudent->Text) >= 0) && (Convert::ToInt32(TextBoxPointEGEStudent->Text) <= 300)) || String::IsNullOrEmpty(TextBoxPointEGEStudent->Text)) {
+			else if (((Convert::ToInt32(TextBoxPointEGEStudent->Text) < 0) || (Convert::ToInt32(TextBoxPointEGEStudent->Text) > 300)) || String::IsNullOrEmpty(TextBoxPointEGEStudent->Text)) {
 				throw gcnew Exception("Заполните поле \"Баллы ЕГЭ\" (Диапозон: 0-300 баллов)!");
 			}
 			else if (String::IsNullOrEmpty(TextBoxPhotoStudent->Text)) {
@@ -414,26 +415,42 @@ namespace StudentCardVelial {
 				throw gcnew Exception("Заполните поле \"Элект. почта\"!");
 			}
 			else if (String::IsNullOrEmpty(TextBoxLoginStudent->Text)) {
-				throw gcnew Exception("Заполните поле \"Фото студента\"!");
+				throw gcnew Exception("Заполните поле \"Логин студента\"!");
 			}
 			else if (String::IsNullOrEmpty(TextBoxPasswordStudent->Text)) {
-				throw gcnew Exception("Заполните поле \"Фото студента\"!");
+				throw gcnew Exception("Заполните поле \"Пароль студента\"!");
 			}
-			BaseData^ bd = gcnew BaseData();
-			Student^ newStudent = gcnew Student();
-			newStudent->Name = TextBoxNameStudent->Text;
-			newStudent->Surname = TextBoxSurnameStudent->Text;
-			newStudent->Middlename = TextBoxMiddlenameStudent->Text;
-			newStudent->Birthday = TextBoxBirthdayStudent->Text;
-			newStudent->Point_EGE = Convert::ToInt32(TextBoxPointEGEStudent->Text);
-			newStudent->Photo_Student = TextBoxPhotoStudent->Text;
-			newStudent->Educational_Form = Convert::ToString(ComboBoxEducationalForm->SelectedItem);;
-			newStudent->Phone_Number = TextBoxPhoneNumberStudent->Text;
-			newStudent->Mail = TextBoxMailStudent->Text;
-			newStudent->Login = TextBoxLoginStudent->Text;
-			newStudent->Password = TextBoxPasswordStudent->Text;
 
-			bd->Insert(newStudent);
+			BaseData^ bd = gcnew BaseData();
+			Student^ NewStudent = gcnew Student();
+			NewStudent->Name = TextBoxNameStudent->Text;
+			NewStudent->Surname = TextBoxSurnameStudent->Text;
+			NewStudent->Middlename = TextBoxMiddlenameStudent->Text;
+			NewStudent->Birthday = TextBoxBirthdayStudent->Text;
+			NewStudent->Point_EGE = Convert::ToInt32(TextBoxPointEGEStudent->Text);
+			NewStudent->Photo_Student = TextBoxPhotoStudent->Text;
+			NewStudent->Educational_Form = Convert::ToString(ComboBoxEducationalForm->SelectedItem);;
+			NewStudent->Phone_Number = TextBoxPhoneNumberStudent->Text;
+			NewStudent->Mail = TextBoxMailStudent->Text;
+			NewStudent->Login = TextBoxLoginStudent->Text;
+			NewStudent->Password = TextBoxPasswordStudent->Text;
+
+			if (bd->Checking(NewStudent)) {
+				TextBoxNameStudent->Clear();
+				TextBoxSurnameStudent->Clear();
+				TextBoxMiddlenameStudent->Clear();
+				TextBoxNameStudent->Focus();
+				throw gcnew Exception("Измените ФИО студента. Нынешнее ФИО совпадает с уже имеющимися!");
+			}
+
+			if (bd->CheckingPassword(NewStudent)) {
+				TextBoxLoginStudent->Clear();
+				TextBoxPasswordStudent->Clear();
+				TextBoxLoginStudent->Focus();
+				throw gcnew Exception("Измените логин и пароль студента. Нынешнее логин и пароль совпадает с уже имеющимися!");
+			}
+
+			bd->Insert(NewStudent);
 
 			TextBoxNameStudent->Clear();
 			TextBoxSurnameStudent->Clear();
@@ -463,6 +480,9 @@ namespace StudentCardVelial {
 			TextBoxPhotoStudent->Text = url;
 			this->pictureBox1->Load(url);
 		}
+	}
+	private: System::Void ButtonCreatePassword_Click(System::Object^ sender, System::EventArgs^ e) {
+	
 	}
 };
 }

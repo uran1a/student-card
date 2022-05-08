@@ -20,7 +20,7 @@ namespace StudentCardVelial {
 			BaseData^ bd = gcnew BaseData();
 			Student^ student = bd->FillStudent(Index);
 		
-			LabelNameStudent->Text = Convert::ToString(student->Name + " " + student->Surname + " " + student->Middlename);
+			LabelNameStudent->Text = Convert::ToString(student->Surname + " " + student->Name + " " + student->Middlename);
 			//ButtonStatus
 			//Otcekna
 

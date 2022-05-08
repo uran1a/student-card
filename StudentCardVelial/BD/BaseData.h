@@ -698,6 +698,31 @@ public:
 			else MessageBox::Show("Ошибка: При чтении элементов из БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		}
 	}
+	bool CheckingPassword(Student^ s) {
+		try {
+			//Подключение в БД
+			ConnectToBD();
+
+			List<Faculty^>^ list = gcnew List<Faculty^>();
+			bool checkingForMatches = false;
+			String^ cmdText = "SELECT * FROM dbo.TABLE_STUDENTS WHERE ID != @ID";
+			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
+			cmd->Parameters->AddWithValue("@ID", s->ID);
+			conn->Open();
+
+			SqlDataReader^ reader = cmd->ExecuteReader();
+			while (reader->Read()) {
+				if (s->Login->ToUpper() == (reader["Login"]->ToString()->Replace(" ", "")->ToUpper()) && s->Password->ToUpper() == (reader["Password"]->ToString()->Replace(" ", "")->ToUpper()))
+					return checkingForMatches = true;
+			}
+			return checkingForMatches;
+		}
+		finally {
+			if (conn != nullptr)
+				conn->Close();
+			else MessageBox::Show("Ошибка: При чтении элементов из БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+		}
+	}
 	//----------------------------------------
 	//AUTORIZATION
 	//----------------------------------------
