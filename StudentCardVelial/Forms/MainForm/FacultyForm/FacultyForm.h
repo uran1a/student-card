@@ -32,24 +32,13 @@ namespace StudentCardVelial {
 		{
 			InitializeComponent();
 
-			if (isAdmin) {
-
-			}
-			else {
+			if (!isAdmin) {
 				this->PanelButton->Visible = false;
 				this->PanelFacultyButton->Visible = false;
-				this->ButtonCreateStudentBD->Visible = false;
-
-				this->LabelTitleUniversity->AutoSize = true;
-				this->LabelTitleUniversity->BackColor = System::Drawing::SystemColors::ActiveBorder;
-				this->LabelTitleUniversity->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-				this->LabelTitleUniversity->Location = System::Drawing::Point(12, 9);
-				this->LabelTitleUniversity->Size = System::Drawing::Size(171, 22);
-				this->LabelTitleUniversity->TabIndex = 0;
-				this->LabelTitleUniversity->Text = L"Архитектура VGTU";
-
+				this->ButtonCreateStudentBD->Visible = true;
+				this->LabelTitleUniversity->Visible = false;
 				this->TreeViewFaculty->Location = System::Drawing::Point(12, 32);
-				this->TreeViewFaculty->Size = System::Drawing::Size(230, 350);
+				this->TreeViewFaculty->Size = System::Drawing::Size(240, 340);
 			}
 			bd = gcnew BaseData();
 			list = bd->FillBaseData();
@@ -452,6 +441,8 @@ namespace StudentCardVelial {
 		this->Controls->Add(this->ButtonCreateStudentBD);
 		this->Controls->Add(this->PanelFacultyButton);
 		this->Controls->Add(this->TreeViewFaculty);
+		this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::Fixed3D;
+		this->MinimizeBox = false;
 		this->Name = L"FacultyForm";
 		this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 		this->Text = L"FacultyForm";

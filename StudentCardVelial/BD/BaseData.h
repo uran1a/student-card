@@ -657,7 +657,6 @@ public:
 			//Подключение в БД
 			ConnectToBD();
 
-			List<Faculty^>^ list = gcnew List<Faculty^>();
 			bool checkingForMatches = false;
 			String^ cmdText = "SELECT * FROM dbo.TABLE_STUDENTS WHERE ID != @ID";
 			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
@@ -682,7 +681,6 @@ public:
 			//Подключение в БД
 			ConnectToBD();
 
-			List<Faculty^>^ list = gcnew List<Faculty^>();
 			bool checkingForMatches = false;
 			String^ cmdText = "SELECT * FROM dbo.TABLE_STUDENTS WHERE ID != @ID";
 			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
@@ -924,6 +922,55 @@ public:
 			if (conn != nullptr)
 				conn->Close();
 			else MessageBox::Show("Ошибка: При удалении элемента в БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+		}
+	}
+	bool Checking(Admin^ a, String^ Codition) {
+		// WHERE ID != @ID
+		try {
+			//Подключение в БД
+			ConnectToBD();
+
+			bool checkingForMatches = false;
+			String^ cmdText = "SELECT * FROM dbo.TABLE_ADMINS "+ Codition;
+			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
+			cmd->Parameters->AddWithValue("@ID", a->ID);
+			conn->Open();
+
+			SqlDataReader^ reader = cmd->ExecuteReader();
+			while (reader->Read()) {
+				if (a->Name->ToUpper()->Replace(" ", "") == (reader["Name"]->ToString()->Replace(" ", "")->ToUpper()) && a->Surname->ToUpper()->Replace(" ", "") == (reader["Surname"]->ToString()->Replace(" ", "")->ToUpper()) && a->Patronymic->ToUpper()->Replace(" ", "") == (reader["Patronymic"]->ToString()->Replace(" ", "")->ToUpper()))
+					return checkingForMatches = true;
+			}
+			return checkingForMatches;
+		}
+		finally {
+			if (conn != nullptr)
+				conn->Close();
+			else MessageBox::Show("Ошибка: При чтении элементов из БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+		}
+	}
+	bool CheckingPassword(Admin^ a, String^ Codition) {
+		try {
+			//Подключение в БД
+			ConnectToBD();
+
+			bool checkingForMatches = false;
+			String^ cmdText = "SELECT * FROM dbo.TABLE_ADMINS "+ Codition;
+			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
+			cmd->Parameters->AddWithValue("@ID", a->ID);
+			conn->Open();
+
+			SqlDataReader^ reader = cmd->ExecuteReader();
+			while (reader->Read()) {
+				if (a->Login->ToUpper()->Replace(" ", "") == (reader["Login"]->ToString()->Replace(" ", "")->ToUpper()) || a->Password->ToUpper()->Replace(" ", "") == (reader["Password"]->ToString()->Replace(" ", "")->ToUpper()))
+					return checkingForMatches = true;
+			}
+			return checkingForMatches;
+		}
+		finally {
+			if (conn != nullptr)
+				conn->Close();
+			else MessageBox::Show("Ошибка: При чтении элементов из БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		}
 	}
 	//----------------------------------------

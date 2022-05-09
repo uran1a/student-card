@@ -479,6 +479,12 @@ namespace StudentCardVelial {
 			else if (String::IsNullOrEmpty(TextBoxPhotoStudent->Text)) {
 				throw gcnew Exception("Заполните поле \"Фото студента\"!");
 			}
+			else if (String::IsNullOrEmpty(TextBoxLogin->Text)) {
+				throw gcnew Exception("Заполните поле \"Логин\"!");
+			}
+			else if (String::IsNullOrEmpty(TextBoxPassword->Text)) {
+				throw gcnew Exception("Заполните поле \"Пароль\"!");
+			}
 			//проверка empty
 			bd = gcnew BaseData();
 			Student^ UpdatedStudent = gcnew Student();
@@ -488,9 +494,7 @@ namespace StudentCardVelial {
 			UpdatedStudent->Surname = FIO[0];
 			UpdatedStudent->Name = FIO[1];
 			UpdatedStudent->Middlename = FIO[2];
-			//UpdatedStudent->Otcenka = 4.0;
 			UpdatedStudent->Otcenka = Convert::ToDouble(TextBoxOtcenka->Text);
-			Console::WriteLine(UpdatedStudent->Otcenka);
 			UpdatedStudent->Birthday = TextBoxBirthday->Text;
 			UpdatedStudent->Photo_Student = TextBoxPhotoStudent->Text;
 			UpdatedStudent->Title_Group = TextBoxGroup->Text;
@@ -513,7 +517,7 @@ namespace StudentCardVelial {
 				TextBoxLogin->Text = SelectedStudent->Login;
 				TextBoxPassword->Text = SelectedStudent->Password;
 				TextBoxLogin->Focus();
-				throw gcnew Exception("Измените логин и пароль студента. Нынешнее логин и пароль совпадает с уже имеющимися!");
+				throw gcnew Exception("Измените логин и пароль студента. Нынешней логин и пароль совпадает с уже имеющимися!");
 			}
 
 			bd->Update(UpdatedStudent, SelectedStudent->ID);

@@ -9,9 +9,9 @@ void main(array<String^>^ arg) {
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
 
-	StudentCardVelial::Autorization form;
+	//StudentCardVelial::Autorization form;
 	//StudentCardVelial::CreateStudent form;
-	//StudentCardVelial::FacultyForm form(1,true);
+	StudentCardVelial::FacultyForm form(1,false);
 	Application::Run(% form);
 }
 

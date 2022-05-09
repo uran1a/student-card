@@ -37,23 +37,23 @@ namespace StudentCardVelial {
 
 	private: System::Windows::Forms::TabPage^ TabPageAuthorization;
 
-	private: System::Windows::Forms::TabPage^ tabPageRegistration;
+
 	private: System::Windows::Forms::TextBox^ TextBoxLogin;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Button^ buttonAuthorization;
 	private: System::Windows::Forms::TextBox^ TextBoxPassword;
 	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::Button^ ButtonCreateAccount;
+
 	private: System::Windows::Forms::Panel^ PanelAdmin;
 	private: System::Windows::Forms::Button^ ButtonFacultyForm;
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Button^ ButtonListUsers;
 	private: System::Windows::Forms::Panel^ panel1;
-	private: System::Windows::Forms::Panel^ panel2;
-	private: System::Windows::Forms::TextBox^ TextBoxCreateAccountLogin;
-	private: System::Windows::Forms::Label^ label6;
-	private: System::Windows::Forms::Label^ label7;
-	private: System::Windows::Forms::TextBox^ TextBoxCreateAccountPassword;
+
+
+
+
+
 	private: System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
@@ -71,25 +71,15 @@ namespace StudentCardVelial {
 			this->ButtonFacultyForm = (gcnew System::Windows::Forms::Button());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->ButtonListUsers = (gcnew System::Windows::Forms::Button());
-			this->tabPageRegistration = (gcnew System::Windows::Forms::TabPage());
-			this->panel2 = (gcnew System::Windows::Forms::Panel());
-			this->TextBoxCreateAccountLogin = (gcnew System::Windows::Forms::TextBox());
-			this->label6 = (gcnew System::Windows::Forms::Label());
-			this->label7 = (gcnew System::Windows::Forms::Label());
-			this->TextBoxCreateAccountPassword = (gcnew System::Windows::Forms::TextBox());
-			this->ButtonCreateAccount = (gcnew System::Windows::Forms::Button());
 			this->TabControlAuthorization->SuspendLayout();
 			this->TabPageAuthorization->SuspendLayout();
 			this->panel1->SuspendLayout();
 			this->PanelAdmin->SuspendLayout();
-			this->tabPageRegistration->SuspendLayout();
-			this->panel2->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// TabControlAuthorization
 			// 
 			this->TabControlAuthorization->Controls->Add(this->TabPageAuthorization);
-			this->TabControlAuthorization->Controls->Add(this->tabPageRegistration);
 			this->TabControlAuthorization->Location = System::Drawing::Point(12, 12);
 			this->TabControlAuthorization->Name = L"TabControlAuthorization";
 			this->TabControlAuthorization->SelectedIndex = 0;
@@ -225,77 +215,6 @@ namespace StudentCardVelial {
 			this->ButtonListUsers->UseVisualStyleBackColor = false;
 			this->ButtonListUsers->Click += gcnew System::EventHandler(this, &Autorization::ButtonListUsers_Click);
 			// 
-			// tabPageRegistration
-			// 
-			this->tabPageRegistration->BackColor = System::Drawing::Color::LightGray;
-			this->tabPageRegistration->Controls->Add(this->panel2);
-			this->tabPageRegistration->Location = System::Drawing::Point(4, 25);
-			this->tabPageRegistration->Name = L"tabPageRegistration";
-			this->tabPageRegistration->Padding = System::Windows::Forms::Padding(3);
-			this->tabPageRegistration->Size = System::Drawing::Size(570, 349);
-			this->tabPageRegistration->TabIndex = 1;
-			this->tabPageRegistration->Text = L"Регистрация";
-			// 
-			// panel2
-			// 
-			this->panel2->BackColor = System::Drawing::Color::Transparent;
-			this->panel2->Controls->Add(this->TextBoxCreateAccountLogin);
-			this->panel2->Controls->Add(this->label6);
-			this->panel2->Controls->Add(this->label7);
-			this->panel2->Controls->Add(this->TextBoxCreateAccountPassword);
-			this->panel2->Controls->Add(this->ButtonCreateAccount);
-			this->panel2->Location = System::Drawing::Point(6, 6);
-			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(198, 193);
-			this->panel2->TabIndex = 8;
-			// 
-			// TextBoxCreateAccountLogin
-			// 
-			this->TextBoxCreateAccountLogin->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.8F));
-			this->TextBoxCreateAccountLogin->Location = System::Drawing::Point(17, 34);
-			this->TextBoxCreateAccountLogin->Name = L"TextBoxCreateAccountLogin";
-			this->TextBoxCreateAccountLogin->Size = System::Drawing::Size(166, 24);
-			this->TextBoxCreateAccountLogin->TabIndex = 1;
-			// 
-			// label6
-			// 
-			this->label6->AutoSize = true;
-			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->label6->Location = System::Drawing::Point(14, 10);
-			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(138, 22);
-			this->label6->TabIndex = 0;
-			this->label6->Text = L"Введите логин:";
-			// 
-			// label7
-			// 
-			this->label7->AutoSize = true;
-			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->label7->Location = System::Drawing::Point(13, 80);
-			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(160, 22);
-			this->label7->TabIndex = 2;
-			this->label7->Text = L"Ввведите пароль:";
-			// 
-			// TextBoxCreateAccountPassword
-			// 
-			this->TextBoxCreateAccountPassword->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.8F));
-			this->TextBoxCreateAccountPassword->Location = System::Drawing::Point(16, 104);
-			this->TextBoxCreateAccountPassword->Name = L"TextBoxCreateAccountPassword";
-			this->TextBoxCreateAccountPassword->PasswordChar = '*';
-			this->TextBoxCreateAccountPassword->Size = System::Drawing::Size(167, 24);
-			this->TextBoxCreateAccountPassword->TabIndex = 3;
-			// 
-			// ButtonCreateAccount
-			// 
-			this->ButtonCreateAccount->Location = System::Drawing::Point(13, 145);
-			this->ButtonCreateAccount->Name = L"ButtonCreateAccount";
-			this->ButtonCreateAccount->Size = System::Drawing::Size(172, 36);
-			this->ButtonCreateAccount->TabIndex = 0;
-			this->ButtonCreateAccount->Text = L"Зарегистрироваться";
-			this->ButtonCreateAccount->UseVisualStyleBackColor = true;
-			this->ButtonCreateAccount->Click += gcnew System::EventHandler(this, &Autorization::ButtonCreateAccount_Click);
-			// 
 			// Autorization
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -315,9 +234,6 @@ namespace StudentCardVelial {
 			this->panel1->PerformLayout();
 			this->PanelAdmin->ResumeLayout(false);
 			this->PanelAdmin->PerformLayout();
-			this->tabPageRegistration->ResumeLayout(false);
-			this->panel2->ResumeLayout(false);
-			this->panel2->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
@@ -367,14 +283,6 @@ namespace StudentCardVelial {
 			MessageBox::Show("Решение: " + Convert::ToString(e->Message), "Ошибка", MessageBoxButtons::OK);
 		}
 	}
-	private: System::Void ButtonCreateAccount_Click(System::Object^ sender, System::EventArgs^ e) {
-		bd = gcnew BaseData();
-		bd->SignIn(TextBoxCreateAccountLogin->Text, TextBoxCreateAccountPassword->Text);
-		TextBoxCreateAccountLogin->Clear();
-		TextBoxCreateAccountPassword->Clear();
-		TextBoxCreateAccountLogin->Focus();
-	}
-
 	private: System::Void ButtonFacultyForm_Click(System::Object^ sender, System::EventArgs^ e) {
 		FacultyForm^ form = gcnew FacultyForm(ID, true);
 		form->Show();

@@ -20,8 +20,8 @@ namespace StudentCardVelial {
 		{
 			InitializeComponent();
 			bd = gcnew BaseData();
-			Admin^ admin = bd->FillAdmin(ID);
-			TextBoxFIOAdmin->Text = Convert::ToString(admin->Name + " " + admin->Surname + " " + admin->Patronymic);
+			admin = bd->FillAdmin(ID);
+			TextBoxFIOAdmin->Text = Convert::ToString(admin->Surname + " " + admin->Name + " " + admin->Patronymic);
 			TextBoxBirthdayAdmin->Text = admin->Birthday;
 			TextBoxDolzhnostAdmin->Text = admin->Dolzhnost;
 			TextBoxStazhAdmin->Text = Convert::ToString(admin->Stazh);
@@ -93,7 +93,7 @@ namespace StudentCardVelial {
 			// 
 			// TextBoxFIOAdmin
 			// 
-			this->TextBoxFIOAdmin->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.8F));
+			this->TextBoxFIOAdmin->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.8F));
 			this->TextBoxFIOAdmin->Location = System::Drawing::Point(218, 12);
 			this->TextBoxFIOAdmin->Multiline = true;
 			this->TextBoxFIOAdmin->Name = L"TextBoxFIOAdmin";
@@ -105,13 +105,14 @@ namespace StudentCardVelial {
 			this->TextBoxBirthdayAdmin->Location = System::Drawing::Point(371, 50);
 			this->TextBoxBirthdayAdmin->Name = L"TextBoxBirthdayAdmin";
 			this->TextBoxBirthdayAdmin->Size = System::Drawing::Size(135, 22);
-			this->TextBoxBirthdayAdmin->TabIndex = 4;
+			this->TextBoxBirthdayAdmin->TabIndex = 2;
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->label5->Location = System::Drawing::Point(218, 48);
+			this->label5->ForeColor = System::Drawing::SystemColors::Control;
+			this->label5->Location = System::Drawing::Point(220, 50);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(147, 22);
 			this->label5->TabIndex = 8;
@@ -119,16 +120,17 @@ namespace StudentCardVelial {
 			// 
 			// TextBoxDolzhnostAdmin
 			// 
-			this->TextBoxDolzhnostAdmin->Location = System::Drawing::Point(371, 82);
+			this->TextBoxDolzhnostAdmin->Location = System::Drawing::Point(371, 80);
 			this->TextBoxDolzhnostAdmin->Name = L"TextBoxDolzhnostAdmin";
 			this->TextBoxDolzhnostAdmin->Size = System::Drawing::Size(135, 22);
-			this->TextBoxDolzhnostAdmin->TabIndex = 5;
+			this->TextBoxDolzhnostAdmin->TabIndex = 3;
 			// 
 			// label6
 			// 
 			this->label6->AutoSize = true;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->label6->Location = System::Drawing::Point(219, 80);
+			this->label6->ForeColor = System::Drawing::SystemColors::Control;
+			this->label6->Location = System::Drawing::Point(220, 80);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(109, 22);
 			this->label6->TabIndex = 10;
@@ -136,16 +138,17 @@ namespace StudentCardVelial {
 			// 
 			// TextBoxStazhAdmin
 			// 
-			this->TextBoxStazhAdmin->Location = System::Drawing::Point(371, 113);
+			this->TextBoxStazhAdmin->Location = System::Drawing::Point(371, 110);
 			this->TextBoxStazhAdmin->Name = L"TextBoxStazhAdmin";
 			this->TextBoxStazhAdmin->Size = System::Drawing::Size(135, 22);
-			this->TextBoxStazhAdmin->TabIndex = 6;
+			this->TextBoxStazhAdmin->TabIndex = 4;
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->label4->Location = System::Drawing::Point(219, 111);
+			this->label4->ForeColor = System::Drawing::SystemColors::Control;
+			this->label4->Location = System::Drawing::Point(220, 110);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(60, 22);
 			this->label4->TabIndex = 12;
@@ -153,16 +156,17 @@ namespace StudentCardVelial {
 			// 
 			// TextBoxZarplataAdmin
 			// 
-			this->TextBoxZarplataAdmin->Location = System::Drawing::Point(371, 144);
+			this->TextBoxZarplataAdmin->Location = System::Drawing::Point(371, 140);
 			this->TextBoxZarplataAdmin->Name = L"TextBoxZarplataAdmin";
 			this->TextBoxZarplataAdmin->Size = System::Drawing::Size(135, 22);
-			this->TextBoxZarplataAdmin->TabIndex = 7;
+			this->TextBoxZarplataAdmin->TabIndex = 5;
 			// 
 			// label7
 			// 
 			this->label7->AutoSize = true;
 			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->label7->Location = System::Drawing::Point(219, 139);
+			this->label7->ForeColor = System::Drawing::SystemColors::Control;
+			this->label7->Location = System::Drawing::Point(220, 140);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(94, 22);
 			this->label7->TabIndex = 14;
@@ -173,13 +177,14 @@ namespace StudentCardVelial {
 			this->TextBoxLoginAdmin->Location = System::Drawing::Point(12, 258);
 			this->TextBoxLoginAdmin->Name = L"TextBoxLoginAdmin";
 			this->TextBoxLoginAdmin->Size = System::Drawing::Size(157, 22);
-			this->TextBoxLoginAdmin->TabIndex = 8;
+			this->TextBoxLoginAdmin->TabIndex = 9;
 			// 
 			// label8
 			// 
 			this->label8->AutoSize = true;
 			this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->label8->Location = System::Drawing::Point(8, 233);
+			this->label8->ForeColor = System::Drawing::SystemColors::Control;
+			this->label8->Location = System::Drawing::Point(12, 233);
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(65, 22);
 			this->label8->TabIndex = 16;
@@ -190,12 +195,13 @@ namespace StudentCardVelial {
 			this->TextBoxPasswordAdmin->Location = System::Drawing::Point(12, 312);
 			this->TextBoxPasswordAdmin->Name = L"TextBoxPasswordAdmin";
 			this->TextBoxPasswordAdmin->Size = System::Drawing::Size(157, 22);
-			this->TextBoxPasswordAdmin->TabIndex = 9;
+			this->TextBoxPasswordAdmin->TabIndex = 10;
 			// 
 			// label9
 			// 
 			this->label9->AutoSize = true;
 			this->label9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
+			this->label9->ForeColor = System::Drawing::SystemColors::Control;
 			this->label9->Location = System::Drawing::Point(12, 287);
 			this->label9->Name = L"label9";
 			this->label9->Size = System::Drawing::Size(77, 22);
@@ -204,42 +210,54 @@ namespace StudentCardVelial {
 			// 
 			// ButtonCreateAdmin
 			// 
+			this->ButtonCreateAdmin->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(78)),
+				static_cast<System::Int32>(static_cast<System::Byte>(108)), static_cast<System::Int32>(static_cast<System::Byte>(164)));
+			this->ButtonCreateAdmin->ForeColor = System::Drawing::SystemColors::Control;
 			this->ButtonCreateAdmin->Location = System::Drawing::Point(214, 248);
 			this->ButtonCreateAdmin->Name = L"ButtonCreateAdmin";
 			this->ButtonCreateAdmin->Size = System::Drawing::Size(129, 42);
-			this->ButtonCreateAdmin->TabIndex = 10;
+			this->ButtonCreateAdmin->TabIndex = 11;
 			this->ButtonCreateAdmin->Text = L"Создать Admin";
-			this->ButtonCreateAdmin->UseVisualStyleBackColor = true;
+			this->ButtonCreateAdmin->UseVisualStyleBackColor = false;
 			this->ButtonCreateAdmin->Click += gcnew System::EventHandler(this, &AdminPanel::ButtonCreateAdmin_Click);
 			// 
 			// ButtonUpdateAdmin
 			// 
+			this->ButtonUpdateAdmin->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(78)),
+				static_cast<System::Int32>(static_cast<System::Byte>(108)), static_cast<System::Int32>(static_cast<System::Byte>(164)));
+			this->ButtonUpdateAdmin->ForeColor = System::Drawing::SystemColors::Control;
 			this->ButtonUpdateAdmin->Location = System::Drawing::Point(214, 296);
 			this->ButtonUpdateAdmin->Name = L"ButtonUpdateAdmin";
 			this->ButtonUpdateAdmin->Size = System::Drawing::Size(129, 42);
-			this->ButtonUpdateAdmin->TabIndex = 11;
+			this->ButtonUpdateAdmin->TabIndex = 12;
 			this->ButtonUpdateAdmin->Text = L"Изменить Admin";
-			this->ButtonUpdateAdmin->UseVisualStyleBackColor = true;
+			this->ButtonUpdateAdmin->UseVisualStyleBackColor = false;
 			this->ButtonUpdateAdmin->Click += gcnew System::EventHandler(this, &AdminPanel::ButtonUpdateAdmin_Click);
 			// 
 			// ButtonListAdmins
 			// 
+			this->ButtonListAdmins->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(78)), static_cast<System::Int32>(static_cast<System::Byte>(108)),
+				static_cast<System::Int32>(static_cast<System::Byte>(164)));
+			this->ButtonListAdmins->ForeColor = System::Drawing::SystemColors::Control;
 			this->ButtonListAdmins->Location = System::Drawing::Point(377, 248);
 			this->ButtonListAdmins->Name = L"ButtonListAdmins";
 			this->ButtonListAdmins->Size = System::Drawing::Size(129, 42);
-			this->ButtonListAdmins->TabIndex = 12;
+			this->ButtonListAdmins->TabIndex = 13;
 			this->ButtonListAdmins->Text = L"Список Admins";
-			this->ButtonListAdmins->UseVisualStyleBackColor = true;
+			this->ButtonListAdmins->UseVisualStyleBackColor = false;
 			this->ButtonListAdmins->Click += gcnew System::EventHandler(this, &AdminPanel::ButtonListAdmins_Click);
 			// 
 			// ButtonListUsers
 			// 
+			this->ButtonListUsers->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(78)), static_cast<System::Int32>(static_cast<System::Byte>(108)),
+				static_cast<System::Int32>(static_cast<System::Byte>(164)));
+			this->ButtonListUsers->ForeColor = System::Drawing::SystemColors::Control;
 			this->ButtonListUsers->Location = System::Drawing::Point(377, 296);
 			this->ButtonListUsers->Name = L"ButtonListUsers";
 			this->ButtonListUsers->Size = System::Drawing::Size(129, 42);
-			this->ButtonListUsers->TabIndex = 13;
+			this->ButtonListUsers->TabIndex = 14;
 			this->ButtonListUsers->Text = L"Список Users";
-			this->ButtonListUsers->UseVisualStyleBackColor = true;
+			this->ButtonListUsers->UseVisualStyleBackColor = false;
 			this->ButtonListUsers->Click += gcnew System::EventHandler(this, &AdminPanel::ButtonListUsers_Click);
 			// 
 			// PictureBoxPhotoAdmin
@@ -258,13 +276,14 @@ namespace StudentCardVelial {
 			this->TextBoxMailAdmin->Location = System::Drawing::Point(371, 200);
 			this->TextBoxMailAdmin->Name = L"TextBoxMailAdmin";
 			this->TextBoxMailAdmin->Size = System::Drawing::Size(135, 22);
-			this->TextBoxMailAdmin->TabIndex = 25;
+			this->TextBoxMailAdmin->TabIndex = 8;
 			// 
 			// label10
 			// 
 			this->label10->AutoSize = true;
 			this->label10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->label10->Location = System::Drawing::Point(220, 198);
+			this->label10->ForeColor = System::Drawing::SystemColors::Control;
+			this->label10->Location = System::Drawing::Point(220, 200);
 			this->label10->Name = L"label10";
 			this->label10->Size = System::Drawing::Size(123, 22);
 			this->label10->TabIndex = 27;
@@ -272,15 +291,16 @@ namespace StudentCardVelial {
 			// 
 			// TextBoxMobilePhoneAdmin
 			// 
-			this->TextBoxMobilePhoneAdmin->Location = System::Drawing::Point(371, 172);
+			this->TextBoxMobilePhoneAdmin->Location = System::Drawing::Point(371, 170);
 			this->TextBoxMobilePhoneAdmin->Name = L"TextBoxMobilePhoneAdmin";
 			this->TextBoxMobilePhoneAdmin->Size = System::Drawing::Size(135, 22);
-			this->TextBoxMobilePhoneAdmin->TabIndex = 24;
+			this->TextBoxMobilePhoneAdmin->TabIndex = 6;
 			// 
 			// label11
 			// 
 			this->label11->AutoSize = true;
 			this->label11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
+			this->label11->ForeColor = System::Drawing::SystemColors::Control;
 			this->label11->Location = System::Drawing::Point(220, 170);
 			this->label11->Name = L"label11";
 			this->label11->Size = System::Drawing::Size(131, 22);
@@ -291,8 +311,9 @@ namespace StudentCardVelial {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->ClientSize = System::Drawing::Size(558, 355);
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
+				static_cast<System::Int32>(static_cast<System::Byte>(87)));
+			this->ClientSize = System::Drawing::Size(560, 355);
 			this->Controls->Add(this->TextBoxMailAdmin);
 			this->Controls->Add(this->label10);
 			this->Controls->Add(this->TextBoxMobilePhoneAdmin);
@@ -315,7 +336,10 @@ namespace StudentCardVelial {
 			this->Controls->Add(this->TextBoxBirthdayAdmin);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->TextBoxFIOAdmin);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::Fixed3D;
+			this->MaximizeBox = false;
 			this->Name = L"AdminPanel";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"AdminPanel";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->PictureBoxPhotoAdmin))->EndInit();
 			this->ResumeLayout(false);
@@ -325,6 +349,7 @@ namespace StudentCardVelial {
 		private:
 			BaseData^ bd;
 			String^ url;
+			Admin^ admin;
 			int AdminID;
 #pragma endregion
 	private: System::Void ButtonCreateAdmin_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -332,22 +357,72 @@ namespace StudentCardVelial {
 		admin->Show();
 	}
 	private: System::Void ButtonUpdateAdmin_Click(System::Object^ sender, System::EventArgs^ e) {
-		BaseData^ bd = gcnew BaseData();
-		Admin^ UpdatedAdmin = gcnew Admin();
-		array<String^>^ FIO = TextBoxFIOAdmin->Text->Split(' ');
-		UpdatedAdmin->Name = FIO[0];
-		UpdatedAdmin->Surname = FIO[1];
-		UpdatedAdmin->Patronymic = FIO[2];
-		UpdatedAdmin->Birthday = TextBoxBirthdayAdmin->Text;
-		UpdatedAdmin->Dolzhnost = TextBoxDolzhnostAdmin->Text;
-		UpdatedAdmin->Stazh = Convert::ToInt32(TextBoxStazhAdmin->Text);
-		UpdatedAdmin->Zarplata = Convert::ToInt32(TextBoxZarplataAdmin->Text);
-		UpdatedAdmin->Photo = url;
-		UpdatedAdmin->Mobile_Phone = TextBoxMobilePhoneAdmin->Text;
-		UpdatedAdmin->Mail = TextBoxMailAdmin->Text;
-		UpdatedAdmin->Login = TextBoxLoginAdmin->Text;
-		UpdatedAdmin->Password = TextBoxPasswordAdmin->Text;
-		bd->Update(UpdatedAdmin, AdminID);
+		try {
+			//Проверка!
+			if (String::IsNullOrEmpty(TextBoxFIOAdmin->Text)) {
+				throw gcnew Exception("Заполните поле \"ФИО студент\"!");
+			}
+			
+			else if (String::IsNullOrEmpty(TextBoxBirthdayAdmin->Text)) {
+				throw gcnew Exception("Заполните поле \"Дата рождения\"!");
+			}
+			else if (String::IsNullOrEmpty(TextBoxDolzhnostAdmin->Text)) {
+				throw gcnew Exception("Заполните поле \"Должность\"!");
+			}
+			else if (String::IsNullOrEmpty(TextBoxStazhAdmin->Text)) {
+				throw gcnew Exception("Заполните поле \"Стаж\"!");
+			}
+			else if (String::IsNullOrEmpty(TextBoxZarplataAdmin->Text)) {
+				throw gcnew Exception("Заполните поле \"Зарплата\"!");
+			}
+			else if (String::IsNullOrEmpty(TextBoxMobilePhoneAdmin->Text)) {
+				throw gcnew Exception("Заполните поле \"Моб. телефон\"!");
+			}
+			else if (String::IsNullOrEmpty(TextBoxMailAdmin->Text)) {
+				throw gcnew Exception("Заполните поле \"Элект. почта\"!");
+			}
+			else if (String::IsNullOrEmpty(TextBoxLoginAdmin->Text)) {
+				throw gcnew Exception("Заполните поле \"Логин\"!");
+			}
+			else if (String::IsNullOrEmpty(TextBoxPasswordAdmin->Text)) {
+				throw gcnew Exception("Заполните поле \"Пароль\"!");
+			}
+			BaseData^ bd = gcnew BaseData();
+			Admin^ UpdatedAdmin = gcnew Admin();
+			array<String^>^ FIO = TextBoxFIOAdmin->Text->Split(' ');
+			UpdatedAdmin->ID = AdminID;
+			UpdatedAdmin->Surname = FIO[0];
+			UpdatedAdmin->Name = FIO[1];
+			UpdatedAdmin->Patronymic = FIO[2];
+			UpdatedAdmin->Birthday = TextBoxBirthdayAdmin->Text;
+			UpdatedAdmin->Dolzhnost = TextBoxDolzhnostAdmin->Text;
+			UpdatedAdmin->Stazh = Convert::ToInt32(TextBoxStazhAdmin->Text);
+			UpdatedAdmin->Zarplata = Convert::ToInt32(TextBoxZarplataAdmin->Text);
+			UpdatedAdmin->Photo = url;
+			UpdatedAdmin->Mobile_Phone = TextBoxMobilePhoneAdmin->Text;
+			UpdatedAdmin->Mail = TextBoxMailAdmin->Text;
+			UpdatedAdmin->Login = TextBoxLoginAdmin->Text;
+			UpdatedAdmin->Password = TextBoxPasswordAdmin->Text;
+
+			if (bd->Checking(UpdatedAdmin,"WHERE ID != @ID")) {
+				TextBoxFIOAdmin->Text = Convert::ToString(admin->Surname + " " + admin->Name + " " + admin->Patronymic);
+				TextBoxFIOAdmin->Focus();
+				throw gcnew Exception("Измените ФИО админа. Нынешнее ФИО совпадает с уже имеющимися!");
+			}
+
+			if (bd->CheckingPassword(UpdatedAdmin, "WHERE ID != @ID")) {
+				TextBoxLoginAdmin->Text = admin->Login;
+				TextBoxPasswordAdmin->Text = admin->Password;
+				TextBoxLoginAdmin->Focus();
+				throw gcnew Exception("Измените логин и пароль админа. Нынешний логин и пароль совпадает с уже имеющимися!");
+			}
+
+			bd->Update(UpdatedAdmin, AdminID);
+		}
+		catch (Exception^ e) {
+			//Ошибка
+			MessageBox::Show("Решение: " + Convert::ToString(e->Message), "Ошибка", MessageBoxButtons::OK);
+		}
 	}
 	private: System::Void PictureBoxPhotoAdmin_Click(System::Object^ sender, System::EventArgs^ e) {
 		OpenFileDialog^ open = gcnew OpenFileDialog();
