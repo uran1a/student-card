@@ -36,6 +36,7 @@ namespace StudentCardVelial {
 				this->PanelButton->Visible = false;
 				this->PanelFacultyButton->Visible = false;
 				this->ButtonCreateStudentBD->Visible = true;
+				this->ButtonCreateStudentBD->Text = "Обновить";
 				this->LabelTitleUniversity->Visible = false;
 				this->TreeViewFaculty->Location = System::Drawing::Point(12, 32);
 				this->TreeViewFaculty->Size = System::Drawing::Size(240, 340);
@@ -707,8 +708,39 @@ namespace StudentCardVelial {
 	}
 	//Добавления абитуриента
 	private: System::Void ButtonCreateStudentBD_Click(System::Object^ sender, System::EventArgs^ e) {
-		CreateStudent^ Create = gcnew CreateStudent();
-		Create->Show();
+		
+		if (isAdmin) {
+			CreateStudent^ Create = gcnew CreateStudent();
+			Create->Show();
+		} 
+		else {
+			//Реализация!
+			bd = gcnew BaseData();
+			list = bd->FillBaseData();
+			//Проверка!
+			if (PathGroup != nullptr) {
+				if (list->Count != 0) {
+					bd->Reload(list, TreeViewFaculty);
+					for (int i = 0; i < list->Count; i++) {
+						if (list[i]->TitleFaculty == PathGroup[GroupLevel]) {
+							if (LevelTreeView == GroupLevel)
+								TreeViewFaculty->SelectedNode = TreeViewFaculty->Nodes[i];
+							else if (LevelTreeView == StudentLevel) {
+								list_groups = bd->FillListView(list[i]->TitleFaculty);
+								for (int j = 0; j < list_groups->Count; j++)
+								{
+									if (list[i]->TitleFaculty == PathGroup[GroupLevel]) {
+										TreeViewFaculty->SelectedNode = TreeViewFaculty->Nodes[i]->Nodes[j];
+										break;
+									}
+								}
+							}
+							break;
+						}
+					}
+				}
+			}
+		}
 	}
 	//Просмотр профиля студента
 	private: System::Void ListViewPanel_MouseDoubleClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
@@ -723,13 +755,11 @@ namespace StudentCardVelial {
 		bd = gcnew BaseData();
 		list = bd->FillBaseData();
 		//Проверка!
-		if (list->Count != 0) {
-			bd->Reload(list, TreeViewFaculty);
-			for (int i = 0; i < list->Count; i++) {
-				if (PathGroup != nullptr) {
+		if (PathGroup != nullptr) {
+			if (list->Count != 0) {
+				bd->Reload(list, TreeViewFaculty);
+				for (int i = 0; i < list->Count; i++) {
 					if (list[i]->TitleFaculty == PathGroup[GroupLevel]) {
-						Console::WriteLine("Путь: " + LevelTreeView);
-						Console::WriteLine("Размер: " + PathGroup->Length);
 						if (LevelTreeView == GroupLevel)
 							TreeViewFaculty->SelectedNode = TreeViewFaculty->Nodes[i];
 						else if (LevelTreeView == StudentLevel) {
