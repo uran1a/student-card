@@ -56,6 +56,7 @@ namespace StudentCardVelial {
 
 
 	private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
+	private: System::Windows::Forms::Button^ button1;
 
 	private: System::ComponentModel::Container ^components;
 
@@ -88,6 +89,7 @@ namespace StudentCardVelial {
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->TextBoxPathPhoto = (gcnew System::Windows::Forms::TextBox());
 			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->PictureBoxPhotoAdmin))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -324,6 +326,19 @@ namespace StudentCardVelial {
 			// 
 			this->openFileDialog1->FileName = L"openFileDialog1";
 			// 
+			// button1
+			// 
+			this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(78)), static_cast<System::Int32>(static_cast<System::Byte>(108)),
+				static_cast<System::Int32>(static_cast<System::Byte>(164)));
+			this->button1->ForeColor = System::Drawing::SystemColors::Control;
+			this->button1->Location = System::Drawing::Point(545, 268);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(75, 23);
+			this->button1->TabIndex = 56;
+			this->button1->Text = L"Генерировать";
+			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &CreateAdmin::button1_Click);
+			// 
 			// CreateAdmin
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -331,6 +346,7 @@ namespace StudentCardVelial {
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
 				static_cast<System::Int32>(static_cast<System::Byte>(87)));
 			this->ClientSize = System::Drawing::Size(633, 338);
+			this->Controls->Add(this->button1);
 			this->Controls->Add(this->TextBoxPathPhoto);
 			this->Controls->Add(this->TextBoxPatronymicAdmin);
 			this->Controls->Add(this->label3);
@@ -469,5 +485,23 @@ namespace StudentCardVelial {
 		}
 	}
 
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		Random^ rand = gcnew Random();
+		array<String^>^ ArrayWords = { "unknown", "dragon", "monkey", "chocolate", "soccer", "butterfly", "angel", "football", "secret", "summer", "cookie", "pepper", "greenday", "batman", "icecream", "mexico" };
+		String^ Login; String^ Password;
+		BaseData^ bd = gcnew BaseData();
+		Admin^ temp = gcnew Admin();
+		while (true)
+		{
+			Login = "vgtu-admin" + rand->Next(1, 1000);
+			Password = ArrayWords[rand->Next(0, ArrayWords->Length)] + rand->Next(1, 1000);
+			temp->Login = Login;
+			temp->Password = Password;
+			Console::WriteLine("{0} {1}", Login, Password);
+			if (!bd->CheckingPassword(temp)) break;
+		}
+		TextBoxLoginAdmin->Text = Login;
+		TextBoxPasswordAdmin->Text = Password;
+	}
 };
 }

@@ -269,7 +269,7 @@ namespace StudentCardVelial {
 			this->ButtonGetImage->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(78)), static_cast<System::Int32>(static_cast<System::Byte>(108)),
 				static_cast<System::Int32>(static_cast<System::Byte>(164)));
 			this->ButtonGetImage->ForeColor = System::Drawing::SystemColors::Control;
-			this->ButtonGetImage->Location = System::Drawing::Point(174, 174);
+			this->ButtonGetImage->Location = System::Drawing::Point(190, 174);
 			this->ButtonGetImage->Name = L"ButtonGetImage";
 			this->ButtonGetImage->Size = System::Drawing::Size(79, 31);
 			this->ButtonGetImage->TabIndex = 7;
@@ -378,8 +378,10 @@ namespace StudentCardVelial {
 			this->Controls->Add(this->TextBoxNameStudent);
 			this->Controls->Add(this->ButtonCreateStudent);
 			this->Controls->Add(this->label1);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::Fixed3D;
+			this->MaximizeBox = false;
 			this->Name = L"CreateStudent";
-			this->Text = L"CreateStudent";
+			this->Text = L"—оздание студента";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -482,21 +484,22 @@ namespace StudentCardVelial {
 		}
 	}
 	private: System::Void ButtonCreatePassword_Click(System::Object^ sender, System::EventArgs^ e) {
-		//массив из 10 самых попул€рных слов
-		//vgtu-student{1-1000}
-		//qwerty{1-1000}
 		Random^ rand = gcnew Random();
 		array<String^>^ ArrayWords = { "unknown", "dragon", "monkey", "chocolate", "soccer", "butterfly", "angel", "football", "secret", "summer", "cookie", "pepper", "greenday", "batman", "icecream", "mexico"};
-		//Console::WriteLine(ArrayWords->Length);
-		String^ Login = "vgtu-student" + rand->Next(1, 1000);
-		String^ Password = ArrayWords[rand->Next(0, ArrayWords->Length)] + rand->Next(1, 1000);
+		String^ Login; String^ Password; 
 		BaseData^ bd = gcnew BaseData();
 		Student^ temp = gcnew Student();
-		temp->Login = Login;
-		//bd->CheckingPassword()
+		while (true)
+		{
+			 Login = "vgtu-student" + rand->Next(1, 1000);
+			Password = ArrayWords[rand->Next(0, ArrayWords->Length)] + rand->Next(1, 1000);
+			temp->Login = Login;
+			temp->Password = Password;
+			Console::WriteLine("{0} {1}", Login, Password);
+			if (!bd->CheckingPassword(temp)) break;
+		}
 		TextBoxLoginStudent->Text = Login;
 		TextBoxPasswordStudent->Text = Password;
-	
 	}
 };
 }
