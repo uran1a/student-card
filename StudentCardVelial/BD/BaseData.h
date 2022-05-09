@@ -924,14 +924,13 @@ public:
 			else MessageBox::Show("Ошибка: При удалении элемента в БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		}
 	}
-	bool Checking(Admin^ a, String^ Codition) {
-		// WHERE ID != @ID
+	bool Checking(Admin^ a) {
 		try {
 			//Подключение в БД
 			ConnectToBD();
 
 			bool checkingForMatches = false;
-			String^ cmdText = "SELECT * FROM dbo.TABLE_ADMINS "+ Codition;
+			String^ cmdText = "SELECT * FROM dbo.TABLE_ADMINS WHERE ID != @ID";
 			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
 			cmd->Parameters->AddWithValue("@ID", a->ID);
 			conn->Open();
@@ -949,13 +948,13 @@ public:
 			else MessageBox::Show("Ошибка: При чтении элементов из БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		}
 	}
-	bool CheckingPassword(Admin^ a, String^ Codition) {
+	bool CheckingPassword(Admin^ a) {
 		try {
 			//Подключение в БД
 			ConnectToBD();
 
 			bool checkingForMatches = false;
-			String^ cmdText = "SELECT * FROM dbo.TABLE_ADMINS "+ Codition;
+			String^ cmdText = "SELECT * FROM dbo.TABLE_ADMINS WHERE ID != @ID";
 			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
 			cmd->Parameters->AddWithValue("@ID", a->ID);
 			conn->Open();

@@ -404,13 +404,13 @@ namespace StudentCardVelial {
 			UpdatedAdmin->Login = TextBoxLoginAdmin->Text;
 			UpdatedAdmin->Password = TextBoxPasswordAdmin->Text;
 
-			if (bd->Checking(UpdatedAdmin,"WHERE ID != @ID")) {
+			if (bd->Checking(UpdatedAdmin)) {
 				TextBoxFIOAdmin->Text = Convert::ToString(admin->Surname + " " + admin->Name + " " + admin->Patronymic);
 				TextBoxFIOAdmin->Focus();
 				throw gcnew Exception("Измените ФИО админа. Нынешнее ФИО совпадает с уже имеющимися!");
 			}
 
-			if (bd->CheckingPassword(UpdatedAdmin, "WHERE ID != @ID")) {
+			if (bd->CheckingPassword(UpdatedAdmin)) {
 				TextBoxLoginAdmin->Text = admin->Login;
 				TextBoxPasswordAdmin->Text = admin->Password;
 				TextBoxLoginAdmin->Focus();

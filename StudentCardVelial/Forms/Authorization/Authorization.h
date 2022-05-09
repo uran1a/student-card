@@ -49,6 +49,7 @@ namespace StudentCardVelial {
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Button^ ButtonListUsers;
 	private: System::Windows::Forms::Panel^ panel1;
+	private: System::Windows::Forms::Button^ button1;
 
 
 
@@ -59,6 +60,7 @@ namespace StudentCardVelial {
 #pragma region Windows Form Designer generated code
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Autorization::typeid));
 			this->TabControlAuthorization = (gcnew System::Windows::Forms::TabControl());
 			this->TabPageAuthorization = (gcnew System::Windows::Forms::TabPage());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
@@ -71,6 +73,7 @@ namespace StudentCardVelial {
 			this->ButtonFacultyForm = (gcnew System::Windows::Forms::Button());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->ButtonListUsers = (gcnew System::Windows::Forms::Button());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->TabControlAuthorization->SuspendLayout();
 			this->TabPageAuthorization->SuspendLayout();
 			this->panel1->SuspendLayout();
@@ -103,6 +106,7 @@ namespace StudentCardVelial {
 			// 
 			this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
 				static_cast<System::Int32>(static_cast<System::Byte>(87)));
+			this->panel1->Controls->Add(this->button1);
 			this->panel1->Controls->Add(this->TextBoxLogin);
 			this->panel1->Controls->Add(this->label1);
 			this->panel1->Controls->Add(this->buttonAuthorization);
@@ -215,6 +219,18 @@ namespace StudentCardVelial {
 			this->ButtonListUsers->UseVisualStyleBackColor = false;
 			this->ButtonListUsers->Click += gcnew System::EventHandler(this, &Autorization::ButtonListUsers_Click);
 			// 
+			// button1
+			// 
+			this->button1->BackColor = System::Drawing::Color::White;
+			//this->button1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.BackgroundImage")));
+			this->button1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->button1->Location = System::Drawing::Point(321, 206);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(24, 24);
+			this->button1->TabIndex = 5;
+			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &Autorization::button1_Click);
+			// 
 			// Autorization
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -241,6 +257,7 @@ namespace StudentCardVelial {
 			BaseData^ bd;
 			int StaticUser;
 			int ID = 0;
+			bool isVisible = false;
 #pragma endregion
 	private: System::Void buttonAutorization_Click(System::Object^ sender, System::EventArgs^ e) {
 		try {
@@ -263,8 +280,6 @@ namespace StudentCardVelial {
 			if (StaticUser == User) {
 				//переход на UserForm
 				MessageBox::Show("¬ерный логин и пароль!");
-				Console::WriteLine("ID пользовател€: {0}", ID);
-
 				FacultyForm^ form = gcnew FacultyForm(ID, false);
 				form->Show();
 			}
@@ -290,6 +305,16 @@ namespace StudentCardVelial {
 	private: System::Void ButtonListUsers_Click(System::Object^ sender, System::EventArgs^ e) {
 		ListUsers^ form = gcnew ListUsers(false);
 		form->Show();
+	}
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (!isVisible) {
+			this->TextBoxPassword->PasswordChar = '\0';
+			isVisible = true;
+		} 
+		else { 
+			this->TextBoxPassword->PasswordChar = '*';
+			isVisible = false;
+		}
 	}
 };
 }

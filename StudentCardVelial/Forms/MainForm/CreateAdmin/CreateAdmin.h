@@ -405,6 +405,7 @@ namespace StudentCardVelial {
 			}
 			BaseData^ bd = gcnew BaseData();
 			Admin^ newAdmin = gcnew Admin();
+			
 			newAdmin->Name = TextBoxNameAdmin->Text;
 			newAdmin->Surname = TextBoxSurnameAdmin->Text;
 			newAdmin->Patronymic = TextBoxPatronymicAdmin->Text;
@@ -418,7 +419,7 @@ namespace StudentCardVelial {
 			newAdmin->Login = TextBoxLoginAdmin->Text;
 			newAdmin->Password = TextBoxPasswordAdmin->Text;
 
-			if (bd->Checking(newAdmin, "")) {
+			if (bd->Checking(newAdmin)) {
 				TextBoxNameAdmin->Clear();
 				TextBoxSurnameAdmin->Clear();
 				TextBoxPatronymicAdmin->Clear();
@@ -426,7 +427,7 @@ namespace StudentCardVelial {
 				throw gcnew Exception("Измените ФИО админа. Нынешнее ФИО совпадает с уже имеющимися!");
 			}
 
-			if (bd->CheckingPassword(newAdmin, "")) {
+			if (bd->CheckingPassword(newAdmin)) {
 				TextBoxLoginAdmin->Clear();
 				TextBoxPasswordAdmin->Clear();
 				TextBoxLoginAdmin->Focus();

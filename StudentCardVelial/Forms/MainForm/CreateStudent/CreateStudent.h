@@ -482,6 +482,20 @@ namespace StudentCardVelial {
 		}
 	}
 	private: System::Void ButtonCreatePassword_Click(System::Object^ sender, System::EventArgs^ e) {
+		//массив из 10 самых попул€рных слов
+		//vgtu-student{1-1000}
+		//qwerty{1-1000}
+		Random^ rand = gcnew Random();
+		array<String^>^ ArrayWords = { "unknown", "dragon", "monkey", "chocolate", "soccer", "butterfly", "angel", "football", "secret", "summer", "cookie", "pepper", "greenday", "batman", "icecream", "mexico"};
+		//Console::WriteLine(ArrayWords->Length);
+		String^ Login = "vgtu-student" + rand->Next(1, 1000);
+		String^ Password = ArrayWords[rand->Next(0, ArrayWords->Length)] + rand->Next(1, 1000);
+		BaseData^ bd = gcnew BaseData();
+		Student^ temp = gcnew Student();
+		temp->Login = Login;
+		//bd->CheckingPassword()
+		TextBoxLoginStudent->Text = Login;
+		TextBoxPasswordStudent->Text = Password;
 	
 	}
 };
