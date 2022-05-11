@@ -430,7 +430,7 @@ namespace StudentCardVelial {
 			NewStudent->Middlename = TextBoxMiddlenameStudent->Text;
 			NewStudent->Birthday = TextBoxBirthdayStudent->Text;
 			NewStudent->Point_EGE = Convert::ToInt32(TextBoxPointEGEStudent->Text);
-			NewStudent->Photo_Student = TextBoxPhotoStudent->Text;
+			NewStudent->Photo = TextBoxPhotoStudent->Text;
 			NewStudent->Educational_Form = Convert::ToString(ComboBoxEducationalForm->SelectedItem);;
 			NewStudent->Phone_Number = TextBoxPhoneNumberStudent->Text;
 			NewStudent->Mail = TextBoxMailStudent->Text;

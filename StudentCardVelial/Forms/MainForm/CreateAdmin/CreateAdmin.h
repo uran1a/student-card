@@ -424,13 +424,13 @@ namespace StudentCardVelial {
 			
 			newAdmin->Name = TextBoxNameAdmin->Text;
 			newAdmin->Surname = TextBoxSurnameAdmin->Text;
-			newAdmin->Patronymic = TextBoxPatronymicAdmin->Text;
+			newAdmin->Middlename = TextBoxPatronymicAdmin->Text;
 			newAdmin->Birthday = TextBoxBirthdayAdmin->Text;
 			newAdmin->Dolzhnost = TextBoxDolzhnostAdmin->Text;
 			newAdmin->Stazh = Convert::ToInt32(TextBoxStazhAdmin->Text);
 			newAdmin->Zarplata = Convert::ToInt32(TextBoxZarplataAdmin->Text);
 			newAdmin->Photo = TextBoxPathPhoto->Text;
-			newAdmin->Mobile_Phone = TextBoxMobilePhoneAdmin->Text;
+			newAdmin->Phone_Number = TextBoxMobilePhoneAdmin->Text;
 			newAdmin->Mail = TextBoxMailAdmin->Text;
 			newAdmin->Login = TextBoxLoginAdmin->Text;
 			newAdmin->Password = TextBoxPasswordAdmin->Text;

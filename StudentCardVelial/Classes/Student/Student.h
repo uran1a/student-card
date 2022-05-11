@@ -1,69 +1,29 @@
 #pragma once
 
+#include "../Person/Person.h"
+
 using namespace System;
 using namespace System::ComponentModel;
 using namespace System::Collections;
 using namespace System::Windows::Forms;
 
-ref class Student
+ref class Student : Person
 {
 private:
-	int id;
-	String^ Name_;
-	String^ Surname_;
-	String^ Middlename_;
 	int Entrant_;
 	String^ TitleFaculty_;
 	String^ TitleGroup_;
-	String^ Birthday_;
 	int PointEGE_;
 	int Stipendiya_;
 	String^ YearEnrollment_;
-	String^ Photo_Student_;
 	String^ Specialization_;
 	String^ Educational_Form_;
 	int Number_Kurc_;
-	String^ Phone_Number_;
-	String^ Mail_;
 	double Otcenka_;
-	String^ Login_;
-	String^ Password_;
 
 public:
 	Student()
 	{}
-	property int ID {
-		int get() {
-			return id;
-		}
-		void set(int value) {
-			id = value;
-		}
-	}
-	property String^ Name {
-		String^ get() {
-			return Name_;
-		}
-		void set(String^ value) {
-			Name_ = value;
-		}
-	}
-	property String^ Surname {
-		String^ get() {
-			return Surname_;
-		}
-		void set(String^ value) {
-			Surname_ = value;
-		}
-	}
-	property String^ Middlename {
-		String^ get() {
-			return Middlename_;
-		}
-		void set(String^ value) {
-			Middlename_ = value;
-		}
-	}
 	property int Entrant {
 		int get() {
 			return Entrant_;
@@ -86,14 +46,6 @@ public:
 		}
 		void set(String^ value) {
 			TitleGroup_ = value;
-		}
-	}
-	property String^ Birthday {
-		String^ get() {
-			return Birthday_;
-		}
-		void set(String^ value) {
-			Birthday_ = value;
 		}
 	}
 	property int Point_EGE {
@@ -120,14 +72,6 @@ public:
 			YearEnrollment_ = value;
 		}
 	}
-	property String^ Photo_Student {
-		String^ get() {
-			return Photo_Student_;
-		}
-		void set(String^ value) {
-			Photo_Student_ = value;
-		}
-	}
 	property String^ Specialization {
 		String^ get() {
 			return Specialization_;
@@ -152,44 +96,12 @@ public:
 			Number_Kurc_ = value;
 		}
 	}
-	property String^ Phone_Number {
-		String^ get() {
-			return Phone_Number_;
-		}
-		void set(String^ value) {
-			Phone_Number_ = value;
-		}
-	}
-	property String^ Mail {
-		String^ get() {
-			return Mail_;
-		}
-		void set(String^ value) {
-			Mail_ = value;
-		}
-	}
 	property double Otcenka {
 		double get() {
 			return Otcenka_;
 		}
 		void set(double value) {
 			Otcenka_ = value;
-		}
-	}
-	property String^ Login {
-		String^ get() {
-			return Login_;
-		}
-		void set(String^ value) {
-			Login_ = value;
-		}
-	}
-	property String^ Password {
-		String^ get() {
-			return Password_;
-		}
-		void set(String^ value) {
-			Password_ = value;
 		}
 	}
 };

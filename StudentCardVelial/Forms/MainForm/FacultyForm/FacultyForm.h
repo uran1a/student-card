@@ -512,8 +512,10 @@ namespace StudentCardVelial {
 			if (this->TreeViewFaculty->SelectedNode == nullptr) {
 				throw gcnew Exception("Выберите факультет для удаление!");
 			}
+			
 			//Реализация!
 			list_groups = bd->FillListView(list[this->TreeViewFaculty->SelectedNode->Index]->TitleFaculty);
+			
 			for (size_t i = 0; i < list_groups->Count; i++)
 			{
 				bd->Update(1, list_groups[i]->TitleGroup);
@@ -521,6 +523,8 @@ namespace StudentCardVelial {
 			}
 			bd->Delete(list[this->TreeViewFaculty->SelectedNode->Index]);
 			bd->Reload(list, TreeViewFaculty);
+			if (list->Count == 0)
+				PanelMainForm->Visible = false;
 		}
 		catch (Exception^ e) {
 			//Ошибка
@@ -535,8 +539,6 @@ namespace StudentCardVelial {
 	//Добавление Группы/Студента
 	private: System::Void ButtonCreatePanel_Click(System::Object^ sender, System::EventArgs^ e) {
 		try {
-			//Проверка!
-
 			//Реализация!
 			if (LevelTreeView == GroupLevel) {
 				CreatePanel^ Create = gcnew CreatePanel(this->TreeViewFaculty->SelectedNode->Index);
@@ -647,9 +649,7 @@ namespace StudentCardVelial {
 	}
 	//Определние элемента для открытия Panel
 	private: System::Void TreeViewFaculty_AfterSelect(System::Object^ sender, System::Windows::Forms::TreeViewEventArgs^ e) {
-		//Включение Панели факультета
 		PanelMainForm->Visible = true;
-		//Определение пути/уровня
 		LabelPathPanel->Text = e->Node->FullPath->Replace(" ", "");
 		LevelTreeView = e->Node->Level;
 
@@ -755,9 +755,10 @@ namespace StudentCardVelial {
 		bd = gcnew BaseData();
 		list = bd->FillBaseData();
 		//Проверка!
-		if (PathGroup != nullptr) {
-			if (list->Count != 0) {
-				bd->Reload(list, TreeViewFaculty);
+		if (list->Count != 0) {
+			bd->Reload(list, TreeViewFaculty);
+			
+			if (PathGroup != nullptr) {
 				for (int i = 0; i < list->Count; i++) {
 					if (list[i]->TitleFaculty == PathGroup[GroupLevel]) {
 						if (LevelTreeView == GroupLevel)
@@ -777,6 +778,12 @@ namespace StudentCardVelial {
 				}
 			}
 		}
+		else {
+			PanelMainForm->Visible = false;
+		}
+		/*else {
+			PanelMainForm->Visible = false;
+		}*/
 	}
 	//Профиль
 	private: System::Void ToolStripLabelProfile_Click(System::Object^ sender, System::EventArgs^ e) {

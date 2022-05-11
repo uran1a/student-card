@@ -21,12 +21,12 @@ namespace StudentCardVelial {
 			InitializeComponent();
 			bd = gcnew BaseData();
 			admin = bd->FillAdmin(ID);
-			TextBoxFIOAdmin->Text = Convert::ToString(admin->Surname + " " + admin->Name + " " + admin->Patronymic);
+			TextBoxFIOAdmin->Text = Convert::ToString(admin->Surname + " " + admin->Name + " " + admin->Middlename);
 			TextBoxBirthdayAdmin->Text = admin->Birthday;
 			TextBoxDolzhnostAdmin->Text = admin->Dolzhnost;
 			TextBoxStazhAdmin->Text = Convert::ToString(admin->Stazh);
 			TextBoxZarplataAdmin->Text = Convert::ToString(admin->Zarplata);
-			TextBoxMobilePhoneAdmin->Text = admin->Mobile_Phone;
+			TextBoxMobilePhoneAdmin->Text = admin->Photo;
 			url = admin->Photo;
 			this->PictureBoxPhotoAdmin->Load(admin->Photo);
 			TextBoxMailAdmin->Text = admin->Mail;
@@ -393,19 +393,19 @@ namespace StudentCardVelial {
 			UpdatedAdmin->ID = AdminID;
 			UpdatedAdmin->Surname = FIO[0];
 			UpdatedAdmin->Name = FIO[1];
-			UpdatedAdmin->Patronymic = FIO[2];
+			UpdatedAdmin->Middlename = FIO[2];
 			UpdatedAdmin->Birthday = TextBoxBirthdayAdmin->Text;
 			UpdatedAdmin->Dolzhnost = TextBoxDolzhnostAdmin->Text;
 			UpdatedAdmin->Stazh = Convert::ToInt32(TextBoxStazhAdmin->Text);
 			UpdatedAdmin->Zarplata = Convert::ToInt32(TextBoxZarplataAdmin->Text);
 			UpdatedAdmin->Photo = url;
-			UpdatedAdmin->Mobile_Phone = TextBoxMobilePhoneAdmin->Text;
+			UpdatedAdmin->Photo = TextBoxMobilePhoneAdmin->Text;
 			UpdatedAdmin->Mail = TextBoxMailAdmin->Text;
 			UpdatedAdmin->Login = TextBoxLoginAdmin->Text;
 			UpdatedAdmin->Password = TextBoxPasswordAdmin->Text;
 
 			if (bd->Checking(UpdatedAdmin)) {
-				TextBoxFIOAdmin->Text = Convert::ToString(admin->Surname + " " + admin->Name + " " + admin->Patronymic);
+				TextBoxFIOAdmin->Text = Convert::ToString(admin->Surname + " " + admin->Name + " " + admin->Middlename);
 				TextBoxFIOAdmin->Focus();
 				throw gcnew Exception("Измените ФИО админа. Нынешнее ФИО совпадает с уже имеющимися!");
 			}

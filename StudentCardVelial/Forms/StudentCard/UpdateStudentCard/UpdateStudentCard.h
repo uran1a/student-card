@@ -27,8 +27,8 @@ namespace StudentCardVelial {
 			TextBoxGroup->Text = SelectedStudent->Title_Group;
 			TextBoxEducationalForm->Text = SelectedStudent->Educational_Form;
 			TextBoxYearEnrollment->Text = SelectedStudent->Year_Enrollment;
-			this->PictureBoxPhotoStudent->Load(SelectedStudent->Photo_Student);
-			TextBoxPhotoStudent->Text = SelectedStudent->Photo_Student;
+			this->PictureBoxPhotoStudent->Load(SelectedStudent->Photo);
+			TextBoxPhotoStudent->Text = SelectedStudent->Photo;
 			TextBoxPointEGE->Text = Convert::ToString(SelectedStudent->Point_EGE);
 			TextBoxStipendiya->Text = Convert::ToString(SelectedStudent->Stipendiya);
 			TextBoxPhoneNumber->Text = SelectedStudent->Phone_Number;
@@ -496,7 +496,7 @@ namespace StudentCardVelial {
 			UpdatedStudent->Middlename = FIO[2];
 			UpdatedStudent->Otcenka = Convert::ToDouble(TextBoxOtcenka->Text);
 			UpdatedStudent->Birthday = TextBoxBirthday->Text;
-			UpdatedStudent->Photo_Student = TextBoxPhotoStudent->Text;
+			UpdatedStudent->Photo = TextBoxPhotoStudent->Text;
 			UpdatedStudent->Title_Group = TextBoxGroup->Text;
 			UpdatedStudent->Educational_Form = TextBoxEducationalForm->Text;
 			UpdatedStudent->Year_Enrollment = TextBoxYearEnrollment->Text;

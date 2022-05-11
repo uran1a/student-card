@@ -64,6 +64,7 @@ namespace StudentCardVelial {
 			this->TabControlAuthorization = (gcnew System::Windows::Forms::TabControl());
 			this->TabPageAuthorization = (gcnew System::Windows::Forms::TabPage());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->TextBoxLogin = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->buttonAuthorization = (gcnew System::Windows::Forms::Button());
@@ -73,7 +74,6 @@ namespace StudentCardVelial {
 			this->ButtonFacultyForm = (gcnew System::Windows::Forms::Button());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->ButtonListUsers = (gcnew System::Windows::Forms::Button());
-			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->TabControlAuthorization->SuspendLayout();
 			this->TabPageAuthorization->SuspendLayout();
 			this->panel1->SuspendLayout();
@@ -116,6 +116,19 @@ namespace StudentCardVelial {
 			this->panel1->Name = L"panel1";
 			this->panel1->Size = System::Drawing::Size(366, 337);
 			this->panel1->TabIndex = 7;
+			// 
+			// button1
+			// 
+			this->button1->BackColor = System::Drawing::Color::Transparent;
+			//this->button1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.BackgroundImage")));
+			this->button1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
+			//this->button1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.Image")));
+			this->button1->Location = System::Drawing::Point(321, 206);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(24, 24);
+			this->button1->TabIndex = 5;
+			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &Autorization::button1_Click);
 			// 
 			// TextBoxLogin
 			// 
@@ -218,18 +231,6 @@ namespace StudentCardVelial {
 			this->ButtonListUsers->Text = L"Список пользователей";
 			this->ButtonListUsers->UseVisualStyleBackColor = false;
 			this->ButtonListUsers->Click += gcnew System::EventHandler(this, &Autorization::ButtonListUsers_Click);
-			// 
-			// button1
-			// 
-			this->button1->BackColor = System::Drawing::Color::White;
-			//this->button1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.BackgroundImage")));
-			this->button1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->button1->Location = System::Drawing::Point(321, 206);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(24, 24);
-			this->button1->TabIndex = 5;
-			this->button1->UseVisualStyleBackColor = false;
-			this->button1->Click += gcnew System::EventHandler(this, &Autorization::button1_Click);
 			// 
 			// Autorization
 			// 

@@ -88,9 +88,7 @@ public:
 			//Подключение в БД
 			ConnectToBD();
 
-			//List<Faculty^>^ list = gcnew List<Faculty^>();
 			ListBox^ list = gcnew ListBox();
-
 
 			String^ cmdText = "SELECT * FROM dbo.TABLE_FACULTIES";
 			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
@@ -101,7 +99,6 @@ public:
 				Faculty^ facl = gcnew Faculty();
 				facl->ID = Convert::ToInt32(reader["ID"]->ToString());
 				facl->TitleFaculty = (reader["Title_Faculty"]->ToString());
-				//list->Add(facl);
 				list->Items->Add(String::Format("{0}", facl->TitleFaculty));
 			}
 			return list->Items;
@@ -113,28 +110,21 @@ public:
 		}
 	}
 	void Reload(List<Faculty^>^% list, TreeView^ TreeViewFaculty) {
-		//bd->Reload(list, bd, treeViewFaculty);
-		//BaseData^ bd = gcnew BaseData();
 		list = FillBaseData();
-		//list_groups = FillListView(String ^ NameFaculty);
-
+		
 		TreeViewFaculty->Nodes->Clear();
 		for (int i = 0; i < list->Count; i++) {
 			List<Group^>^ list_groups = FillListView(list[i]->TitleFaculty);
-			//Console::WriteLine("{0} {1}", list[i]->ID, list[i]->TitleFaculty);
 			System::Windows::Forms::TreeNode^ newTreeNode = (gcnew System::Windows::Forms::TreeNode(list[i]->TitleFaculty));
 			newTreeNode->Name = list[i]->TitleFaculty;
 			newTreeNode->Text = list[i]->TitleFaculty;
 			for (int j = 0; j < list_groups->Count; j++)
 			{
 				System::Windows::Forms::TreeNode^ newTreeSubNode = (gcnew System::Windows::Forms::TreeNode(Convert::ToString(list_groups[j]->TitleGroup)));
-				//newTreeSubNode->Name = L"Узел5";
-				//newTreeSubNode->Text = L"бИСТ-214";
 				newTreeNode->Nodes->Add(newTreeSubNode);
 			}
 			TreeViewFaculty->Nodes->AddRange(gcnew cli::array< System::Windows::Forms::TreeNode^  >(1) { newTreeNode });
 		}
-
 	}
 	void Delete(Faculty^ f) {
 		try {
@@ -247,7 +237,6 @@ public:
 				group->NameKurator = (reader["Name_Kurator"]->ToString());
 				group->NameMonitor = (reader["Name_Monitor"]->ToString());
 				group->Specialization = (reader["Specialization"]->ToString());
-				//group->NumberKurc = Convert::ToInt32(reader["ID"]->ToString());
 				group->NumberKurc = Convert::ToInt32(reader["Number_Kurc"]->ToString());
 
 				list->Add(group);
@@ -264,7 +253,6 @@ public:
 		list_groups = FillListView(NameFaculty);
 		ListViewPanel->Items->Clear();
 		for (int i = 0; i < list_groups->Count; i++) {
-			//Console::WriteLine("{0} {1} {2}", list_groups[i]->ID, list_groups[i]->TitleGroup, list_groups[i]->TitleFaculty);
 			ListViewItem^ newItem = gcnew ListViewItem(Convert::ToString(i + 1));
 			ListViewItem::ListViewSubItem^ TitleGroup = gcnew ListViewItem::ListViewSubItem(newItem, list_groups[i]->TitleGroup);
 			ListViewItem::ListViewSubItem^ NameKurator = gcnew ListViewItem::ListViewSubItem(newItem, list_groups[i]->NameKurator);
@@ -361,7 +349,7 @@ public:
 			cmd->Parameters->AddWithValue("@Birthday", s->Birthday);
 			cmd->Parameters->AddWithValue("@Point_EGE", s->Point_EGE);
 			cmd->Parameters->AddWithValue("@Year_Enrollment", "");
-			cmd->Parameters->AddWithValue("@Photo_Student", s->Photo_Student);
+			cmd->Parameters->AddWithValue("@Photo_Student", s->Photo);
 			cmd->Parameters->AddWithValue("@Specialization", "");
 			cmd->Parameters->AddWithValue("@Educational_Form", s->Educational_Form);
 			cmd->Parameters->AddWithValue("@Number_Kurc", "");
@@ -407,7 +395,7 @@ public:
 					student->Point_EGE = Convert::ToInt32(reader["Point_EGE"]->ToString());
 					student->Stipendiya = Convert::ToInt32(reader["Stipendiya"]->ToString());
 					student->Year_Enrollment = (reader["Year_Enrollment"]->ToString());
-					student->Photo_Student = (reader["Photo_Student"]->ToString());
+					student->Photo = (reader["Photo_Student"]->ToString());
 					student->Specialization = (reader["Specialization"]->ToString());
 					student->Educational_Form = (reader["Educational_Form"]->ToString());
 					student->Number_Kurc = Convert::ToInt32(reader["Number_Kurc"]->ToString());
@@ -454,7 +442,7 @@ public:
 				student->Point_EGE = Convert::ToInt32(reader["Point_EGE"]->ToString());
 				student->Stipendiya = Convert::ToInt32(reader["Stipendiya"]->ToString());
 				student->Year_Enrollment = (reader["Year_Enrollment"]->ToString());
-				student->Photo_Student = (reader["Photo_Student"]->ToString());
+				student->Photo = (reader["Photo_Student"]->ToString());
 				student->Specialization = (reader["Specialization"]->ToString());
 				student->Educational_Form = (reader["Educational_Form"]->ToString());
 				student->Number_Kurc = Convert::ToInt32(reader["Number_Kurc"]->ToString());
@@ -500,7 +488,7 @@ public:
 				student->Point_EGE = Convert::ToInt32(reader["Point_EGE"]->ToString());
 				student->Stipendiya = Convert::ToInt32(reader["Stipendiya"]->ToString());
 				student->Year_Enrollment = (reader["Year_Enrollment"]->ToString());
-				student->Photo_Student = (reader["Photo_Student"]->ToString());
+				student->Photo = (reader["Photo_Student"]->ToString());
 				student->Specialization = (reader["Specialization"]->ToString());
 				student->Educational_Form = (reader["Educational_Form"]->ToString());
 				student->Number_Kurc = Convert::ToInt32(reader["Number_Kurc"]->ToString());
@@ -534,7 +522,6 @@ public:
 	}
 	void Reload(List<Student^>^% list_student, CheckedListBox^ CheckedListBoxStudent) {
 		list_student = FillCheckedListBoxStudent(1);
-		//Добавить столбец балл ЕГЭ с сортировкой
 		CheckedListBoxStudent->Items->Clear();
 		for (size_t i = 0; i < list_student->Count; i++)
 		{
@@ -542,7 +529,7 @@ public:
 		}
 	}
 	void Reload(List<Student^>^% list_student, ListView^ ListViewPanel) {
-		list_student = FillCheckedListBoxStudent(0);
+		list_student = FillCheckedListBoxStudent(1);
 		ListViewPanel->FullRowSelect = true;
 		ListViewPanel->Items->Clear();
 		for (int i = 0; i < list_student->Count; i++) {
@@ -605,7 +592,6 @@ public:
 			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
 
 			cmd->Parameters->AddWithValue("@ID", ID);
-			//cmd->Parameters->AddWithValue("@Entrant", s->Entrant);
 			cmd->Parameters->AddWithValue("@Name", s->Name);
 			cmd->Parameters->AddWithValue("@Surname", s->Surname);
 			cmd->Parameters->AddWithValue("@Middlename", s->Middlename);
@@ -615,10 +601,8 @@ public:
 			cmd->Parameters->AddWithValue("@Stipendiya", s->Stipendiya);
 			cmd->Parameters->AddWithValue("@Year_Enrollment", s->Year_Enrollment);
 			cmd->Parameters->AddWithValue("@Otcenka", Convert::ToString(s->Otcenka));
-			cmd->Parameters->AddWithValue("@Photo_Student", s->Photo_Student);
-			//cmd->Parameters->AddWithValue("@Specialization", s->Specialization);
+			cmd->Parameters->AddWithValue("@Photo_Student", s->Photo);
 			cmd->Parameters->AddWithValue("@Educational_Form", s->Educational_Form);
-			//cmd->Parameters->AddWithValue("@Number_Kurc", s->Number_Kurc);
 			cmd->Parameters->AddWithValue("@Phone_Number", s->Phone_Number);
 			cmd->Parameters->AddWithValue("@Mail", s->Mail);
 
@@ -639,7 +623,6 @@ public:
 			String^ cmdText = "UPDATE dbo.TABLE_STUDENTS SET Entrant = @Entrant WHERE Title_Group = @Title_Group";
 			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
 
-			//cmd->Parameters->AddWithValue("@ID", ID);
 			cmd->Parameters->AddWithValue("@Entrant", Entrant);
 			cmd->Parameters->AddWithValue("@Title_Group", PathGroup);
 
@@ -704,7 +687,6 @@ public:
 	//AUTORIZATION
 	//----------------------------------------
 	int SignOn(int% ID, String^ Login, String^ Password) {
-	
 			//Подключение в БД
 			ConnectToBD();
 
@@ -746,7 +728,6 @@ public:
 			ConnectToBD();
 
 			String^ cmdText = "INSERT INTO dbo.TABLE_USERS(Login, Password, Type) VALUES(@Login, @Password, @Type)";
-			
 			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
 
 			cmd->Parameters->AddWithValue("@Login", Login);
@@ -776,13 +757,13 @@ public:
 
 			cmd->Parameters->AddWithValue("@Name", a->Name);
 			cmd->Parameters->AddWithValue("@Surname", a->Surname);
-			cmd->Parameters->AddWithValue("@Patronymic", a->Patronymic);
+			cmd->Parameters->AddWithValue("@Patronymic", a->Middlename);
 			cmd->Parameters->AddWithValue("@Birthday", a->Birthday);
 			cmd->Parameters->AddWithValue("@Dolzhnost", a->Dolzhnost);
 			cmd->Parameters->AddWithValue("@Photo", a->Photo);
 			cmd->Parameters->AddWithValue("@Stazh", a->Stazh);
 			cmd->Parameters->AddWithValue("@Zarplata", a->Zarplata);
-			cmd->Parameters->AddWithValue("@Mobile_Phone", a->Mobile_Phone);
+			cmd->Parameters->AddWithValue("@Mobile_Phone", a->Phone_Number);
 			cmd->Parameters->AddWithValue("@Mail", a->Mail);
 			cmd->Parameters->AddWithValue("@Login", a->Login);
 			cmd->Parameters->AddWithValue("@Password", a->Password);
@@ -813,13 +794,13 @@ public:
 				admin->ID = Convert::ToInt32(reader["ID"]->ToString());
 				admin->Name = (reader["Name"]->ToString());
 				admin->Surname = (reader["Surname"]->ToString());
-				admin->Patronymic = (reader["Patronymic"]->ToString());
+				admin->Middlename = (reader["Patronymic"]->ToString());
 				admin->Birthday = (reader["Birthday"]->ToString());
 				admin->Dolzhnost = (reader["Dolzhnost"]->ToString());
 				admin->Stazh = Convert::ToInt32(reader["Stazh"]->ToString());
 				admin->Zarplata = Convert::ToInt32(reader["Zarplata"]->ToString());
 				admin->Photo = (reader["Photo"]->ToString());
-				admin->Mobile_Phone = (reader["Mobile_Phone"]->ToString());
+				admin->Phone_Number = (reader["Mobile_Phone"]->ToString());
 				admin->Mail = (reader["Mail"]->ToString());
 				admin->Login = (reader["Login"]->ToString());
 				admin->Password = (reader["Password"]->ToString());
@@ -834,26 +815,24 @@ public:
 	}
 	List<Admin^>^ FillListViewAdmins() {
 		try {
-			//Ïîäêëþ÷åíèå â ÁÄ
 			ConnectToBD();
 
 			List<Admin^>^ list = gcnew List<Admin^>();
 
 			String^ cmdText = "SELECT * FROM dbo.TABLE_ADMINS";
 			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
-			cmd->Parameters->AddWithValue("@Type", "User      ");
 			conn->Open();
 
 			SqlDataReader^ reader = cmd->ExecuteReader();
-			while (reader->Read()) {
-			
+			for (size_t i = 0; reader->Read(); i++)
+			{
 				Admin^ admin = gcnew Admin();
 				admin->ID = Convert::ToInt32(reader["ID"]->ToString());
 				admin->Login = (reader["Login"]->ToString());
 				admin->Password = (reader["Password"]->ToString());
-
 				list->Add(admin);
 			}
+			
 			return list;
 		}
 		finally {
@@ -886,13 +865,13 @@ public:
 			cmd->Parameters->AddWithValue("@ID", ID);
 			cmd->Parameters->AddWithValue("@Name", a->Name);
 			cmd->Parameters->AddWithValue("@Surname", a->Surname);
-			cmd->Parameters->AddWithValue("@Patronymic", a->Patronymic);
+			cmd->Parameters->AddWithValue("@Patronymic", a->Middlename);
 			cmd->Parameters->AddWithValue("@Birthday", a->Birthday);
 			cmd->Parameters->AddWithValue("@Dolzhnost", a->Dolzhnost);
 			cmd->Parameters->AddWithValue("@Photo", a->Photo);
 			cmd->Parameters->AddWithValue("@Stazh", a->Stazh);
 			cmd->Parameters->AddWithValue("@Zarplata", a->Zarplata);
-			cmd->Parameters->AddWithValue("@Mobile_Phone", a->Mobile_Phone);
+			cmd->Parameters->AddWithValue("@Mobile_Phone", a->Phone_Number);
 			cmd->Parameters->AddWithValue("@Mail", a->Mail);
 			cmd->Parameters->AddWithValue("@Login", a->Login);
 			cmd->Parameters->AddWithValue("@Password", a->Password);
@@ -937,7 +916,7 @@ public:
 
 			SqlDataReader^ reader = cmd->ExecuteReader();
 			while (reader->Read()) {
-				if (a->Name->ToUpper()->Replace(" ", "") == (reader["Name"]->ToString()->Replace(" ", "")->ToUpper()) && a->Surname->ToUpper()->Replace(" ", "") == (reader["Surname"]->ToString()->Replace(" ", "")->ToUpper()) && a->Patronymic->ToUpper()->Replace(" ", "") == (reader["Patronymic"]->ToString()->Replace(" ", "")->ToUpper()))
+				if (a->Name->ToUpper()->Replace(" ", "") == (reader["Name"]->ToString()->Replace(" ", "")->ToUpper()) && a->Surname->ToUpper()->Replace(" ", "") == (reader["Surname"]->ToString()->Replace(" ", "")->ToUpper()) && a->Middlename->ToUpper()->Replace(" ", "") == (reader["Patronymic"]->ToString()->Replace(" ", "")->ToUpper()))
 					return checkingForMatches = true;
 			}
 			return checkingForMatches;
@@ -973,7 +952,5 @@ public:
 		}
 	}
 	//----------------------------------------
-
-
 };
 

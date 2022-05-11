@@ -37,7 +37,7 @@ namespace StudentCardVelial {
 			LabelNumberKurcStudent->Text = Convert::ToString(student->Number_Kurc);
 			LabelEducationalFormStudent->Text = student->Educational_Form;
 			LabelYearEnrollmentStudent->Text = student->Year_Enrollment;
-			this->PictureBoxPhotoStudent->Load(student->Photo_Student);
+			this->PictureBoxPhotoStudent->Load(student->Photo);
 			LabelPointEGEStudent->Text = Convert::ToString(student->Point_EGE);
 			LabelStipendiyaStudent->Text = Convert::ToString(student->Stipendiya);
 			LabelPhoneNumberStudent->Text = student->Phone_Number;

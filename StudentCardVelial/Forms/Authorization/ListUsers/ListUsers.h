@@ -30,7 +30,7 @@ namespace StudentCardVelial {
 				bd->Reload(list_admin, listView1);
 			}
 			else {
-				list_user = bd->FillCheckedListBoxStudent(0);
+				list_user = bd->FillCheckedListBoxStudent(1);
 				bd->Reload(list_user, listView1);
 			}
 		
@@ -113,10 +113,12 @@ namespace StudentCardVelial {
 				}
 			}
 			String^ UserSelectedItem = listView1->FocusedItem->SubItems[1]->Text;
-			Console::WriteLine("Название группы: {0}", UserSelectedItem);
 			bd = gcnew BaseData();
 			if (isAdmin) {
 				list_admin = bd->FillListViewAdmins();
+				if (list_admin->Count == 1) {
+					throw gcnew Exception("Нельзя удалить единственного админа!");
+				}
 				for (size_t i = 0; i < list_admin->Count; i++)
 				{
 					if (list_admin[i]->Login == UserSelectedItem)
@@ -125,7 +127,6 @@ namespace StudentCardVelial {
 				bd->Reload(list_admin, listView1);
 			}
 			else {
-				list_user = bd->FillCheckedListBoxStudent(0);
 				for (size_t i = 0; i < list_user->Count; i++)
 				{
 					if (list_user[i]->Login == UserSelectedItem)
