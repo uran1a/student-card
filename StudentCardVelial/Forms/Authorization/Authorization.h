@@ -25,6 +25,7 @@ namespace StudentCardVelial {
 		
 			this->Size = System::Drawing::Size(417, 453);
 			this->TabControlAuthorization->Size = System::Drawing::Size(381, 378);
+			this->button1->Image = System::Drawing::Image::FromFile("C:/Users/voron/Downloads/oko.jpg");
 		}
 
 	protected:
@@ -60,7 +61,6 @@ namespace StudentCardVelial {
 #pragma region Windows Form Designer generated code
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Autorization::typeid));
 			this->TabControlAuthorization = (gcnew System::Windows::Forms::TabControl());
 			this->TabPageAuthorization = (gcnew System::Windows::Forms::TabPage());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
@@ -120,9 +120,8 @@ namespace StudentCardVelial {
 			// button1
 			// 
 			this->button1->BackColor = System::Drawing::Color::Transparent;
-			//this->button1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.BackgroundImage")));
 			this->button1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
-			//this->button1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.Image")));
+			this->button1->ForeColor = System::Drawing::SystemColors::ButtonShadow;
 			this->button1->Location = System::Drawing::Point(321, 206);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(24, 24);

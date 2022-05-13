@@ -26,7 +26,7 @@ namespace StudentCardVelial {
 			TextBoxDolzhnostAdmin->Text = admin->Dolzhnost;
 			TextBoxStazhAdmin->Text = Convert::ToString(admin->Stazh);
 			TextBoxZarplataAdmin->Text = Convert::ToString(admin->Zarplata);
-			TextBoxMobilePhoneAdmin->Text = admin->Photo;
+			TextBoxMobilePhoneAdmin->Text = admin->Phone_Number;
 			url = admin->Photo;
 			this->PictureBoxPhotoAdmin->Load(admin->Photo);
 			TextBoxMailAdmin->Text = admin->Mail;
@@ -399,7 +399,7 @@ namespace StudentCardVelial {
 			UpdatedAdmin->Stazh = Convert::ToInt32(TextBoxStazhAdmin->Text);
 			UpdatedAdmin->Zarplata = Convert::ToInt32(TextBoxZarplataAdmin->Text);
 			UpdatedAdmin->Photo = url;
-			UpdatedAdmin->Photo = TextBoxMobilePhoneAdmin->Text;
+			UpdatedAdmin->Phone_Number = TextBoxMobilePhoneAdmin->Text;
 			UpdatedAdmin->Mail = TextBoxMailAdmin->Text;
 			UpdatedAdmin->Login = TextBoxLoginAdmin->Text;
 			UpdatedAdmin->Password = TextBoxPasswordAdmin->Text;

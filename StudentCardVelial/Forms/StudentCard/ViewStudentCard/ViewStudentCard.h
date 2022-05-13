@@ -42,6 +42,8 @@ namespace StudentCardVelial {
 			LabelStipendiyaStudent->Text = Convert::ToString(student->Stipendiya);
 			LabelPhoneNumberStudent->Text = student->Phone_Number;
 			LabelMailStudent->Text = student->Mail;
+			LabelLoginStudent->Text = student->Login;
+			LabelPasswordStudent->Text = student->Password;
 		}
 
 	protected:
@@ -79,9 +81,13 @@ namespace StudentCardVelial {
 	private: System::Windows::Forms::Label^ label22;
 	private: System::Windows::Forms::Label^ LabelStipendiyaStudent;
 	private: System::Windows::Forms::Label^ label24;
-	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::Label^ label4;
-	private: System::Windows::Forms::Label^ label5;
+	private: System::Windows::Forms::Label^ LabelPasswordStudent;
+
+	private: System::Windows::Forms::Label^ label111;
+	private: System::Windows::Forms::Label^ LabelLoginStudent;
+
+
+
 	private: System::Windows::Forms::Label^ label7;
 	private: System::ComponentModel::Container^ components;
 
@@ -114,9 +120,9 @@ namespace StudentCardVelial {
 			this->label22 = (gcnew System::Windows::Forms::Label());
 			this->LabelStipendiyaStudent = (gcnew System::Windows::Forms::Label());
 			this->label24 = (gcnew System::Windows::Forms::Label());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->label4 = (gcnew System::Windows::Forms::Label());
-			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->LabelPasswordStudent = (gcnew System::Windows::Forms::Label());
+			this->label111 = (gcnew System::Windows::Forms::Label());
+			this->LabelLoginStudent = (gcnew System::Windows::Forms::Label());
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->PictureBoxPhotoStudent))->BeginInit();
 			this->SuspendLayout();
@@ -403,45 +409,45 @@ namespace StudentCardVelial {
 			this->label24->TabIndex = 20;
 			this->label24->Text = L"Стипендия:";
 			// 
-			// label1
+			// LabelPasswordStudent
 			// 
-			this->label1->AutoSize = true;
-			this->label1->BackColor = System::Drawing::SystemColors::Control;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->label1->Location = System::Drawing::Point(560, 305);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(97, 22);
-			this->label1->TabIndex = 29;
-			this->label1->Text = L"password1";
+			this->LabelPasswordStudent->AutoSize = true;
+			this->LabelPasswordStudent->BackColor = System::Drawing::SystemColors::Control;
+			this->LabelPasswordStudent->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
+			this->LabelPasswordStudent->Location = System::Drawing::Point(560, 340);
+			this->LabelPasswordStudent->Name = L"LabelPasswordStudent";
+			this->LabelPasswordStudent->Size = System::Drawing::Size(97, 22);
+			this->LabelPasswordStudent->TabIndex = 29;
+			this->LabelPasswordStudent->Text = L"password1";
 			// 
-			// label4
+			// label111
 			// 
-			this->label4->AutoSize = true;
-			this->label4->BackColor = System::Drawing::SystemColors::Control;
-			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->label4->Location = System::Drawing::Point(340, 305);
-			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(77, 22);
-			this->label4->TabIndex = 28;
-			this->label4->Text = L"Пароль:";
+			this->label111->AutoSize = true;
+			this->label111->BackColor = System::Drawing::SystemColors::Control;
+			this->label111->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
+			this->label111->Location = System::Drawing::Point(340, 340);
+			this->label111->Name = L"label111";
+			this->label111->Size = System::Drawing::Size(77, 22);
+			this->label111->TabIndex = 28;
+			this->label111->Text = L"Пароль:";
 			// 
-			// label5
+			// LabelLoginStudent
 			// 
-			this->label5->AutoSize = true;
-			this->label5->BackColor = System::Drawing::SystemColors::Control;
-			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->label5->Location = System::Drawing::Point(560, 340);
-			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(79, 22);
-			this->label5->TabIndex = 27;
-			this->label5->Text = L"student1";
+			this->LabelLoginStudent->AutoSize = true;
+			this->LabelLoginStudent->BackColor = System::Drawing::SystemColors::Control;
+			this->LabelLoginStudent->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
+			this->LabelLoginStudent->Location = System::Drawing::Point(560, 305);
+			this->LabelLoginStudent->Name = L"LabelLoginStudent";
+			this->LabelLoginStudent->Size = System::Drawing::Size(79, 22);
+			this->LabelLoginStudent->TabIndex = 27;
+			this->LabelLoginStudent->Text = L"student1";
 			// 
 			// label7
 			// 
 			this->label7->AutoSize = true;
 			this->label7->BackColor = System::Drawing::SystemColors::Control;
 			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F));
-			this->label7->Location = System::Drawing::Point(340, 340);
+			this->label7->Location = System::Drawing::Point(340, 305);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(65, 22);
 			this->label7->TabIndex = 26;
@@ -454,9 +460,9 @@ namespace StudentCardVelial {
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
 				static_cast<System::Int32>(static_cast<System::Byte>(87)));
 			this->ClientSize = System::Drawing::Size(734, 378);
-			this->Controls->Add(this->label1);
-			this->Controls->Add(this->label4);
-			this->Controls->Add(this->label5);
+			this->Controls->Add(this->LabelPasswordStudent);
+			this->Controls->Add(this->label111);
+			this->Controls->Add(this->LabelLoginStudent);
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->LabelMailStudent);
 			this->Controls->Add(this->label20);

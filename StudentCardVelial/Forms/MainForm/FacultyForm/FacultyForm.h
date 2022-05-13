@@ -76,9 +76,12 @@ namespace StudentCardVelial {
 	private: System::Windows::Forms::Label^ LabelNameMonitor;
 	private: System::Windows::Forms::Panel^ PanelButton;
 	private: System::Windows::Forms::Label^ LabelTitleUniversity;
-	private: System::Windows::Forms::ToolStrip^ ToolStripFaculty;
 	private: System::Windows::Forms::ToolStripLabel^ ToolStripLabelTitle;
 	private: System::Windows::Forms::ToolStripLabel^ ToolStripLabelProfile;
+	private: System::Windows::Forms::ToolStrip^ ToolStripFaculty;
+
+
+
 	private: System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
@@ -110,9 +113,9 @@ namespace StudentCardVelial {
 		this->LabelTitlePanel = (gcnew System::Windows::Forms::Label());
 		this->ButtonCreateStudentBD = (gcnew System::Windows::Forms::Button());
 		this->LabelTitleUniversity = (gcnew System::Windows::Forms::Label());
-		this->ToolStripFaculty = (gcnew System::Windows::Forms::ToolStrip());
 		this->ToolStripLabelTitle = (gcnew System::Windows::Forms::ToolStripLabel());
 		this->ToolStripLabelProfile = (gcnew System::Windows::Forms::ToolStripLabel());
+		this->ToolStripFaculty = (gcnew System::Windows::Forms::ToolStrip());
 		this->PanelFacultyButton->SuspendLayout();
 		this->PanelMainForm->SuspendLayout();
 		this->PanelButton->SuspendLayout();
@@ -280,6 +283,7 @@ namespace StudentCardVelial {
 		// 
 		this->TextBoxNumberKurc->Location = System::Drawing::Point(3, 90);
 		this->TextBoxNumberKurc->Name = L"TextBoxNumberKurc";
+		this->TextBoxNumberKurc->ReadOnly = true;
 		this->TextBoxNumberKurc->Size = System::Drawing::Size(146, 22);
 		this->TextBoxNumberKurc->TabIndex = 15;
 		// 
@@ -287,6 +291,7 @@ namespace StudentCardVelial {
 		// 
 		this->TextBoxNameMonitor->Location = System::Drawing::Point(3, 31);
 		this->TextBoxNameMonitor->Name = L"TextBoxNameMonitor";
+		this->TextBoxNameMonitor->ReadOnly = true;
 		this->TextBoxNameMonitor->Size = System::Drawing::Size(146, 22);
 		this->TextBoxNameMonitor->TabIndex = 13;
 		// 
@@ -347,6 +352,7 @@ namespace StudentCardVelial {
 		// 
 		this->TextBoxNamePanel->Location = System::Drawing::Point(30, 114);
 		this->TextBoxNamePanel->Name = L"TextBoxNamePanel";
+		this->TextBoxNamePanel->ReadOnly = true;
 		this->TextBoxNamePanel->Size = System::Drawing::Size(146, 22);
 		this->TextBoxNamePanel->TabIndex = 3;
 		// 
@@ -364,6 +370,7 @@ namespace StudentCardVelial {
 		// 
 		this->TextBoxTitlePanel->Location = System::Drawing::Point(30, 55);
 		this->TextBoxTitlePanel->Name = L"TextBoxTitlePanel";
+		this->TextBoxTitlePanel->ReadOnly = true;
 		this->TextBoxTitlePanel->Size = System::Drawing::Size(146, 22);
 		this->TextBoxTitlePanel->TabIndex = 1;
 		// 
@@ -398,21 +405,6 @@ namespace StudentCardVelial {
 		this->LabelTitleUniversity->Size = System::Drawing::Size(100, 23);
 		this->LabelTitleUniversity->TabIndex = 0;
 		// 
-		// ToolStripFaculty
-		// 
-		this->ToolStripFaculty->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
-			static_cast<System::Int32>(static_cast<System::Byte>(87)));
-		this->ToolStripFaculty->ImageScalingSize = System::Drawing::Size(20, 20);
-		this->ToolStripFaculty->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
-			this->ToolStripLabelTitle,
-				this->ToolStripLabelProfile
-		});
-		this->ToolStripFaculty->Location = System::Drawing::Point(0, 0);
-		this->ToolStripFaculty->Name = L"ToolStripFaculty";
-		this->ToolStripFaculty->Size = System::Drawing::Size(958, 25);
-		this->ToolStripFaculty->TabIndex = 7;
-		this->ToolStripFaculty->Text = L"toolStrip1";
-		// 
 		// ToolStripLabelTitle
 		// 
 		this->ToolStripLabelTitle->ForeColor = System::Drawing::SystemColors::Control;
@@ -428,6 +420,21 @@ namespace StudentCardVelial {
 		this->ToolStripLabelProfile->Size = System::Drawing::Size(73, 22);
 		this->ToolStripLabelProfile->Text = L"Профиль";
 		this->ToolStripLabelProfile->Click += gcnew System::EventHandler(this, &FacultyForm::ToolStripLabelProfile_Click);
+		// 
+		// ToolStripFaculty
+		// 
+		this->ToolStripFaculty->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
+			static_cast<System::Int32>(static_cast<System::Byte>(87)));
+		this->ToolStripFaculty->ImageScalingSize = System::Drawing::Size(20, 20);
+		this->ToolStripFaculty->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+			this->ToolStripLabelTitle,
+				this->ToolStripLabelProfile
+		});
+		this->ToolStripFaculty->Location = System::Drawing::Point(0, 0);
+		this->ToolStripFaculty->Name = L"ToolStripFaculty";
+		this->ToolStripFaculty->Size = System::Drawing::Size(958, 25);
+		this->ToolStripFaculty->TabIndex = 7;
+		this->ToolStripFaculty->Text = L"toolStrip1";
 		// 
 		// FacultyForm
 		// 
@@ -585,8 +592,6 @@ namespace StudentCardVelial {
 			else if (LevelTreeView == StudentLevel) {
 				UpdateStudentCard^ UpdateStudent = gcnew UpdateStudentCard(list_students[ListViewPanel->FocusedItem->Index], PathGroup);
 				UpdateStudent->Show();
-				Console::WriteLine("lol");
-				
 			}
 			else {
 				throw gcnew Exception("Выберите элемент TreeView!");
@@ -664,7 +669,7 @@ namespace StudentCardVelial {
 			PanelStudenet->Visible = false;
 			//Добавление полей
 			LabelTitlePanel->Text = "Название факультета:";
-			TextBoxTitlePanel->Text = list[e->Node->Index]->TitleFaculty;
+			TextBoxTitlePanel->Text = list[e->Node->Index]->TitleFaculty->Replace(" ", "");
 			LabelNamePanel->Text = "Декан:";
 			TextBoxNamePanel->Text = list[e->Node->Index]->NameDekan;
 
@@ -684,7 +689,7 @@ namespace StudentCardVelial {
 			
 			//Добавление полей
 			LabelTitlePanel->Text = "Название группы:";
-			TextBoxTitlePanel->Text = list_groups[e->Node->Index]->TitleGroup;
+			TextBoxTitlePanel->Text = list_groups[e->Node->Index]->TitleGroup->Replace(" ", "");
 			LabelNamePanel->Text = "Куратор:";
 			TextBoxNamePanel->Text = list_groups[e->Node->Index]->NameKurator;
 			LabelNameMonitor->Text = "ФИО старосты:";

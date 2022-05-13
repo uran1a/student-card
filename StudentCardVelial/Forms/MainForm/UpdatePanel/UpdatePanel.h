@@ -195,6 +195,7 @@ namespace StudentCardVelial {
 
 			for (size_t i = 0; i < list_students->Count; i++)
 			{
+				list_students[i]->Title_Faculty = g->TitleFaculty;
 				list_students[i]->Title_Group = g->TitleGroup;
 				list_students[i]->Specialization = g->Specialization;
 				list_students[i]->Number_Kurc = g->NumberKurc;

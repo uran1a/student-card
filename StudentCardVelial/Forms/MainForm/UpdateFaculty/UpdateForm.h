@@ -130,6 +130,12 @@ namespace StudentCardVelial {
 			for (size_t i = 0; i < list_groups->Count; i++)
 			{
 				list_groups[i]->TitleFaculty = f->TitleFaculty;
+				List<Student^>^ list_students = bd->FillListViewStudent(list_groups[i]->TitleGroup);
+				for (size_t j = 0; j < list_students->Count; j++)
+				{
+					list_students[j]->Title_Faculty = list_groups[i]->TitleFaculty;
+					bd->Update(list_students[j]);
+				}
 				bd->Update(list_groups[i], list_groups[i]->ID);
 			}
 			bd->Update(f, ItemFaculty->ID);

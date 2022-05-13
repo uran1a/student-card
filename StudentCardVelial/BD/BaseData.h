@@ -311,8 +311,9 @@ public:
 
 			List<Faculty^>^ list = gcnew List<Faculty^>();
 			bool checkingForMatches = false;
-			String^ cmdText = "SELECT * FROM dbo.TABLE_GROUPS";
+			String^ cmdText = "SELECT * FROM dbo.TABLE_GROUPS WHERE ID = @ID";
 			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
+			cmd->Parameters->AddWithValue("@ID", g->ID);
 			conn->Open();
 
 			SqlDataReader^ reader = cmd->ExecuteReader();
@@ -569,8 +570,8 @@ public:
 
 			cmd->Parameters->AddWithValue("@ID", s->ID);
 			cmd->Parameters->AddWithValue("@Entrant", s->Entrant);
-			cmd->Parameters->AddWithValue("@Title_Group", s->Title_Group);
 			cmd->Parameters->AddWithValue("@Title_Faculty", s->Title_Faculty);
+			cmd->Parameters->AddWithValue("@Title_Group", s->Title_Group);
 			cmd->Parameters->AddWithValue("@Specialization", s->Specialization);
 			cmd->Parameters->AddWithValue("@Number_Kurc", s->Number_Kurc);
 
