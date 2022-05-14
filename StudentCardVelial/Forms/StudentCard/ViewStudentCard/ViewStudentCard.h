@@ -16,15 +16,12 @@ namespace StudentCardVelial {
 	public:
 		ViewStudentCard(int ID) : Index(ID)
 		{
+
 			InitializeComponent();
+			this->Icon = gcnew System::Drawing::Icon("C:/Users/voron/Downloads/edu3.ico");
 			BaseData^ bd = gcnew BaseData();
 			Student^ student = bd->FillStudent(Index);
-		
 			LabelNameStudent->Text = Convert::ToString(student->Surname + " " + student->Name + " " + student->Middlename);
-			//ButtonStatus
-			//Otcekna
-
-			//ButtonStatusStudent->BackColor = 
 			if (student->Otcenka <= 2.5) ButtonStatusStudent->BackColor = Color::Red;
 			else if (student->Otcenka > 2.5 && student->Otcenka <= 3.5)  ButtonStatusStudent->BackColor = Color::Yellow;
 			else if (student->Otcenka > 3.5 && student->Otcenka <= 4.5)  ButtonStatusStudent->BackColor = Color::GreenYellow;

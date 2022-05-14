@@ -21,7 +21,7 @@ namespace StudentCardVelial {
 		{
 			InitializeComponent();
 			BaseData^ bd = gcnew BaseData();
-			//List<Faculty^>^ list = bd->FillBaseData();
+			this->Icon = gcnew System::Drawing::Icon("C:/Users/voron/Downloads/edu3.ico");
 			TextBoxUpdateTitleFaculty->Text = ItemFaculty->TitleFaculty->Replace(" ", "");
 			TextBoxUpdateNameDekan->Text = ItemFaculty->NameDekan->Replace(" ", "");
 		}

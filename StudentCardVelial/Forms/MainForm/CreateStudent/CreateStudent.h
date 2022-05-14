@@ -17,6 +17,7 @@ namespace StudentCardVelial {
 		CreateStudent(void)
 		{
 			InitializeComponent();
+			this->Icon = gcnew System::Drawing::Icon("C:/Users/voron/Downloads/edu3.ico");
 			TextBoxNameStudent->Focus();
 			this->ComboBoxEducationalForm->SelectedIndex = 0;
 		}

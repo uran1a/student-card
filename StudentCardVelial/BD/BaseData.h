@@ -311,7 +311,7 @@ public:
 
 			List<Faculty^>^ list = gcnew List<Faculty^>();
 			bool checkingForMatches = false;
-			String^ cmdText = "SELECT * FROM dbo.TABLE_GROUPS WHERE ID = @ID";
+			String^ cmdText = "SELECT * FROM dbo.TABLE_GROUPS WHERE ID != @ID";
 			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
 			cmd->Parameters->AddWithValue("@ID", g->ID);
 			conn->Open();
@@ -417,14 +417,15 @@ public:
 			else MessageBox::Show("Ошибка: При чтении элементов из БД!", "Help", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		}
 	}
-	List<Student^>^ FillCheckedListBoxStudent(int StatusEntrant) {
+	List<Student^>^ FillCheckedListBoxStudent(int StatusEntrant, String^ Text) {
 		try {
+			//WHERE Entrant = @Yes
 			//Подключение в БД
 			ConnectToBD();
 
 			List<Student^>^ list = gcnew List<Student^>();
 
-			String^ cmdText = "SELECT * FROM dbo.TABLE_STUDENTS WHERE Entrant = @Yes";
+			String^ cmdText = "SELECT * FROM dbo.TABLE_STUDENTS " + Text;
 			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
 			cmd->Parameters->AddWithValue("@Yes", StatusEntrant);
 			conn->Open();
@@ -522,7 +523,6 @@ public:
 		}
 	}
 	void Reload(List<Student^>^% list_student, CheckedListBox^ CheckedListBoxStudent) {
-		list_student = FillCheckedListBoxStudent(1);
 		CheckedListBoxStudent->Items->Clear();
 		for (size_t i = 0; i < list_student->Count; i++)
 		{
@@ -530,7 +530,6 @@ public:
 		}
 	}
 	void Reload(List<Student^>^% list_student, ListView^ ListViewPanel) {
-		list_student = FillCheckedListBoxStudent(1);
 		ListViewPanel->FullRowSelect = true;
 		ListViewPanel->Items->Clear();
 		for (int i = 0; i < list_student->Count; i++) {
@@ -589,7 +588,7 @@ public:
 			//Подключение в БД
 			ConnectToBD();
 
-			String^ cmdText = "UPDATE dbo.TABLE_STUDENTS SET Name = @Name, Surname = @Surname, Middlename = @Middlename, Title_Group = @Title_Group, Birthday = @Birthday, Point_EGE = @Point_EGE, Stipendiya = @Stipendiya, Year_Enrollment = @Year_Enrollment, Otcenka = @Otcenka, Photo_Student = @Photo_Student,  Educational_Form = @Educational_Form, Phone_Number = @Phone_Number, Mail = @Mail WHERE ID = @ID";
+			String^ cmdText = "UPDATE dbo.TABLE_STUDENTS SET Name = @Name, Surname = @Surname, Middlename = @Middlename, Title_Group = @Title_Group, Birthday = @Birthday, Point_EGE = @Point_EGE, Stipendiya = @Stipendiya, Year_Enrollment = @Year_Enrollment, Otcenka = @Otcenka, Photo_Student = @Photo_Student,  Educational_Form = @Educational_Form, Phone_Number = @Phone_Number, Mail = @Mail, Login = @Login, Password = @Password WHERE ID = @ID";
 			SqlCommand^ cmd = gcnew SqlCommand(cmdText, conn);
 
 			cmd->Parameters->AddWithValue("@ID", ID);
@@ -606,6 +605,8 @@ public:
 			cmd->Parameters->AddWithValue("@Educational_Form", s->Educational_Form);
 			cmd->Parameters->AddWithValue("@Phone_Number", s->Phone_Number);
 			cmd->Parameters->AddWithValue("@Mail", s->Mail);
+			cmd->Parameters->AddWithValue("@Login", s->Login);
+			cmd->Parameters->AddWithValue("@Password", s->Password);
 
 			conn->Open();
 			cmd->ExecuteNonQuery();
@@ -673,7 +674,7 @@ public:
 
 			SqlDataReader^ reader = cmd->ExecuteReader();
 			while (reader->Read()) {
-				if (s->Login->ToUpper()->Replace(" ", "") == (reader["Login"]->ToString()->Replace(" ", "")->ToUpper()) && s->Password->ToUpper()->Replace(" ", "") == (reader["Password"]->ToString()->Replace(" ", "")->ToUpper()))
+				if (s->Login->ToUpper()->Replace(" ", "") == (reader["Login"]->ToString()->Replace(" ", "")->ToUpper()) || s->Password->ToUpper()->Replace(" ", "") == (reader["Password"]->ToString()->Replace(" ", "")->ToUpper()))
 					return checkingForMatches = true;
 			}
 			return checkingForMatches;

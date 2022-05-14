@@ -17,8 +17,9 @@ namespace StudentCardVelial {
 		AddStudent(Group^ PathGroup_) : ItemGroup(PathGroup_)
 		{
 			InitializeComponent();
+			this->Icon = gcnew System::Drawing::Icon("C:/Users/voron/Downloads/edu3.ico");
 			bd = gcnew BaseData();
-			list_students = bd->FillCheckedListBoxStudent(1);
+			list_students = bd->FillCheckedListBoxStudent(1, "WHERE Entrant = @Yes");
 			bd->Reload(list_students, CheckedListBoxStudent);
 		}
 
@@ -123,7 +124,7 @@ namespace StudentCardVelial {
 				}
 			}
 		}
-		list_students = bd->FillCheckedListBoxStudent(1);
+		list_students = bd->FillCheckedListBoxStudent(1, "WHERE Entrant = @Yes");
 		bd->Reload(list_students, CheckedListBoxStudent);
 	}
 	};

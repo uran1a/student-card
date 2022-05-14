@@ -19,6 +19,7 @@ namespace StudentCardVelial {
 		{
 			InitializeComponent();
 			BaseData^ bd = gcnew BaseData();
+			this->Icon = gcnew System::Drawing::Icon("C:/Users/voron/Downloads/edu3.ico");
 			TextBoxTitleGroupUpdatePanel->Text = ItemGroup->TitleGroup->Replace(" ", "");
 			ComboBoxTitleFacultyUpdatePanel->DataSource = bd->FillComboBox();
 			List<Faculty^>^ list = bd->FillBaseData();
@@ -179,7 +180,8 @@ namespace StudentCardVelial {
 			BaseData^ bd = gcnew BaseData();
 			List<Faculty^>^ list = bd->FillBaseData();
 			List<Student^>^ list_students = bd->FillListViewStudent(ItemGroup->TitleGroup);
-
+			
+			g->ID = ItemGroup->ID;
 			g->TitleGroup = TextBoxTitleGroupUpdatePanel->Text;
 			g->TitleFaculty = list[ComboBoxTitleFacultyUpdatePanel->SelectedIndex]->TitleFaculty;
 			g->Specialization = TextboxSpecializationUpdatePanel->Text;

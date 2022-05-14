@@ -17,11 +17,9 @@ namespace StudentCardVelial {
 		UpdateStudentCard(Student^ s, array<String^>^ PathGroup) : SelectedStudent(s)
 		{
 			InitializeComponent();
+			this->Icon = gcnew System::Drawing::Icon("C:/Users/voron/Downloads/edu3.ico");
 			bd = gcnew BaseData();
-		
 			TextBoxFIO->Text = Convert::ToString(SelectedStudent->Surname + " " + SelectedStudent->Name + " " + SelectedStudent->Middlename);
-			//ButtonStatus
-			//Otcekna
 			TextBoxOtcenka->Text = Convert::ToString(SelectedStudent->Otcenka);
 			TextBoxBirthday->Text = SelectedStudent->Birthday;
 			TextBoxGroup->Text = SelectedStudent->Title_Group;
@@ -58,7 +56,6 @@ namespace StudentCardVelial {
 	private: System::Windows::Forms::Label^ LabelNameStudent;
 	private: System::Windows::Forms::PictureBox^ PictureBoxPhotoStudent;
 	private: System::Windows::Forms::TextBox^ TextBoxFIO;
-
 	private: System::Windows::Forms::TextBox^ TextBoxGroup;
 	private: System::Windows::Forms::TextBox^ TextBoxOtcenka;
 	private: System::Windows::Forms::TextBox^ TextBoxBirthday;

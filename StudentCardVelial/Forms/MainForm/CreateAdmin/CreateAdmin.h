@@ -17,6 +17,7 @@ namespace StudentCardVelial {
 		CreateAdmin(void)
 		{
 			InitializeComponent();
+			this->Icon = gcnew System::Drawing::Icon("C:/Users/voron/Downloads/edu3.ico");
 			TextBoxNameAdmin->Focus();
 		}
 

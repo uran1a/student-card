@@ -19,6 +19,7 @@ namespace StudentCardVelial {
 		AdminPanel(int ID): AdminID(ID)
 		{
 			InitializeComponent();
+			this->Icon = gcnew System::Drawing::Icon("C:/Users/voron/Downloads/edu3.ico");
 			bd = gcnew BaseData();
 			admin = bd->FillAdmin(ID);
 			TextBoxFIOAdmin->Text = Convert::ToString(admin->Surname + " " + admin->Name + " " + admin->Middlename);

@@ -18,7 +18,7 @@ namespace StudentCardVelial {
 		ListUsers(bool isAdmin): isAdmin(isAdmin)
 		{
 			InitializeComponent();
-
+			this->Icon = gcnew System::Drawing::Icon("C:/Users/voron/Downloads/edu3.ico");
 			listView1->Columns->Clear();
 			listView1->Columns->Add("ID", 25, HorizontalAlignment::Center);
 			listView1->Columns->Add("Логин", 100, HorizontalAlignment::Center);
@@ -30,10 +30,9 @@ namespace StudentCardVelial {
 				bd->Reload(list_admin, listView1);
 			}
 			else {
-				list_user = bd->FillCheckedListBoxStudent(1);
+				list_user = bd->FillCheckedListBoxStudent(1, "");
 				bd->Reload(list_user, listView1);
 			}
-		
 		}
 
 	protected:
@@ -124,14 +123,17 @@ namespace StudentCardVelial {
 					if (list_admin[i]->Login == UserSelectedItem)
 						bd->Delete(list_admin[i]);
 				}
+				list_admin = bd->FillListViewAdmins();
 				bd->Reload(list_admin, listView1);
 			}
 			else {
+				list_user = bd->FillCheckedListBoxStudent(1, "");
 				for (size_t i = 0; i < list_user->Count; i++)
 				{
 					if (list_user[i]->Login == UserSelectedItem)
 						bd->Delete(list_user[i]);
 				}
+				list_user = bd->FillCheckedListBoxStudent(1, "");
 				bd->Reload(list_user, listView1);
 			}
 		}

@@ -17,6 +17,7 @@ namespace StudentCardVelial {
 		CreateFaculty(void)
 		{
 			InitializeComponent();
+			this->Icon = gcnew System::Drawing::Icon("C:/Users/voron/Downloads/edu3.ico");
 			TextBoxCreateFaculty->Focus();
 		}
 

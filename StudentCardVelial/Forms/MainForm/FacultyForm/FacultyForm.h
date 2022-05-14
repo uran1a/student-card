@@ -31,7 +31,7 @@ namespace StudentCardVelial {
 		FacultyForm(int ID, bool Status) : UserID(ID), isAdmin(Status)
 		{
 			InitializeComponent();
-
+			this->Icon = gcnew System::Drawing::Icon("C:/Users/voron/Downloads/edu3.ico");
 			if (!isAdmin) {
 				this->PanelButton->Visible = false;
 				this->PanelFacultyButton->Visible = false;

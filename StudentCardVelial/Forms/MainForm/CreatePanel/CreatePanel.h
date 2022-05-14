@@ -17,6 +17,7 @@ namespace StudentCardVelial {
 		CreatePanel(int index) : IndexSelectedFaculty(index)
 		{
 			InitializeComponent();
+			this->Icon = gcnew System::Drawing::Icon("C:/Users/voron/Downloads/edu3.ico");
 			bd = gcnew BaseData();
 			ComboBoxTitleFacultyCreatePanel->DataSource = bd->FillComboBox();
 			this->ComboBoxTitleFacultyCreatePanel->SelectedIndex = IndexSelectedFaculty;
