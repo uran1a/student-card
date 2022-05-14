@@ -21,6 +21,7 @@ namespace StudentCardVelial {
 		Autorization(void)
 		{
 			InitializeComponent();
+			this->Icon = gcnew System::Drawing::Icon("C:/Users/voron/Downloads/edu3.ico");
 			this->panel1->Size = System::Drawing::Size(366, 337);
 		
 			this->Size = System::Drawing::Size(417, 453);
@@ -124,7 +125,7 @@ namespace StudentCardVelial {
 			this->button1->ForeColor = System::Drawing::SystemColors::ButtonShadow;
 			this->button1->Location = System::Drawing::Point(321, 206);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(24, 24);
+			this->button1->Size = System::Drawing::Size(30, 24);
 			this->button1->TabIndex = 5;
 			this->button1->UseVisualStyleBackColor = false;
 			this->button1->Click += gcnew System::EventHandler(this, &Autorization::button1_Click);
@@ -243,7 +244,7 @@ namespace StudentCardVelial {
 			this->MinimizeBox = false;
 			this->Name = L"Autorization";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"Autorization";
+			this->Text = L"Авторизация";
 			this->TabControlAuthorization->ResumeLayout(false);
 			this->TabPageAuthorization->ResumeLayout(false);
 			this->panel1->ResumeLayout(false);

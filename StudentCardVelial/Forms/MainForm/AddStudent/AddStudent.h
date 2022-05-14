@@ -123,6 +123,8 @@ namespace StudentCardVelial {
 				}
 			}
 		}
+		list_students = bd->FillCheckedListBoxStudent(1);
+		bd->Reload(list_students, CheckedListBoxStudent);
 	}
 	};
 }
